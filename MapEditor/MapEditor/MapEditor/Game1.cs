@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
 
 namespace MapEditor
 {
@@ -22,9 +23,12 @@ namespace MapEditor
 
         Tile[,] tileArray;
 
+        MouseState mS, omS;
+
+        readonly string dir = "../../../../../../Maps/";
         public static Texture2D tex;
 
-        public static int tileSize = 32;
+        public static int tileSize = 24;
 
         public static readonly int BLANK = 0;
         public static readonly int TYPE1 = 1;
@@ -62,6 +66,9 @@ namespace MapEditor
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            omS = mS;
+            mS = Mouse.GetState();
+
             type = form.type;
             if (form.newMap)
             {
@@ -70,10 +77,26 @@ namespace MapEditor
                 NewMap();
                 form.newMap = false;
             }
-            if (form.save)
+            if (form.save && tileArray != null)
             {
                 Save();
                 form.save = false;
+            }
+
+            if (form.load)
+            {
+                Load();
+                form.load = false;
+            }
+
+            if (mS.LeftButton == ButtonState.Pressed && tileArray != null)
+            {
+                if (0 < mS.X && mS.X < width * tileSize && 0 < mS.Y && mS.Y < height * tileSize)
+                {
+                    int x = Math.Abs(mS.X / tileSize);
+                    int y = Math.Abs(mS.Y / tileSize);
+                    EditTile(x, y);
+                }
             }
 
             base.Update(gameTime);
@@ -110,6 +133,63 @@ namespace MapEditor
             graphics.PreferredBackBufferHeight = height * tileSize;
             graphics.ApplyChanges();
         }
-        private void Save() { }
+
+        private void Save()
+        {
+            string path = form.path;
+            StreamWriter writer = new StreamWriter(dir + path + ".txt");
+
+            writer.WriteLine("[" + width + "][" + height + "]");
+
+            for (int y = 0; y < height; y++)
+            {
+                writer.Write("|");
+                for (int x = 0; x < width; x++)
+                {
+                    writer.Write(tileArray[x, y].GetTileType() + "|");
+                }
+                writer.WriteLine();
+            }
+            writer.Close();
+        }
+
+        private void Load()
+        {
+            string path = form.path;
+            try
+            {
+                StreamReader reader = new StreamReader(dir + path + ".txt");
+                int line = 0;
+
+                while (!reader.EndOfStream)
+                {
+                    string temp = reader.ReadLine();
+                    if (temp.Contains('[') || temp.Contains(']'))
+                    {
+                        string[] arrayTemp = temp.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
+                        width = Convert.ToInt32(arrayTemp[0]);
+                        height = Convert.ToInt32(arrayTemp[1]);
+                        NewMap();
+                    }
+                    else
+                    {
+                        string[] arrayTemp = temp.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                        for (int x = 0; x < width; x++)
+                        {
+                            tileArray[x, line].SetType(Convert.ToInt32(arrayTemp[x]));  
+                        }
+                        line++;
+                    }
+
+                }
+                reader.Close();
+            }
+            catch (FileNotFoundException e) { }
+        }
+
+        private void EditTile(int x, int y)
+        {
+            tileArray[x, y].SetType(type);
+        }
     }
 }

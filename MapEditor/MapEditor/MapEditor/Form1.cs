@@ -12,11 +12,13 @@ namespace MapEditor
     public partial class Form1 : Form
     {
         public int type;
+        public string path;
 
         public int width;
         public int height;
         public bool newMap;
         public bool save;
+        public bool load;
 
         public Form1()
         {
@@ -51,10 +53,19 @@ namespace MapEditor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to save?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                save = true;
-            }
+            path = textBox1.Text;
+            if (path != "" || path != null)
+                if (MessageBox.Show("Do you want to save to \"" + path + ".txt\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    save = true;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            path = textBox1.Text;
+            if (path != "" || path != null)
+                if (MessageBox.Show("Do you want to load \"" + path + ".txt\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    load = true;
         }
     }
 }
