@@ -33,6 +33,14 @@ namespace MapEditor
         public static readonly int BLANK = 0;
         public static readonly int TYPE1 = 1;
         public static readonly int TYPE2 = 2;
+        public static readonly int TYPE3 = 3;
+        public static readonly int TYPE4 = 4;
+        public static readonly int TYPE5 = 5;
+        public static readonly int TYPE6 = 6;
+        public static readonly int TYPE7 = 7;
+        public static readonly int TYPE8 = 8;
+        public static readonly int TYPE9 = 9;
+        public static readonly int TYPE10 = 10;
 
         public int type;
         public int width;
@@ -98,6 +106,7 @@ namespace MapEditor
                     int x = Math.Abs(mS.X / tileSize);
                     int y = Math.Abs(mS.Y / tileSize);
                     EditTile(x, y);
+
                 }
             }
 
@@ -173,36 +182,6 @@ namespace MapEditor
                     }
                 }
             }
-            //try
-            //{
-            //    StreamReader reader = new StreamReader(dir + path + ".txt");
-            //    int line = 0;
-
-            //    while (!reader.EndOfStream)
-            //    {
-            //        string temp = reader.ReadLine();
-            //        if (temp.Contains('[') || temp.Contains(']'))
-            //        {
-            //            string[] arrayTemp = temp.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
-            //            width = Convert.ToInt32(arrayTemp[0]);
-            //            height = Convert.ToInt32(arrayTemp[1]);
-            //            NewMap();
-            //        }
-            //        else
-            //        {
-            //            string[] arrayTemp = temp.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-            //            for (int x = 0; x < width; x++)
-            //            {
-            //                tileArray[x, line].SetType(Convert.ToInt32(arrayTemp[x]));  
-            //            }
-            //            line++;
-            //        }
-
-            //    }
-            //    reader.Close();
-            //}
-            //catch (FileNotFoundException e) { }
-
         }
 
         private void EditTile(int x, int y)

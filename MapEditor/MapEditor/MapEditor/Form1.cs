@@ -41,6 +41,12 @@ namespace MapEditor
             type = Game1.BLANK;
         }
 
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE3;
+        }
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you want to start a new Map?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -66,6 +72,41 @@ namespace MapEditor
             if (path != "" || path != null)
                 if (MessageBox.Show("Do you want to load \"" + path + ".txt\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     load = true;
+        }
+
+        private void radio4_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE4;
+        }
+
+        private void radio5_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE5;
+        }
+
+        private void radio6_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE6;
+        }
+
+        private void radio7_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE7;
+        }
+
+        private void radio8_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE8;
+        }
+
+        private void radio9_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE9;
+        }
+
+        private void radio10_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE10;
         }
     }
 }
