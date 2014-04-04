@@ -49,7 +49,7 @@ namespace MapEditor
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to start a new Map?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Do you want to suck dick?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 width = (int)numericUpDown1.Value;
                 height = (int)numericUpDown2.Value;
