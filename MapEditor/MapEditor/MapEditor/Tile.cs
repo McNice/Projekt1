@@ -7,11 +7,11 @@ using Microsoft.Xna.Framework;
 
 namespace MapEditor
 {
-    class Tile
+    public class Tile
     {
-        int type;
-
-        Vector2 pos;
+        
+        public int type;
+        public Vector2 pos;
 
         public Tile(Vector2 pos, int type)
         {

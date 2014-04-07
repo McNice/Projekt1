@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using System.IO;
 
 namespace MapEditor
 {
@@ -17,11 +16,7 @@ namespace MapEditor
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        SpriteFont font;
-
         Form1 form;
-
-        Tile[,] tileArray;
 
         MouseState mS, omS;
 
@@ -43,10 +38,10 @@ namespace MapEditor
         public static readonly int TYPE10 = 10;
 
         public int type;
-        public int width;
-        public int height;
+        public int width = 20;
+        public int height = 20;
 
-        Map map = new Map();
+        Map map;
 
         public Game1()
         {
@@ -59,6 +54,7 @@ namespace MapEditor
         {
             form = new Form1();
             form.Show();
+            NewMap(width, height);
 
             base.Initialize();
         }
@@ -67,7 +63,6 @@ namespace MapEditor
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            font = Content.Load<SpriteFont>("SpriteFont1");
             tex = Content.Load<Texture2D>("bild");
         }
 
@@ -84,28 +79,32 @@ namespace MapEditor
             {
                 width = form.width;
                 height = form.height;
-                NewMap();
+                NewMap(width, height);
                 form.newMap = false;
             }
-            if (form.save && tileArray != null)
+            if (form.save && map != null)
             {
-                Save();
+                XmlSave.SaveData(map, dir + form.path + ".xml");
                 form.save = false;
             }
 
             if (form.load)
             {
-                Load();
+                XmlLoad<Map> loadMap = new XmlLoad<Map>();
+                map = loadMap.LoadData(dir + form.path + ".xml");
+                graphics.PreferredBackBufferWidth = map.Width * tileSize;
+                graphics.PreferredBackBufferHeight = map.Height * tileSize;
+                graphics.ApplyChanges();
                 form.load = false;
             }
 
-            if (mS.LeftButton == ButtonState.Pressed && tileArray != null)
+            if (mS.LeftButton == ButtonState.Pressed && map != null)
             {
                 if (0 < mS.X && mS.X < width * tileSize && 0 < mS.Y && mS.Y < height * tileSize)
                 {
                     int x = Math.Abs(mS.X / tileSize);
                     int y = Math.Abs(mS.Y / tileSize);
-                    EditTile(x, y);
+                    map.EditTile(x, y, type);
 
                 }
             }
@@ -117,76 +116,60 @@ namespace MapEditor
         {
             GraphicsDevice.Clear(Color.White);
             spriteBatch.Begin();
-            if (tileArray != null)
+            if (map != null)
             {
-                foreach (Tile t in tileArray)
-                {
-                    if (t != null)
-                        t.Draw(spriteBatch);
-                }
+                map.Draw(spriteBatch);
             }
             spriteBatch.End();
             base.Draw(gameTime);
         }
 
-        private void NewMap()
+        private void NewMap(int width, int height)
         {
-            tileArray = new Tile[width, height];
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    if (tileArray[x, y] == null)
-                        tileArray[x, y] = new Tile(new Vector2(x * tileSize, y * tileSize), BLANK);
-                }
-            }
+            map = new Map(width, height);
+
             graphics.PreferredBackBufferWidth = width * tileSize;
             graphics.PreferredBackBufferHeight = height * tileSize;
             graphics.ApplyChanges();
         }
 
-        private void Save()
-        {
-            string path = form.path;
-            StreamWriter writer = new StreamWriter(dir + path + ".txt");
+        //private void Save()
+        //{
+        //    string path = form.path;
+        //    StreamWriter writer = new StreamWriter(dir + path + ".txt");
 
-            writer.WriteLine("[" + width + "][" + height + "]");
+        //    writer.WriteLine("[" + width + "][" + height + "]");
 
-            for (int y = 0; y < height; y++)
-            {
-                writer.Write("|");
-                for (int x = 0; x < width; x++)
-                {
-                    writer.Write(tileArray[x, y].GetTileType() + "|");
-                }
-                writer.WriteLine();
-            }
-            writer.Close();
-        }
+        //    for (int y = 0; y < height; y++)
+        //    {
+        //        writer.Write("|");
+        //        for (int x = 0; x < width; x++)
+        //        {
+        //            writer.Write(tileArray[x, y].GetTileType() + "|");
+        //        }
+        //        writer.WriteLine();
+        //    }
+        //    writer.Close();
+        //}
 
-        private void Load()
-        {
-            string path = form.path;
-            string[,] temp = map.LoadMap(path);
-            if (temp != null)
-            {
-                width = map.width;
-                height = map.height;
-                NewMap();
+        //private void Load()
+        //{
+        //    string path = form.path;
+        //    string[,] temp = map.LoadMap(path);
+        //    if (temp != null)
+        //    {
+        //        width = map.width;
+        //        height = map.height;
+        //        NewMap(width, height);
 
-                for (int x = 0; x < width; x++)
-                {
-                    for (int y = 0; y < height; y++)
-                    {
-                        tileArray[x, y].SetType(Convert.ToInt32(temp[x, y]));
-                    }
-                }
-            }
-        }
-
-        private void EditTile(int x, int y)
-        {
-            tileArray[x, y].SetType(type);
-        }
+        //        for (int x = 0; x < width; x++)
+        //        {
+        //            for (int y = 0; y < height; y++)
+        //            {
+        //                tileArray[x, y].SetType(Convert.ToInt32(temp[x, y]));
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
