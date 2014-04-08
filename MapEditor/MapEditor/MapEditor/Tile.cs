@@ -7,17 +7,20 @@ using Microsoft.Xna.Framework;
 
 namespace MapEditor
 {
-    class Tile
+    public class Tile
     {
-        int type;
-
-        Vector2 pos;
+        
+        public int type;
+        public Vector2 pos;
+        public string texName;
 
         public Tile(Vector2 pos, int type)
         {
             this.pos = pos;
             this.type = type;
         }
+
+        public Tile() { }
 
         public void Draw(SpriteBatch sB)
         {
