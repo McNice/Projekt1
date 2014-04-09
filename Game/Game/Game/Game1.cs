@@ -14,6 +14,7 @@ namespace Game {
     public class Game1 : Microsoft.Xna.Framework.Game {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        public static Texture2D astroid;
         public static int TILESIZE = 40;
         public static int TILESX = 30;
         public static int TILESY = 20;
@@ -27,7 +28,7 @@ namespace Game {
         }
         GameState gameState = GameState.Play;
         Manager manager;
-        TM textureManager;
+        public static TM textureManager;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
@@ -38,15 +39,15 @@ namespace Game {
             Content.RootDirectory = "Content";
         }
 
-        protected override void Initialize() {
-            manager = new Manager();
+        protected override void Initialize() {            
             textureManager = new TM(Content);
+            manager = new Manager();
             base.Initialize();
         }
 
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            textureManager.LoadContent();
+            astroid = textureManager.Texture("astroid");
             manager.LoadContent();
         }
 

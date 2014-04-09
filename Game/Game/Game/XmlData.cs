@@ -5,35 +5,16 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace MapEditor
+namespace Game
 {
     public class XmlSave
     {
-<<<<<<< HEAD
-        public static Type[] extraType = new Type[] { typeof(Tile) };
-=======
-<<<<<<< HEAD
-        public static Type[] extraType = { typeof(Tile) };
-        public static void SaveData(object IClass, string filename)
-        {
-            StreamWriter writer = null;
-           
-            try
-            {
-                XmlSerializer xmlSerializer = new XmlSerializer((IClass.GetType()), extraType);
-=======
->>>>>>> 4033119e6cab50023f794b7048230d4e653a73d3
         public static void SaveData(object IClass, string filename)
         {
             StreamWriter writer = null;
             try
             {
-<<<<<<< HEAD
-                XmlSerializer xmlSerializer = new XmlSerializer((IClass.GetType()), extraType);
-=======
                 XmlSerializer xmlSerializer = new XmlSerializer((IClass.GetType()));
->>>>>>> 337fd0a1772d155f1f00848e5c562fd39ab1a88a
->>>>>>> 4033119e6cab50023f794b7048230d4e653a73d3
                 writer = new StreamWriter(filename);
                 xmlSerializer.Serialize(writer, IClass);
             }
@@ -49,14 +30,7 @@ namespace MapEditor
     public class XmlLoad<T>
     {
         public static Type type;
-<<<<<<< HEAD
-        public static Type[] extraType = new Type[] { typeof(Tile) };
-=======
-<<<<<<< HEAD
         public static Type[] extraType = { typeof(Tile) };
-=======
->>>>>>> 337fd0a1772d155f1f00848e5c562fd39ab1a88a
->>>>>>> 4033119e6cab50023f794b7048230d4e653a73d3
 
         public XmlLoad()
         {
@@ -66,15 +40,7 @@ namespace MapEditor
         public T LoadData(string filename)
         {
             T result;
-<<<<<<< HEAD
             XmlSerializer xmlserializer = new XmlSerializer(type, extraType);
-=======
-<<<<<<< HEAD
-            XmlSerializer xmlserializer = new XmlSerializer(type, extraType);
-=======
-            XmlSerializer xmlserializer = new XmlSerializer(type);
->>>>>>> 337fd0a1772d155f1f00848e5c562fd39ab1a88a
->>>>>>> 4033119e6cab50023f794b7048230d4e653a73d3
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
             result = (T)xmlserializer.Deserialize(fs);
             fs.Close();
