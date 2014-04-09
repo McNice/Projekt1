@@ -30,17 +30,17 @@ namespace MapEditor
             set { height = value; }
         }
 
-        public int[][] XmlData
+        public Tile[][] XmlData
         {
             get
             {
-                int[][] temp = new int[height][];
+                Tile[][] temp = new Tile[height][];
                 for (int y = 0; y < height; y++)
                 {
-                    int[] temp2 = new int[width];
+                    Tile[] temp2 = new Tile[width];
                     for (int x = 0; x < width; x++)
                     {
-                        temp2[x] = tileArray[x, y].GetTileType();
+                        temp2[x] = tileArray[x, y];
                     }
                     temp[y] = temp2;
                 }
@@ -61,7 +61,7 @@ namespace MapEditor
                 {
                     for (int x = 0; x < value[0].Length; x++)
                     {
-                        tileArray[x, y].SetType(value[y][x]);
+                        tileArray[x, y] = value[y][x];
                     }
                 }
             }

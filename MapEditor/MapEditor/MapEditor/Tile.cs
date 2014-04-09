@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Xml.Serialization;
 
 namespace MapEditor
 {
     public class Tile
     {
-        
+        [XmlAttribute]
         public int type;
         public Vector2 pos;
 
@@ -18,6 +19,8 @@ namespace MapEditor
             this.pos = pos;
             this.type = type;
         }
+
+        public Tile() { }
 
         public void Draw(SpriteBatch sB)
         {
