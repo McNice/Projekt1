@@ -13,10 +13,7 @@ namespace MapEditor
         [XmlAttribute]
         public int type;
         public Vector2 pos;
-<<<<<<< HEAD
         public string texName;
-=======
->>>>>>> 337fd0a1772d155f1f00848e5c562fd39ab1a88a
 
         public Tile(Vector2 pos, int type)
         {
