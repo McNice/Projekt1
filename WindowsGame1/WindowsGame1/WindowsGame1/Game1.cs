@@ -15,13 +15,13 @@ namespace WindowsGame1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        ParticleEngine particle;
+        List<ParticleEngine> particle;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            
+            //graphics.IsFullScreen = true;
         }
 
         protected override void Initialize()
@@ -33,7 +33,11 @@ namespace WindowsGame1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             IsMouseVisible = true;
-            particle = new ParticleEngine(Content);
+            
+            particle = new List<ParticleEngine>();
+            for (int i = 0; i < 10; i++)
+                particle.Add(new ParticleEngine(Content, "Smoketex", new Vector2(50+25 * i, 300)));
+            //particle = new ParticleEngine(Content,"Smoketex",new Vector2(100*i,300));
 
         }
 
@@ -41,7 +45,20 @@ namespace WindowsGame1
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
-            particle.Update(gameTime);
+            foreach (ParticleEngine p in particle)
+                p.Update(gameTime);
+            foreach (ParticleEngine p in particle)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.D))
+                    p.pos.X++;
+                else if (Keyboard.GetState().IsKeyDown(Keys.A))
+                    p.pos.X--;
+                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                    p.pos.Y++;
+                else if (Keyboard.GetState().IsKeyDown(Keys.W))
+                    p.pos.Y--;
+            }
+                
             base.Update(gameTime);
         }
 
@@ -49,7 +66,8 @@ namespace WindowsGame1
         {
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
-            particle.Draw(spriteBatch);
+            foreach (ParticleEngine p in particle)
+                p.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

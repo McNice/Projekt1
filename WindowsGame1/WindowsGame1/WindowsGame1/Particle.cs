@@ -15,23 +15,25 @@ namespace WindowsGame1
         ContentManager content;
         List<Particle> particleList;
         Random rnd = new Random();
-        Vector2 pos;
+        public Vector2 pos;
+        Texture2D tex;
         double timer = 100;
 
-        public ParticleEngine(ContentManager Content)
+        public ParticleEngine(ContentManager Content, string texName,Vector2 Position)
         {
             content = Content;
+            tex = TextureLoad(texName);
+            pos = Position;
             particleList = new List<Particle>();
         }
        
         public void Update(GameTime gt)
         {
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
-            pos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             if (timer <= 0)
             {
                 timer += 15;
-                particleList.Add(new Particle(TextureLoad("Smoketex"), pos, rnd.Next(-15, 15) / 100f));
+                particleList.Add(new Particle(tex, pos, rnd.Next(-7, 8) / 100f));
             }
             foreach (Particle p in particleList)
             {

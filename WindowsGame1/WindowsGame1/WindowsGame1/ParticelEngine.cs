@@ -9,7 +9,7 @@ namespace WindowsGame1
 {
     public class Particle
     {
-        float upSpeed = -0.5f,sideSpeed,rot = 0.3f;
+        float upSpeed = -0.4f,sideSpeed,rot = 0.3f;
         public float fade = 1;
         float scale = .1f;
         Texture2D tex;
@@ -26,13 +26,14 @@ namespace WindowsGame1
         public void Update(GameTime gt)
         {
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
+            upSpeed += (float)gt.ElapsedGameTime.TotalSeconds/10f;
             if (timer <= 0)
             {
                 timer += 25;
-                pos += new Vector2(sideSpeed, upSpeed - (float)(rnd.NextDouble() / 2f));
+                pos += new Vector2(sideSpeed, upSpeed );
                 rot += 0.1f;
-                fade -= 0.015f;
-                scale += .02f;
+                fade -= (0.008f + (float)(rnd.NextDouble() / 1000f));
+                scale += (0.007f + (float)(rnd.NextDouble()/1000f));
             }
         }
         public void Draw(SpriteBatch sb)
