@@ -6,15 +6,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Game {
-    public class Player {
-        Texture2D texture;
-        Vector2 position;
+namespace Game
+{
+    public class Player
+    {
+        public Texture2D texture;
+        public Vector2 position, previous;
         Vector2 velocity;
         Vector2 gravity;
         string player;
         float time;
-        enum Movement {
+        enum Movement
+        {
             Right,
             Left,
             Up,
@@ -28,19 +31,27 @@ namespace Game {
         }
         Movement movement = new Movement();
 
-        public Player(Texture2D texture, Vector2 position, string player) {
+        public Rectangle PlayerBox { 
+            get { return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height); }  
+        }
+
+        public Player(Texture2D texture, Vector2 position, string player)
+        {
             this.texture = texture;
             this.position = position;
             this.player = player;
             this.gravity = new Vector2(0, 0.0005f);
         }
 
-        public void Update(GameTime gameTime) {
+        public void Update(GameTime gameTime)
+        {
+            previous = position;
             PlayerMovement();
             time = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             position += (velocity * time) + (gravity * (float)Math.Pow(time, 2) / 2);
             velocity += gravity * time;
-            switch (movement) {
+            switch (movement)
+            {
                 case Movement.Right:
                     position.X++;
                     break;
@@ -48,7 +59,7 @@ namespace Game {
                     position.X--;
                     break;
                 case Movement.Up:
-                    position.Y--;
+                    velocity.Y -= 5;
                     break;
                 case Movement.Down:
                     position.Y++;
@@ -60,25 +71,32 @@ namespace Game {
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch) {
+        public void Draw(SpriteBatch spriteBatch)
+        {
             spriteBatch.Draw(texture, position, Color.White);
         }
 
-        public void PlayerMovement() {
-            if (player == "Player1") {
-                if (Keyboard.GetState().IsKeyDown(Keys.Up)) {
+        public void PlayerMovement()
+        {
+            if (player == "Player1")
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                {
                     movement = Movement.Up;
                     if (Keyboard.GetState().IsKeyDown(Keys.Right))
                         movement = Movement.UpRight;
                     else if (Keyboard.GetState().IsKeyDown(Keys.Left))
                         movement = Movement.UpLeft;
-                } else if (Keyboard.GetState().IsKeyDown(Keys.Down)) {
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
                     movement = Movement.Down;
                     if (Keyboard.GetState().IsKeyDown(Keys.Right))
                         movement = Movement.DownRight;
                     else if (Keyboard.GetState().IsKeyDown(Keys.Left))
                         movement = Movement.DownLeft;
-                } else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.Right))
                     movement = Movement.Right;
                 else if (Keyboard.GetState().IsKeyDown(Keys.Left))
                     movement = Movement.Left;
@@ -86,26 +104,37 @@ namespace Game {
                     movement = Movement.Idle;
             }
 
-            if (player == "Player2") {
-                if (Keyboard.GetState().IsKeyDown(Keys.W)) {
+            if (player == "Player2")
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                {
                     movement = Movement.Up;
                     if (Keyboard.GetState().IsKeyDown(Keys.D))
                         movement = Movement.UpRight;
                     else if (Keyboard.GetState().IsKeyDown(Keys.A))
                         movement = Movement.UpLeft;
-                } else if (Keyboard.GetState().IsKeyDown(Keys.S)) {
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.S))
+                {
                     movement = Movement.Down;
                     if (Keyboard.GetState().IsKeyDown(Keys.D))
                         movement = Movement.DownRight;
                     else if (Keyboard.GetState().IsKeyDown(Keys.A))
                         movement = Movement.DownLeft;
-                } else if (Keyboard.GetState().IsKeyDown(Keys.D))
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.D))
                     movement = Movement.Right;
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))
                     movement = Movement.Left;
                 else
                     movement = Movement.Idle;
             }
+        }
+
+        public void Collision()
+        {
+            position.Y = previous.Y;
+            //velocity = Vector2.Zero;
         }
     }
 }

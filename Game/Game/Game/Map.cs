@@ -61,7 +61,7 @@ namespace Game
                 {
                     if (tempMap[x, y] == "1")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Inomhusgolv");
+                        mapArray[x, y] = new Block(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Inomhusgolv");
                     }
                     if (tempMap[x, y] == "2")
                     {

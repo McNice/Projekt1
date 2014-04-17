@@ -75,6 +75,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="KeyMouseReader.cs" />
     <Compile Include="Manager.cs" />

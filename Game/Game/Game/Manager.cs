@@ -36,8 +36,8 @@ namespace Game
                     players.Add(new Player(Game1.astroid, new Vector2(300, 300), "Player1"));
                     break;
                 case PlayerState.Multiplayer:
-                    players.Add(new Player(Game1.astroid, new Vector2(300, 300), "Player1"));
-                    players.Add(new Player(Game1.astroid, new Vector2(400, 300), "Player2"));
+                    players.Add(new Player(Game1.astroid, new Vector2(300, 500), "Player1"));
+                    players.Add(new Player(Game1.astroid, new Vector2(400, 700), "Player2"));
                     break;
             }
         }
@@ -48,6 +48,13 @@ namespace Game
             {
                 p.Update(gameTime);
             }
+            foreach (Player p in players)
+                foreach (Tile b in map.mapArray)
+                    if (b is Block)
+                        if (BoundingBox(p.position, p.PlayerBox).Intersects(BoundingBox((b as Block).pos, (b as Block).boundingBox)))
+                        {
+                            p.Collision();
+                        }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -57,6 +64,10 @@ namespace Game
                 p.Draw(spriteBatch);
             }
             map.Draw(spriteBatch);
+        }
+        private Rectangle BoundingBox(Vector2 pos, Rectangle size)
+        {
+            return new Rectangle((int)pos.X, (int)pos.Y, size.Width, size.Height);
         }
     }
 }
