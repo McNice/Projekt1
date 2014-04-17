@@ -15,8 +15,8 @@ namespace Game {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static Texture2D astroid;
-        public static int TILESIZE = 40;
-        public static int TILESX = 30;
+        public static int TILESIZE = 50;
+        public static int TILESX = 20;
         public static int TILESY = 20;
         enum GameState {
             Title,
@@ -75,7 +75,7 @@ namespace Game {
         }
 
         protected override void Draw(GameTime gameTime) {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.White);
             spriteBatch.Begin();
             switch (gameState) {
                 case GameState.Title:

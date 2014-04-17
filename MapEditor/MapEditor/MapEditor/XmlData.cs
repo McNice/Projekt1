@@ -10,14 +10,12 @@ namespace MapEditor
     public class XmlSave
     {
 
-        public static Type[] extraType = { typeof(Tile) };
         public static void SaveData(object IClass, string filename)
         {
             StreamWriter writer = null;
-
             try
             {
-                XmlSerializer xmlSerializer = new XmlSerializer((IClass.GetType()), extraType);
+                XmlSerializer xmlSerializer = new XmlSerializer(IClass.GetType());
                 writer = new StreamWriter(filename);
                 xmlSerializer.Serialize(writer, IClass);
             }
@@ -33,7 +31,6 @@ namespace MapEditor
     public class XmlLoad<T>
     {
         public static Type type;
-        public static Type[] extraType = { typeof(Tile) };
 
         public XmlLoad()
         {
@@ -43,7 +40,7 @@ namespace MapEditor
         public T LoadData(string filename)
         {
             T result;
-            XmlSerializer xmlserializer = new XmlSerializer(type, extraType);
+            XmlSerializer xmlserializer = new XmlSerializer(type);
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
             result = (T)xmlserializer.Deserialize(fs);
             fs.Close();

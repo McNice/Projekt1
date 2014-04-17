@@ -23,9 +23,8 @@ namespace Game
 
         public Manager()
         {
-            map = new Map();
-            XmlLoad<Map> MapLoad = new XmlLoad<Map>();
-            map = MapLoad.LoadData(path + "auto.xml");
+            map = new Map(20, 20);
+            map.LoadMap("auto");
         }
 
         public void LoadContent()

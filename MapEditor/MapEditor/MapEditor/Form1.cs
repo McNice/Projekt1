@@ -61,7 +61,7 @@ namespace MapEditor
         {
             path = textBox1.Text;
             if (path != "" || path != null)
-                if (MessageBox.Show("Do you want to save to \"" + path + ".xml\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to save to \"" + path + ".txt\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     save = true;
 
         }
@@ -70,7 +70,7 @@ namespace MapEditor
         {
             path = textBox1.Text;
             if (path != "" || path != null)
-                if (MessageBox.Show("Do you want to load \"" + path + ".xml\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to load \"" + path + ".txt\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     load = true;
         }
 

@@ -5,17 +5,14 @@ using System.Text;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Xml.Serialization;
-using System.ComponentModel;
 
 namespace MapEditor
 {
     public class Map
     {
 
-        private readonly string dir = "../../../../../../Maps/";
-        private int width, height;
-        [XmlIgnore]
+        public readonly string dir = "../../../../../../Maps/";
+        public int width, height;
         public Tile[,] tileArray;
 
         public int Width
@@ -29,46 +26,6 @@ namespace MapEditor
             get { return height; }
             set { height = value; }
         }
-
-        public Tile[][] XmlData
-        {
-            get
-            {
-                Tile[][] temp = new Tile[height][];
-                for (int y = 0; y < height; y++)
-                {
-                    Tile[] temp2 = new Tile[width];
-                    for (int x = 0; x < width; x++)
-                    {
-                        temp2[x] = tileArray[x, y];       
-                   }
-                    temp[y] = temp2;
-                }
-                return temp;
-            }
-            set
-            {
-                tileArray = new Tile[value.Length, value[0].Length];
-                for (int x = 0; x < width; x++)
-                {
-                    for (int y = 0; y < height; y++)
-                    {
-                        if (tileArray[x, y] == null)
-                            tileArray[x, y] = new Tile(new Vector2(x * Game1.tileSize, y * Game1.tileSize), Game1.BLANK);
-                    }
-                }
-                for (int y = 0; y < value.Length; y++)
-                {
-                    for (int x = 0; x < value[0].Length; x++)
-                    {
-
-                        tileArray[x, y] = value[y][x];
-                    }
-                }
-            }
-        }
-
-        public Map() { }
 
         public Map(int width, int height)
         {
@@ -85,7 +42,6 @@ namespace MapEditor
                 }
             }
         }
-
 
         public void EditTile(int x, int y, int type)
         {

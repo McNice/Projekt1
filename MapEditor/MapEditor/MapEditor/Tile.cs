@@ -10,7 +10,6 @@ namespace MapEditor
 {
     public class Tile
     {
-        [XmlAttribute]
         public int type;
         public Vector2 pos;
         public string texName;
@@ -20,8 +19,6 @@ namespace MapEditor
             this.pos = pos;
             this.type = type;
         }
-
-        public Tile() { }
 
         public void Draw(SpriteBatch sB)
         {

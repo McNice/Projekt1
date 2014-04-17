@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
 
 namespace MapEditor
 {
@@ -84,14 +85,13 @@ namespace MapEditor
             }
             if (form.save && map != null)
             {
-                XmlSave.SaveData(map, dir + form.path + ".xml");
+                Save();
                 form.save = false;
             }
 
             if (form.load)
             {
-                XmlLoad<Map> loadMap = new XmlLoad<Map>();
-                map = loadMap.LoadData(dir + form.path + ".xml");
+                Load();
                 graphics.PreferredBackBufferWidth = map.Width * tileSize;
                 graphics.PreferredBackBufferHeight = map.Height * tileSize;
                 graphics.ApplyChanges();
@@ -133,43 +133,43 @@ namespace MapEditor
             graphics.ApplyChanges();
         }
 
-        //private void Save()
-        //{
-        //    string path = form.path;
-        //    StreamWriter writer = new StreamWriter(dir + path + ".txt");
+        private void Save()
+        {
+            string path = form.path;
+            StreamWriter writer = new StreamWriter(dir + path + ".txt");
 
-        //    writer.WriteLine("[" + width + "][" + height + "]");
+            writer.WriteLine("[" + width + "][" + height + "]");
 
-        //    for (int y = 0; y < height; y++)
-        //    {
-        //        writer.Write("|");
-        //        for (int x = 0; x < width; x++)
-        //        {
-        //            writer.Write(tileArray[x, y].GetTileType() + "|");
-        //        }
-        //        writer.WriteLine();
-        //    }
-        //    writer.Close();
-        //}
+            for (int y = 0; y < height; y++)
+            {
+                writer.Write("|");
+                for (int x = 0; x < width; x++)
+                {
+                    writer.Write(map.tileArray[x, y].GetTileType() + "|");
+                }
+                writer.WriteLine();
+            }
+            writer.Close();
+        }
 
-        //private void Load()
-        //{
-        //    string path = form.path;
-        //    string[,] temp = map.LoadMap(path);
-        //    if (temp != null)
-        //    {
-        //        width = map.width;
-        //        height = map.height;
-        //        NewMap(width, height);
+        private void Load()
+        {
+            string path = form.path;
+            string[,] temp = map.LoadMap(path);
+            if (temp != null)
+            {
+                width = map.width;
+                height = map.height;
+                NewMap(width, height);
 
-        //        for (int x = 0; x < width; x++)
-        //        {
-        //            for (int y = 0; y < height; y++)
-        //            {
-        //                tileArray[x, y].SetType(Convert.ToInt32(temp[x, y]));
-        //            }
-        //        }
-        //    }
-        //}
+                for (int x = 0; x < width; x++)
+                {
+                    for (int y = 0; y < height; y++)
+                    {
+                        map.tileArray[x, y].SetType(Convert.ToInt32(temp[x, y]));
+                    }
+                }
+            }
+        }
     }
 }
