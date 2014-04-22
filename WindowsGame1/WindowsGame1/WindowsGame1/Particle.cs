@@ -33,17 +33,17 @@ namespace WindowsGame1
             if (timer <= 0)
             {
                 timer += 15;
-                particleList.Add(new Particle(tex, pos, rnd.Next(-7, 8) / 100f));
+                particleList.Add(new Particle(tex, pos, rnd.Next(-10, 11) / 100f));
             }
             foreach (Particle p in particleList)
             {
                 p.Update(gt);
             }
-            for (int i = 0; i < particleList.Count(); i++)
-            {
-                if (particleList[i].fade <= 0)
-                    particleList.Remove(particleList[i]);
-            }
+            //for (int i = 0; i < particleList.Count(); i++)
+            //{
+            //    if (particleList[i].fade <= 0)
+            //        particleList.Remove(particleList[i]);
+            //}
 
         }
 
@@ -60,4 +60,6 @@ namespace WindowsGame1
         }
 
     }
+
+
 }

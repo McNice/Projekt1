@@ -9,9 +9,9 @@ namespace WindowsGame1
 {
     public class Particle
     {
-        float upSpeed = -0.4f,sideSpeed,rot = 0.3f;
+        float upSpeed = -0.4f, sideSpeed, rot;
         public float fade = 1;
-        float scale = .1f;
+        float scale = .08f;
         Texture2D tex;
         Vector2 pos;
         Random rnd = new Random();
@@ -22,23 +22,27 @@ namespace WindowsGame1
             pos = Position;
             this.sideSpeed = sideSpeed;
         }
-        
+
         public void Update(GameTime gt)
         {
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
-            upSpeed += (float)gt.ElapsedGameTime.TotalSeconds/10f;
+            upSpeed += (float)gt.ElapsedGameTime.TotalSeconds / 10f;
             if (timer <= 0)
             {
-                timer += 25;
-                pos += new Vector2(sideSpeed, upSpeed );
+                timer += 30;
+                pos += new Vector2(sideSpeed, upSpeed);
+                if (sideSpeed > 0)
+                    sideSpeed -= 0.0007f;
+                else if (sideSpeed < 0)
+                    sideSpeed += 0.0007f;
                 rot += 0.1f;
-                fade -= (0.008f + (float)(rnd.NextDouble() / 1000f));
-                scale += (0.007f + (float)(rnd.NextDouble()/1000f));
+                fade -= .01f;
+                scale += .007f;
             }
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex,pos,null,Color.White*fade,rot,new Vector2(tex.Width/2,tex.Height/2),scale,SpriteEffects.None,1);
+            sb.Draw(tex, pos, null, Color.White * fade, rot, new Vector2(tex.Width / 2, tex.Height / 2), scale, SpriteEffects.None, 1);
         }
     }
 }
