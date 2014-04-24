@@ -26,8 +26,8 @@ namespace Game
         }
         public virtual void Draw(SpriteBatch sb)
         {
-            //sb.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
-            sb.Draw(tex, Bounds(),null, Color.White);
+            sb.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+            //sb.Draw(tex, Bounds(),null, Color.White);
         }
 
         public Rectangle Bounds()

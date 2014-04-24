@@ -11,7 +11,7 @@ namespace Game
     public class Player
     {
         Texture2D texture;
-        Vector2 position;
+        Vector2 position, previous;
         Vector2 velocity;
         Vector2 gravity;
         float runningSpeed = 10.0f;
@@ -30,10 +30,11 @@ namespace Game
 
         public void Update(GameTime gameTime)
         {
-            PlayerMovement(tile);
+            //PlayerMovement(tile);
+            previous = position;
             time = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             position += (velocity * time) + (gravity * (float)Math.Pow(time, 2) / 2);
-
+            velocity += gravity*time;
 
         }
 
