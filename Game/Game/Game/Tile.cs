@@ -10,12 +10,13 @@ namespace Game
     public class Tile
     {
         Texture2D tex;
-        string texName;
+        protected string texName;
         public Vector2 pos;
-        public Tile(Vector2 pos,string Texture)
+        public Rectangle tileBox;
+        public Tile(Vector2 pos,string texName)
         {
             this.pos = pos;
-            texName = Texture;
+            this.texName = texName;
             LoadContent();
         }
 
@@ -23,9 +24,15 @@ namespace Game
         {
             tex = Game1.textureManager.Texture(texName);
         }
-        public void Draw(SpriteBatch sb)
+        public virtual void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+            //sb.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+            sb.Draw(tex, Bounds(),null, Color.White);
+        }
+
+        public Rectangle Bounds()
+        {
+            return new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
         }
     }
 }

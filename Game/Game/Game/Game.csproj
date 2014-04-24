@@ -84,6 +84,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="TM.cs" />
+    <Compile Include="SolidBlock.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

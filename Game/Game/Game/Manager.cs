@@ -21,6 +21,8 @@ namespace Game
         Map map;
         public static string path = "../../../../../../Maps/";
 
+       
+
         public Manager()
         {
             map = new Map(20, 20);
@@ -47,6 +49,10 @@ namespace Game
             foreach (Player p in players)
             {
                 p.Update(gameTime);
+                foreach (SolidBlock t in map.mapArray)
+                {
+                    
+                }
             }
         }
 

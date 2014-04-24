@@ -59,31 +59,31 @@ namespace Game
             {
                 for (int y = 0; y < height; y++)
                 {
-                    if (tempMap[x, y] == "1")
+                    if (tempMap[x, y] == "2")
                     {
                         mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Inomhusgolv");
                     }
-                    if (tempMap[x, y] == "2")
+                    else if (tempMap[x, y] == "1")
+                    {
+                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "astroid");
+                    }
+                    else if (tempMap[x, y] == "3")
+                    {
+
+                    } 
+                    else if (tempMap[x, y] == "4")
+                    {
+
+                    } 
+                    else if (tempMap[x, y] == "5")
                     {
 
                     }
-                    if (tempMap[x, y] == "3")
-                    {
-
-                    } 
-                    if (tempMap[x, y] == "4")
-                    {
-
-                    } 
-                    if (tempMap[x, y] == "5")
-                    {
-
-                    } 
-                    if (tempMap[x, y] == "6")
+                    else if (tempMap[x, y] == "6")
                     {
 
                     }
-                    if (tempMap[x, y] == "7")
+                    else if (tempMap[x, y] == "7")
                     {
 
                     } 
