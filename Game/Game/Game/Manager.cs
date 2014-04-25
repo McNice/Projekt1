@@ -35,11 +35,11 @@ namespace Game
             switch (playerState)
             {
                 case PlayerState.Singleplayer:
-                    players.Add(new Player(Game1.astroid, new Vector2(300, 300), "Player1"));
+                    players.Add(new Player(Game1.textureManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
                     break;
                 case PlayerState.Multiplayer:
-                    players.Add(new Player(Game1.astroid, new Vector2(300, 300), "Player1"));
-                    players.Add(new Player(Game1.astroid, new Vector2(400, 300), "Player2"));
+                    players.Add(new Player(Game1.textureManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
+                    players.Add(new Player(Game1.textureManager.Texture("Monopoly man 50x100"), new Vector2(400, 300), "Player2"));
                     break;
             }
         }
