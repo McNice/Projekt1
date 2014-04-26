@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Game
 {
@@ -21,7 +22,7 @@ namespace Game
         Map map;
         public static string path = "../../../../../../Maps/";
 
-       
+
 
         public Manager()
         {
@@ -49,11 +50,29 @@ namespace Game
             foreach (Player p in players)
             {
                 p.Update(gameTime);
-                foreach (SolidBlock t in map.mapArray)
+                int collisionCount = 0;
+                foreach (Tile t in map.mapArray)
                 {
-                    
+                    if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.D) && Collision(p, t, Keys.D))
+                        collisionCount++;
+                    if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.A) && Collision(p, t, Keys.A))
+                        collisionCount++;
                 }
+                if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.D))
+                    p.PlayerMovement(Keys.D);
+                else if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.A))
+                    p.PlayerMovement(Keys.A);
             }
+        }
+
+        bool Collision(Player p, Tile t, Keys key)
+        {
+            int direction = 1;
+            if (key == Keys.A)
+                direction = -1;
+            if (p.Bounds(p.position, p.runningSpeed * direction).Intersects(t.Bounds()))
+                return true;
+            return false;
         }
 
         public void Draw(SpriteBatch spriteBatch)

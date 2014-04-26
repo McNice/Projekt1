@@ -11,10 +11,10 @@ namespace Game
     public class Player
     {
         Texture2D texture;
-        Vector2 position, previous;
+        public Vector2 position;
         Vector2 velocity;
         Vector2 gravity;
-        float runningSpeed = 10.0f;
+        public float runningSpeed = 1.0f;
         public bool isOnGround = false;
         string player;
         float time;
@@ -30,34 +30,25 @@ namespace Game
 
         public void Update(GameTime gameTime)
         {
-            //PlayerMovement(tile);
-            previous = position;
             time = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             position += (velocity * time) + (gravity * (float)Math.Pow(time, 2) / 2);
-            velocity += gravity*time;
+            //velocity += gravity*time;
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            spriteBatch.Draw(texture, position,new Rectangle(0,0,50,50), Color.White);
         }
 
-        public void PlayerMovement(SolidBlock tile)
+        public void PlayerMovement(Keys key)
         {
-            if (CanMove(tile))
-            {
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
-                    position.X += runningSpeed;
-            }
-        }
+            if (key == Keys.D)
+                position.X += runningSpeed;
+            if (key == Keys.A)
+                position.X -= runningSpeed;
+        }        
 
-        bool CanMove(Tile tile)
-        {
-            if (Bounds(position, runningSpeed).Intersects(tile.Bounds()))
-                return true;
-            return false;
-        }
         public Rectangle Bounds(Vector2 pos, float RS)
         {
             return new Rectangle((int)(pos.X + RS), (int)pos.Y, 50, 50);
