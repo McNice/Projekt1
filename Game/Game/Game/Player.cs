@@ -14,10 +14,10 @@ namespace Game
         public Vector2 position;
         Vector2 velocity;
         Vector2 gravity;
-        public float runningSpeed = 1.0f;
+        public float runningSpeed = 5.0f;
         public bool isOnGround = false;
         string player;
-        float time;
+        double time;
 
 
         public Player(Texture2D texture, Vector2 position, string player)
@@ -25,14 +25,14 @@ namespace Game
             this.texture = texture;
             this.position = position;
             this.player = player;
-            this.gravity = new Vector2(0, 0.0005f);
+            this.gravity = new Vector2(0, 9.82f);
         }
 
         public void Update(GameTime gameTime)
         {
-            time = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            position += (velocity * time) + (gravity * (float)Math.Pow(time, 2) / 2);
-            //velocity += gravity*time;
+            time = gameTime.ElapsedGameTime.TotalSeconds;
+            position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) / 2;
+            velocity += gravity * (float)time;
 
         }
 

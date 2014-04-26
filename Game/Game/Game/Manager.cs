@@ -50,22 +50,11 @@ namespace Game
             foreach (Player p in players)
             {
                 p.Update(gameTime);
-                int collisionCount = 0;
-                foreach (Tile t in map.mapArray)
-                {
-                    if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.D) && Collision(p, t, Keys.D))
-                        collisionCount++;
-                    if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.A) && Collision(p, t, Keys.A))
-                        collisionCount++;
-                }
-                if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.D))
-                    p.PlayerMovement(Keys.D);
-                else if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.A))
-                    p.PlayerMovement(Keys.A);
+                Collision(p);
             }
         }
 
-        bool Collision(Player p, Tile t, Keys key)
+        bool CollisionCheck(Player p, Tile t, Keys key)
         {
             int direction = 1;
             if (key == Keys.A)
@@ -73,6 +62,24 @@ namespace Game
             if (p.Bounds(p.position, p.runningSpeed * direction).Intersects(t.Bounds()))
                 return true;
             return false;
+        }
+        void Collision(Player p)
+        {
+            int collisionCount = 0;
+            if (Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                foreach (Tile t in map.mapArray)
+                {
+                    if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.D) && CollisionCheck(p, t, Keys.D))
+                        collisionCount++;
+                    if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.A) && CollisionCheck(p, t, Keys.A))
+                        collisionCount++;
+                }
+                if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.D))
+                    p.PlayerMovement(Keys.D);
+                else if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.A))
+                    p.PlayerMovement(Keys.A);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
