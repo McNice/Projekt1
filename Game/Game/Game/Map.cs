@@ -69,24 +69,20 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "3")
                     {
-
+                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Ladder");
                     } 
                     else if (tempMap[x, y] == "4")
                     {
 
                     } 
-                    else if (tempMap[x, y] == "5")
+                    else if (tempMap[x, y] == "9")
                     {
-
+                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Low Grass");
                     }
-                    else if (tempMap[x, y] == "6")
+                    else if (tempMap[x, y] == "10")
                     {
-
+                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Tall Grass");
                     }
-                    else if (tempMap[x, y] == "7")
-                    {
-
-                    } 
                 }
             }
         }
