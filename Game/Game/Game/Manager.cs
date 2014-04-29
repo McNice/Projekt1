@@ -10,12 +10,12 @@ namespace Game
 {
     public class Manager
     {
-        enum PlayerState
+        public enum PlayerState
         {
             Singleplayer,
             Multiplayer
         }
-        PlayerState playerState = new PlayerState();
+        public static PlayerState playerState = new PlayerState();
 
         List<Player> players = new List<Player>();
 
@@ -32,7 +32,6 @@ namespace Game
 
         public void LoadContent()
         {
-            playerState = PlayerState.Multiplayer;
             switch (playerState)
             {
                 case PlayerState.Singleplayer:

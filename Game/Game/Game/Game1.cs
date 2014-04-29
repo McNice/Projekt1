@@ -70,6 +70,16 @@ namespace Game
             {
                 case GameState.Title:
                     startScreen.Update(gameTime);
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space) && startScreen.i == 0)
+                    {
+                        manager.playerState = Manager.PlayerState.Singleplayer;
+                        gameState = GameState.Play;
+                    }
+                    else if (Keyboard.GetState().IsKeyDown(Keys.Space) && startScreen.i == 1)
+                    {
+                        manager.playerState = Manager.PlayerState.Multiplayer;
+                        gameState = GameState.Play;
+                    }
                     break;
                 case GameState.Highscore:
                     break;
