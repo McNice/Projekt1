@@ -56,10 +56,10 @@
             this.radio1.AutoSize = true;
             this.radio1.Location = new System.Drawing.Point(12, 12);
             this.radio1.Name = "radio1";
-            this.radio1.Size = new System.Drawing.Size(83, 17);
+            this.radio1.Size = new System.Drawing.Size(72, 17);
             this.radio1.TabIndex = 0;
             this.radio1.TabStop = true;
-            this.radio1.Text = "block type 1";
+            this.radio1.Text = "Black Tile";
             this.radio1.UseVisualStyleBackColor = true;
             this.radio1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
@@ -68,10 +68,10 @@
             this.radio2.AutoSize = true;
             this.radio2.Location = new System.Drawing.Point(12, 35);
             this.radio2.Name = "radio2";
-            this.radio2.Size = new System.Drawing.Size(83, 17);
+            this.radio2.Size = new System.Drawing.Size(72, 17);
             this.radio2.TabIndex = 1;
             this.radio2.TabStop = true;
-            this.radio2.Text = "block type 2";
+            this.radio2.Text = "Fine Brick";
             this.radio2.UseVisualStyleBackColor = true;
             this.radio2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
@@ -182,10 +182,10 @@
             this.radio3.AutoSize = true;
             this.radio3.Location = new System.Drawing.Point(12, 58);
             this.radio3.Name = "radio3";
-            this.radio3.Size = new System.Drawing.Size(83, 17);
+            this.radio3.Size = new System.Drawing.Size(58, 17);
             this.radio3.TabIndex = 11;
             this.radio3.TabStop = true;
-            this.radio3.Text = "block type 3";
+            this.radio3.Text = "Ladder";
             this.radio3.UseVisualStyleBackColor = true;
             this.radio3.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
@@ -254,10 +254,10 @@
             this.radio9.AutoSize = true;
             this.radio9.Location = new System.Drawing.Point(101, 127);
             this.radio9.Name = "radio9";
-            this.radio9.Size = new System.Drawing.Size(83, 17);
+            this.radio9.Size = new System.Drawing.Size(75, 17);
             this.radio9.TabIndex = 17;
             this.radio9.TabStop = true;
-            this.radio9.Text = "block type 9";
+            this.radio9.Text = "Low Grass";
             this.radio9.UseVisualStyleBackColor = true;
             this.radio9.CheckedChanged += new System.EventHandler(this.radio9_CheckedChanged);
             // 
@@ -266,10 +266,10 @@
             this.radio10.AutoSize = true;
             this.radio10.Location = new System.Drawing.Point(101, 150);
             this.radio10.Name = "radio10";
-            this.radio10.Size = new System.Drawing.Size(89, 17);
+            this.radio10.Size = new System.Drawing.Size(72, 17);
             this.radio10.TabIndex = 18;
             this.radio10.TabStop = true;
-            this.radio10.Text = "block type 10";
+            this.radio10.Text = "Tall Grass";
             this.radio10.UseVisualStyleBackColor = true;
             this.radio10.CheckedChanged += new System.EventHandler(this.radio10_CheckedChanged);
             // 
