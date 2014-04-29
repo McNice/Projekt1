@@ -14,7 +14,8 @@ namespace Game {
     public class Game1 : Microsoft.Xna.Framework.Game {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public static Texture2D astroid;
+        public static SpriteFont StartScreenFont;
+        StartScreen startScreen;
         public static int TILESIZE = 50;
         public static int TILESX = 40;
         public static int TILESY = 20;
@@ -26,7 +27,7 @@ namespace Game {
             Play,
             End
         }
-        GameState gameState = GameState.Play;
+        GameState gameState = GameState.Title;
         Manager manager;
         public static TM textureManager;
 
@@ -41,14 +42,16 @@ namespace Game {
 
         protected override void Initialize() {            
             textureManager = new TM(Content);
+            
             manager = new Manager();
             base.Initialize();
         }
 
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            astroid = textureManager.Texture("astroid");
+            StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             manager.LoadContent();
+            startScreen = new StartScreen();
         }
 
         protected override void Update(GameTime gameTime) {
@@ -58,6 +61,7 @@ namespace Game {
 
             switch (gameState) {
                 case GameState.Title:
+                    startScreen.Update(gameTime);
                     break;
                 case GameState.Highscore:
                     break;
@@ -79,6 +83,7 @@ namespace Game {
             spriteBatch.Begin();
             switch (gameState) {
                 case GameState.Title:
+                    startScreen.Draw(spriteBatch);
                     break;
                 case GameState.Highscore:
                     break;
