@@ -27,7 +27,7 @@ namespace Game
         public Manager()
         {
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("anton");
+            map.LoadMap("S3");
         }
 
         public void LoadContent()
