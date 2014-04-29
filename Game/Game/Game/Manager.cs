@@ -15,7 +15,7 @@ namespace Game
             Singleplayer,
             Multiplayer
         }
-        public static PlayerState playerState = new PlayerState();
+        public PlayerState playerState = new PlayerState();
 
         List<Player> players = new List<Player>();
 
@@ -27,7 +27,7 @@ namespace Game
         public Manager()
         {
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("S2");
+            map.LoadMap("anton");
         }
 
         public void LoadContent()
