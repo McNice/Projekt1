@@ -38,7 +38,7 @@ namespace Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position,new Rectangle(0,0,50,50), Color.White);
+            spriteBatch.Draw(texture, position,new Rectangle(0,0,50,100), Color.White);
         }
 
         public void PlayerMovement(Keys key)
@@ -51,7 +51,7 @@ namespace Game
 
         public Rectangle Bounds(Vector2 pos, float RS)
         {
-            return new Rectangle((int)(pos.X + RS), (int)pos.Y, 50, 50);
+            return new Rectangle((int)(pos.X + RS), (int)pos.Y, 50, 100);
         }
     }
 }
