@@ -51,6 +51,7 @@ namespace Game
             {
                 p.Update(gameTime);
                 Collision(p);
+                LadderClimb(p);
             }
         }
 
@@ -67,28 +68,27 @@ namespace Game
         void Collision(Player p)
         {
             int collisionCount = 0;
-            if (Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.D))
+            if (KeyDown(Keys.A) || KeyDown(Keys.D))
             {
                 foreach (Tile t in map.mapArray)
                 {
-                    if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.D) && CollisionCheck(p, t, Keys.D))
+                    if (t is SolidBlock && KeyDown(Keys.D) && CollisionCheck(p, t, Keys.D))
                     {
                         collisionCount++;
                         break;
                     }
-                    if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.A) && CollisionCheck(p, t, Keys.A))
+                    if (t is SolidBlock && KeyDown(Keys.A) && CollisionCheck(p, t, Keys.A))
                     {
                         collisionCount++;
                         break;
                     }
                 }
 
-                if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.D))
+                if (collisionCount == 0 && KeyDown(Keys.D))
                     p.PlayerMovement(Keys.D);
-                else if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.A))
+                else if (collisionCount == 0 && KeyDown(Keys.A))
                     p.PlayerMovement(Keys.A);
             }
-
             if (p.velocity.Y > 0)
             {
                 foreach (Tile s in map.mapArray)
@@ -105,7 +105,7 @@ namespace Game
             {
                 foreach (Tile s in map.mapArray)
                 {
-                    if (s is SolidBlock && p.position.Y > s.pos.Y && ColCheck(p,s))
+                    if (s is SolidBlock && p.position.Y > s.pos.Y && ColCheck(p, s))
                     {
                         p.position.Y = s.pos.Y + 50;
                         p.velocity.Y = 0;
@@ -115,15 +115,49 @@ namespace Game
             }
         }
 
+        void LadderClimb(Player p)
+        {
+            foreach (Tile t in map.mapArray)
+                if (t is Ladder && p.BoundsStatic().Intersects(t.Bounds()))
+                {
+                    p.velocity.Y = 0;
+                    if (KeyDown(Keys.W))
+                    {
+
+                        p.position.Y -= 1;
+                    }
+                    else if (KeyDown(Keys.S))
+                    {
+
+                        p.position.Y += 1;
+                    }
+                    
+                    break;
+                }
+        }
+
+        bool KeyDown(Keys key)
+        {
+            if (Keyboard.GetState().IsKeyDown(key))
+                return true;
+            return false;
+        }
+        bool KeyUp(Keys key)
+        {
+            if (Keyboard.GetState().IsKeyUp(key))
+                return true;
+            return false;
+        }
+
         bool ColCheck(Player p, Tile s)
         {
             int i = 10000;
-            if (new Rectangle((int)(p.position.X*i),(int)(p.position.Y*i),50*i,100*i).Intersects(new Rectangle(s.Bounds().X*i,s.Bounds().Y*i,s.Bounds().Width*i,s.Bounds().Height*i)))
+            if (new Rectangle((int)(p.position.X * i), (int)(p.position.Y * i), 50 * i, 100 * i).Intersects(new Rectangle(s.Bounds().X * i, s.Bounds().Y * i, s.Bounds().Width * i, s.Bounds().Height * i)))
                 return true;
             else
                 return false;
         }
-        
+
 
         //void Collision(Player p, int a)
         //{

@@ -69,7 +69,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "3")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Ladder");
+                        mapArray[x, y] = new Ladder(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Ladder");
                     } 
                     else if (tempMap[x, y] == "4")
                     {
