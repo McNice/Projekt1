@@ -59,11 +59,11 @@ namespace Game
             {
                 for (int y = 0; y < height; y++)
                 {
-                    if (tempMap[x, y] == "2")
+                    if (tempMap[x, y] == "1")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Inomhusgolv");
+                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Inomhusgolv");
                     }
-                    else if (tempMap[x, y] == "1")
+                    else if (tempMap[x, y] == "2")
                     {
                         mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Fine Brick 2");
                     }

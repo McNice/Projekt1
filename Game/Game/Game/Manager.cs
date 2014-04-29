@@ -26,7 +26,7 @@ namespace Game
 
         public Manager()
         {
-            map = new Map(20, 20);
+            map = new Map(Game1.TILESX, Game1.TILESY);
             map.LoadMap("auto");
         }
 
@@ -63,6 +63,7 @@ namespace Game
                 return true;
             return false;
         }
+
         void Collision(Player p)
         {
             int collisionCount = 0;
@@ -71,16 +72,75 @@ namespace Game
                 foreach (Tile t in map.mapArray)
                 {
                     if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.D) && CollisionCheck(p, t, Keys.D))
+                    {
                         collisionCount++;
+                        break;
+                    }
                     if (t is SolidBlock && Keyboard.GetState().IsKeyDown(Keys.A) && CollisionCheck(p, t, Keys.A))
+                    {
                         collisionCount++;
+                        break;
+                    }
                 }
+
                 if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.D))
                     p.PlayerMovement(Keys.D);
                 else if (collisionCount == 0 && Keyboard.GetState().IsKeyDown(Keys.A))
                     p.PlayerMovement(Keys.A);
             }
+
+            if (p.velocity.Y > 0)
+            {
+                foreach (Tile s in map.mapArray)
+                {
+                    if (s is SolidBlock && p.position.Y < s.pos.Y && ColCheck(p, s))
+                    {
+                        p.position.Y = s.pos.Y - 100;
+                        p.velocity.Y = 0;
+                        break;
+                    }
+                }
+            }
+            else if (p.velocity.Y < 0)
+            {
+                foreach (Tile s in map.mapArray)
+                {
+                    if (s is SolidBlock && p.position.Y > s.pos.Y && ColCheck(p,s))
+                    {
+                        p.position.Y = s.pos.Y + 50;
+                        p.velocity.Y = 0;
+                        break;
+                    }
+                }
+            }
         }
+
+        bool ColCheck(Player p, Tile s)
+        {
+            int i = 10000;
+            if (new Rectangle((int)(p.position.X*i),(int)(p.position.Y*i),50*i,100*i).Intersects(new Rectangle(s.Bounds().X*i,s.Bounds().Y*i,s.Bounds().Width*i,s.Bounds().Height*i)))
+                return true;
+            else
+                return false;
+        }
+        
+
+        //void Collision(Player p, int a)
+        //{
+        //    FloatRect rect = p.Rect(0);
+        //    FloatRect pR = p.Rect(1);
+
+        //    foreach (Tile t in map.mapArray)
+        //    {
+        //        if (t is SolidBlock)
+        //        {
+        //            if (t.Bounds().Intersects(p.BoundsStatic()))
+        //            {
+        //                if (pR.Pos.X + pR.Dim.X > t.pos.X && (
+        //            }
+        //        }
+        //    }
+        //}
 
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -16,7 +16,7 @@ namespace Game {
         SpriteBatch spriteBatch;
         public static Texture2D astroid;
         public static int TILESIZE = 50;
-        public static int TILESX = 20;
+        public static int TILESX = 33;
         public static int TILESY = 20;
         enum GameState {
             Title,
