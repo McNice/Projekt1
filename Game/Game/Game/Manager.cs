@@ -123,15 +123,15 @@ namespace Game
                     p.velocity.Y = 0;
                     if (KeyDown(Keys.W))
                     {
-
-                        p.position.Y -= 1;
+                        p.position.Y -= 3;
                     }
                     else if (KeyDown(Keys.S))
                     {
-
-                        p.position.Y += 1;
+                        p.position.Y += 3;
                     }
-                    
+                    if (KeyUp(Keys.D) && KeyUp(Keys.A))
+                        p.position.X = t.pos.X;
+
                     break;
                 }
         }
@@ -142,6 +142,7 @@ namespace Game
                 return true;
             return false;
         }
+
         bool KeyUp(Keys key)
         {
             if (Keyboard.GetState().IsKeyUp(key))
@@ -157,7 +158,6 @@ namespace Game
             else
                 return false;
         }
-
 
         //void Collision(Player p, int a)
         //{

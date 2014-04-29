@@ -25,7 +25,7 @@ namespace Game
             this.texture = texture;
             this.position = position;
             this.player = player;
-            this.gravity = new Vector2(0, 500);
+            this.gravity = new Vector2(0, 700);
         }
 
         public void Update(GameTime gameTime)
@@ -35,7 +35,7 @@ namespace Game
             position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
             velocity += gravity * (float)time;
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                velocity.Y = -300;
+                velocity.Y = -400;
 
         }
 
