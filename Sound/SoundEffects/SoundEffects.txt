@@ -21,3 +21,5 @@ PullLever
 DoorOpen
 -När man öppnar en dörr.
 
+TakeDamage
+-När man tar skada.
