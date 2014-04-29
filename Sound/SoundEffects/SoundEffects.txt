@@ -1,0 +1,23 @@
+Vi behöver följande ljud:
+
+LadderClimb
+-När man klättrar på stegar.
+
+Jump
+-När man hoppar.
+
+Land
+-När man landar på marken.
+
+Run
+-När man springer.
+
+RunGrass
+-När man springer och man står på gräs.
+
+PullLever
+-När man drar i en spak.
+
+DoorOpen
+-När man öppnar en dörr.
+
