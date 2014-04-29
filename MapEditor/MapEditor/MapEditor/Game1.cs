@@ -39,7 +39,7 @@ namespace MapEditor
         public static readonly int TYPE10 = 10;
 
         public int type;
-        public int width = 20;
+        public int width = 40;
         public int height = 20;
 
         Map map;
@@ -69,7 +69,7 @@ namespace MapEditor
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
             omS = mS;
@@ -106,6 +106,15 @@ namespace MapEditor
                     int y = Math.Abs(mS.Y / tileSize);
                     map.EditTile(x, y, type);
 
+                }
+            }
+            if (mS.RightButton == ButtonState.Pressed && map != null)
+            {
+                if (0 < mS.X && mS.X < width * tileSize && 0 < mS.Y && mS.Y < height * tileSize)
+                {
+                    int x = Math.Abs(mS.X / tileSize);
+                    int y = Math.Abs(mS.Y / tileSize);
+                    map.EditTile(x, y, 0);
                 }
             }
 

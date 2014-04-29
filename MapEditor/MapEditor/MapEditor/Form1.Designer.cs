@@ -87,7 +87,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(44, 20);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
-            20,
+            40,
             0,
             0,
             0});
@@ -206,10 +206,10 @@
             this.radio5.AutoSize = true;
             this.radio5.Location = new System.Drawing.Point(101, 35);
             this.radio5.Name = "radio5";
-            this.radio5.Size = new System.Drawing.Size(83, 17);
+            this.radio5.Size = new System.Drawing.Size(59, 17);
             this.radio5.TabIndex = 13;
             this.radio5.TabStop = true;
-            this.radio5.Text = "block type 5";
+            this.radio5.Text = "Roof-R";
             this.radio5.UseVisualStyleBackColor = true;
             this.radio5.CheckedChanged += new System.EventHandler(this.radio5_CheckedChanged);
             // 
@@ -218,10 +218,10 @@
             this.radio4.AutoSize = true;
             this.radio4.Location = new System.Drawing.Point(101, 12);
             this.radio4.Name = "radio4";
-            this.radio4.Size = new System.Drawing.Size(83, 17);
+            this.radio4.Size = new System.Drawing.Size(57, 17);
             this.radio4.TabIndex = 12;
             this.radio4.TabStop = true;
-            this.radio4.Text = "block type 4";
+            this.radio4.Text = "Roof-L";
             this.radio4.UseVisualStyleBackColor = true;
             this.radio4.CheckedChanged += new System.EventHandler(this.radio4_CheckedChanged);
             // 
