@@ -10,8 +10,10 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.IO;
 
-namespace Game {
-    public class Game1 : Microsoft.Xna.Framework.Game {
+namespace Game
+{
+    public class Game1 : Microsoft.Xna.Framework.Game
+    {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static SpriteFont StartScreenFont;
@@ -19,7 +21,8 @@ namespace Game {
         public static int TILESIZE = 50;
         public static int TILESX = 40;
         public static int TILESY = 20;
-        enum GameState {
+        enum GameState
+        {
             Title,
             Highscore,
             Controls,
@@ -27,11 +30,12 @@ namespace Game {
             Play,
             End
         }
-        GameState gameState = GameState.Title;
+        GameState gameState = GameState.Play;
         Manager manager;
         public static TM textureManager;
 
-        public Game1() {
+        public Game1()
+        {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = TILESIZE * TILESX;
             graphics.PreferredBackBufferHeight = TILESIZE * TILESY;
@@ -40,26 +44,30 @@ namespace Game {
             Content.RootDirectory = "Content";
         }
 
-        protected override void Initialize() {            
+        protected override void Initialize()
+        {
             textureManager = new TM(Content);
-            
+
             manager = new Manager();
             base.Initialize();
         }
 
-        protected override void LoadContent() {
+        protected override void LoadContent()
+        {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             manager.LoadContent();
             startScreen = new StartScreen();
         }
 
-        protected override void Update(GameTime gameTime) {
+        protected override void Update(GameTime gameTime)
+        {
             KeyMouseReader.Update();
             if (KeyMouseReader.KeyPressed(Keys.Escape))
                 this.Exit();
 
-            switch (gameState) {
+            switch (gameState)
+            {
                 case GameState.Title:
                     startScreen.Update(gameTime);
                     break;
@@ -78,10 +86,12 @@ namespace Game {
             base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime gameTime) {
+        protected override void Draw(GameTime gameTime)
+        {
             GraphicsDevice.Clear(Color.White);
             spriteBatch.Begin();
-            switch (gameState) {
+            switch (gameState)
+            {
                 case GameState.Title:
                     startScreen.Draw(spriteBatch);
                     break;
