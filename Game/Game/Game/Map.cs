@@ -78,6 +78,14 @@ namespace Game
                     else if (tempMap[x, y] == "5")
                     {
                         mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R");
+                    }
+                    else if (tempMap[x, y] == "6")
+                    {
+                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L");
+                    }
+                    else if (tempMap[x, y] == "7")
+                    {
+                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R");
                     } 
                     else if (tempMap[x, y] == "9")
                     {
