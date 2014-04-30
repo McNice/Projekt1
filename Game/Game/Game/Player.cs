@@ -14,7 +14,11 @@ namespace Game
         public Vector2 position, prevPosition;
         public Vector2 velocity;
         Vector2 gravity;
-        public float runningSpeed = 3.5f;
+        public float 
+            runningSpeed = 0, 
+            acceleration = 0.1f,
+            maxSpeed = 3.5f,
+            breakSpeed = 0.5f;
         string player;
         double time;
         Manager m = new Manager();
@@ -38,7 +42,6 @@ namespace Game
             {   
                 m.isOnGround = false;
                 velocity.Y = -400;
-              
             }
                 
         }
@@ -51,9 +54,29 @@ namespace Game
         public void PlayerMovement(Keys key)
         {
             if (key == Keys.D)
+            {
+                if (runningSpeed <= maxSpeed)
+                {
+                    runningSpeed += acceleration;
+                }
                 position.X += runningSpeed;
+            }
+
             if (key == Keys.A)
-                position.X -= runningSpeed;
+            {
+                if (runningSpeed <= maxSpeed)
+                {
+                    runningSpeed += acceleration;
+                }
+                 position.X -= runningSpeed;
+            }
+
+            if (key != Keys.A && key != Keys.D)
+            {
+                runningSpeed = 0;
+            }
+
+
         }
 
         public Rectangle Bounds(Vector2 pos, float RS)
