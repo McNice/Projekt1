@@ -12,20 +12,20 @@ namespace Game
     public class StartScreen
     {
         Texture2D tex;
-        KeyboardState ks;
-        KeyboardState oldks;
+        SoundEffect blip;
         public int i;
         int numberOfButtons = 5;
         public StartScreen()
         {
             tex = Game1.mediaManager.Texture("Inomhusgolv");
+            blip = Game1.mediaManager.Sound("Blip");
         }
 
         public void Update(GameTime gameTime)
         {
-            ks = Keyboard.GetState();
-            if (ks.IsKeyDown(Keys.S) && oldks.IsKeyUp(Keys.S))
+            if (KeyMouseReader.KeyPressed(Keys.S))
             {
+                blip.Play();
                 if (i < numberOfButtons)
                 {
                     i++;
@@ -35,8 +35,9 @@ namespace Game
                     i = 0;
                 }
             }
-            else if (ks.IsKeyDown(Keys.W) && oldks.IsKeyUp(Keys.W))
+            else if (KeyMouseReader.KeyPressed(Keys.W))
             {
+                blip.Play();
                 if (i > 0)
                 {
                     i--;
@@ -46,13 +47,13 @@ namespace Game
                     i = numberOfButtons;
                 }
             }
-            oldks = ks;
+            if (KeyMouseReader.KeyPressed(Keys.Space))
+                blip.Play();
         }
 
         public void Draw(SpriteBatch sb)
         {
             sb.Draw(tex, new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
-            sb.DrawString(Game1.StartScreenFont, i.ToString(), Vector2.Zero, Color.White);
             Button(100, "SinglePlayer", sb, 0);
             Button(200, "MultiPlayer", sb, 1);
             Button(300, "Tutorial", sb, 2);
@@ -70,7 +71,7 @@ namespace Game
             }
             else
             {
-                sb.DrawString(Game1.StartScreenFont, name, pos, Color.White);
+                sb.DrawString(Game1.StartScreenFont, name, pos, Color.White, 0, Vector2.Zero, 1.5f, SpriteEffects.None, 1);
             }
         }
     }

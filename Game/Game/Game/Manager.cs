@@ -22,7 +22,7 @@ namespace Game
         public Manager()
         {
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("troll");
+            map.LoadMap("anton");
         }
 
         public void LoadContent()
@@ -81,7 +81,7 @@ namespace Game
                 {
                     if (s is SolidBlock && p.position.Y < s.pos.Y && ColCheck(p, s))
                     {
-                        p.position.Y = s.pos.Y - 100;
+                        p.position.Y = s.pos.Y - 2 * Game1.TILESIZE;
                         p.velocity.Y = 0;
                         break;
                     }
@@ -93,7 +93,7 @@ namespace Game
                 {
                     if (s is SolidBlock && p.position.Y > s.pos.Y && ColCheck(p, s))
                     {
-                        p.position.Y = s.pos.Y + 50;
+                        p.position.Y = s.pos.Y + Game1.TILESIZE;
                         p.velocity.Y = 0;
                         break;
                     }
@@ -139,7 +139,7 @@ namespace Game
         bool ColCheck(Player p, Tile s)
         {
             int i = 10000;
-            if (new Rectangle((int)(p.position.X * i), (int)(p.position.Y * i), 50 * i, 100 * i).Intersects(new Rectangle(s.Bounds().X * i, s.Bounds().Y * i, s.Bounds().Width * i, s.Bounds().Height * i)))
+            if (new Rectangle((int)(p.position.X * i), (int)(p.position.Y * i), Game1.TILESIZE * i, 2 * Game1.TILESIZE * i).Intersects(new Rectangle(s.Bounds().X * i, s.Bounds().Y * i, s.Bounds().Width * i, s.Bounds().Height * i)))
                 return true;
             else
                 return false;

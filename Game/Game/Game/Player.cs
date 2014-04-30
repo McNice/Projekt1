@@ -14,11 +14,10 @@ namespace Game
         public Vector2 position, prevPosition;
         public Vector2 velocity;
         Vector2 gravity;
-        public float runningSpeed = 5.0f;
+        public float runningSpeed = 4f;
         public bool isOnGround = false;
         string player;
         double time;
-
 
         public Player(Texture2D texture, Vector2 position, string player)
         {
@@ -32,15 +31,15 @@ namespace Game
         {
             time = gameTime.ElapsedGameTime.TotalSeconds;
             prevPosition = position;
-            position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
             velocity += gravity * (float)time;
+            position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 velocity.Y = -400;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, new Rectangle(0, 0, 50, 100), Color.White);
+            spriteBatch.Draw(texture, position, new Rectangle(0, 0, Game1.TILESIZE, 2 * Game1.TILESIZE), Color.White);
         }
 
         public void PlayerMovement(Keys key)
@@ -53,12 +52,12 @@ namespace Game
 
         public Rectangle Bounds(Vector2 pos, float RS)
         {
-            return new Rectangle((int)(pos.X + RS), (int)pos.Y, 50, 100);
+            return new Rectangle((int)(pos.X + RS), (int)pos.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
         }
 
         public Rectangle BoundsStatic()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 50, 100);
+            return new Rectangle((int)position.X, (int)position.Y, Game1.TILESIZE, 2*Game1.TILESIZE);
         }
 
         public FloatRect Rect(int a)

@@ -18,7 +18,7 @@ namespace Game
 
         public override Rectangle Bounds()
         {
-            return new Rectangle((int)pos.X + 24, (int)pos.Y, 2, 50);
+            return new Rectangle((int)pos.X + 24, (int)pos.Y, 2, Game1.TILESIZE);
         }
     }
 }

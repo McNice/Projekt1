@@ -32,7 +32,7 @@ namespace Game
 
         public virtual Rectangle Bounds()
         {
-            return new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
+            return new Rectangle((int)pos.X, (int)pos.Y, Game1.TILESIZE, Game1.TILESIZE);
         }
     }
 }

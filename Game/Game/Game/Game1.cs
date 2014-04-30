@@ -18,7 +18,7 @@ namespace Game
         SpriteBatch spriteBatch;
         public static SpriteFont StartScreenFont;
         StartScreen startScreen;
-        public static int TILESIZE = 50;
+        public static int TILESIZE = 48;
         public static int TILESX = 40;
         public static int TILESY = 20;
         enum GameState
@@ -69,7 +69,7 @@ namespace Game
             {
                 case GameState.Title:
                     startScreen.Update(gameTime);
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                    if (KeyMouseReader.KeyPressed(Keys.Space))
                     {
                         if (startScreen.i == 0)
                         {
@@ -83,13 +83,21 @@ namespace Game
                             manager.NewGame();
                             gameState = GameState.Play;
                         }
+                        else if (startScreen.i == 3)
+                            gameState = GameState.Controls;
+                        else if (startScreen.i == 4)
+                            gameState = GameState.Credits;
                     }
                     break;
                 case GameState.Highscore:
                     break;
                 case GameState.Controls:
+                    if (KeyMouseReader.KeyPressed(Keys.Space))
+                        gameState = GameState.Title;
                     break;
                 case GameState.Credits:
+                    if (KeyMouseReader.KeyPressed(Keys.Space))
+                        gameState = GameState.Title;
                     break;
                 case GameState.Play:
                     manager.Update(gameTime);
@@ -112,8 +120,19 @@ namespace Game
                 case GameState.Highscore:
                     break;
                 case GameState.Controls:
+                    spriteBatch.Draw(mediaManager.Texture("Inomhusgolv"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
+                    startScreen.Button(500, "Insert Image", spriteBatch, 9);
+                    startScreen.Button(800, "Back", spriteBatch, 3);
                     break;
                 case GameState.Credits:
+                    spriteBatch.Draw(mediaManager.Texture("Inomhusgolv"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
+                    startScreen.Button(100, "Credits", spriteBatch, 9);
+                    startScreen.Button(200, "Anton - Gjorde allt", spriteBatch, 9);
+                    startScreen.Button(300, "Daniel - Hämtade kaffe", spriteBatch, 9);
+                    startScreen.Button(400, "Johan - Hämtade kaffe", spriteBatch, 9);
+                    startScreen.Button(500, "Kamil - Hämtade kaffe", spriteBatch, 9);
+                    startScreen.Button(600, "Simon -  - Hämtade inget kaffe", spriteBatch, 9);
+                    startScreen.Button(800, "Back", spriteBatch, 4);
                     break;
                 case GameState.Play:
                     manager.Draw(spriteBatch);
