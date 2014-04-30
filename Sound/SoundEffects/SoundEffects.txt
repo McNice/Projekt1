@@ -3,10 +3,10 @@ Vi behöver följande ljud:
 LadderClimb
 -När man klättrar på stegar.
 
-Jump
+X Jump
 -När man hoppar.
 
-Land
+X Land
 -När man landar på marken.
 
 Run
@@ -21,5 +21,14 @@ PullLever
 DoorOpen
 -När man öppnar en dörr.
 
-TakeDamage
+X TakeDamage
 -När man tar skada.
+
+X PowerUp
+-När man tar en PowerUp
+
+X Coin
+-När man tar ett mynt eller liknande.
+
+X Blip
+-När man bläddrar i menyer.
