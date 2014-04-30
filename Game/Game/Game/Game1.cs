@@ -131,7 +131,7 @@ namespace Game
                     startScreen.Button(300, "Daniel - Hämtade kaffe", spriteBatch, 9);
                     startScreen.Button(400, "Johan - Hämtade kaffe", spriteBatch, 9);
                     startScreen.Button(500, "Kamil - Hämtade kaffe", spriteBatch, 9);
-                    startScreen.Button(600, "Simon -  - Hämtade inget kaffe", spriteBatch, 9);
+                    startScreen.Button(600, "Simon - Hämtade inget kaffe", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 4);
                     break;
                 case GameState.Play:
