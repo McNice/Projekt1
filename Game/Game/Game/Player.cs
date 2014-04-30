@@ -14,10 +14,10 @@ namespace Game
         public Vector2 position, prevPosition;
         public Vector2 velocity;
         Vector2 gravity;
-        public float runningSpeed = 4f;
-        public bool isOnGround = false;
+        public float runningSpeed = 3.5f;
         string player;
         double time;
+        Manager m = new Manager();
 
         public Player(Texture2D texture, Vector2 position, string player)
         {
@@ -33,8 +33,14 @@ namespace Game
             prevPosition = position;
             velocity += gravity * (float)time;
             position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
+
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {   
+                m.isOnGround = false;
                 velocity.Y = -400;
+              
+            }
+                
         }
 
         public void Draw(SpriteBatch spriteBatch)

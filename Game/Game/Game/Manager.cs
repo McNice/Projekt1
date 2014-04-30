@@ -10,7 +10,7 @@ namespace Game
 {
     public class Manager
     {
-        public bool multiPlayer;
+        public bool multiPlayer, isOnGround;
 
         List<Player> players = new List<Player>();
 
@@ -20,7 +20,7 @@ namespace Game
         public Manager()
         {
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("S3");
+            map.LoadMap("S5");
         }
 
         public void LoadContent()
@@ -80,6 +80,7 @@ namespace Game
                     {
                         p.position.Y = s.pos.Y - 2 * Game1.TILESIZE;
                         p.velocity.Y = 0;
+                        isOnGround = true;
                         break;
                     }
                 }
@@ -92,6 +93,7 @@ namespace Game
                     {
                         p.position.Y = s.pos.Y + Game1.TILESIZE;
                         p.velocity.Y = 0;
+                        isOnGround = true;
                         break;
                     }
                 }
