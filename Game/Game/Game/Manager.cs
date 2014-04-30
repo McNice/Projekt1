@@ -11,25 +11,22 @@ namespace Game
     public class Manager
     {
         public bool multiPlayer;
-        
+
         List<Player> players = new List<Player>();
 
         Map map;
         public static string path = "../../../../../../Maps/";
 
-
-
         public Manager()
         {
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("anton");
+            map.LoadMap("S3");
         }
 
         public void LoadContent()
         {
             NewGame();
         }
-        
 
         public void Update(GameTime gameTime)
         {
@@ -107,19 +104,39 @@ namespace Game
                 if (t is Ladder && p.BoundsStatic().Intersects(t.Bounds()))
                 {
                     p.velocity.Y = 0;
-                    if (KeyDown(Keys.W))
+                    int climingSpeed = 3;
+                    if (KeyDown(Keys.W) && ColCheck(p, Keys.W, climingSpeed))
                     {
-                        p.position.Y -= 3;
+                        p.position.Y -= climingSpeed;
                     }
-                    else if (KeyDown(Keys.S))
+                    else if (KeyDown(Keys.S) && ColCheck(p, Keys.S, climingSpeed))
                     {
-                        p.position.Y += 3;
+                        p.position.Y += climingSpeed;
                     }
                     if (KeyUp(Keys.D) && KeyUp(Keys.A))
                         p.position.X = t.pos.X;
 
                     break;
                 }
+        }
+
+        bool ColCheck(Player p, Keys key, int climbingSpeed)
+        {
+            int i = 10000;
+
+            foreach (Tile t in map.mapArray)
+            {
+                if (t is SolidBlock)
+                {
+                    Rectangle tileRec = t.Bounds();
+                    if (key == Keys.S && new Rectangle((int)(p.position.X * i), (int)((p.position.Y + 3) * i), Game1.TILESIZE * i, Game1.TILESIZE * i * 2).Intersects(new Rectangle(tileRec.X * i, tileRec.Y * i, tileRec.Width * i, tileRec.Height * i)))
+                        return false;
+                    else if (key == Keys.W && new Rectangle((int)(p.position.X * i), (int)((p.position.Y - 3) * i), Game1.TILESIZE * i, Game1.TILESIZE * i * 2).Intersects(new Rectangle(tileRec.X * i, tileRec.Y * i, tileRec.Width * i, tileRec.Height * i)))
+                        return false;
+                }
+            }
+
+            return true;
         }
 
         bool KeyDown(Keys key)
@@ -145,23 +162,6 @@ namespace Game
                 return false;
         }
 
-        //void Collision(Player p, int a)
-        //{
-        //    FloatRect rect = p.Rect(0);
-        //    FloatRect pR = p.Rect(1);
-
-        //    foreach (Tile t in map.mapArray)
-        //    {
-        //        if (t is SolidBlock)
-        //        {
-        //            if (t.Bounds().Intersects(p.BoundsStatic()))
-        //            {
-        //                if (pR.Pos.X + pR.Dim.X > t.pos.X && (
-        //            }
-        //        }
-        //    }
-        //}
-
         public void NewGame()
         {
             if (!multiPlayer)
@@ -174,6 +174,7 @@ namespace Game
                 players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(400, 300), "Player2"));
             }
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Player p in players)
