@@ -12,20 +12,17 @@ namespace Game
     public class StartScreen
     {
         Texture2D tex;
-        SoundEffect blip;
         public int i;
         int numberOfButtons = 5;
         public StartScreen()
         {
             tex = Game1.mediaManager.Texture("Inomhusgolv");
-            blip = Game1.mediaManager.Sound("Blip");
         }
 
         public void Update(GameTime gameTime)
         {
             if (KeyMouseReader.KeyPressed(Keys.S))
             {
-                blip.Play();
                 if (i < numberOfButtons)
                 {
                     i++;
@@ -37,7 +34,6 @@ namespace Game
             }
             else if (KeyMouseReader.KeyPressed(Keys.W))
             {
-                blip.Play();
                 if (i > 0)
                 {
                     i--;
@@ -47,8 +43,6 @@ namespace Game
                     i = numberOfButtons;
                 }
             }
-            if (KeyMouseReader.KeyPressed(Keys.Space))
-                blip.Play();
         }
 
         public void Draw(SpriteBatch sb)
