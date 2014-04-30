@@ -30,85 +30,85 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Inomhusgolv.png">
+    <Compile Include="Textures\Inomhusgolv.png">
       <Name>Inomhusgolv</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Window13.png">
+    <Compile Include="Textures\Window13.png">
       <Name>Window13</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="något.png">
+    <Compile Include="Textures\något.png">
       <Name>något</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brick wall 3.png">
+    <Compile Include="Textures\Brick wall 3.png">
       <Name>Brick wall 3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brick wall 2.png">
+    <Compile Include="Textures\Brick wall 2.png">
       <Name>Brick wall 2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fine Brick 1.png">
+    <Compile Include="Textures\Fine Brick 1.png">
       <Name>Fine Brick 1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Fine Brick 2.png">
+    <Compile Include="Textures\Fine Brick 2.png">
       <Name>Fine Brick 2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Monopoly man 50x100.png">
+    <Compile Include="Textures\Monopoly man 50x100.png">
       <Name>Monopoly man 50x100</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ladder.png">
+    <Compile Include="Textures\Ladder.png">
       <Name>Ladder</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Low Grass.png">
+    <Compile Include="Textures\Low Grass.png">
       <Name>Low Grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Tall Grass.png">
+    <Compile Include="Textures\Tall Grass.png">
       <Name>Tall Grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Roof-L.png">
+    <Compile Include="Textures\Roof-L.png">
       <Name>Roof-L</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Roof-R.png">
+    <Compile Include="Textures\Roof-R.png">
       <Name>Roof-R</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -122,16 +122,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TunnelRoof-L.png">
+    <Compile Include="Textures\TunnelRoof-L.png">
       <Name>TunnelRoof-L</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="TunnelRoof-R.png">
+    <Compile Include="Textures\TunnelRoof-R.png">
       <Name>TunnelRoof-R</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Songs\" />
+    <Folder Include="SoundEffects\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

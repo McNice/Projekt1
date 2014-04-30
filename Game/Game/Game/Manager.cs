@@ -10,13 +10,8 @@ namespace Game
 {
     public class Manager
     {
-        public enum PlayerState
-        {
-            Singleplayer,
-            Multiplayer
-        }
-        public PlayerState playerState = new PlayerState();
-
+        public bool multiPlayer;
+        
         List<Player> players = new List<Player>();
 
         Map map;
@@ -32,17 +27,9 @@ namespace Game
 
         public void LoadContent()
         {
-            switch (playerState)
-            {
-                case PlayerState.Singleplayer:
-                    players.Add(new Player(Game1.textureManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
-                    break;
-                case PlayerState.Multiplayer:
-                    players.Add(new Player(Game1.textureManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
-                    players.Add(new Player(Game1.textureManager.Texture("Monopoly man 50x100"), new Vector2(400, 300), "Player2"));
-                    break;
-            }
+            NewGame();
         }
+        
 
         public void Update(GameTime gameTime)
         {
@@ -175,6 +162,18 @@ namespace Game
         //    }
         //}
 
+        public void NewGame()
+        {
+            if (!multiPlayer)
+            {
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
+            }
+            else if (multiPlayer)
+            {
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(400, 300), "Player2"));
+            }
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Player p in players)

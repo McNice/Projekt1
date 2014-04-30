@@ -86,7 +86,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="TM.cs" />
+    <Compile Include="MM.cs" />
     <Compile Include="SolidBlock.cs" />
   </ItemGroup>
   <ItemGroup>

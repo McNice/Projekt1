@@ -36,7 +36,6 @@ namespace Game
             velocity += gravity * (float)time;
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 velocity.Y = -400;
-
         }
 
         public void Draw(SpriteBatch spriteBatch)

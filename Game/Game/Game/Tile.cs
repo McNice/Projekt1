@@ -22,7 +22,7 @@ namespace Game
 
         public void LoadContent()
         {
-            tex = Game1.textureManager.Texture(texName);
+            tex = Game1.mediaManager.Texture(texName);
         }
         public virtual void Draw(SpriteBatch sb)
         {
@@ -30,7 +30,7 @@ namespace Game
             //sb.Draw(tex, Bounds(),null, Color.White);
         }
 
-        public Rectangle Bounds()
+        public virtual Rectangle Bounds()
         {
             return new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
         }

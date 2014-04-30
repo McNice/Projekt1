@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Game
 {
@@ -17,7 +18,7 @@ namespace Game
         int numberOfButtons = 5;
         public StartScreen()
         {
-            tex = Game1.textureManager.Texture("Inomhusgolv");
+            tex = Game1.mediaManager.Texture("Inomhusgolv");
         }
 
         public void Update(GameTime gameTime)
@@ -55,7 +56,7 @@ namespace Game
             Button(100, "SinglePlayer", sb, 0);
             Button(200, "MultiPlayer", sb, 1);
             Button(300, "Tutorial", sb, 2);
-            Button(400, "Options", sb, 3);
+            Button(400, "Controls", sb, 3);
             Button(500, "Credits", sb, 4);
             Button(600, "HighScores", sb, 5);
         }

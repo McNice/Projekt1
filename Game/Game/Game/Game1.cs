@@ -30,9 +30,9 @@ namespace Game
             Play,
             End
         }
-        GameState gameState = GameState.Play;
+        GameState gameState = GameState.Title;
         Manager manager;
-        public static TM textureManager;
+        public static MM mediaManager;
 
         public Game1()
         {
@@ -46,8 +46,7 @@ namespace Game
 
         protected override void Initialize()
         {
-            textureManager = new TM(Content);
-
+            mediaManager = new MM(Content);
             manager = new Manager();
             base.Initialize();
         }
@@ -70,15 +69,20 @@ namespace Game
             {
                 case GameState.Title:
                     startScreen.Update(gameTime);
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space) && startScreen.i == 0)
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
                     {
-                        manager.playerState = Manager.PlayerState.Singleplayer;
-                        gameState = GameState.Play;
-                    }
-                    else if (Keyboard.GetState().IsKeyDown(Keys.Space) && startScreen.i == 1)
-                    {
-                        manager.playerState = Manager.PlayerState.Multiplayer;
-                        gameState = GameState.Play;
+                        if (startScreen.i == 0)
+                        {
+                            manager.multiPlayer = false;
+                            manager.NewGame();
+                            gameState = GameState.Play;
+                        }
+                        else if (startScreen.i == 1)
+                        {
+                            manager.multiPlayer = true;
+                            manager.NewGame();
+                            gameState = GameState.Play;
+                        }
                     }
                     break;
                 case GameState.Highscore:
