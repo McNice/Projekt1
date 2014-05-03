@@ -81,8 +81,6 @@ namespace Game
             {
                 runningSpeed = 0;
             }
-
-
         }
 
         public Rectangle Bounds(Vector2 pos, float RS)
