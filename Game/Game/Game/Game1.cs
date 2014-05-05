@@ -14,6 +14,8 @@ namespace Game
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        public static Texture2D testTex;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static SpriteFont StartScreenFont;
@@ -57,6 +59,9 @@ namespace Game
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             manager.LoadContent();
             startScreen = new StartScreen();
+
+            // TEST
+            testTex = Content.Load<Texture2D>("Textures/Inomhusgolv");
         }
 
         protected override void Update(GameTime gameTime)

@@ -22,9 +22,11 @@ namespace Game
 
         string player;
         double time;
-        Manager m = new Manager();
         ParticleEngine particle;
         Vector2 particleVec = new Vector2(5, 40);
+
+        PlayerPoints pPoints;
+        public bool onGround;
 
         public Player(Texture2D texture, Vector2 position, string player)
         {
@@ -33,30 +35,85 @@ namespace Game
             this.player = player;
             this.gravity = new Vector2(0, 700);
             particle = new ParticleEngine("Smoketex", position + particleVec);
+
+            pPoints = new PlayerPoints(new Vector2(0, 30), new Vector2(2, 90), new Vector2(48, 30), new Vector2(45, 90), new Vector2(24, 0), new Vector2(24, 94));
         }
 
         public void Update(GameTime gameTime)
         {
+            if (KeyDown(Keys.A))
+                PlayerMovement(Keys.A);
+            if (KeyDown(Keys.D))
+                PlayerMovement(Keys.D);
 
             time = gameTime.ElapsedGameTime.TotalSeconds;
-            prevPosition = position;
-            velocity += gravity * (float)time;
-            position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
+            if (!onGround)
+            {
+                velocity += gravity * (float)time;
+                position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
+            }
             particle.pos = position + particleVec;
             particle.Update(gameTime);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && onGround)
             {
-                m.isOnGround = false;
+                onGround = false;
                 velocity.Y = -300;
+                position.Y -= 1;
             }
-
+            onGround = false;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, new Rectangle(0, 0, Game1.TILESIZE, 2 * Game1.TILESIZE), Color.White);
             particle.Draw(spriteBatch);
+        }
+
+        public void Collision(Rectangle rect)
+        {
+            if (onGround && rect.Contains(new Point((int)(position.X + pPoints.groundCheck.X), (int)(position.Y + pPoints.groundCheck.Y))))
+                onGround = true;
+            if (rect.Contains(new Point((int)(position.X + pPoints.top.X), (int)(position.Y + pPoints.top.Y))))
+            {
+                position.Y = rect.Bottom;
+                velocity.Y = 0;
+            }
+            if (rect.Contains(new Point((int)(position.X + pPoints.bottom.X), (int)(position.Y + pPoints.bottom.Y))))
+            {
+                if (velocity.Y > 0)
+                {
+                    position.Y = rect.Top - pPoints.bottom.Y;
+                    velocity.Y = 0;
+                    onGround = true;
+                }
+            }
+            if (rect.Contains(new Point((int)(position.X + pPoints.left1.X), (int)(position.Y + pPoints.left1.Y))) ||
+                rect.Contains(new Point((int)(position.X + pPoints.left2.X), (int)(position.Y + pPoints.left2.Y))))
+            {
+                position.X = rect.Right;
+                velocity.X = 0;
+            }
+            if (rect.Contains(new Point((int)(position.X + pPoints.right1.X), (int)(position.Y + pPoints.right1.Y))) ||
+                rect.Contains(new Point((int)(position.X + pPoints.right2.X), (int)(position.Y + pPoints.right2.Y))))
+            {
+                position.X = rect.Left - pPoints.right1.X;
+                velocity.X = 0;
+            }
+        }
+
+        bool KeyDown(Keys key)
+        {
+            if (Keyboard.GetState().IsKeyDown(key))
+                return true;
+            return false;
+        }
+
+        bool KeyUp(Keys key)
+        {
+            if (Keyboard.GetState().IsKeyUp(key))
+                return true;
+            return false;
         }
 
         public void PlayerMovement(Keys key)
@@ -91,15 +148,6 @@ namespace Game
         public Rectangle BoundsStatic()
         {
             return new Rectangle((int)position.X, (int)position.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
-        }
-
-        public FloatRect Rect(int a)
-        {
-            if (a == 0)
-                return new FloatRect(position, new Vector2(texture.Width, texture.Height));
-            if (a == 1)
-                return new FloatRect(prevPosition, new Vector2(texture.Width, texture.Height));
-            return null;
         }
     }
 }

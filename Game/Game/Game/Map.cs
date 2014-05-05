@@ -14,7 +14,7 @@ namespace Game
         public int width, height;
         public Tile[,] mapArray;
         public string dir = "../../../../../../Maps/";
-        
+
         public Map(int width, int height)
         {
             this.width = width;
@@ -71,23 +71,23 @@ namespace Game
                     else if (tempMap[x, y] == "3")
                     {
                         mapArray[x, y] = new Ladder(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Ladder");
-                    } 
+                    }
                     else if (tempMap[x, y] == "4")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-L");
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-L", 3);
                     }
                     else if (tempMap[x, y] == "5")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R");
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R", 1);
                     }
                     else if (tempMap[x, y] == "6")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R");
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 2);
                     }
                     else if (tempMap[x, y] == "7")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L");
-                    } 
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 4);
+                    }
                     else if (tempMap[x, y] == "9")
                     {
                         mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Low Grass");
