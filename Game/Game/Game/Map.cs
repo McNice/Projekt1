@@ -14,7 +14,7 @@ namespace Game
         public int width, height;
         public Tile[,] mapArray;
         public string dir = "../../../../../../Maps/";
-
+        
         public Map(int width, int height)
         {
             this.width = width;
@@ -22,7 +22,7 @@ namespace Game
             mapArray = new Tile[width, height];
         }
 
-        public void LoadMap(string mapName)
+        public void LoadMap(string mapName, List<string> bricks, Random rng)
         {
             string[,] tempMap = new string[1, 1];
             int line = 0;
@@ -66,7 +66,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "2")
                     {
-                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Fine Brick 2");
+                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), bricks[rng.Next(bricks.Count)]);
                     }
                     else if (tempMap[x, y] == "3")
                     {

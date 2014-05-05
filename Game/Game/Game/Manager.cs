@@ -10,17 +10,24 @@ namespace Game
 {
     public class Manager
     {
+        Random rng;
         public bool multiPlayer, isOnGround;
 
         List<Player> players = new List<Player>();
+        List<string> bricks = new List<string>();
 
         Map map;
         public static string path = "../../../../../../Maps/";
 
         public Manager()
         {
+            rng = new Random();
+            bricks.Add("Fine Brick 2");
+            bricks.Add("Fine Brick 3");
+            bricks.Add("Fine Brick 4");
+            bricks.Add("Fine Brick 5");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("S7");
+            map.LoadMap("a2", bricks, rng);
         }
 
         public void LoadContent()
