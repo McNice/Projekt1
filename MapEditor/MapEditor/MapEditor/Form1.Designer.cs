@@ -209,10 +209,10 @@
             this.radioButton6.AutoSize = true;
             this.radioButton6.Location = new System.Drawing.Point(104, 59);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(67, 17);
+            this.radioButton6.Size = new System.Drawing.Size(60, 17);
             this.radioButton6.TabIndex = 16;
             this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Right Up";
+            this.radioButton6.Text = "Left Up";
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
@@ -221,10 +221,10 @@
             this.radioButton7.AutoSize = true;
             this.radioButton7.Location = new System.Drawing.Point(13, 83);
             this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(60, 17);
+            this.radioButton7.Size = new System.Drawing.Size(67, 17);
             this.radioButton7.TabIndex = 17;
             this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Left Up";
+            this.radioButton7.Text = "Right Up";
             this.radioButton7.UseVisualStyleBackColor = true;
             this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
             // 
@@ -293,10 +293,10 @@
             this.radioButton13.AutoSize = true;
             this.radioButton13.Location = new System.Drawing.Point(13, 154);
             this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(91, 17);
+            this.radioButton13.Size = new System.Drawing.Size(48, 17);
             this.radioButton13.TabIndex = 23;
             this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "radioButton13";
+            this.radioButton13.Text = "Door";
             this.radioButton13.UseVisualStyleBackColor = true;
             this.radioButton13.CheckedChanged += new System.EventHandler(this.radioButton13_CheckedChanged);
             // 
@@ -305,10 +305,10 @@
             this.radioButton14.AutoSize = true;
             this.radioButton14.Location = new System.Drawing.Point(104, 154);
             this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(91, 17);
+            this.radioButton14.Size = new System.Drawing.Size(52, 17);
             this.radioButton14.TabIndex = 24;
             this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "radioButton14";
+            this.radioButton14.Text = "Lever";
             this.radioButton14.UseVisualStyleBackColor = true;
             this.radioButton14.CheckedChanged += new System.EventHandler(this.radioButton14_CheckedChanged);
             // 

@@ -9,7 +9,7 @@ namespace Game
 {
     public class Tile
     {
-        Texture2D tex;
+        protected Texture2D tex;
         protected string texName;
         public Vector2 pos;
         public Rectangle tileBox;

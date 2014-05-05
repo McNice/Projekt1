@@ -75,6 +75,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animated.cs" />
     <Compile Include="FloatRect.cs" />
     <Compile Include="Ladder.cs" />
     <Compile Include="Particle.cs" />

@@ -17,7 +17,7 @@ namespace Game
         int numberOfButtons = 5;
         public StartScreen()
         {
-            tex = Game1.mediaManager.Texture("Inomhusgolv");
+            tex = Game1.mediaManager.Texture("Black Tile");
         }
 
         public void Update(GameTime gameTime)
