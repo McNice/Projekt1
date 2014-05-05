@@ -23,15 +23,11 @@ namespace Game
         string player;
         double time;
         ParticleEngine particle;
-<<<<<<< HEAD
-        Vector2 particleVec= new Vector2(5,40);
-        KeyboardState ks, oldks;
-=======
         Vector2 particleVec = new Vector2(5, 40);
+        KeyboardState ks, oldks;
 
         PlayerPoints pPoints;
         public bool onGround;
->>>>>>> 62c8f9176412f19e26a65d565ac3f8010f2532c2
 
         public Player(Texture2D texture, Vector2 position, string player)
         {
@@ -41,21 +37,18 @@ namespace Game
             this.gravity = new Vector2(0, 700);
             particle = new ParticleEngine("Smoketex", position + particleVec);
 
-            pPoints = new PlayerPoints(new Vector2(0, 30), new Vector2(0, 90), new Vector2(48, 30), new Vector2(46 , 90), new Vector2(24, 0), new Vector2(25, 93));
+            pPoints = new PlayerPoints(new Vector2(0, 30), new Vector2(0, 90), new Vector2(48, 30), new Vector2(46, 90), new Vector2(24, 0), new Vector2(25, 93));
         }
 
         public void Update(GameTime gameTime)
         {
-<<<<<<< HEAD
             ks = Keyboard.GetState();
-=======
             if (KeyDown(Keys.A))
                 PlayerMovement(Keys.A);
             else if (KeyDown(Keys.D))
                 PlayerMovement(Keys.D);
             else { runningSpeed = 0; }
 
->>>>>>> 62c8f9176412f19e26a65d565ac3f8010f2532c2
             time = gameTime.ElapsedGameTime.TotalSeconds;
             if (!onGround)
             {
@@ -64,14 +57,13 @@ namespace Game
             }
             particle.pos = position + particleVec;
             particle.Update(gameTime);
-<<<<<<< HEAD
+
             if (Math.Abs(velocity.Y) < 12 &&  ks.IsKeyDown(Keys.Space) && oldks.IsKeyUp(Keys.Space))
             {   
-                m.isOnGround = false;
+                onGround = false;
                 velocity.Y = -400;
             }
             oldks = ks;   
-=======
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
@@ -80,7 +72,6 @@ namespace Game
                 position.Y -= 1;
             }
             onGround = false;
->>>>>>> 62c8f9176412f19e26a65d565ac3f8010f2532c2
         }
 
         public void Draw(SpriteBatch spriteBatch)
