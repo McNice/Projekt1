@@ -17,7 +17,7 @@ namespace Game
         public float
             runningSpeed = 0,
             acceleration = 0.08f,
-            maxSpeed = 2.0f,
+            maxSpeed = 3.5f,
             breakSpeed = 0.5f;
 
         string player;

@@ -20,7 +20,7 @@ namespace Game
         public Manager()
         {
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("S5");
+            map.LoadMap("S7");
         }
 
         public void LoadContent()
