@@ -82,11 +82,11 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "6")
                     {
-                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 3);
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 4);
                     }
                     else if (tempMap[x, y] == "7")
                     {
-                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 3);                      
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 2);                      
                     }
                     else if (tempMap[x, y] == "8")
                     {
