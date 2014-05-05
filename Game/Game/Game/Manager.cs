@@ -71,7 +71,10 @@ namespace Game
                     p.PlayerMovement(Keys.D);
                 else if (collisionCount == 0 && KeyDown(Keys.A))
                     p.PlayerMovement(Keys.A);
+                
             }
+            else if (KeyUp(Keys.D) && KeyUp(Keys.A))
+                p.runningSpeed = 0;
             if (p.velocity.Y > 0)
             {
                 foreach (Tile s in map.mapArray)

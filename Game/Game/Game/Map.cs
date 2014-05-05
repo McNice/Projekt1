@@ -29,29 +29,30 @@ namespace Game
 
             try
             {
-                StreamReader sR = new StreamReader(dir + mapName + ".txt");
-
-                while (!sR.EndOfStream)
+                using (StreamReader sR = new StreamReader(dir + mapName + ".txt"))
                 {
-                    string temp = sR.ReadLine();
-                    if (temp.Contains('[') || temp.Contains(']'))
+
+                    while (!sR.EndOfStream)
                     {
-                        string[] arrayTemp = temp.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
-                        width = Convert.ToInt32(arrayTemp[0]);
-                        height = Convert.ToInt32(arrayTemp[1]);
-                        tempMap = new string[width, height];
-                    }
-                    else
-                    {
-                        string[] arrayTemp = temp.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                        for (int x = 0; x < width; x++)
+                        string temp = sR.ReadLine();
+                        if (temp.Contains('[') || temp.Contains(']'))
                         {
-                            tempMap[x, line] = arrayTemp[x];
+                            string[] arrayTemp = temp.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
+                            width = Convert.ToInt32(arrayTemp[0]);
+                            height = Convert.ToInt32(arrayTemp[1]);
+                            tempMap = new string[width, height];
                         }
-                        line++;
+                        else
+                        {
+                            string[] arrayTemp = temp.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                            for (int x = 0; x < width; x++)
+                            {
+                                tempMap[x, line] = arrayTemp[x];
+                            }
+                            line++;
+                        }
                     }
                 }
-                sR.Close();
             }
             catch (FileNotFoundException e) { }
 

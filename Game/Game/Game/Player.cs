@@ -14,16 +14,17 @@ namespace Game
         public Vector2 position, prevPosition;
         public Vector2 velocity;
         Vector2 gravity;
-        public float 
-            runningSpeed = 0, 
-            acceleration = 0.1f,
-            maxSpeed = 3.5f,
+        public float
+            runningSpeed = 0,
+            acceleration = 0.08f,
+            maxSpeed = 2.0f,
             breakSpeed = 0.5f;
+
         string player;
         double time;
         Manager m = new Manager();
         ParticleEngine particle;
-        Vector2 particleVec= new Vector2(5,40);
+        Vector2 particleVec = new Vector2(5, 40);
 
         public Player(Texture2D texture, Vector2 position, string player)
         {
@@ -36,19 +37,20 @@ namespace Game
 
         public void Update(GameTime gameTime)
         {
-            
+
             time = gameTime.ElapsedGameTime.TotalSeconds;
             prevPosition = position;
             velocity += gravity * (float)time;
             position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
             particle.pos = position + particleVec;
             particle.Update(gameTime);
+
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {   
+            {
                 m.isOnGround = false;
-                velocity.Y = -400;
+                velocity.Y = -300;
             }
-                
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -59,6 +61,7 @@ namespace Game
 
         public void PlayerMovement(Keys key)
         {
+
             if (key == Keys.D)
             {
                 if (runningSpeed <= maxSpeed)
@@ -68,19 +71,16 @@ namespace Game
                 position.X += runningSpeed;
             }
 
-            if (key == Keys.A)
+            else if (key == Keys.A)
             {
                 if (runningSpeed <= maxSpeed)
                 {
                     runningSpeed += acceleration;
                 }
-                 position.X -= runningSpeed;
+                position.X -= runningSpeed;
             }
+            else { runningSpeed = 0; }
 
-            if (key != Keys.A && key != Keys.D)
-            {
-                runningSpeed = 0;
-            }
         }
 
         public Rectangle Bounds(Vector2 pos, float RS)
@@ -90,7 +90,7 @@ namespace Game
 
         public Rectangle BoundsStatic()
         {
-            return new Rectangle((int)position.X, (int)position.Y, Game1.TILESIZE, 2*Game1.TILESIZE);
+            return new Rectangle((int)position.X, (int)position.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
         }
 
         public FloatRect Rect(int a)
