@@ -62,7 +62,7 @@ namespace Game
                 {
                     if (tempMap[x, y] == "1")
                     {
-                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Inomhusgolv");
+                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Black Tile");
                     }
                     else if (tempMap[x, y] == "2")
                     {
@@ -82,11 +82,15 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "6")
                     {
-                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 2);
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 3);
                     }
                     else if (tempMap[x, y] == "7")
                     {
-                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 4);
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 3);                      
+                    }
+                    else if (tempMap[x, y] == "8")
+                    {
+                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", 200f);
                     }
                     else if (tempMap[x, y] == "9")
                     {

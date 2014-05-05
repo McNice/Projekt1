@@ -61,7 +61,7 @@ namespace Game
             startScreen = new StartScreen();
 
             // TEST
-            testTex = Content.Load<Texture2D>("Textures/Inomhusgolv");
+            testTex = Content.Load<Texture2D>("Textures/Black Tile");
         }
 
         protected override void Update(GameTime gameTime)
@@ -125,12 +125,12 @@ namespace Game
                 case GameState.Highscore:
                     break;
                 case GameState.Controls:
-                    spriteBatch.Draw(mediaManager.Texture("Inomhusgolv"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
+                    spriteBatch.Draw(mediaManager.Texture("Black Tile"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
                     startScreen.Button(500, "Insert Image", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 3);
                     break;
                 case GameState.Credits:
-                    spriteBatch.Draw(mediaManager.Texture("Inomhusgolv"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
+                    spriteBatch.Draw(mediaManager.Texture("Black Tile"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
                     startScreen.Button(100, "Credits", spriteBatch, 9);
                     startScreen.Button(200, "Anton - Gjorde allt", spriteBatch, 9);
                     startScreen.Button(300, "Daniel - Hämtade kaffe", spriteBatch, 9);

@@ -14,7 +14,6 @@ namespace Game
 {
     public class SolidBlock : Tile
     {
-        Texture2D tex;
         public SolidBlock(Vector2 pos, string texName)
             : base(pos, texName)
         {
