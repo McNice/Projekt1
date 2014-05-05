@@ -10,17 +10,24 @@ namespace Game
 {
     public class Manager
     {
+        Random rng;
         public bool multiPlayer, isOnGround;
 
         List<Player> players = new List<Player>();
+        List<string> bricks = new List<string>();
 
         Map map;
         public static string path = "../../../../../../Maps/";
 
         public Manager()
         {
+            rng = new Random();
+            bricks.Add("Fine Brick 2");
+            bricks.Add("Fine Brick 3");
+            bricks.Add("Fine Brick 4");
+            bricks.Add("Fine Brick 5");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("S5");
+            map.LoadMap("t10", bricks, rng);
         }
 
         public void LoadContent()
@@ -33,9 +40,28 @@ namespace Game
             foreach (Player p in players)
             {
                 p.Update(gameTime);
-                Collision(p);
-                LadderClimb(p);
+                CollisionJohan(p);
+                //             LadderClimb(p);
             }
+        }
+
+        void CollisionJohan(Player p)
+        {
+            foreach (Tile t in map.mapArray)
+                if (t is SolidBlock)
+                    if (t.Bounds().Intersects(p.BoundsStatic()))
+                    {
+                        if (t is Slope)
+                        {
+                            foreach (Rectangle r in (t as Slope).rectList)
+                            {
+                                if (r.Intersects(p.BoundsStatic()))
+                                    p.Collision(r);
+                            }
+                        }
+                        else
+                            p.Collision(t.Bounds());
+                    }
         }
 
         bool CollisionCheck(Player p, Tile t, Keys key)
@@ -71,7 +97,10 @@ namespace Game
                     p.PlayerMovement(Keys.D);
                 else if (collisionCount == 0 && KeyDown(Keys.A))
                     p.PlayerMovement(Keys.A);
+
             }
+            else if (KeyUp(Keys.D) && KeyUp(Keys.A))
+                p.runningSpeed = 0;
             if (p.velocity.Y > 0)
             {
                 foreach (Tile s in map.mapArray)
@@ -168,7 +197,7 @@ namespace Game
         {
             if (!multiPlayer)
             {
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(600, 400), "Player1"));
             }
             else if (multiPlayer)
             {

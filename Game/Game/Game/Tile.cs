@@ -9,7 +9,7 @@ namespace Game
 {
     public class Tile
     {
-        Texture2D tex;
+        protected Texture2D tex;
         protected string texName;
         public Vector2 pos;
         public Rectangle tileBox;
@@ -26,7 +26,7 @@ namespace Game
         }
         public virtual void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None,1);
+            sb.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None,1);
         }
 
         public virtual Rectangle Bounds()

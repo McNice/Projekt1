@@ -75,10 +75,12 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FloatRect.cs" />
+    <Compile Include="PlayerPoints.cs" />
+    <Compile Include="Animated.cs" />
     <Compile Include="Ladder.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="ParticleEngine.cs" />
+    <Compile Include="Slope.cs" />
     <Compile Include="StartScreen.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="KeyMouseReader.cs" />

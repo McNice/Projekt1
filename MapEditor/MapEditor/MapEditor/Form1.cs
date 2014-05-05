@@ -26,27 +26,6 @@ namespace MapEditor
             type = Game1.TYPE1;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            type = Game1.TYPE1;
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            type = Game1.TYPE2;
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            type = Game1.BLANK;
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            type = Game1.TYPE3;
-        }
-
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you want to suck dick?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -74,39 +53,75 @@ namespace MapEditor
                     load = true;
         }
 
-        private void radio4_CheckedChanged(object sender, EventArgs e)
+        private void radioButton14_CheckedChanged(object sender, EventArgs e)
         {
-            type = Game1.TYPE4;
+            type = Game1.TYPE14;
         }
 
-        private void radio5_CheckedChanged(object sender, EventArgs e)
+        private void radioButton13_CheckedChanged(object sender, EventArgs e)
         {
-            type = Game1.TYPE5;
+            type = Game1.TYPE13;
         }
 
-        private void radio6_CheckedChanged(object sender, EventArgs e)
+        private void radioButton12_CheckedChanged(object sender, EventArgs e)
         {
-            type = Game1.TYPE6;
+            type = Game1.TYPE12;
         }
 
-        private void radio7_CheckedChanged(object sender, EventArgs e)
+        private void radioButton11_CheckedChanged(object sender, EventArgs e)
         {
-            type = Game1.TYPE7;
+            type = Game1.TYPE11;
         }
 
-        private void radio8_CheckedChanged(object sender, EventArgs e)
+        private void radioButton10_CheckedChanged(object sender, EventArgs e)
         {
-            type = Game1.TYPE8;
+            type = Game1.TYPE10;
         }
 
-        private void radio9_CheckedChanged(object sender, EventArgs e)
+        private void radioButton9_CheckedChanged(object sender, EventArgs e)
         {
             type = Game1.TYPE9;
         }
 
-        private void radio10_CheckedChanged(object sender, EventArgs e)
+        private void radioButton8_CheckedChanged(object sender, EventArgs e)
         {
-            type = Game1.TYPE10;
+            type = Game1.TYPE8;
         }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE7;
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE6;
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE5;
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE4;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE3;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE2;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE1;
+        }
+  
     }
 }

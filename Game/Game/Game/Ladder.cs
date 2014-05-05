@@ -9,7 +9,6 @@ namespace Game
 {
     public class Ladder : Tile
     {
-        Texture2D tex;
         public Ladder(Vector2 pos, string texName)
             : base(pos, texName)
         {

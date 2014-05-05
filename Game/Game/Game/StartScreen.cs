@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 
+
 namespace Game
 {
     public class StartScreen
@@ -16,7 +17,7 @@ namespace Game
         int numberOfButtons = 5;
         public StartScreen()
         {
-            tex = Game1.mediaManager.Texture("Inomhusgolv");
+            tex = Game1.mediaManager.Texture("Black Tile");
         }
 
         public void Update(GameTime gameTime)
