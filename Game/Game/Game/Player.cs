@@ -24,6 +24,7 @@ namespace Game
         Manager m = new Manager();
         ParticleEngine particle;
         Vector2 particleVec= new Vector2(5,40);
+        KeyboardState ks, oldks;
 
         public Player(Texture2D texture, Vector2 position, string player)
         {
@@ -36,19 +37,19 @@ namespace Game
 
         public void Update(GameTime gameTime)
         {
-            
+            ks = Keyboard.GetState();
             time = gameTime.ElapsedGameTime.TotalSeconds;
             prevPosition = position;
             velocity += gravity * (float)time;
             position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
             particle.pos = position + particleVec;
             particle.Update(gameTime);
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Math.Abs(velocity.Y) < 12 &&  ks.IsKeyDown(Keys.Space) && oldks.IsKeyUp(Keys.Space))
             {   
                 m.isOnGround = false;
                 velocity.Y = -400;
             }
-                
+            oldks = ks;   
         }
 
         public void Draw(SpriteBatch spriteBatch)
