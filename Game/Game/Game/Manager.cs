@@ -10,17 +10,28 @@ namespace Game
 {
     public class Manager
     {
+        Random rng;
         public bool multiPlayer, isOnGround;
 
         List<Player> players = new List<Player>();
+        List<string> bricks = new List<string>();
 
         Map map;
         public static string path = "../../../../../../Maps/";
 
         public Manager()
         {
+            rng = new Random();
+            bricks.Add("Fine Brick 2");
+            bricks.Add("Fine Brick 3");
+            bricks.Add("Fine Brick 4");
+            bricks.Add("Fine Brick 5");
             map = new Map(Game1.TILESX, Game1.TILESY);
+<<<<<<< HEAD
             map.LoadMap("S3");
+=======
+            map.LoadMap("a2", bricks, rng);
+>>>>>>> 048de8f59aaf7f3a6b993948e31e0b722fc2f185
         }
 
         public void LoadContent()
@@ -71,7 +82,10 @@ namespace Game
                     p.PlayerMovement(Keys.D);
                 else if (collisionCount == 0 && KeyDown(Keys.A))
                     p.PlayerMovement(Keys.A);
+                
             }
+            else if (KeyUp(Keys.D) && KeyUp(Keys.A))
+                p.runningSpeed = 0;
             if (p.velocity.Y > 0)
             {
                 foreach (Tile s in map.mapArray)

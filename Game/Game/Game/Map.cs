@@ -14,7 +14,7 @@ namespace Game
         public int width, height;
         public Tile[,] mapArray;
         public string dir = "../../../../../../Maps/";
-
+        
         public Map(int width, int height)
         {
             this.width = width;
@@ -22,36 +22,37 @@ namespace Game
             mapArray = new Tile[width, height];
         }
 
-        public void LoadMap(string mapName)
+        public void LoadMap(string mapName, List<string> bricks, Random rng)
         {
             string[,] tempMap = new string[1, 1];
             int line = 0;
 
             try
             {
-                StreamReader sR = new StreamReader(dir + mapName + ".txt");
-
-                while (!sR.EndOfStream)
+                using (StreamReader sR = new StreamReader(dir + mapName + ".txt"))
                 {
-                    string temp = sR.ReadLine();
-                    if (temp.Contains('[') || temp.Contains(']'))
+
+                    while (!sR.EndOfStream)
                     {
-                        string[] arrayTemp = temp.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
-                        width = Convert.ToInt32(arrayTemp[0]);
-                        height = Convert.ToInt32(arrayTemp[1]);
-                        tempMap = new string[width, height];
-                    }
-                    else
-                    {
-                        string[] arrayTemp = temp.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                        for (int x = 0; x < width; x++)
+                        string temp = sR.ReadLine();
+                        if (temp.Contains('[') || temp.Contains(']'))
                         {
-                            tempMap[x, line] = arrayTemp[x];
+                            string[] arrayTemp = temp.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
+                            width = Convert.ToInt32(arrayTemp[0]);
+                            height = Convert.ToInt32(arrayTemp[1]);
+                            tempMap = new string[width, height];
                         }
-                        line++;
+                        else
+                        {
+                            string[] arrayTemp = temp.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                            for (int x = 0; x < width; x++)
+                            {
+                                tempMap[x, line] = arrayTemp[x];
+                            }
+                            line++;
+                        }
                     }
                 }
-                sR.Close();
             }
             catch (FileNotFoundException e) { }
 
@@ -65,7 +66,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "2")
                     {
-                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Fine Brick 2");
+                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), bricks[rng.Next(bricks.Count)]);
                     }
                     else if (tempMap[x, y] == "3")
                     {
