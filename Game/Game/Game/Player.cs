@@ -37,7 +37,7 @@ namespace Game
             this.gravity = new Vector2(0, 700);
             particle = new ParticleEngine("Smoketex", position + particleVec);
 
-            pPoints = new PlayerPoints(new Vector2(0, 30), new Vector2(0, 90), new Vector2(48, 30), new Vector2(46, 90), new Vector2(24, 0), new Vector2(25, 93));
+            pPoints = new PlayerPoints(new Vector2(0, 30), new Vector2(0, 75), new Vector2(48, 30), new Vector2(48, 90), new Vector2(24, 0), new Vector2(25, 95));
         }
 
         public void Update(GameTime gameTime)
@@ -52,18 +52,26 @@ namespace Game
             time = gameTime.ElapsedGameTime.TotalSeconds;
             if (!onGround)
             {
-                velocity += gravity * (float)time;
-                position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
+                if (velocity.Y >= 500)
+                {
+                    velocity.Y = 500;
+                    position += (velocity * (float)time);
+                }
+                else
+                {
+                    velocity += gravity * (float)time;
+                    position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
+                }
             }
             particle.pos = position + particleVec;
             particle.Update(gameTime);
 
-            if (Math.Abs(velocity.Y) < 12 &&  ks.IsKeyDown(Keys.Space) && oldks.IsKeyUp(Keys.Space))
-            {   
+            if (Math.Abs(velocity.Y) < 12 && ks.IsKeyDown(Keys.Space) && oldks.IsKeyUp(Keys.Space))
+            {
                 onGround = false;
                 velocity.Y = -400;
             }
-            oldks = ks;   
+            oldks = ks;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {

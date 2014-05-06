@@ -10,33 +10,33 @@ namespace Game
     public class Slope : SolidBlock
     {
         public List<Rectangle> rectList;
-        public Slope(Vector2 pos, string texName, int SlopeType)
+        public Slope(Vector2 pos, string texName, int slopeType)
             : base(pos, texName)
         {
             rectList = new List<Rectangle>();
 
-            if (SlopeType == 1)
+            if (slopeType == 1)
             {
                 for (int i = 1; i < 24; i++)
                 {
                     rectList.Add(new Rectangle((int)pos.X, (int)pos.Y + (i * 2), (i * 2), 2));
                 }
             }
-            if (SlopeType == 2)
+            if (slopeType == 2)
             {
                 for (int i = 0; i < 24; i++)
                 {
                     rectList.Add(new Rectangle((int)pos.X, (int)pos.Y + (i * 2), 46 - (i * 2), 2));
                 }
             }
-            if (SlopeType == 3)
+            if (slopeType == 3)
             {
                 for (int i = 1; i < 24; i++)
                 {
                     rectList.Add(new Rectangle((int)pos.X + (i * 2), (int)(pos.Y + 48) - (i * 2), 48 - (i * 2), 2));
                 }
             }
-            if (SlopeType == 4)
+            if (slopeType == 4)
             {
                 for (int i = 0; i < 24; i++)
                 {
