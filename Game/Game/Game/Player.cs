@@ -37,7 +37,7 @@ namespace Game
             this.gravity = new Vector2(0, 700);
             particle = new ParticleEngine("Smoketex", position + particleVec);
 
-            pPoints = new PlayerPoints(new Vector2(0, 30), new Vector2(0, 75), new Vector2(48, 30), new Vector2(48, 90), new Vector2(24, 0), new Vector2(25, 95));
+            pPoints = new PlayerPoints(new Vector2(0, 30), new Vector2(0, 80), new Vector2(47, 30), new Vector2(47, 90), new Vector2(24, 0), new Vector2(24, 95));
         }
 
         public void Update(GameTime gameTime)
