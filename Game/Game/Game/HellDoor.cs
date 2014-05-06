@@ -7,16 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game
 {
-    class Door : Animated
+    public class HellDoor : Animated
     {
-        public Door(Vector2 pos, string texName, float animationSpeed)
+        public HellDoor(Vector2 pos, string texName, float animationSpeed)
             : base(pos, texName, animationSpeed)
-        {
-            start = false;
-        }
-        public override void Update(GameTime gameTime)
-        {
-        }
+        {   }
 
         public override Rectangle Rec()
         {

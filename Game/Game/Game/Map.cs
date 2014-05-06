@@ -122,11 +122,11 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "15")
                     {
-                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R", 2);
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R", 1);
                     }
                     else if (tempMap[x, y] == "16")
                     {
-                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-L", 2);
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-L", 3);
                     }
                     else if (tempMap[x, y] == "17")
                     {
@@ -134,11 +134,15 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "18")
                     {
-                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 2);
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 4);
                     }
                     else if (tempMap[x, y] == "19")
                     {
                         spawnPoint = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE));
+                    }
+                    else if (tempMap[x, y] == "20")
+                    {
+                        mapArray[x, y] = new HellDoor(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Hell-door", 100f);
                     }
                 }
             }

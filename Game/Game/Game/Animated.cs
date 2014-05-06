@@ -15,7 +15,8 @@ namespace Game
         protected float time = 0;
         protected bool start = true;
 
-        public Animated(Vector2 pos, string texName, float animationSpeed) : base(pos, texName)
+        public Animated(Vector2 pos, string texName, float animationSpeed)
+            : base(pos, texName)
         {
             this.pos = pos;
             this.tex = Game1.mediaManager.Texture(texName);
@@ -34,7 +35,7 @@ namespace Game
                 if (start)
                     recX += 100;
                 if (!start)
-                    recX -= 100; 
+                    recX -= 100;
                 time = 0;
             }
             Rec();
