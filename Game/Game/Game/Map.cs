@@ -15,12 +15,14 @@ namespace Game
         public Tile[,] mapArray;
         public string dir = "../../../../../../Maps/";
         public Vector2 spawnPoint;
+        Random rng;
 
         public Map(int width, int height)
         {
             this.width = width;
             this.height = height;
             mapArray = new Tile[width, height];
+            rng = new Random();
         }
 
         public void LoadMap(string mapName, List<string> bricks, Random rng)
@@ -92,7 +94,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "8")
                     {
-                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", 100f);
+                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", (float)rng.Next(100, 150));
                     }
                     else if (tempMap[x, y] == "9")
                     {
@@ -136,7 +138,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "19")
                     {
-                        spawnPoint = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE) - Game1.TILESIZE);
+                        spawnPoint = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE));
                     }
                 }
             }

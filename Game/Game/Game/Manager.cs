@@ -27,7 +27,7 @@ namespace Game
             bricks.Add("Fine Brick 4");
             bricks.Add("Fine Brick 5");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("a3", bricks, rng);
+            map.LoadMap("a4", bricks, rng);
         }
 
         public void LoadContent()
