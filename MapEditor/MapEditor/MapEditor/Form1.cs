@@ -52,6 +52,25 @@ namespace MapEditor
                 if (MessageBox.Show("Do you want to load \"" + path + ".txt\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     load = true;
         }
+        private void radioButton18_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE18;
+        }
+
+        private void radioButton17_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE17;
+        }
+
+        private void radioButton16_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE16;
+        }
+
+        private void radioButton15_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE15;
+        }
 
         private void radioButton14_CheckedChanged(object sender, EventArgs e)
         {
@@ -121,6 +140,11 @@ namespace MapEditor
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             type = Game1.TYPE1;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
   
     }

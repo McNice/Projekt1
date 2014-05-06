@@ -100,6 +100,38 @@ namespace Game
                     {
                         mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Tall Grass");
                     }
+                    else if (tempMap[x, y] == "11")
+                    {
+                        //Left Button
+                    }
+                    else if (tempMap[x, y] == "12")
+                    {     
+                        //Right Button
+                    }
+                    else if (tempMap[x, y] == "13")
+                    {
+                        //Door
+                    }
+                    else if (tempMap[x, y] == "14")
+                    {
+                        //Lever
+                    }
+                    else if (tempMap[x, y] == "15")
+                    {
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R", 2);
+                    }
+                    else if (tempMap[x, y] == "16")
+                    {
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-L", 2);
+                    }
+                    else if (tempMap[x, y] == "17")
+                    {
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 2);
+                    }
+                    else if (tempMap[x, y] == "18")
+                    {
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 2);
+                    }
                 }
             }
         }
