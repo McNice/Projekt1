@@ -52,6 +52,10 @@ namespace MapEditor
                 if (MessageBox.Show("Do you want to load \"" + path + ".txt\"?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     load = true;
         }
+        private void radioButton19_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE19;
+        }
         private void radioButton18_CheckedChanged(object sender, EventArgs e)
         {
             type = Game1.TYPE18;

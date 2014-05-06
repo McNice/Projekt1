@@ -40,29 +40,15 @@ namespace Game
             foreach (Player p in players)
             {
                 p.Update(gameTime);
-                CollisionJohan(p);
+                CollisionJohan(p, gameTime);
                 //             LadderClimb(p);
-            }
-            foreach (Tile t in map.mapArray)
-            {
-                if (t is Animated)
-                {
-                    (t as Animated).Update(gameTime); 
-                }
-                if (t is ButtonLever && Keyboard.GetState().IsKeyDown(Keys.G) && (t as ButtonLever).on == false)
-                {
-                    (t as ButtonLever).on = true;
-                }
-                if (t is ButtonLever && Keyboard.GetState().IsKeyDown(Keys.H) && (t as ButtonLever).on == true)
-                {
-                    (t as ButtonLever).on = false;
-                }
             }
         }
 
-        void CollisionJohan(Player p)
+        void CollisionJohan(Player p, GameTime gameTime)
         {
             foreach (Tile t in map.mapArray)
+            {
                 if (t is SolidBlock)
                     if (t.Bounds().Intersects(p.BoundsStatic()))
                     {
@@ -77,6 +63,22 @@ namespace Game
                         else
                             p.Collision(t.Bounds());
                     }
+                if (t is Animated)
+                {
+                    (t as Animated).Update(gameTime);
+                }
+                if (t is ButtonLever && p.BoundsStatic().Intersects(t.Bounds()))
+                {
+                    if (Keyboard.GetState().IsKeyDown(Keys.G))
+                    {
+                        (t as ButtonLever).on = true; 
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.H))
+                    {
+                        (t as ButtonLever).on = false;
+                    }
+                }
+            }
         }
 
         bool CollisionCheck(Player p, Tile t, Keys key)
@@ -212,12 +214,12 @@ namespace Game
         {
             if (!multiPlayer)
             {
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(600, 400), "Player1"));
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint, "Player1"));
             }
             else if (multiPlayer)
             {
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(400, 300), "Player2"));
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint, "Player1"));
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint + new Vector2(50, 0), "Player2"));
             }
         }
 

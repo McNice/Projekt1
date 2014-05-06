@@ -14,6 +14,7 @@ namespace Game
         public int width, height;
         public Tile[,] mapArray;
         public string dir = "../../../../../../Maps/";
+        public Vector2 spawnPoint;
 
         public Map(int width, int height)
         {
@@ -24,6 +25,7 @@ namespace Game
 
         public void LoadMap(string mapName, List<string> bricks, Random rng)
         {
+            spawnPoint = new Vector2(600);
             string[,] tempMap = new string[1, 1];
             int line = 0;
 
@@ -86,7 +88,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "7")
                     {
-                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 2);                      
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 2);
                     }
                     else if (tempMap[x, y] == "8")
                     {
@@ -114,7 +116,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "14")
                     {
-                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 100f);
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 20f);
                     }
                     else if (tempMap[x, y] == "15")
                     {
@@ -131,6 +133,10 @@ namespace Game
                     else if (tempMap[x, y] == "18")
                     {
                         mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 2);
+                    }
+                    else if (tempMap[x, y] == "19")
+                    {
+                        spawnPoint = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE) - Game1.TILESIZE);
                     }
                 }
             }

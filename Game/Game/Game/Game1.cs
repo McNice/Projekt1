@@ -15,7 +15,6 @@ namespace Game
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         public static Texture2D testTex;
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static SpriteFont StartScreenFont;
