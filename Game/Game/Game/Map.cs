@@ -90,7 +90,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "8")
                     {
-                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", 200f);
+                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", 100f);
                     }
                     else if (tempMap[x, y] == "9")
                     {
@@ -102,19 +102,19 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "11")
                     {
-                        //Left Button
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - L", 100f);
                     }
                     else if (tempMap[x, y] == "12")
-                    {     
-                        //Right Button
+                    {
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - R", 100f);
                     }
                     else if (tempMap[x, y] == "13")
                     {
-                        //Door
+                        mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Door-spritesheet", 100f);
                     }
                     else if (tempMap[x, y] == "14")
                     {
-                        //Lever
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 100f);
                     }
                     else if (tempMap[x, y] == "15")
                     {

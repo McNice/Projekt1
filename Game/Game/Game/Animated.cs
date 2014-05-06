@@ -9,31 +9,45 @@ namespace Game
 {
     public class Animated : Tile
     {
-        float time = 0;
-        float animationSpeed;
-        int rectangleX = 0;
-        Rectangle rec;
-        public Animated(Vector2 pos, string texName, float animationSpeed)
-            : base(pos, texName)
+        protected Rectangle rec;
+        protected int recX = 0;
+        protected float animationSpeed;
+        protected float time = 0;
+        protected bool start = true;
+
+        public Animated(Vector2 pos, string texName, float animationSpeed) : base(pos, texName)
         {
-            tex = Game1.mediaManager.Texture(texName);
+            this.pos = pos;
+            this.tex = Game1.mediaManager.Texture(texName);
             this.animationSpeed = animationSpeed;
+            rec = new Rectangle(0, 0, 100, 100);
         }
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
-            time = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            time += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (time >= animationSpeed)
-                rectangleX += 100;
-            
-            if (rectangleX >= tex.Bounds.Width)
-                rectangleX = 0;
-
-            rec = new Rectangle(rectangleX, 0, 100, 100);
+            {
+                if (recX <= 0 && !start)
+                    start = true;
+                if (recX >= tex.Width - 100 && start)
+                    start = false;
+                if (start)
+                    recX += 100;
+                if (!start)
+                    recX -= 100; 
+                time = 0;
+            }
+            Rec();
         }
 
-        public override void Draw(SpriteBatch sb)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            sb.Draw(tex, pos, rec, Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 1);
+            spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 1);
+        }
+
+        public virtual Rectangle Rec()
+        {
+            return new Rectangle(recX, 0, 100, 100);
         }
     }
 }

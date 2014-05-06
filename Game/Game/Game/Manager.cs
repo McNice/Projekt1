@@ -27,7 +27,7 @@ namespace Game
             bricks.Add("Fine Brick 4");
             bricks.Add("Fine Brick 5");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("s1", bricks, rng);
+            map.LoadMap("a3", bricks, rng);
         }
 
         public void LoadContent()
@@ -42,6 +42,21 @@ namespace Game
                 p.Update(gameTime);
                 CollisionJohan(p);
                 //             LadderClimb(p);
+            }
+            foreach (Tile t in map.mapArray)
+            {
+                if (t is Animated)
+                {
+                    (t as Animated).Update(gameTime); 
+                }
+                if (t is ButtonLever && Keyboard.GetState().IsKeyDown(Keys.G) && (t as ButtonLever).on == false)
+                {
+                    (t as ButtonLever).on = true;
+                }
+                if (t is ButtonLever && Keyboard.GetState().IsKeyDown(Keys.H) && (t as ButtonLever).on == true)
+                {
+                    (t as ButtonLever).on = false;
+                }
             }
         }
 
