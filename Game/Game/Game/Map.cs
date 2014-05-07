@@ -25,7 +25,7 @@ namespace Game
             rng = new Random();
         }
 
-        public void LoadMap(string mapName, List<string> bricks, Random rng)
+        public void LoadMap(string mapName, List<string> bricks, List<string> grass, Random rng)
         {
             spawnPoint = new Vector2(600);
             string[,] tempMap = new string[1, 1];
@@ -98,7 +98,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "9")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Low Grass");
+                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), grass[rng.Next(grass.Count)]);
                     }
                     else if (tempMap[x, y] == "10")
                     {

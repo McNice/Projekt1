@@ -15,6 +15,7 @@ namespace Game
 
         List<Player> players = new List<Player>();
         List<string> bricks = new List<string>();
+        List<string> grass = new List<string>();
 
         Map map;
         public static string path = "../../../../../../Maps/";
@@ -26,8 +27,12 @@ namespace Game
             bricks.Add("Fine Brick 3");
             bricks.Add("Fine Brick 4");
             bricks.Add("Fine Brick 5");
+            grass.Add("Low Grass");
+            grass.Add("Low Grass");
+            grass.Add("Low Grass");
+            grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("a4", bricks, rng);
+            map.LoadMap("a4", bricks, grass, rng);
         }
 
         public void LoadContent()
@@ -70,9 +75,8 @@ namespace Game
                         p.Collision((t as Door).Bounds());
                     }
                     if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-                    {
                         (t as Door).start = false;
-                    }
+                    
                 }
                 if (t is Animated)
                 {
