@@ -156,7 +156,9 @@ namespace Game
                 }
                 position.X += runningSpeed;
             }
-            else { runningSpeed = 0; }
+            else
+                            runningSpeed = 0;
+            
 
         }
 
