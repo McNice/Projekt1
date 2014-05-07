@@ -34,7 +34,6 @@ namespace Game
             grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
             map.LoadMap("a4", bricks, grass, rng);
-
         }
 
         public void LoadContent()
@@ -83,6 +82,7 @@ namespace Game
                     {
                         (t as Door).start = false;
                     }
+
 
                     ///Behover fixas!!
                     //else if (KeyClick(Keys.Enter) && (t as Door).start == false)

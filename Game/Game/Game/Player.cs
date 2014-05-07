@@ -26,6 +26,7 @@ namespace Game
         Vector2 particleVec = new Vector2(5, 40);
         KeyboardState ks, oldks;
 
+
         Vector2[] colP = { new Vector2(10, 0), new Vector2(30, 0), 
                              new Vector2(0, 10), new Vector2(48, 10), 
                              new Vector2(0, 86), new Vector2(48, 86),
@@ -46,14 +47,10 @@ namespace Game
         {
             ks = Keyboard.GetState();
             if (KeyDown(Keys.A))
-                runningSpeed = -150;
+                PlayerMovement(Keys.A);
             else if (KeyDown(Keys.D))
-                runningSpeed = 150;
+                PlayerMovement(Keys.D);
             else { runningSpeed = 0; }
-
-
-            //if (KeyDown(Keys.W) && onLadder) { }
-            //if (KeyDown(Keys.S) && onLadder) { }
 
             time = gameTime.ElapsedGameTime.TotalSeconds;
             pos.X += runningSpeed * (float)time;
@@ -168,7 +165,7 @@ namespace Game
                 {
                     runningSpeed -= acceleration;
                 }
-                pos.X -= runningSpeed;
+                pos.X += runningSpeed;
             }
             else
                 runningSpeed = 0;
