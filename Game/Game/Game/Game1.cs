@@ -15,9 +15,9 @@ namespace Game
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         public static Texture2D testTex;
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Timer timer;
         public static SpriteFont StartScreenFont;
         StartScreen startScreen;
         public static int TILESIZE = 48;
@@ -57,6 +57,7 @@ namespace Game
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
+            timer = new Timer(Game1.StartScreenFont);
             manager.LoadContent();
             startScreen = new StartScreen();
 
@@ -67,6 +68,7 @@ namespace Game
         protected override void Update(GameTime gameTime)
         {
             KeyMouseReader.Update();
+            
             if (KeyMouseReader.KeyPressed(Keys.Escape))
                 this.Exit();
 
@@ -106,6 +108,7 @@ namespace Game
                     break;
                 case GameState.Play:
                     manager.Update(gameTime);
+                    timer.Update(gameTime);
                     break;
                 case GameState.End:
                     break;
@@ -116,7 +119,7 @@ namespace Game
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
             switch (gameState)
             {
                 case GameState.Title:
@@ -132,19 +135,21 @@ namespace Game
                 case GameState.Credits:
                     spriteBatch.Draw(mediaManager.Texture("Black Tile"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
                     startScreen.Button(100, "Credits", spriteBatch, 9);
-                    startScreen.Button(200, "Anton - Gjorde allt", spriteBatch, 9);
+                    startScreen.Button(200, "Anton - Gjorde ''allt''", spriteBatch, 9);
                     startScreen.Button(300, "Daniel - Hämtade kaffe", spriteBatch, 9);
                     startScreen.Button(400, "Johan - Hämtade kaffe", spriteBatch, 9);
                     startScreen.Button(500, "Kamil - Hämtade kaffe", spriteBatch, 9);
-                    startScreen.Button(600, "Simon - Hämtade inget kaffe", spriteBatch, 9);
+                    startScreen.Button(600, "Simon - is Gay", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 4);
                     break;
                 case GameState.Play:
                     manager.Draw(spriteBatch);
+                    timer.Draw(spriteBatch);
                     break;
                 case GameState.End:
                     break;
             }
+            
             spriteBatch.End();
             base.Draw(gameTime);
         }

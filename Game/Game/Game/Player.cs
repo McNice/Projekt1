@@ -11,7 +11,7 @@ namespace Game
     public class Player
     {
         Texture2D texture;
-        public Vector2 position, prevPosition;
+        public Vector2 pos, prevpos;
         public Vector2 velocity;
         Vector2 gravity;
         public float
@@ -26,18 +26,21 @@ namespace Game
         Vector2 particleVec = new Vector2(5, 40);
         KeyboardState ks, oldks;
 
-        PlayerPoints pPoints;
-        public bool onGround;
 
-        public Player(Texture2D texture, Vector2 position, string player)
+        Vector2[] colP = { new Vector2(10, 0), new Vector2(30, 0), 
+                             new Vector2(0, 10), new Vector2(48, 10), 
+                             new Vector2(0, 86), new Vector2(48, 86),
+                         new Vector2(18, 96), new Vector2(30, 96)};
+
+        public bool jumping, onLadder;
+
+        public Player(Texture2D texture, Vector2 pos, string player)
         {
             this.texture = texture;
-            this.position = position;
+            this.pos = pos;
             this.player = player;
             this.gravity = new Vector2(0, 700);
-            particle = new ParticleEngine("Smoketex", position + particleVec);
-
-            pPoints = new PlayerPoints(new Vector2(0, 30), new Vector2(0, 75), new Vector2(48, 30), new Vector2(48, 90), new Vector2(24, 0), new Vector2(25, 95));
+            particle = new ParticleEngine("Smoketex", pos + particleVec);
         }
 
         public void Update(GameTime gameTime)
@@ -50,73 +53,83 @@ namespace Game
             else { runningSpeed = 0; }
 
             time = gameTime.ElapsedGameTime.TotalSeconds;
-            if (!onGround)
+            pos.X += runningSpeed * (float)time;
+            if (onLadder)
             {
-                if (velocity.Y >= 500)
+                if (KeyDown(Keys.W))
+                    pos.Y -= 100 * (float)time;
+                if (KeyDown(Keys.S))
+                    pos.Y += 100 * (float)time;
+            }
+            else
+            {
+                if (velocity.Y >= 200)
                 {
-                    velocity.Y = 500;
-                    position += (velocity * (float)time);
+                    velocity.Y = 200;
+                    pos += (velocity * (float)time);
                 }
                 else
                 {
                     velocity += gravity * (float)time;
-                    position += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
+                    pos += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
                 }
             }
-            particle.pos = position + particleVec;
+
+            particle.pos = pos + particleVec;
             particle.Update(gameTime);
 
-            if (Math.Abs(velocity.Y) < 12 && ks.IsKeyDown(Keys.Space) && oldks.IsKeyUp(Keys.Space))
-            {
-                onGround = false;
-                velocity.Y = -400;
-            }
+            //if (Math.Abs(velocity.Y) < 12 && ks.IsKeyDown(Keys.Space) && oldks.IsKeyUp(Keys.Space))
+            //{
+            //    onGround = false;
+            //    velocity.Y = -400;
+            //}
             oldks = ks;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !jumping)
             {
-                onGround = false;
+                jumping = true;
                 velocity.Y = -300;
-                position.Y -= 1;
+                pos.Y -= 1;
             }
-            onGround = false;
+            jumping = true;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, new Rectangle(0, 0, Game1.TILESIZE, 2 * Game1.TILESIZE), Color.White);
+            spriteBatch.Draw(texture, pos, new Rectangle(0, 0, Game1.TILESIZE, 2 * Game1.TILESIZE), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.5f);
             particle.Draw(spriteBatch);
         }
 
         public void Collision(Rectangle rect)
         {
-            if (onGround && rect.Contains(new Point((int)(position.X + pPoints.groundCheck.X), (int)(position.Y + pPoints.groundCheck.Y))))
-                onGround = true;
-            if (rect.Contains(new Point((int)(position.X + pPoints.top.X), (int)(position.Y + pPoints.top.Y))))
+            //Top
+            if (rect.Contains(new Point((int)(pos.X + colP[0].X), (int)(pos.Y + colP[0].Y))) ||
+               rect.Contains(new Point((int)(pos.X + colP[1].X), (int)(pos.Y + colP[1].Y))))
             {
-                position.Y = rect.Bottom;
+                pos.Y = rect.Bottom;
                 velocity.Y = 0;
             }
-            if (rect.Contains(new Point((int)(position.X + pPoints.bottom.X), (int)(position.Y + pPoints.bottom.Y))))
+            //Left
+            else if (rect.Contains(new Point((int)(pos.X + colP[2].X), (int)(pos.Y + colP[2].Y))) ||
+                rect.Contains(new Point((int)(pos.X + colP[4].X), (int)(pos.Y + colP[4].Y))))
             {
-                if (velocity.Y > 0)
-                {
-                    position.Y = rect.Top - pPoints.bottom.Y;
-                    velocity.Y = 0;
-                    onGround = true;
-                }
+                pos.X = rect.Right;
+                runningSpeed = 0;
             }
-            if (rect.Contains(new Point((int)(position.X + pPoints.left1.X), (int)(position.Y + pPoints.left1.Y))) ||
-                rect.Contains(new Point((int)(position.X + pPoints.left2.X), (int)(position.Y + pPoints.left2.Y))))
+            //Right
+            else if (rect.Contains(new Point((int)(pos.X + colP[3].X), (int)(pos.Y + colP[3].Y))) ||
+                rect.Contains(new Point((int)(pos.X + colP[5].X), (int)(pos.Y + colP[5].Y))))
             {
-                position.X = rect.Right;
-                velocity.X = 0;
+                pos.X = rect.Left - BoundsStatic().Width + 1;
+                runningSpeed = 0;
             }
-            if (rect.Contains(new Point((int)(position.X + pPoints.right1.X), (int)(position.Y + pPoints.right1.Y))) ||
-                rect.Contains(new Point((int)(position.X + pPoints.right2.X), (int)(position.Y + pPoints.right2.Y))))
+            //Bottom
+            else if (rect.Contains(new Point((int)(pos.X + colP[6].X), (int)(pos.Y + colP[6].Y))) ||
+              rect.Contains(new Point((int)(pos.X + colP[7].X), (int)(pos.Y + colP[7].Y))))
             {
-                position.X = rect.Left - pPoints.right1.X;
-                velocity.X = 0;
+                pos.Y = rect.Top - colP[6].Y + 1;
+                velocity.Y = 0;
+                jumping = false;
             }
         }
 
@@ -143,18 +156,20 @@ namespace Game
                 {
                     runningSpeed += acceleration;
                 }
-                position.X += runningSpeed;
+                pos.X += runningSpeed;
             }
 
             else if (key == Keys.A)
             {
-                if (runningSpeed <= maxSpeed)
+                if (runningSpeed >= -maxSpeed)
                 {
-                    runningSpeed += acceleration;
+                    runningSpeed -= acceleration;
                 }
-                position.X -= runningSpeed;
+                pos.X += runningSpeed;
             }
-            else { runningSpeed = 0; }
+            else
+                runningSpeed = 0;
+
 
         }
 
@@ -165,7 +180,7 @@ namespace Game
 
         public Rectangle BoundsStatic()
         {
-            return new Rectangle((int)position.X, (int)position.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
+            return new Rectangle((int)pos.X, (int)pos.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
         }
     }
 }

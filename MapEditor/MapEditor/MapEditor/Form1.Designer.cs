@@ -54,6 +54,8 @@
             this.radioButton16 = new System.Windows.Forms.RadioButton();
             this.radioButton17 = new System.Windows.Forms.RadioButton();
             this.radioButton18 = new System.Windows.Forms.RadioButton();
+            this.radioButton19 = new System.Windows.Forms.RadioButton();
+            this.radioButton20 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -364,6 +366,30 @@
             this.radioButton18.UseVisualStyleBackColor = true;
             this.radioButton18.CheckedChanged += new System.EventHandler(this.radioButton18_CheckedChanged);
             // 
+            // radioButton19
+            // 
+            this.radioButton19.AutoSize = true;
+            this.radioButton19.Location = new System.Drawing.Point(13, 223);
+            this.radioButton19.Name = "radioButton19";
+            this.radioButton19.Size = new System.Drawing.Size(82, 17);
+            this.radioButton19.TabIndex = 24;
+            this.radioButton19.TabStop = true;
+            this.radioButton19.Text = "SpawnPoint";
+            this.radioButton19.UseVisualStyleBackColor = true;
+            this.radioButton19.CheckedChanged += new System.EventHandler(this.radioButton19_CheckedChanged);
+            // 
+            // radioButton20
+            // 
+            this.radioButton20.AutoSize = true;
+            this.radioButton20.Location = new System.Drawing.Point(104, 223);
+            this.radioButton20.Name = "radioButton20";
+            this.radioButton20.Size = new System.Drawing.Size(64, 17);
+            this.radioButton20.TabIndex = 24;
+            this.radioButton20.TabStop = true;
+            this.radioButton20.Text = "Helldoor";
+            this.radioButton20.UseVisualStyleBackColor = true;
+            this.radioButton20.CheckedChanged += new System.EventHandler(this.radioButton20_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,6 +397,8 @@
             this.ClientSize = new System.Drawing.Size(199, 395);
             this.Controls.Add(this.radioButton16);
             this.Controls.Add(this.radioButton18);
+            this.Controls.Add(this.radioButton20);
+            this.Controls.Add(this.radioButton19);
             this.Controls.Add(this.radioButton17);
             this.Controls.Add(this.radioButton15);
             this.Controls.Add(this.radioButton14);
@@ -433,5 +461,7 @@
         private System.Windows.Forms.RadioButton radioButton16;
         private System.Windows.Forms.RadioButton radioButton17;
         private System.Windows.Forms.RadioButton radioButton18;
+        private System.Windows.Forms.RadioButton radioButton19;
+        private System.Windows.Forms.RadioButton radioButton20;
     }
 }

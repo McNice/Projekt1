@@ -13,9 +13,10 @@ namespace Game
         protected int recX = 0;
         protected float animationSpeed;
         protected float time = 0;
-        protected bool start = true;
+        public bool start = true;
 
-        public Animated(Vector2 pos, string texName, float animationSpeed) : base(pos, texName)
+        public Animated(Vector2 pos, string texName, float animationSpeed)
+            : base(pos, texName)
         {
             this.pos = pos;
             this.tex = Game1.mediaManager.Texture(texName);
@@ -34,7 +35,7 @@ namespace Game
                 if (start)
                     recX += 100;
                 if (!start)
-                    recX -= 100; 
+                    recX -= 100;
                 time = 0;
             }
             Rec();
@@ -42,7 +43,7 @@ namespace Game
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 1);
+            spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 0.4f);
         }
 
         public virtual Rectangle Rec()

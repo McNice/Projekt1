@@ -15,9 +15,11 @@ namespace Game
 
         List<Player> players = new List<Player>();
         List<string> bricks = new List<string>();
+        List<string> grass = new List<string>();
 
         Map map;
         public static string path = "../../../../../../Maps/";
+        KeyboardState ks, oldks;
 
         public Manager()
         {
@@ -26,8 +28,17 @@ namespace Game
             bricks.Add("Fine Brick 3");
             bricks.Add("Fine Brick 4");
             bricks.Add("Fine Brick 5");
+            grass.Add("Low Grass");
+            grass.Add("Low Grass");
+            grass.Add("Low Grass");
+            grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
+<<<<<<< HEAD
             map.LoadMap("s1", bricks, rng);
+=======
+
+            map.LoadMap("a4", bricks, grass, rng);
+>>>>>>> a82788ca8969b3bf105e242dc2369ca52c6c64a4
         }
 
         public void LoadContent()
@@ -37,32 +48,21 @@ namespace Game
 
         public void Update(GameTime gameTime)
         {
+            ks = Keyboard.GetState();
             foreach (Player p in players)
             {
                 p.Update(gameTime);
-                CollisionJohan(p);
+                CollisionJohan(p, gameTime);
                 //             LadderClimb(p);
             }
-            foreach (Tile t in map.mapArray)
-            {
-                if (t is Animated)
-                {
-                    (t as Animated).Update(gameTime); 
-                }
-                if (t is ButtonLever && Keyboard.GetState().IsKeyDown(Keys.G) && (t as ButtonLever).on == false)
-                {
-                    (t as ButtonLever).on = true;
-                }
-                if (t is ButtonLever && Keyboard.GetState().IsKeyDown(Keys.H) && (t as ButtonLever).on == true)
-                {
-                    (t as ButtonLever).on = false;
-                }
-            }
+            oldks = ks;
         }
 
-        void CollisionJohan(Player p)
+        void CollisionJohan(Player p, GameTime gameTime)
         {
+            p.onLadder = false;
             foreach (Tile t in map.mapArray)
+            {
                 if (t is SolidBlock)
                     if (t.Bounds().Intersects(p.BoundsStatic()))
                     {
@@ -77,6 +77,43 @@ namespace Game
                         else
                             p.Collision(t.Bounds());
                     }
+                if (t is Door)
+                {
+                    if (p.BoundsStatic().Intersects((t as Door).Bounds()) && (t as Door).start == true)
+                    {
+                        p.Collision((t as Door).Bounds());
+                    }
+                    if (KeyClick(Keys.Enter) && (t as Door).start == true)
+                    {
+                        (t as Door).start = false;
+                    }
+
+
+                    ///Behover fixas!!
+                    //else if (KeyClick(Keys.Enter) && (t as Door).start == false)
+                    //{
+                    //    (t as Door).start = true;
+                    //}
+                }
+                if (t is Animated)
+                {
+                    (t as Animated).Update(gameTime);
+                }
+                if (t is ButtonLever && p.BoundsStatic().Intersects(t.Bounds()))
+                {
+                    if (KeyDown(Keys.G))
+                    {
+                        (t as ButtonLever).on = true;
+                    }
+                    if (KeyDown(Keys.H))
+                    {
+                        (t as ButtonLever).on = false;
+                    }
+                }
+                if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
+                    p.onLadder = true;
+
+            }
         }
 
         bool CollisionCheck(Player p, Tile t, Keys key)
@@ -84,7 +121,7 @@ namespace Game
             int direction = 1;
             if (key == Keys.A)
                 direction = -1;
-            if (p.Bounds(p.position, p.runningSpeed * direction).Intersects(t.Bounds()))
+            if (p.Bounds(p.pos, p.runningSpeed * direction).Intersects(t.Bounds()))
                 return true;
             return false;
         }
@@ -120,9 +157,9 @@ namespace Game
             {
                 foreach (Tile s in map.mapArray)
                 {
-                    if (s is SolidBlock && p.position.Y < s.pos.Y && ColCheck(p, s))
+                    if (s is SolidBlock && p.pos.Y < s.pos.Y && ColCheck(p, s))
                     {
-                        p.position.Y = s.pos.Y - 2 * Game1.TILESIZE;
+                        p.pos.Y = s.pos.Y - 2 * Game1.TILESIZE;
                         p.velocity.Y = 0;
                         isOnGround = true;
                         break;
@@ -133,9 +170,9 @@ namespace Game
             {
                 foreach (Tile s in map.mapArray)
                 {
-                    if (s is SolidBlock && p.position.Y > s.pos.Y && ColCheck(p, s))
+                    if (s is SolidBlock && p.pos.Y > s.pos.Y && ColCheck(p, s))
                     {
-                        p.position.Y = s.pos.Y + Game1.TILESIZE;
+                        p.pos.Y = s.pos.Y + Game1.TILESIZE;
                         p.velocity.Y = 0;
                         isOnGround = true;
                         break;
@@ -153,14 +190,14 @@ namespace Game
                     int climingSpeed = 3;
                     if (KeyDown(Keys.W) && ColCheck(p, Keys.W, climingSpeed))
                     {
-                        p.position.Y -= climingSpeed;
+                        p.pos.Y -= climingSpeed;
                     }
                     else if (KeyDown(Keys.S) && ColCheck(p, Keys.S, climingSpeed))
                     {
-                        p.position.Y += climingSpeed;
+                        p.pos.Y += climingSpeed;
                     }
                     if (KeyUp(Keys.D) && KeyUp(Keys.A))
-                        p.position.X = t.pos.X;
+                        p.pos.X = t.pos.X;
 
                     break;
                 }
@@ -175,9 +212,9 @@ namespace Game
                 if (t is SolidBlock)
                 {
                     Rectangle tileRec = t.Bounds();
-                    if (key == Keys.S && new Rectangle((int)(p.position.X * i), (int)((p.position.Y + 3) * i), Game1.TILESIZE * i, Game1.TILESIZE * i * 2).Intersects(new Rectangle(tileRec.X * i, tileRec.Y * i, tileRec.Width * i, tileRec.Height * i)))
+                    if (key == Keys.S && new Rectangle((int)(p.pos.X * i), (int)((p.pos.Y + 3) * i), Game1.TILESIZE * i, Game1.TILESIZE * i * 2).Intersects(new Rectangle(tileRec.X * i, tileRec.Y * i, tileRec.Width * i, tileRec.Height * i)))
                         return false;
-                    else if (key == Keys.W && new Rectangle((int)(p.position.X * i), (int)((p.position.Y - 3) * i), Game1.TILESIZE * i, Game1.TILESIZE * i * 2).Intersects(new Rectangle(tileRec.X * i, tileRec.Y * i, tileRec.Width * i, tileRec.Height * i)))
+                    else if (key == Keys.W && new Rectangle((int)(p.pos.X * i), (int)((p.pos.Y - 3) * i), Game1.TILESIZE * i, Game1.TILESIZE * i * 2).Intersects(new Rectangle(tileRec.X * i, tileRec.Y * i, tileRec.Width * i, tileRec.Height * i)))
                         return false;
                 }
             }
@@ -187,14 +224,21 @@ namespace Game
 
         bool KeyDown(Keys key)
         {
-            if (Keyboard.GetState().IsKeyDown(key))
+            if (ks.IsKeyDown(key))
                 return true;
             return false;
         }
 
         bool KeyUp(Keys key)
         {
-            if (Keyboard.GetState().IsKeyUp(key))
+            if (ks.IsKeyUp(key))
+                return true;
+            return false;
+        }
+
+        bool KeyClick(Keys key)
+        {
+            if (ks.IsKeyDown(key) && oldks.IsKeyUp(key))
                 return true;
             return false;
         }
@@ -202,7 +246,7 @@ namespace Game
         bool ColCheck(Player p, Tile s)
         {
             int i = 10000;
-            if (new Rectangle((int)(p.position.X * i), (int)(p.position.Y * i), Game1.TILESIZE * i, 2 * Game1.TILESIZE * i).Intersects(new Rectangle(s.Bounds().X * i, s.Bounds().Y * i, s.Bounds().Width * i, s.Bounds().Height * i)))
+            if (new Rectangle((int)(p.pos.X * i), (int)(p.pos.Y * i), Game1.TILESIZE * i, 2 * Game1.TILESIZE * i).Intersects(new Rectangle(s.Bounds().X * i, s.Bounds().Y * i, s.Bounds().Width * i, s.Bounds().Height * i)))
                 return true;
             else
                 return false;
@@ -212,12 +256,12 @@ namespace Game
         {
             if (!multiPlayer)
             {
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(600, 400), "Player1"));
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint, "Player1"));
             }
             else if (multiPlayer)
             {
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(300, 300), "Player1"));
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), new Vector2(400, 300), "Player2"));
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint, "Player1"));
+                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint + new Vector2(50, 0), "Player2"));
             }
         }
 

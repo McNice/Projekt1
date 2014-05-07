@@ -14,16 +14,20 @@ namespace Game
         public int width, height;
         public Tile[,] mapArray;
         public string dir = "../../../../../../Maps/";
+        public Vector2 spawnPoint;
+        Random rng;
 
         public Map(int width, int height)
         {
             this.width = width;
             this.height = height;
             mapArray = new Tile[width, height];
+            rng = new Random();
         }
 
-        public void LoadMap(string mapName, List<string> bricks, Random rng)
+        public void LoadMap(string mapName, List<string> bricks, List<string> grass, Random rng)
         {
+            spawnPoint = new Vector2(600);
             string[,] tempMap = new string[1, 1];
             int line = 0;
 
@@ -86,15 +90,15 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "7")
                     {
-                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 2);                      
+                        mapArray[x, y] = new Slope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-L", 2);
                     }
                     else if (tempMap[x, y] == "8")
                     {
-                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", 100f);
+                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", (float)rng.Next(100, 150));
                     }
                     else if (tempMap[x, y] == "9")
                     {
-                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Low Grass");
+                        mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), grass[rng.Next(grass.Count)]);
                     }
                     else if (tempMap[x, y] == "10")
                     {
@@ -110,19 +114,19 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "13")
                     {
-                        mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Door-spritesheet", 100f);
+                        mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Door-spritesheet", 50f);
                     }
                     else if (tempMap[x, y] == "14")
                     {
-                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 100f);
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 20f);
                     }
                     else if (tempMap[x, y] == "15")
                     {
-                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R", 2);
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R", 1);
                     }
                     else if (tempMap[x, y] == "16")
                     {
-                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-L", 2);
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-L", 3);
                     }
                     else if (tempMap[x, y] == "17")
                     {
@@ -130,7 +134,15 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "18")
                     {
-                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 2);
+                        mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "TunnelRoof-R", 4);
+                    }
+                    else if (tempMap[x, y] == "19")
+                    {
+                        spawnPoint = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE));
+                    }
+                    else if (tempMap[x, y] == "20")
+                    {
+                        mapArray[x, y] = new HellDoor(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Hell-door", 100f);
                     }
                 }
             }
