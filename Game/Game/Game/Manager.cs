@@ -78,10 +78,10 @@ namespace Game
                     }
                         ///
                         ///Behover fixas!!
-                    else if (KeyClick(Keys.Enter) && (t as Door).start == false)
-                    {
-                        (t as Door).start = true;
-                    }
+                    //else if (KeyClick(Keys.Enter) && (t as Door).start == false)
+                    //{
+                    //    (t as Door).start = true;
+                    //}
                 }
                 if (t is Animated)
                 {
@@ -220,6 +220,7 @@ namespace Game
                 return true;
             return false;
         }
+        
         bool KeyClick(Keys key)
         {
             if (ks.IsKeyDown(key) && oldks.IsKeyUp(key))
