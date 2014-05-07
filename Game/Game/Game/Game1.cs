@@ -115,7 +115,7 @@ namespace Game
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
             switch (gameState)
             {
                 case GameState.Title:

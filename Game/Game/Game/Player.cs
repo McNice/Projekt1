@@ -84,7 +84,7 @@ namespace Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, new Rectangle(0, 0, Game1.TILESIZE, 2 * Game1.TILESIZE), Color.White);
+            spriteBatch.Draw(texture, position, new Rectangle(0, 0, Game1.TILESIZE, 2 * Game1.TILESIZE), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.5f);
             particle.Draw(spriteBatch);
         }
 

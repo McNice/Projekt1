@@ -62,7 +62,7 @@ namespace Game
             Vector2 pos = new Vector2(((Game1.TILESIZE * Game1.TILESX) / 2) - (Game1.StartScreenFont.MeasureString(name).Length() / 2), f);
             if (x != i)
             {
-                sb.DrawString(Game1.StartScreenFont, name, pos, Color.Gray);
+                sb.DrawString(Game1.StartScreenFont, name, pos, Color.Gray, 0, Vector2.Zero, 1f, SpriteEffects.None, 1);
             }
             else
             {

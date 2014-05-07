@@ -14,9 +14,9 @@ namespace Game
         {
             start = false;
         }
-        public override void Update(GameTime gameTime)
-        {
-        }
+        //public override void Update(GameTime gameTime)
+        //{
+        //}
 
         public override Rectangle Rec()
         {
