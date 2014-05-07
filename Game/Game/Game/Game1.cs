@@ -17,6 +17,7 @@ namespace Game
         public static Texture2D testTex;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Timer timer;
         public static SpriteFont StartScreenFont;
         StartScreen startScreen;
         public static int TILESIZE = 48;
@@ -56,6 +57,7 @@ namespace Game
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
+            timer = new Timer(Game1.StartScreenFont);
             manager.LoadContent();
             startScreen = new StartScreen();
 
@@ -66,6 +68,7 @@ namespace Game
         protected override void Update(GameTime gameTime)
         {
             KeyMouseReader.Update();
+            
             if (KeyMouseReader.KeyPressed(Keys.Escape))
                 this.Exit();
 
@@ -105,6 +108,7 @@ namespace Game
                     break;
                 case GameState.Play:
                     manager.Update(gameTime);
+                    timer.Update(gameTime);
                     break;
                 case GameState.End:
                     break;
@@ -140,10 +144,12 @@ namespace Game
                     break;
                 case GameState.Play:
                     manager.Draw(spriteBatch);
+                    timer.Draw(spriteBatch);
                     break;
                 case GameState.End:
                     break;
             }
+            
             spriteBatch.End();
             base.Draw(gameTime);
         }

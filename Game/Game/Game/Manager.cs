@@ -33,6 +33,7 @@ namespace Game
             grass.Add("Low Grass");
             grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
+
             map.LoadMap("a4", bricks, grass, rng);
         }
 

@@ -96,6 +96,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="MM.cs" />
     <Compile Include="SolidBlock.cs" />
+    <Compile Include="Timer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
