@@ -157,8 +157,8 @@ namespace Game
                 position.X += runningSpeed;
             }
             else
-                            runningSpeed = 0;
-            
+                runningSpeed = 0;
+
 
         }
 
