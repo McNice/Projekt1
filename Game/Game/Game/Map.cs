@@ -114,7 +114,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "13")
                     {
-                        mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Door-spritesheet", 100f);
+                        mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Door-spritesheet", 50f);
                     }
                     else if (tempMap[x, y] == "14")
                     {

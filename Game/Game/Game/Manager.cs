@@ -63,6 +63,17 @@ namespace Game
                         else
                             p.Collision(t.Bounds());
                     }
+                if (t is Door)
+                {
+                    if (p.BoundsStatic().Intersects((t as Door).Bounds()) && (t as Door).start == true)
+                    {
+                        p.Collision((t as Door).Bounds());
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                    {
+                        (t as Door).start = false;
+                    }
+                }
                 if (t is Animated)
                 {
                     (t as Animated).Update(gameTime);

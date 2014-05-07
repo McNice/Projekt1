@@ -13,7 +13,7 @@ namespace Game
         protected int recX = 0;
         protected float animationSpeed;
         protected float time = 0;
-        protected bool start = true;
+        public bool start = true;
 
         public Animated(Vector2 pos, string texName, float animationSpeed)
             : base(pos, texName)
@@ -49,6 +49,11 @@ namespace Game
         public virtual Rectangle Rec()
         {
             return new Rectangle(recX, 0, 100, 100);
+        }
+
+        public override Rectangle Bounds()
+        {
+            return new Rectangle((int)pos.X, (int)pos.Y, Game1.TILESIZE, Game1.TILESIZE * 2);
         }
     }
 }
