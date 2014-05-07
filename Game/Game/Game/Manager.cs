@@ -19,6 +19,7 @@ namespace Game
 
         Map map;
         public static string path = "../../../../../../Maps/";
+        KeyboardState ks, oldks;
 
         public Manager()
         {
@@ -42,12 +43,14 @@ namespace Game
 
         public void Update(GameTime gameTime)
         {
+            ks = Keyboard.GetState();
             foreach (Player p in players)
             {
                 p.Update(gameTime);
                 CollisionJohan(p, gameTime);
                 //             LadderClimb(p);
             }
+            oldks = ks;
         }
 
         void CollisionJohan(Player p, GameTime gameTime)
@@ -74,9 +77,16 @@ namespace Game
                     {
                         p.Collision((t as Door).Bounds());
                     }
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                    if (KeyClick(Keys.Enter) && (t as Door).start == true)
+                    {
                         (t as Door).start = false;
-                    
+                    }
+                        
+                        ///Behover fixas!!
+                    else if (KeyClick(Keys.Enter) && (t as Door).start == false)
+                    {
+                        (t as Door).start = true;
+                    }
                 }
                 if (t is Animated)
                 {
@@ -84,11 +94,11 @@ namespace Game
                 }
                 if (t is ButtonLever && p.BoundsStatic().Intersects(t.Bounds()))
                 {
-                    if (Keyboard.GetState().IsKeyDown(Keys.G))
+                    if (KeyDown(Keys.G))
                     {
                         (t as ButtonLever).on = true; 
                     }
-                    if (Keyboard.GetState().IsKeyDown(Keys.H))
+                    if (KeyDown(Keys.H))
                     {
                         (t as ButtonLever).on = false;
                     }
@@ -204,14 +214,20 @@ namespace Game
 
         bool KeyDown(Keys key)
         {
-            if (Keyboard.GetState().IsKeyDown(key))
+            if (ks.IsKeyDown(key))
                 return true;
             return false;
         }
 
         bool KeyUp(Keys key)
         {
-            if (Keyboard.GetState().IsKeyUp(key))
+            if (ks.IsKeyUp(key))
+                return true;
+            return false;
+        }
+        bool KeyClick(Keys key)
+        {
+            if (ks.IsKeyDown(key) && oldks.IsKeyUp(key))
                 return true;
             return false;
         }

@@ -43,17 +43,12 @@ namespace Game
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 1);
         }
 
         public virtual Rectangle Rec()
         {
             return new Rectangle(recX, 0, 100, 100);
-        }
-
-        public override Rectangle Bounds()
-        {
-            return new Rectangle((int)pos.X, (int)pos.Y, Game1.TILESIZE, Game1.TILESIZE * 2);
         }
     }
 }

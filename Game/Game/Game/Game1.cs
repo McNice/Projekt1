@@ -131,11 +131,11 @@ namespace Game
                 case GameState.Credits:
                     spriteBatch.Draw(mediaManager.Texture("Black Tile"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
                     startScreen.Button(100, "Credits", spriteBatch, 9);
-                    startScreen.Button(200, "Anton - Gjorde allt", spriteBatch, 9);
+                    startScreen.Button(200, "Anton - Gjorde ''allt''", spriteBatch, 9);
                     startScreen.Button(300, "Daniel - Hämtade kaffe", spriteBatch, 9);
                     startScreen.Button(400, "Johan - Hämtade kaffe", spriteBatch, 9);
                     startScreen.Button(500, "Kamil - Hämtade kaffe", spriteBatch, 9);
-                    startScreen.Button(600, "Simon - Hämtade inget kaffe", spriteBatch, 9);
+                    startScreen.Button(600, "Simon - is Gay", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 4);
                     break;
                 case GameState.Play:
