@@ -27,7 +27,7 @@ namespace Game
         KeyboardState ks, oldks;
 
         PlayerPoints pPoints;
-        public bool onGround;
+        public bool onGround, onLadder;
 
         public Player(Texture2D texture, Vector2 position, string player)
         {
@@ -48,6 +48,8 @@ namespace Game
             else if (KeyDown(Keys.D))
                 PlayerMovement(Keys.D);
             else { runningSpeed = 0; }
+            if (KeyDown(Keys.W) && onLadder) { }
+            if (KeyDown(Keys.S) && onLadder) { }
 
             time = gameTime.ElapsedGameTime.TotalSeconds;
             if (!onGround)
@@ -97,15 +99,6 @@ namespace Game
                 position.Y = rect.Bottom;
                 velocity.Y = 0;
             }
-            if (rect.Contains(new Point((int)(position.X + pPoints.bottom.X), (int)(position.Y + pPoints.bottom.Y))))
-            {
-                if (velocity.Y > 0)
-                {
-                    position.Y = rect.Top - pPoints.bottom.Y;
-                    velocity.Y = 0;
-                    onGround = true;
-                }
-            }
             if (rect.Contains(new Point((int)(position.X + pPoints.left1.X), (int)(position.Y + pPoints.left1.Y))) ||
                 rect.Contains(new Point((int)(position.X + pPoints.left2.X), (int)(position.Y + pPoints.left2.Y))))
             {
@@ -115,8 +108,17 @@ namespace Game
             if (rect.Contains(new Point((int)(position.X + pPoints.right1.X), (int)(position.Y + pPoints.right1.Y))) ||
                 rect.Contains(new Point((int)(position.X + pPoints.right2.X), (int)(position.Y + pPoints.right2.Y))))
             {
-                position.X = rect.Left - pPoints.right1.X;
+                position.X = rect.Left - 48;
                 velocity.X = 0;
+            }
+            if (rect.Contains(new Point((int)(position.X + pPoints.bottom.X), (int)(position.Y + pPoints.bottom.Y))))
+            {
+                if (velocity.Y > 0)
+                {
+                    position.Y = rect.Top - pPoints.bottom.Y;
+                    velocity.Y = 0;
+                    onGround = true;
+                }
             }
         }
 
