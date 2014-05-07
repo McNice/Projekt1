@@ -13,7 +13,7 @@ namespace Game
         protected int recX = 0;
         protected float animationSpeed;
         protected float time = 0;
-        protected bool start = true;
+        public bool start = true;
 
         public Animated(Vector2 pos, string texName, float animationSpeed)
             : base(pos, texName)
@@ -43,7 +43,7 @@ namespace Game
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 1);
         }
 
         public virtual Rectangle Rec()
