@@ -150,11 +150,11 @@ namespace Game
 
             else if (key == Keys.A)
             {
-                if (runningSpeed <= maxSpeed)
+                if (runningSpeed >= -maxSpeed)
                 {
-                    runningSpeed += acceleration;
+                    runningSpeed -= acceleration;
                 }
-                position.X -= runningSpeed;
+                position.X += runningSpeed;
             }
             else { runningSpeed = 0; }
 
