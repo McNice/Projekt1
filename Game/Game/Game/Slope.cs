@@ -51,9 +51,9 @@ namespace Game
         {
             foreach (Rectangle r in rectList)
             {
-                sb.Draw(Game1.testTex, r, Color.Red);
+                //sb.Draw(Game1.testTex, r, Color.Red);
             }
-            //     base.Draw(sb);
+            base.Draw(sb);
         }
     }
 }
