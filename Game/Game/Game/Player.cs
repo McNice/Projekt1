@@ -50,9 +50,9 @@ namespace Game
         {
             ks = Keyboard.GetState();
             if (KeyDown(keys[0]))
-                PlayerMovement(Keys.A);
+                PlayerMovement(keys[0]);
             else if (KeyDown(keys[1]))
-                PlayerMovement(Keys.D);
+                PlayerMovement(keys[1]);
             else { runningSpeed = 0; }
 
             time = gameTime.ElapsedGameTime.TotalSeconds;
@@ -153,7 +153,7 @@ namespace Game
         public void PlayerMovement(Keys key)
         {
 
-            if (key == Keys.D)
+            if (key == Keys.D || key == Keys.Right)
             {
                 if (runningSpeed <= maxSpeed)
                 {
@@ -162,7 +162,7 @@ namespace Game
                 pos.X += runningSpeed;
             }
 
-            else if (key == Keys.A)
+            else if (key == Keys.A || key == Keys.Left)
             {
                 if (runningSpeed >= -maxSpeed)
                 {
