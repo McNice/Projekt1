@@ -14,7 +14,7 @@ namespace Game
         public int width, height;
         public Tile[,] mapArray;
         public string dir = "../../../../../../Maps/";
-        public Vector2 spawnPoint;
+        public Vector2 spawnPoint, spawnPoint2;
         Random rng;
 
         public Map(int width, int height)
@@ -28,6 +28,7 @@ namespace Game
         public void LoadMap(string mapName, List<string> bricks, List<string> grass, Random rng)
         {
             spawnPoint = new Vector2(600);
+            spawnPoint2 = new Vector2(600);
             string[,] tempMap = new string[1, 1];
             int line = 0;
 
@@ -147,6 +148,10 @@ namespace Game
                     else if (tempMap[x, y] == "19")
                     {
                         spawnPoint = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE));
+                    }
+                    else if (tempMap[x, y] == "21")
+                    {
+                        spawnPoint2 = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE));
                     }
                 }
             }
