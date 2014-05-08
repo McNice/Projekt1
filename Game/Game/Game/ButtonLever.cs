@@ -9,8 +9,8 @@ namespace Game
     public class ButtonLever : Animated
     {
         public bool on;
-        public ButtonLever(Vector2 pos, string texName, float animationSpeed)
-            : base(pos, texName, animationSpeed)
+        public ButtonLever(Vector2 pos, string texName, float animationSpeed, int channel)
+            : base(pos, texName, animationSpeed, channel)
         {
             start = false;
         }

@@ -9,8 +9,8 @@ namespace Game
 {
     public class HellDoor : Animated
     {
-        public HellDoor(Vector2 pos, string texName, float animationSpeed)
-            : base(pos, texName, animationSpeed)
+        public HellDoor(Vector2 pos, string texName, float animationSpeed, int channel)
+            : base(pos, texName, animationSpeed, channel)
         {   }
 
         public override Rectangle Rec()

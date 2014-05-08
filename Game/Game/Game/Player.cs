@@ -26,6 +26,8 @@ namespace Game
         Vector2 particleVec = new Vector2(5, 40);
         KeyboardState ks, oldks;
 
+        Keys[] keys;
+
 
         Vector2[] colP = { new Vector2(10, 0), new Vector2(30, 0), 
                              new Vector2(0, 10), new Vector2(48, 10), 
@@ -34,21 +36,22 @@ namespace Game
 
         public bool jumping, onLadder;
 
-        public Player(Texture2D texture, Vector2 pos, string player)
+        public Player(Texture2D texture, Vector2 pos, string player, Keys[] keys)
         {
             this.texture = texture;
             this.pos = pos;
             this.player = player;
             this.gravity = new Vector2(0, 700);
             particle = new ParticleEngine("Smoketex", pos + particleVec);
+            this.keys = keys;
         }
 
         public void Update(GameTime gameTime)
         {
             ks = Keyboard.GetState();
-            if (KeyDown(Keys.A))
+            if (KeyDown(keys[0]))
                 PlayerMovement(Keys.A);
-            else if (KeyDown(Keys.D))
+            else if (KeyDown(keys[1]))
                 PlayerMovement(Keys.D);
             else { runningSpeed = 0; }
 
@@ -56,9 +59,9 @@ namespace Game
             pos.X += runningSpeed * (float)time;
             if (onLadder)
             {
-                if (KeyDown(Keys.W))
+                if (KeyDown(keys[2]))
                     pos.Y -= 100 * (float)time;
-                if (KeyDown(Keys.S))
+                if (KeyDown(keys[3]))
                     pos.Y += 100 * (float)time;
             }
             else
@@ -85,7 +88,7 @@ namespace Game
             //}
             oldks = ks;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !jumping)
+            if (KeyDown(keys[4]) && !jumping)
             {
                 jumping = true;
                 velocity.Y = -300;
@@ -169,14 +172,12 @@ namespace Game
             }
             else
                 runningSpeed = 0;
-
-
         }
 
-        public Rectangle Bounds(Vector2 pos, float RS)
-        {
-            return new Rectangle((int)(pos.X + RS), (int)pos.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
-        }
+        //public Rectangle Bounds(Vector2 pos, float RS)
+        //{
+        //    return new Rectangle((int)(pos.X + RS), (int)pos.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
+        //}
 
         public Rectangle BoundsStatic()
         {

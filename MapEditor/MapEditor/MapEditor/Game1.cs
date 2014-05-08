@@ -37,20 +37,22 @@ namespace MapEditor
         public static readonly int TYPE8 = 8;
         public static readonly int TYPE9 = 9;
         public static readonly int TYPE10 = 10;
-        public static readonly int TYPE11 = 11;
-        public static readonly int TYPE12 = 12;
-        public static readonly int TYPE13 = 13;
-        public static readonly int TYPE14 = 14;
+        public static readonly int TYPE11 = 500;
+        public static readonly int TYPE12 = 600;
+        public static readonly int TYPE13 = 700;
+        public static readonly int TYPE14 = 800;
         public static readonly int TYPE15 = 15;
         public static readonly int TYPE16 = 16;
         public static readonly int TYPE17 = 17;
         public static readonly int TYPE18 = 18;
         public static readonly int TYPE19 = 19;
-        public static readonly int TYPE20 = 20;
+        public static readonly int TYPE20 = 900;
+        public static readonly int TYPE21 = 21;
 
         public int type;
         public int width = 40;
         public int height = 20;
+        public static int channel = 0;
 
         Map map;
 
@@ -114,7 +116,12 @@ namespace MapEditor
                 {
                     int x = Math.Abs(mS.X / tileSize);
                     int y = Math.Abs(mS.Y / tileSize);
-                    map.EditTile(x, y, type);
+                    if (type >= 500)
+                    {
+                        map.EditTile(x, y, type + channel);
+                    }
+                    else
+                        map.EditTile(x, y, type);
 
                 }
             }

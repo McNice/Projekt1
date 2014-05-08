@@ -56,13 +56,17 @@
             this.radioButton18 = new System.Windows.Forms.RadioButton();
             this.radioButton19 = new System.Windows.Forms.RadioButton();
             this.radioButton20 = new System.Windows.Forms.RadioButton();
+            this.radioButton21 = new System.Windows.Forms.RadioButton();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(148, 270);
+            this.numericUpDown1.Location = new System.Drawing.Point(148, 328);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             5,
             0,
@@ -80,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(107, 272);
+            this.label1.Location = new System.Drawing.Point(107, 330);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 3;
@@ -89,7 +93,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(107, 295);
+            this.label2.Location = new System.Drawing.Point(107, 353);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 5;
@@ -97,7 +101,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(148, 293);
+            this.numericUpDown2.Location = new System.Drawing.Point(148, 351);
             this.numericUpDown2.Minimum = new decimal(new int[] {
             5,
             0,
@@ -114,7 +118,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 306);
+            this.button1.Location = new System.Drawing.Point(12, 364);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 28);
             this.button1.TabIndex = 6;
@@ -124,7 +128,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 272);
+            this.button2.Location = new System.Drawing.Point(12, 330);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 28);
             this.button2.TabIndex = 7;
@@ -134,7 +138,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 340);
+            this.button3.Location = new System.Drawing.Point(12, 398);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(92, 28);
             this.button3.TabIndex = 9;
@@ -144,7 +148,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(110, 348);
+            this.textBox1.Location = new System.Drawing.Point(110, 406);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(74, 20);
             this.textBox1.TabIndex = 10;
@@ -390,11 +394,48 @@
             this.radioButton20.UseVisualStyleBackColor = true;
             this.radioButton20.CheckedChanged += new System.EventHandler(this.radioButton20_CheckedChanged);
             // 
+            // radioButton21
+            // 
+            this.radioButton21.AutoSize = true;
+            this.radioButton21.Location = new System.Drawing.Point(13, 247);
+            this.radioButton21.Name = "radioButton21";
+            this.radioButton21.Size = new System.Drawing.Size(88, 17);
+            this.radioButton21.TabIndex = 25;
+            this.radioButton21.TabStop = true;
+            this.radioButton21.Text = "SpawnPoint2";
+            this.radioButton21.UseVisualStyleBackColor = true;
+            this.radioButton21.CheckedChanged += new System.EventHandler(this.radioButton21_CheckedChanged);
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(12, 304);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(47, 20);
+            this.numericUpDown3.TabIndex = 26;
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 285);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Channel";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(199, 395);
+            this.ClientSize = new System.Drawing.Size(199, 440);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.radioButton21);
             this.Controls.Add(this.radioButton16);
             this.Controls.Add(this.radioButton18);
             this.Controls.Add(this.radioButton20);
@@ -425,9 +466,9 @@
             this.Controls.Add(this.numericUpDown1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,5 +504,8 @@
         private System.Windows.Forms.RadioButton radioButton18;
         private System.Windows.Forms.RadioButton radioButton19;
         private System.Windows.Forms.RadioButton radioButton20;
+        private System.Windows.Forms.RadioButton radioButton21;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label label3;
     }
 }

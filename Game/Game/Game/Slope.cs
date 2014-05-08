@@ -49,10 +49,10 @@ namespace Game
 
         public override void Draw(SpriteBatch sb)
         {
-            foreach (Rectangle r in rectList)
-            {
-                //sb.Draw(Game1.testTex, r, Color.Red);
-            }
+            //foreach (Rectangle r in rectList)
+            //{
+            //    //sb.Draw(Game1.testTex, r, Color.Red);
+            //}
             base.Draw(sb);
         }
     }

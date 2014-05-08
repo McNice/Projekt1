@@ -94,7 +94,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "8")
                     {
-                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", (float)rng.Next(100, 150));
+                        mapArray[x, y] = new Animated(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Swinging Lamp-spritesheet", (float)rng.Next(100, 150), null);
                     }
                     else if (tempMap[x, y] == "9")
                     {
@@ -104,22 +104,30 @@ namespace Game
                     {
                         mapArray[x, y] = new Tile(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Tall Grass");
                     }
-                    else if (tempMap[x, y] == "11")
+
+                    #region Interact
+                    else if (Convert.ToInt32(tempMap[x, y]) >= 500 && Convert.ToInt32(tempMap[x, y]) < 600)
                     {
-                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - L", 100f);
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - L", 100f, Convert.ToInt32(tempMap[x, y]) - 500);
                     }
-                    else if (tempMap[x, y] == "12")
+                    else if (Convert.ToInt32(tempMap[x, y]) >= 600 && Convert.ToInt32(tempMap[x, y]) < 700)
                     {
-                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - R", 100f);
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - R", 100f, Convert.ToInt32(tempMap[x, y]) - 600);
                     }
-                    else if (tempMap[x, y] == "13")
+                    else if (Convert.ToInt32(tempMap[x, y]) >= 700 && Convert.ToInt32(tempMap[x, y]) < 800)
                     {
-                        mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Door-spritesheet", 50f);
+                        mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE - (Game1.TILESIZE / 2) + 2, y * Game1.TILESIZE), "Door-spritesheet", 50f, Convert.ToInt32(tempMap[x, y]) - 700);
                     }
-                    else if (tempMap[x, y] == "14")
+                    else if (Convert.ToInt32(tempMap[x, y]) >= 800 && Convert.ToInt32(tempMap[x, y]) < 900)
                     {
-                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 20f);
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 20f, Convert.ToInt32(tempMap[x, y]) - 800);
                     }
+                    else if (Convert.ToInt32(tempMap[x, y]) >= 900 && Convert.ToInt32(tempMap[x, y]) < 1000)
+                    {
+                        mapArray[x, y] = new HellDoor(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Hell-door", 100f, Convert.ToInt32(tempMap[x, y]) - 900);
+                    }
+                    #endregion
+
                     else if (tempMap[x, y] == "15")
                     {
                         mapArray[x, y] = new BlackSlope(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Roof-R", 1);
@@ -139,10 +147,6 @@ namespace Game
                     else if (tempMap[x, y] == "19")
                     {
                         spawnPoint = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE));
-                    }
-                    else if (tempMap[x, y] == "20")
-                    {
-                        mapArray[x, y] = new HellDoor(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Hell-door", 100f);
                     }
                 }
             }

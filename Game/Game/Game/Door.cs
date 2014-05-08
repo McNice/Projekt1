@@ -9,8 +9,8 @@ namespace Game
 {
     class Door : Animated
     {
-        public Door(Vector2 pos, string texName, float animationSpeed)
-            : base(pos, texName, animationSpeed)
+        public Door(Vector2 pos, string texName, float animationSpeed, int channel)
+            : base(pos, texName, animationSpeed, channel)
         {
             start = true;
         }

@@ -13,15 +13,17 @@ namespace Game
         protected int recX = 0;
         protected float animationSpeed;
         protected float time = 0;
+        public int? channel;
         public bool start = true;
 
-        public Animated(Vector2 pos, string texName, float animationSpeed)
+        public Animated(Vector2 pos, string texName, float animationSpeed, int? channel)
             : base(pos, texName)
         {
             this.pos = pos;
             this.tex = Game1.mediaManager.Texture(texName);
             this.animationSpeed = animationSpeed;
             rec = new Rectangle(0, 0, 100, 100);
+            this.channel = channel;
         }
         public virtual void Update(GameTime gameTime)
         {
