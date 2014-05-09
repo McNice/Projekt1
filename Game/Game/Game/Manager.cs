@@ -254,12 +254,12 @@ namespace Game
         {
             if (!multiPlayer)
             {
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint, "Player1", p1Keys));
+                players.Add(new Player("Gubbsprite", map.spawnPoint, "Player1", p1Keys));
             }
             else if (multiPlayer)
             {
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint, "Player1", p1Keys));
-                players.Add(new Player(Game1.mediaManager.Texture("Monopoly man 50x100"), map.spawnPoint + new Vector2(50, 0), "Player2", p2Keys));
+                players.Add(new Player("Gubbsprite", map.spawnPoint, "Player1", p1Keys));
+                players.Add(new Player("Gubbsprite", map.spawnPoint + new Vector2(50, 0), "Player2", p2Keys));
             }
         }
 

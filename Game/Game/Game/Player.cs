@@ -19,7 +19,7 @@ namespace Game
             acceleration = 0.08f,
             maxSpeed = 3.5f,
             breakSpeed = 0.5f,
-            animationSpeed = 200,
+            animationSpeed = 50,
             animationTime = 0;
         int recX = 0;
         bool running;
@@ -28,6 +28,7 @@ namespace Game
         ParticleEngine particle;
         Vector2 particleVec = new Vector2(5, 40);
         KeyboardState ks, oldks;
+        SpriteEffects spriteEffect;
 
         Keys[] keys;
 
@@ -39,9 +40,9 @@ namespace Game
 
         public bool jumping, onLadder;
 
-        public Player(Texture2D texture, Vector2 pos, string player, Keys[] keys)
+        public Player(string texName, Vector2 pos, string player, Keys[] keys)
         {
-            this.tex = texture;
+            this.tex = Game1.mediaManager.Texture(texName);
             this.pos = pos;
             this.player = player;
             this.gravity = new Vector2(0, 700);
@@ -53,10 +54,21 @@ namespace Game
         {
             ks = Keyboard.GetState();
             if (KeyDown(keys[0]))
+            {
+                spriteEffect = SpriteEffects.None;
                 PlayerMovement(keys[0]);
+                running = true;
+            }
             else if (KeyDown(keys[1]))
+            {
+                spriteEffect = SpriteEffects.FlipHorizontally;
                 PlayerMovement(keys[1]);
-            else { runningSpeed = 0; }
+                running = true;
+            }
+            else { 
+                runningSpeed = 0;
+                running = false;
+            }
 
             time = gameTime.ElapsedGameTime.TotalSeconds;
             pos.X += runningSpeed * (float)time;
@@ -98,11 +110,12 @@ namespace Game
                 pos.Y -= 1;
             }
             jumping = true;
+            Animation(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, SrcRec(), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.5f);
+            spriteBatch.Draw(tex, pos, SrcRec(), Color.White, 0, Vector2.Zero, 0.48f, spriteEffect, 0.5f);
             particle.Draw(spriteBatch);
         }
 
