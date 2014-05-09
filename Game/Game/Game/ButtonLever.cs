@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game
 {
@@ -30,7 +31,10 @@ namespace Game
                     recX -= 100;
                 time = 0;
             }
-            rec = new Rectangle(recX, 0, 100, 100);
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 0.6f);
         }
     }
 }

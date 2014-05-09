@@ -9,7 +9,6 @@ namespace Game
 {
     public class Animated : Tile
     {
-        protected Rectangle rec;
         protected int recX = 0;
         protected float animationSpeed;
         protected float time = 0;
@@ -22,7 +21,6 @@ namespace Game
             this.pos = pos;
             this.tex = Game1.mediaManager.Texture(texName);
             this.animationSpeed = animationSpeed;
-            rec = new Rectangle(0, 0, 100, 100);
             this.channel = channel;
         }
         public virtual void Update(GameTime gameTime)

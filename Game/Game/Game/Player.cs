@@ -10,7 +10,7 @@ namespace Game
 {
     public class Player
     {
-        Texture2D texture;
+        Texture2D tex;
         public Vector2 pos, prevpos;
         public Vector2 velocity;
         Vector2 gravity;
@@ -18,8 +18,11 @@ namespace Game
             runningSpeed = 0,
             acceleration = 0.08f,
             maxSpeed = 3.5f,
-            breakSpeed = 0.5f;
-
+            breakSpeed = 0.5f,
+            animationSpeed = 200,
+            animationTime = 0;
+        int recX = 0;
+        bool running;
         string player;
         double time;
         ParticleEngine particle;
@@ -38,7 +41,7 @@ namespace Game
 
         public Player(Texture2D texture, Vector2 pos, string player, Keys[] keys)
         {
-            this.texture = texture;
+            this.tex = texture;
             this.pos = pos;
             this.player = player;
             this.gravity = new Vector2(0, 700);
@@ -99,7 +102,7 @@ namespace Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, pos, new Rectangle(0, 0, Game1.TILESIZE, 2 * Game1.TILESIZE), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.5f);
+            spriteBatch.Draw(tex, pos, SrcRec(), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.5f);
             particle.Draw(spriteBatch);
         }
 
@@ -182,6 +185,28 @@ namespace Game
         public Rectangle BoundsStatic()
         {
             return new Rectangle((int)pos.X, (int)pos.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
+        }
+
+        public Rectangle SrcRec()
+        {
+            return new Rectangle(recX, 0, 100, 200);
+        }
+
+        public void Animation(GameTime gameTime)
+        {
+            animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (animationTime >= animationSpeed)
+            {
+                if (running)
+                    recX += 100;
+                else
+                    recX = 0;
+                if (recX >= tex.Width - 100)
+                    recX = 0;
+                
+                animationTime = 0;
+            }
+            SrcRec();
         }
     }
 }
