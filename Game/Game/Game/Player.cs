@@ -17,8 +17,8 @@ namespace Game
         public float
             runningSpeed = 0,
             acceleration = 0.08f,
+            deceleration = 0.1f,
             maxSpeed = 3.5f,
-            breakSpeed = 0.5f,
             animationSpeed = 50,
             animationTime = 0;
         int recX = 0;
@@ -57,13 +57,21 @@ namespace Game
                 PlayerMovement(keys[0]);
             else if (KeyDown(keys[1]))
                 PlayerMovement(keys[1]);
-            else { 
-                runningSpeed = 0;
+            else {
+                if (runningSpeed >= 0.1f)
+                {
+                    runningSpeed -= deceleration;
+                }
+                else if (runningSpeed <= -0.1f)
+                {
+                    runningSpeed += deceleration;
+                }
+                else if (runningSpeed >= -0.1f && runningSpeed <= 0.1f)
+                    runningSpeed = 0;
                 running = false;
             }
 
             time = gameTime.ElapsedGameTime.TotalSeconds;
-            pos.X += runningSpeed * (float)time;
             if (onLadder)
             {
                 if (KeyDown(keys[2]))
@@ -88,11 +96,6 @@ namespace Game
             particle.pos = pos + particleVec;
             particle.Update(gameTime);
 
-            //if (Math.Abs(velocity.Y) < 12 && ks.IsKeyDown(Keys.Space) && oldks.IsKeyUp(Keys.Space))
-            //{
-            //    onGround = false;
-            //    velocity.Y = -400;
-            //}
             oldks = ks;
 
             if (KeyDown(keys[4]) && !jumping)
@@ -102,7 +105,8 @@ namespace Game
                 pos.Y -= 1;
             }
             jumping = true;
-            Animation(gameTime);
+            pos.X += runningSpeed;
+            //Animation(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -167,7 +171,6 @@ namespace Game
                 {
                     runningSpeed += acceleration;
                 }
-                pos.X += runningSpeed;
                 particleVec = new Vector2(42, 40);
                 running = true;
                 spriteEffect = SpriteEffects.FlipHorizontally;
@@ -179,13 +182,12 @@ namespace Game
                 {
                     runningSpeed -= acceleration;
                 }
-                pos.X += runningSpeed;
                 particleVec = new Vector2(5, 40);
                 running = true;
                 spriteEffect = SpriteEffects.None;
             }
-            else
-                runningSpeed = 0;
+            //else
+            //    runningSpeed = 0;
         }
 
         //public Rectangle Bounds(Vector2 pos, float RS)
