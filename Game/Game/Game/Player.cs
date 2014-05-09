@@ -54,17 +54,9 @@ namespace Game
         {
             ks = Keyboard.GetState();
             if (KeyDown(keys[0]))
-            {
-                spriteEffect = SpriteEffects.None;
                 PlayerMovement(keys[0]);
-                running = true;
-            }
             else if (KeyDown(keys[1]))
-            {
-                spriteEffect = SpriteEffects.FlipHorizontally;
                 PlayerMovement(keys[1]);
-                running = true;
-            }
             else { 
                 runningSpeed = 0;
                 running = false;
@@ -176,6 +168,9 @@ namespace Game
                     runningSpeed += acceleration;
                 }
                 pos.X += runningSpeed;
+                particleVec = new Vector2(42, 40);
+                running = true;
+                spriteEffect = SpriteEffects.FlipHorizontally;
             }
 
             else if (key == Keys.A || key == Keys.Left)
@@ -185,6 +180,9 @@ namespace Game
                     runningSpeed -= acceleration;
                 }
                 pos.X += runningSpeed;
+                particleVec = new Vector2(5, 40);
+                running = true;
+                spriteEffect = SpriteEffects.None;
             }
             else
                 runningSpeed = 0;
