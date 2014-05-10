@@ -54,10 +54,17 @@ namespace Game
         {
             ks = Keyboard.GetState();
             if (KeyDown(keys[0]))
+            {
                 PlayerMovement(keys[0]);
+                Animation(gameTime);
+            }
             else if (KeyDown(keys[1]))
+            {
                 PlayerMovement(keys[1]);
-            else {
+                Animation(gameTime);
+            }
+            else
+            {
                 if (runningSpeed >= 0.1f)
                 {
                     runningSpeed -= deceleration;
@@ -76,8 +83,10 @@ namespace Game
             {
                 if (KeyDown(keys[2]))
                     pos.Y -= 100 * (float)time;
+
                 if (KeyDown(keys[3]))
                     pos.Y += 100 * (float)time;
+
             }
             else
             {
@@ -202,7 +211,7 @@ namespace Game
 
         public Rectangle SrcRec()
         {
-            return new Rectangle(recX, 0, 100, 200);
+            return new Rectangle(recX, 0, (tex.Width / 19), 200);
         }
 
         public void Animation(GameTime gameTime)
@@ -211,15 +220,15 @@ namespace Game
             if (animationTime >= animationSpeed)
             {
                 if (running)
-                    recX += 100;
+                    recX += (tex.Width / 19);
                 else
                     recX = 0;
                 if (recX >= tex.Width - 100)
                     recX = 0;
-                
-                animationTime = 0;
+
+                animationTime -= animationSpeed;
             }
-            SrcRec();
+            //SrcRec();
         }
     }
 }
