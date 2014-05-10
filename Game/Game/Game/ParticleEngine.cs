@@ -2,43 +2,52 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game
 {
-    public class Particle
+    public class ParticleEngine
     {
-        float upSpeed = -0.5f, sideSpeed, rot = 0.3f;
-        public float fade = 1;
-        float scale = .1f;
-        Texture2D tex;
-        Vector2 pos;
+
+        List<Particle> particleList;
         Random rnd = new Random();
-        double timer;
-        public Particle(Texture2D Texture, Vector2 Position, float sideSpeed)
+        public Vector2 pos;
+        Texture2D tex;
+        double timer = 100;
+
+        public ParticleEngine( string texName, Vector2 Position)
         {
-            tex = Texture;
+            tex = Game1.mediaManager.Texture(texName);
             pos = Position;
-            this.sideSpeed = sideSpeed;
+            particleList = new List<Particle>();
         }
 
         public void Update(GameTime gt)
         {
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
-            upSpeed += (float)gt.ElapsedGameTime.TotalSeconds / 10f;
             if (timer <= 0)
             {
-                timer += 1;
-                pos += new Vector2(sideSpeed, upSpeed);
-                rot += 0.1f;
-                fade -= (0.015f + (float)(rnd.NextDouble() / 1000f));
-                scale += (0.007f + (float)(rnd.NextDouble() / 1000f));
+                timer += 15;
+                particleList.Add(new Particle(tex, pos, rnd.Next(-7, 8) / 100f));
             }
+            foreach (Particle p in particleList)
+            {
+                p.Update(gt);
+            }
+            for (int i = 0; i < particleList.Count(); i++)
+            {
+                if (particleList[i].fade <= 0)
+                    particleList.Remove(particleList[i]);
+            }
+
         }
+
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex, pos, null, Color.White * fade, rot, new Vector2(tex.Width / 2, tex.Height / 2), scale, SpriteEffects.None, 1);
-        }
+            foreach (Particle p in particleList)
+                p.Draw(sb);
+        }        
     }
 }

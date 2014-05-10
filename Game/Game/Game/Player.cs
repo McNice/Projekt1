@@ -26,7 +26,7 @@ namespace Game
         string player;
         double time;
         ParticleEngine particle;
-        Vector2 particleVec = new Vector2(5, 40);
+        Vector2 particleVec = new Vector2(2, 40);
         KeyboardState ks, oldks;
         SpriteEffects spriteEffect;
 
@@ -53,6 +53,24 @@ namespace Game
         public void Update(GameTime gameTime)
         {
             ks = Keyboard.GetState();
+
+            Movement(gameTime);
+
+            OnLadder(gameTime);
+
+            Jump();
+                        
+            pos.X += runningSpeed;
+            particle.pos = pos + particleVec;
+            particle.Update(gameTime);
+
+            Animation(gameTime);
+
+            oldks = ks;
+        }
+
+        void Movement(GameTime gameTime)
+        {
             if (KeyDown(keys[0]))
             {
                 PlayerMovement(keys[0]);
@@ -77,7 +95,10 @@ namespace Game
                     runningSpeed = 0;
                 running = false;
             }
+        }
 
+        void OnLadder(GameTime gameTime)
+        {
             time = gameTime.ElapsedGameTime.TotalSeconds;
             if (onLadder)
             {
@@ -85,7 +106,7 @@ namespace Game
                     pos.Y -= 100 * (float)time;
 
                 if (KeyDown(keys[3]))
-                    pos.Y += 100 * (float)time; 
+                    pos.Y += 100 * (float)time;
 
             }
             else
@@ -101,12 +122,10 @@ namespace Game
                     pos += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
                 }
             }
+        }
 
-            particle.pos = pos + particleVec;
-            particle.Update(gameTime);
-
-            oldks = ks;
-
+        void Jump()
+        {
             if (KeyDown(keys[4]) && !jumping)
             {
                 jumping = true;
@@ -114,8 +133,6 @@ namespace Game
                 pos.Y -= 1;
             }
             jumping = true;
-            pos.X += runningSpeed;
-            Animation(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -180,7 +197,7 @@ namespace Game
                 {
                     runningSpeed += acceleration;
                 }
-                particleVec = new Vector2(42, 40);
+                particleVec = new Vector2(50, 40);
                 running = true;
                 spriteEffect = SpriteEffects.FlipHorizontally;
             }
@@ -191,7 +208,7 @@ namespace Game
                 {
                     runningSpeed -= acceleration;
                 }
-                particleVec = new Vector2(5, 40);
+                particleVec = new Vector2(2, 40);
                 running = true;
                 spriteEffect = SpriteEffects.None;
             }

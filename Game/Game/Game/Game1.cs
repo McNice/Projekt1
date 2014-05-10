@@ -81,12 +81,14 @@ namespace Game
                         if (startScreen.i == 0)
                         {
                             manager.multiPlayer = false;
+                            manager.players.Clear();
                             manager.NewGame();
                             gameState = GameState.Play;
                         }
                         else if (startScreen.i == 1)
                         {
                             manager.multiPlayer = true;
+                            manager.players.Clear();
                             manager.NewGame();
                             gameState = GameState.Play;
                         }

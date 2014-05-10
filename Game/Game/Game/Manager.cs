@@ -13,7 +13,7 @@ namespace Game
         Random rng;
         public bool multiPlayer, isOnGround;
 
-        List<Player> players = new List<Player>();
+        public List<Player> players = new List<Player>();
         List<string> bricks = new List<string>();
         List<string> grass = new List<string>();
 

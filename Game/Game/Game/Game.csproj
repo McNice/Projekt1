@@ -82,8 +82,8 @@
     <Compile Include="HellDoor.cs" />
     <Compile Include="PlayerPoints.cs" />
     <Compile Include="Ladder.cs" />
-    <Compile Include="Particle.cs" />
     <Compile Include="ParticleEngine.cs" />
+    <Compile Include="Particle.cs" />
     <Compile Include="Slope.cs" />
     <Compile Include="StartScreen.cs" />
     <Compile Include="Tile.cs" />
