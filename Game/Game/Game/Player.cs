@@ -115,7 +115,7 @@ namespace Game
             }
             jumping = true;
             pos.X += runningSpeed;
-            //Animation(gameTime);
+            Animation(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
