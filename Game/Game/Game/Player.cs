@@ -85,7 +85,7 @@ namespace Game
                     pos.Y -= 100 * (float)time;
 
                 if (KeyDown(keys[3]))
-                    pos.Y += 100 * (float)time;
+                    pos.Y += 100 * (float)time; 
 
             }
             else
@@ -120,7 +120,7 @@ namespace Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, SrcRec(), Color.White, 0, Vector2.Zero, 0.48f, spriteEffect, 0.5f);
+            spriteBatch.Draw(tex, pos, SrcRec(), Color.White, 0, Vector2.Zero, .5714f, spriteEffect, 0.5f);
             particle.Draw(spriteBatch);
         }
 

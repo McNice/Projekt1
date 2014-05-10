@@ -131,7 +131,7 @@ namespace Game
         {
             if (!multiPlayer)
             {
-                players.Add(new Player("Gubbsprite", map.spawnPoint, "Player1", p1Keys));
+                players.Add(new Player("Gubbsprite2", map.spawnPoint, "Player1", p1Keys));
             }
             else if (multiPlayer)
             {
