@@ -59,15 +59,16 @@ namespace Game
 
         public void Button(float f, string name, SpriteBatch sb, int x)
         {
-            Vector2 pos = new Vector2(((Game1.TILESIZE * Game1.TILESX) / 2) - (Game1.StartScreenFont.MeasureString(name).Length() / 2), f);
-            if (x != i)
+            float scale = 1;
+            Color color = Color.Gray;
+            if (x == i)
             {
-                sb.DrawString(Game1.StartScreenFont, name, pos, Color.Gray, 0, Vector2.Zero, 1f, SpriteEffects.None, 1);
+                scale = 1.5f;
+                color = Color.White;
             }
-            else
-            {
-                sb.DrawString(Game1.StartScreenFont, name, pos, Color.White, 0, Vector2.Zero, 1.5f, SpriteEffects.None, 1);
-            }
+            Vector2 pos = new Vector2(((Game1.TILESIZE * Game1.TILESX) / 2) - ((Game1.StartScreenFont.MeasureString(name).Length() * scale) / 2), f);
+            sb.DrawString(Game1.StartScreenFont, name, pos, color, 0, Vector2.Zero, scale, SpriteEffects.None, 1);
+
         }
     }
 }
