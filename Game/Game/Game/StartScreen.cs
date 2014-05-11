@@ -48,7 +48,6 @@ namespace Game
 
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex, new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
             Button(100, "SinglePlayer", sb, 0);
             Button(200, "MultiPlayer", sb, 1);
             Button(300, "Tutorial", sb, 2);

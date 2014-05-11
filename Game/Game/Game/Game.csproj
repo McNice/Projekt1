@@ -80,10 +80,12 @@
     <Compile Include="ButtonLever.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="HellDoor.cs" />
+    <Compile Include="HighScore.cs" />
     <Compile Include="PlayerPoints.cs" />
     <Compile Include="Ladder.cs" />
     <Compile Include="ParticleEngine.cs" />
     <Compile Include="Particle.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="Slope.cs" />
     <Compile Include="StartScreen.cs" />
     <Compile Include="Tile.cs" />

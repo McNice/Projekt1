@@ -34,6 +34,7 @@ namespace Game
         }
         GameState gameState = GameState.Title;
         Manager manager;
+        HighScore highScore;
         public static MM mediaManager;
 
         public Game1()
@@ -50,6 +51,7 @@ namespace Game
         {
             mediaManager = new MM(Content);
             manager = new Manager();
+            highScore = new HighScore();
             base.Initialize();
         }
 
@@ -68,7 +70,7 @@ namespace Game
         protected override void Update(GameTime gameTime)
         {
             KeyMouseReader.Update();
-            
+
             if (KeyMouseReader.KeyPressed(Keys.Escape))
                 this.Exit();
 
@@ -92,13 +94,21 @@ namespace Game
                             manager.NewGame();
                             gameState = GameState.Play;
                         }
+                        else if (startScreen.i == 2)
+                        {
+
+                        }
                         else if (startScreen.i == 3)
                             gameState = GameState.Controls;
                         else if (startScreen.i == 4)
                             gameState = GameState.Credits;
+                        else if (startScreen.i == 5)
+                            gameState = GameState.Highscore;
                     }
                     break;
                 case GameState.Highscore:
+                    if (KeyMouseReader.KeyPressed(Keys.Space))
+                        gameState = GameState.Title;
                     break;
                 case GameState.Controls:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
@@ -124,18 +134,21 @@ namespace Game
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
             switch (gameState)
             {
+                case GameState.Play:
+                    manager.Draw(spriteBatch);
+                    timer.Draw(spriteBatch);
+                    break;
                 case GameState.Title:
+                    GraphicsDevice.Clear(Color.Black);
                     startScreen.Draw(spriteBatch);
                     break;
-                case GameState.Highscore:
-                    break;
                 case GameState.Controls:
-                    spriteBatch.Draw(mediaManager.Texture("Black Tile"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
+                    GraphicsDevice.Clear(Color.Black);
                     startScreen.Button(500, "Insert Image", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 3);
                     break;
                 case GameState.Credits:
-                    spriteBatch.Draw(mediaManager.Texture("Black Tile"), new Rectangle(0, 0, Game1.TILESIZE * Game1.TILESX, Game1.TILESIZE * Game1.TILESY), Color.White);
+                    GraphicsDevice.Clear(Color.Black);
                     startScreen.Button(100, "Credits", spriteBatch, 9);
                     startScreen.Button(200, "Anton - Gjorde ''allt''", spriteBatch, 9);
                     startScreen.Button(300, "Daniel - Hämtade kaffe", spriteBatch, 9);
@@ -144,14 +157,15 @@ namespace Game
                     startScreen.Button(600, "Simon - is Gay", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 4);
                     break;
-                case GameState.Play:
-                    manager.Draw(spriteBatch);
-                    timer.Draw(spriteBatch);
+                case GameState.Highscore:
+                    GraphicsDevice.Clear(Color.Black);
+                    highScore.Draw(spriteBatch);
+                    startScreen.Button(800, "Back", spriteBatch, 5);
                     break;
                 case GameState.End:
                     break;
             }
-            
+
             spriteBatch.End();
             base.Draw(gameTime);
         }
