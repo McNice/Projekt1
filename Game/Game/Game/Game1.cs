@@ -35,6 +35,7 @@ namespace Game
         GameState gameState = GameState.Title;
         Manager manager;
         HighScore highScore;
+        HighScoreAdd hsAdd;
         public static MM mediaManager;
 
         public Game1()
@@ -52,6 +53,7 @@ namespace Game
             mediaManager = new MM(Content);
             manager = new Manager();
             highScore = new HighScore();
+            hsAdd = new HighScoreAdd();
             base.Initialize();
         }
 
@@ -144,6 +146,7 @@ namespace Game
                     break;
                 case GameState.Controls:
                     GraphicsDevice.Clear(Color.Black);
+                    hsAdd.Draw(spriteBatch);
                     startScreen.Button(500, "Insert Image", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 3);
                     break;
@@ -159,7 +162,9 @@ namespace Game
                     break;
                 case GameState.Highscore:
                     GraphicsDevice.Clear(Color.Black);
+                    //Ska tas bort sen.
                     highScore.RandomScore();
+                    //^Ska tas bort sen.^
                     highScore.Draw(spriteBatch);
                     startScreen.Button(800, "Back", spriteBatch, 5);
                     break;

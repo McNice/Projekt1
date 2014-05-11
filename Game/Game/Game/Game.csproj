@@ -81,6 +81,7 @@
     <Compile Include="Door.cs" />
     <Compile Include="HellDoor.cs" />
     <Compile Include="HighScore.cs" />
+    <Compile Include="HighScoreAdd.cs" />
     <Compile Include="PlayerPoints.cs" />
     <Compile Include="Ladder.cs" />
     <Compile Include="ParticleEngine.cs" />
