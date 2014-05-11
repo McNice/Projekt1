@@ -10,7 +10,6 @@ namespace Game
 {
     public class HighScoreAdd
     {
-        string playerName = string.Empty;
         string[] name = new string[10];
         string[,] stringArray = new string[5, 5];
         int i, a, X, Y;
@@ -41,9 +40,9 @@ namespace Game
             if (Key(Keys.D))
                 X++;
             else if (Key(Keys.A))
-                X+=4;
+                X += 4;
             else if (Key(Keys.W))
-                Y+=4;
+                Y += 4;
             else if (Key(Keys.S))
                 Y++;
             AddChar();
@@ -81,7 +80,7 @@ namespace Game
         {
             float scale = 3;
             Color color = Color.Gray;
-            if (x == X % 5 && y ==  Y % 5)
+            if (x == X % 5 && y == Y % 5)
             {
                 scale = 4.5f;
                 color = Color.White;
@@ -95,7 +94,7 @@ namespace Game
         {
             if (a <= name.Length - 1 && Key(Keys.Enter))
             {
-                name[a] = stringArray[X%5, Y%5];
+                name[a] = stringArray[X % 5, Y % 5];
                 a++;
 
             }
@@ -103,6 +102,11 @@ namespace Game
             {
                 name[a - 1] = string.Empty;
                 a--;
+            }
+            if (ks.IsKeyDown(Keys.A))
+            {
+                name[a] = Keys.A.ToString();
+                a++;
             }
         }
     }

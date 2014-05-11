@@ -13,6 +13,7 @@ namespace Game
         List<Score> scorelist;
         public readonly string dir = "../../../../../../HighScore/";
         int maxScores = 15;
+
         public HighScore()
         {
             Load();
@@ -67,7 +68,9 @@ namespace Game
             Save();
             Load();
         }
-
+        /// <summary>
+        /// ska tas bort sen.
+        /// </summary>
         public void RandomScore()
         {
             if (scorelist.Count <= maxScores +1)

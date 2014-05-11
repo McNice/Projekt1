@@ -108,9 +108,9 @@ namespace Game
                             gameState = GameState.Highscore;
                     }
                     break;
-                case GameState.Highscore:
-                    if (KeyMouseReader.KeyPressed(Keys.Space))
-                        gameState = GameState.Title;
+                case GameState.Play:
+                    manager.Update(gameTime);
+                    timer.Update(gameTime);
                     break;
                 case GameState.Controls:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
@@ -121,10 +121,11 @@ namespace Game
                     if (KeyMouseReader.KeyPressed(Keys.Space))
                         gameState = GameState.Title;
                     break;
-                case GameState.Play:
-                    manager.Update(gameTime);
-                    timer.Update(gameTime);
+                case GameState.Highscore:
+                    if (KeyMouseReader.KeyPressed(Keys.Space))
+                        gameState = GameState.Title;
                     break;
+
                 case GameState.End:
                     break;
             }
