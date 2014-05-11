@@ -72,7 +72,7 @@ namespace Game
 
         }
 
-        string PlayerName()
+        public string PlayerName()
         {
             string pn = string.Empty;
             foreach (string n in name)
@@ -84,7 +84,7 @@ namespace Game
             return pn;
         }
 
-        public void Button(SpriteBatch sb, int z, int x, int y)
+        void Button(SpriteBatch sb, int z, int x, int y)
         {
             float scale = 2;
             Color color = Color.Gray;
