@@ -159,6 +159,7 @@ namespace Game
                     break;
                 case GameState.Highscore:
                     GraphicsDevice.Clear(Color.Black);
+                    highScore.RandomScore();
                     highScore.Draw(spriteBatch);
                     startScreen.Button(800, "Back", spriteBatch, 5);
                     break;

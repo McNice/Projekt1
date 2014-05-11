@@ -15,10 +15,10 @@ namespace Game
         int maxScores = 15;
         public HighScore()
         {
-            scorelist = Load();
-            RandomScore();
+            Load();
         }
-        List<Score> Load()
+
+        void Load()
         {
             List<Score> tempList = new List<Score>();
 
@@ -42,7 +42,7 @@ namespace Game
                 return p2.score.CompareTo(p1.score);
             });
 
-            return tempList;
+            scorelist = tempList;
         }
 
         public void Save()
@@ -65,19 +65,23 @@ namespace Game
         {
             scorelist.Add(new Score(name, score));
             Save();
+            Load();
         }
 
-        void RandomScore()
+        public void RandomScore()
         {
-            string randomString = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string sendString = "";
-            Random rand = new Random();
-            int i = rand.Next(1,10);
-            while (sendString.Length < i)
+            if (scorelist.Count <= maxScores +1)
             {
-                sendString += randomString[rand.Next(1,randomString.Length)];
+                string randomString = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                string sendString = "";
+                Random rand = new Random();
+                int i = rand.Next(1, 10);
+                while (sendString.Length < i)
+                {
+                    sendString += randomString[rand.Next(1, randomString.Length)];
+                }
+                AddScore(sendString, rand.Next(9999999));
             }
-            AddScore(sendString, rand.Next(9999999));
         }
 
         public void Draw(SpriteBatch sb)
