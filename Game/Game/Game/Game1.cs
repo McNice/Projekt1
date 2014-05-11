@@ -115,6 +115,7 @@ namespace Game
                 case GameState.Controls:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
                         gameState = GameState.Title;
+                    hsAdd.Update();
                     break;
                 case GameState.Credits:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
@@ -163,7 +164,9 @@ namespace Game
                 case GameState.Highscore:
                     GraphicsDevice.Clear(Color.Black);
                     //Ska tas bort sen.
+                    //
                     highScore.RandomScore();
+                    //
                     //^Ska tas bort sen.^
                     highScore.Draw(spriteBatch);
                     startScreen.Button(800, "Back", spriteBatch, 5);
