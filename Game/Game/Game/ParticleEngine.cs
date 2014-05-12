@@ -30,7 +30,7 @@ namespace Game
         public ParticleEngine(string texName, Vector2 Position,int sideSpeed, float verSpeed)
         {
             tex = Game1.mediaManager.Texture(texName);
-            pos = Position + new Vector2(24, 0); 
+            pos = Position + new Vector2(24, Game1.TILESIZE); 
             this.sideSpeed = sideSpeed;
             this.verSpeed=verSpeed;
             particleList = new List<Particle>();
@@ -41,8 +41,9 @@ namespace Game
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
             if (timer <= 0)
             {
-                timer += 15;
-                particleList.Add(new Particle(tex, pos, rnd.Next(-7, 8) / 100f));
+                timer += 105;
+                particleList.Add(new Particle(tex, pos- new Vector2(-5,0), rnd.Next(-7, 8) / 100f));
+                particleList.Add(new Particle(tex, pos - new Vector2(5, 0), rnd.Next(-7, 8) / 100f));
             }
             foreach (Particle p in particleList)
             {

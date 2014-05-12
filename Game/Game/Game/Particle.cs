@@ -22,7 +22,7 @@ namespace Game
             pos = Position;
             this.sideSpeed = sideSpeed;
         }
-
+        
         public void Update(GameTime gt)
         {
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
@@ -39,14 +39,14 @@ namespace Game
         public void Update(GameTime gt,int sideSpeed, float upSpeed)
         {
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
-            upSpeed += (float)gt.ElapsedGameTime.TotalSeconds / 10f;
+            //upSpeed += (float)gt.ElapsedGameTime.TotalSeconds / 10f;
             if (timer <= 0)
             {
-                timer += 1;
-                pos += new Vector2(rnd.Next(-sideSpeed,sideSpeed+1), upSpeed);
-                rot += 0.1f;
-                fade -= (0.015f + (float)(rnd.NextDouble() / 1000f));
-                scale += (0.007f + (float)(rnd.NextDouble() / 1000f));
+                timer += 20;
+                pos += new Vector2(rnd.Next(-sideSpeed*10,sideSpeed*10+1)/7, upSpeed);
+                rot += 0.05f;
+                fade -= (0.01f);
+                scale += (0.002f );
             }
         }
         public void Draw(SpriteBatch sb)

@@ -67,7 +67,7 @@ namespace Game
                 {
                     if (tempMap[x, y] == "1")
                     {
-                        mapArray[x, y] = new Chimney(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Smoketex");
+                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Black Tile");
                     }
                     else if (tempMap[x, y] == "2")
                     {
@@ -152,6 +152,10 @@ namespace Game
                     else if (tempMap[x, y] == "21")
                     {
                         spawnPoint2 = new Vector2(x * Game1.TILESIZE, (y * Game1.TILESIZE));
+                    }
+                    else if (tempMap[x,y]=="22")
+                    {
+                        mapArray[x, y] = new Chimney(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "SmokeChimney");
                     }
                 }
             }
