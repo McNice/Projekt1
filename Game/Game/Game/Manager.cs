@@ -36,7 +36,7 @@ namespace Game
             grass.Add("Low Grass");
             grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("a4", bricks, grass, rng);
+            map.LoadMap("j1", bricks, grass, rng);
         }
 
         public void LoadContent()
@@ -85,16 +85,18 @@ namespace Game
                     {
                         p.Collision((t as Door).Bounds());
                     }
-                    if (KeyClick(Keys.Enter) && (t as Door).start == true)
-                    {
-                        (t as Door).start = false;
-                    }
                 }
                 if (t is ButtonLever && p.BoundsStatic().Intersects(t.Bounds()))
                 {
-                    if (KeyDown(Keys.G))
+                    if (KeyDown(Keys.G) && oldks.IsKeyUp(Keys.G))
                     {
-                        (t as ButtonLever).on = true;
+                        foreach (Animated ani in map.mapArray.OfType<Animated>())
+                        {
+                            if (ani.channel == (t as ButtonLever).channel)
+                            {
+                                ani.Switch();
+                            }
+                        }
                     }
                     if (KeyDown(Keys.H))
                     {

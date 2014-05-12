@@ -50,5 +50,7 @@ namespace Game
         {
             return new Rectangle(recX, 0, 100, 100);
         }
+
+        public virtual void Switch() { }
     }
 }

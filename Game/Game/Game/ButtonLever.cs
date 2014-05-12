@@ -36,5 +36,10 @@ namespace Game
         {
             spriteBatch.Draw(tex, pos, Rec(), Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 0.6f);
         }
+
+        public override void Switch()
+        {
+            on = !on;
+        }
     }
 }

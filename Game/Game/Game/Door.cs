@@ -14,6 +14,7 @@ namespace Game
         {
             start = true;
         }
+
         public override void Update(GameTime gameTime)
         {
             time += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -36,6 +37,11 @@ namespace Game
         public override Rectangle Bounds()
         {
             return new Rectangle((int)pos.X + (Game1.TILESIZE - 10), (int)pos.Y, 10, Game1.TILESIZE * 2);
+        }
+
+        public override void Switch()
+        {
+            start = !start;
         }
     }
 }
