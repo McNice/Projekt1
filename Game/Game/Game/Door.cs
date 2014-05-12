@@ -9,10 +9,10 @@ namespace Game
 {
     class Door : Animated
     {
-        public Door(Vector2 pos, string texName, float animationSpeed, int channel)
+        public Door(Vector2 pos, string texName, float animationSpeed, int channel, bool start)
             : base(pos, texName, animationSpeed, channel)
         {
-            start = true;
+            this.start = start;
         }
 
         public override void Update(GameTime gameTime)

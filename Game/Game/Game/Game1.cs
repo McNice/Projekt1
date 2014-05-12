@@ -41,8 +41,8 @@ namespace Game
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 2000;
-            graphics.PreferredBackBufferHeight = 500;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
             //debug
             //graphics.PreferredBackBufferWidth = 1600;
             //graphics.PreferredBackBufferHeight = 900;

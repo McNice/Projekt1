@@ -13,7 +13,7 @@ namespace Game
         protected float animationSpeed;
         protected float time = 0;
         public int? channel;
-        public bool start = true;
+        public bool start;
 
         public Animated(Vector2 pos, string texName, float animationSpeed, int? channel)
             : base(pos, texName)

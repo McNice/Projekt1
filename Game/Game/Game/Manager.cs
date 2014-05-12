@@ -98,10 +98,6 @@ namespace Game
                             }
                         }
                     }
-                    if (KeyDown(Keys.H))
-                    {
-                        (t as ButtonLever).on = false;
-                    }
                 }
                 if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
                     p.onLadder = true;
