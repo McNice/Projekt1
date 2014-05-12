@@ -59,6 +59,7 @@
             this.radioButton21 = new System.Windows.Forms.RadioButton();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.radioButton22 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -428,11 +429,25 @@
             this.label3.TabIndex = 27;
             this.label3.Text = "Channel";
             // 
+            // radioButton22
+            // 
+            this.radioButton22.AutoSize = true;
+            this.radioButton22.Location = new System.Drawing.Point(104, 247);
+            this.radioButton22.Name = "radioButton22";
+            this.radioButton22.Size = new System.Drawing.Size(65, 17);
+            this.radioButton22.TabIndex = 28;
+            this.radioButton22.TabStop = true;
+            this.radioButton22.Text = "Chimney";
+            this.radioButton22.UseVisualStyleBackColor = true;
+            this.radioButton22.CheckedChanged += new System.EventHandler(this.radioButton22_CheckedChanged);
+
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(199, 440);
+            this.Controls.Add(this.radioButton22);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.radioButton21);
@@ -507,5 +522,6 @@
         private System.Windows.Forms.RadioButton radioButton21;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton radioButton22;
     }
 }
