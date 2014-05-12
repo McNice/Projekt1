@@ -17,7 +17,7 @@ namespace Game
         public SolidBlock(Vector2 pos, string texName)
             : base(pos, texName)
         {
-            tex = Game1.mediaManager.Texture(texName);
+
         }
     }
 }

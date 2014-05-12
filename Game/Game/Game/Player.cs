@@ -30,7 +30,7 @@ namespace Game
         KeyboardState ks, oldks;
         SpriteEffects spriteEffect;
 
-        Keys[] keys;
+        public Keys[] keys;
 
 
         Vector2[] colP = { new Vector2(10, 0), new Vector2(30, 0), 

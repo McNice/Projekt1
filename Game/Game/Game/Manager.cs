@@ -36,7 +36,7 @@ namespace Game
             grass.Add("Low Grass");
             grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("a4", bricks, grass, rng);
+            map.LoadMap("j1", bricks, grass, rng);
         }
 
         public void LoadContent()
@@ -88,7 +88,7 @@ namespace Game
                 }
                 if (t is ButtonLever && p.BoundsStatic().Intersects(t.Bounds()))
                 {
-                    if (KeyDown(Keys.G) && oldks.IsKeyUp(Keys.G))
+                    if (KeyClick(p.keys[5]))
                     {
                         foreach (Animated ani in map.mapArray.OfType<Animated>())
                         {
