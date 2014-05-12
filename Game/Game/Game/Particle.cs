@@ -36,6 +36,19 @@ namespace Game
                 scale += (0.007f + (float)(rnd.NextDouble() / 1000f));
             }
         }
+        public void Update(GameTime gt,int sideSpeed, float upSpeed)
+        {
+            timer -= gt.ElapsedGameTime.TotalMilliseconds;
+            upSpeed += (float)gt.ElapsedGameTime.TotalSeconds / 10f;
+            if (timer <= 0)
+            {
+                timer += 1;
+                pos += new Vector2(rnd.Next(-sideSpeed,sideSpeed+1), upSpeed);
+                rot += 0.1f;
+                fade -= (0.015f + (float)(rnd.NextDouble() / 1000f));
+                scale += (0.007f + (float)(rnd.NextDouble() / 1000f));
+            }
+        }
         public void Draw(SpriteBatch sb)
         {
             sb.Draw(tex, pos, null, Color.White * fade, rot, new Vector2(tex.Width / 2, tex.Height / 2), scale, SpriteEffects.None, 1);

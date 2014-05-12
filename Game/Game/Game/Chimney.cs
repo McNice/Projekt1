@@ -13,11 +13,11 @@ namespace Game
         public Chimney(Vector2 pos, string texName)
             : base(pos, texName, 0, null)
         {
-            particle = new ParticleEngine(texName, pos);
+            particle = new ParticleEngine(texName, pos,1,-0.5f);
         }
         public override void Update(GameTime gt)
         {
-            particle.Update(gt);
+            particle.Update(gt,1);
         }
         public override void Draw(SpriteBatch sb)
         {

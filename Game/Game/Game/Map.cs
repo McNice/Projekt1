@@ -67,7 +67,7 @@ namespace Game
                 {
                     if (tempMap[x, y] == "1")
                     {
-                        mapArray[x, y] = new SolidBlock(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Black Tile");
+                        mapArray[x, y] = new Chimney(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Smoketex");
                     }
                     else if (tempMap[x, y] == "2")
                     {
