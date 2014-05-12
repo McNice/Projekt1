@@ -1,1 +1,179 @@
- 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Game.Animated" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAIAAAIoIgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Timer" Collapsed="true">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAACQAgAAAAQAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Timer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.BlackSlope" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlackSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.ButtonLever" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ButtonLever.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Chimney" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Chimney.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Door" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Game1" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAkCAAAAAAwAAAAAAAAgEIIAAAAgAAgAgAAEAAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.HellDoor" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HellDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.HighScore" Collapsed="true">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAACCAAAgAAAAAAAAAAAAAAAAABAAAIAAAAACA=</HashCode>
+      <FileName>HighScore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.HighScoreAdd" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAgQAAAAAAAwAAAAEACAhMAAAAAgAYQA=</HashCode>
+      <FileName>HighScoreAdd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Ladder" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Ladder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Manager" Collapsed="true">
+    <Position X="14.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQGEAAAAAgAgoAAAAwCAAAABQAAAAAAMAAAIIAAAAQ=</HashCode>
+      <FileName>Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Map" Collapsed="true">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAACCAAAgQAQAAAAAEQAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.MM" Collapsed="true">
+    <Position X="17.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAAAAAAAAAAAAAAAAAAAAAAAABAIAAAAAAAA=</HashCode>
+      <FileName>MM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Particle" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQUAAAAAAAAAgAAAIAAAIACAAQAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Particle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.ParticleEngine" Collapsed="true">
+    <Position X="14.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQkAAAAAAAAAgAAAIAAAIAAAAAAAgAAAAAAAAAAAAE=</HashCode>
+      <FileName>ParticleEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Player" Collapsed="true">
+    <Position X="16" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAgAIoBMgg4AhqgAAIIhAAgCAgQBEAQgIAAAEAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.PlayerPoints" Collapsed="true">
+    <Position X="17.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gACAAAAAAAAAABAAAAAAAAgAAAAAAAQAAAAAAAAAgAA=</HashCode>
+      <FileName>PlayerPoints.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Program" Collapsed="true">
+    <Position X="19.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Score" Collapsed="true">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Slope" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAQAAAAgAAAAAAAA=</HashCode>
+      <FileName>Slope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.SolidBlock" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SolidBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.StartScreen" Collapsed="true">
+    <Position X="16" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAAAAAAgAAAIAAAAAAAAAAAIAAIAAAAAAAAAA=</HashCode>
+      <FileName>StartScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Tile" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAIAAAIIAAAAAAAAAAAAAAAAABgQ=</HashCode>
+      <FileName>Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeyMouseReader" Collapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBQCAAAAAAAAAAEAAAAAAAACAAAAAAAAAAAIAABAAAA=</HashCode>
+      <FileName>KeyMouseReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
