@@ -11,7 +11,7 @@ namespace Game
     public class HighScoreAdd
     {
         string[] name = new string[10];
-        string[,] stringArray = new string[5, 5];
+        string[,] stringArray = new string[7, 5];
         int i, a, X, Y;
         KeyboardState ks, oks;
 
@@ -24,10 +24,10 @@ namespace Game
         void StringArray()
         {
             int nextChar = 0;
-            string chars = "ABCDEFGHIJKLMNOPRSTUWZXYQ";
+            string chars = "ABCDE05FGHIJ16KLMNO27PQRST38UWZXY49";
 
-            for (int x = 0; x < chars.Length / 5; x++)
-                for (int y = 0; y < chars.Length / 5; y++)
+            for (int x = 0; x < 5; x++)
+                for (int y = 0; y < 7; y++)
                 {
                     stringArray[y, x] = Convert.ToString(chars[nextChar]);
                     nextChar++;
@@ -40,7 +40,7 @@ namespace Game
             if (Key(Keys.D))
                 X++;
             else if (Key(Keys.A))
-                X += 4;
+                X += 6;
             else if (Key(Keys.W))
                 Y += 4;
             else if (Key(Keys.S))
@@ -59,10 +59,15 @@ namespace Game
         public void Draw(SpriteBatch sb)
         {
             for (int y = 0; y < 5; y++)
-                for (int x = 0; x < 5; x++)
+                for (int x = 0; x < 7; x++)
                     Char(sb, stringArray[x, y], x, y);
 
             sb.DrawString(Game1.StartScreenFont, PlayerName(), new Vector2(300), Color.White);
+        }
+
+        public Score AddScore(string playerName, int score)
+        {
+            return new Score(playerName, score);
         }
 
         public string PlayerName()
@@ -70,7 +75,7 @@ namespace Game
             string pn = string.Empty;
             foreach (string n in name)
             {
-                if (n != null)
+                if (n != null || n != string.Empty)
                     pn += n;
             }
             return pn;
@@ -80,7 +85,7 @@ namespace Game
         {
             float scale = 3;
             Color color = Color.Gray;
-            if (x == X % 5 && y == Y % 5)
+            if (x == X % 7 && y == Y % 5)
             {
                 scale = 4.5f;
                 color = Color.White;
@@ -94,7 +99,7 @@ namespace Game
         {
             if (a <= name.Length - 1 && Key(Keys.Enter))
             {
-                name[a] = stringArray[X % 5, Y % 5];
+                name[a] = stringArray[X % 7, Y % 5];
                 a++;
 
             }
@@ -103,11 +108,7 @@ namespace Game
                 name[a - 1] = string.Empty;
                 a--;
             }
-            if (ks.IsKeyDown(Keys.A))
-            {
-                name[a] = Keys.A.ToString();
-                a++;
-            }
+
         }
     }
 }

@@ -78,6 +78,7 @@
     <Compile Include="Animated.cs" />
     <Compile Include="BlackSlope.cs" />
     <Compile Include="ButtonLever.cs" />
+    <Compile Include="Chimney.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="HellDoor.cs" />
     <Compile Include="HighScore.cs" />

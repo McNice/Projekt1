@@ -52,6 +52,7 @@ namespace Game
                 p.Update(gameTime);
                 CollisionJohan(p, gameTime);
             }
+            
             foreach (Animated ani in map.mapArray.OfType<Animated>())
             {
                 ani.Update(gameTime);
@@ -139,7 +140,7 @@ namespace Game
                 players.Add(new Player("Gubbsprite2", map.spawnPoint + new Vector2(50, 0), "Player2", p2Keys));
             }
         }
-
+                
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Player p in players)

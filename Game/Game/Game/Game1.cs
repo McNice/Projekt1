@@ -41,8 +41,12 @@ namespace Game
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = TILESIZE * TILESX;
-            graphics.PreferredBackBufferHeight = TILESIZE * TILESY;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
+            
+            //debug
+            //graphics.PreferredBackBufferWidth = 1600;
+            //graphics.PreferredBackBufferHeight = 900;
             graphics.ApplyChanges();
             IsMouseVisible = true;
             Content.RootDirectory = "Content";
@@ -62,7 +66,6 @@ namespace Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             timer = new Timer(Game1.StartScreenFont);
-            manager.LoadContent();
             startScreen = new StartScreen();
 
             // TEST
@@ -73,6 +76,8 @@ namespace Game
         {
             KeyMouseReader.Update();
 
+            if(KeyMouseReader.KeyPressed(Keys.F1))
+                graphics.ToggleFullScreen();
             if (KeyMouseReader.KeyPressed(Keys.Escape))
                 this.Exit();
 
