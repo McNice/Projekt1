@@ -48,12 +48,12 @@ namespace Game
 
         public void Draw(SpriteBatch sb)
         {
-            Button(100, "SinglePlayer", sb, 0);
-            Button(200, "MultiPlayer", sb, 1);
-            Button(300, "Tutorial", sb, 2);
-            Button(400, "Controls", sb, 3);
-            Button(500, "Credits", sb, 4);
-            Button(600, "HighScores", sb, 5);
+            Button(200, "SinglePlayer", sb, 0);
+            Button(300, "MultiPlayer", sb, 1);
+            Button(400, "Tutorial", sb, 2);
+            Button(500, "Controls", sb, 3);
+            Button(600, "Credits", sb, 4);
+            Button(700, "HighScores", sb, 5);
         }
 
         public void Button(float f, string name, SpriteBatch sb, int x)
