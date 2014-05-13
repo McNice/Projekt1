@@ -15,6 +15,7 @@ namespace Game
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         public static Texture2D testTex;
+        Texture2D background;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Timer timer;
@@ -28,6 +29,7 @@ namespace Game
             Title,
             Highscore,
             Controls,
+            Tutorial,
             Credits,
             Play,
             End
@@ -66,6 +68,7 @@ namespace Game
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             timer = new Timer(Game1.StartScreenFont);
             startScreen = new StartScreen();
+            background = Content.Load<Texture2D>("theRealShit");
 
             // TEST
             testTex = Content.Load<Texture2D>("Textures/Black Tile");
@@ -102,7 +105,10 @@ namespace Game
                         }
                         else if (startScreen.i == 2)
                         {
-
+                            manager.multiPlayer = false;
+                            manager.players.Clear();
+                            manager.NewGame();
+                            gameState = GameState.Tutorial;
                         }
                         else if (startScreen.i == 3)
                             gameState = GameState.Controls;
@@ -120,6 +126,12 @@ namespace Game
                     if (KeyMouseReader.KeyPressed(Keys.Space))
                         gameState = GameState.Title;
                     hsAdd.Update();
+                    break;
+                case GameState.Tutorial:
+                    if (KeyMouseReader.KeyPressed(Keys.Space))
+                        gameState = GameState.Tutorial;
+                    timer.Update(gameTime);
+                    manager.Update(gameTime);
                     break;
                 case GameState.Credits:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
@@ -155,6 +167,11 @@ namespace Game
                     hsAdd.Draw(spriteBatch);
                     startScreen.Button(500, "Insert Image", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 3);
+                    break;
+                case GameState.Tutorial:
+                    manager.Draw(spriteBatch);
+                    timer.Draw(spriteBatch);
+                    spriteBatch.Draw(background, Vector2.Zero, Color.White);
                     break;
                 case GameState.Credits:
                     GraphicsDevice.Clear(Color.Black);
