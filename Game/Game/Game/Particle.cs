@@ -45,8 +45,8 @@ namespace Game
                 timer += 20;
                 pos += new Vector2(rnd.Next(-sideSpeed*10,sideSpeed*10+1)/7, upSpeed);
                 rot += 0.05f;
-                fade -= (0.01f);
-                scale += (0.002f );
+                fade -= (0.001f);
+                scale += (0.001f );
             }
         }
         public void Draw(SpriteBatch sb)

@@ -60,6 +60,7 @@
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.radioButton22 = new System.Windows.Forms.RadioButton();
+            this.radioButton23 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -304,17 +305,17 @@
             this.radioButton13.AutoSize = true;
             this.radioButton13.Location = new System.Drawing.Point(13, 154);
             this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(48, 17);
+            this.radioButton13.Size = new System.Drawing.Size(77, 17);
             this.radioButton13.TabIndex = 23;
             this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "Door";
+            this.radioButton13.Text = "Open Door";
             this.radioButton13.UseVisualStyleBackColor = true;
             this.radioButton13.CheckedChanged += new System.EventHandler(this.radioButton13_CheckedChanged);
             // 
             // radioButton14
             // 
             this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(104, 154);
+            this.radioButton14.Location = new System.Drawing.Point(103, 177);
             this.radioButton14.Name = "radioButton14";
             this.radioButton14.Size = new System.Drawing.Size(52, 17);
             this.radioButton14.TabIndex = 24;
@@ -326,7 +327,7 @@
             // radioButton15
             // 
             this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(104, 177);
+            this.radioButton15.Location = new System.Drawing.Point(103, 200);
             this.radioButton15.Name = "radioButton15";
             this.radioButton15.Size = new System.Drawing.Size(91, 17);
             this.radioButton15.TabIndex = 24;
@@ -350,7 +351,7 @@
             // radioButton17
             // 
             this.radioButton17.AutoSize = true;
-            this.radioButton17.Location = new System.Drawing.Point(104, 200);
+            this.radioButton17.Location = new System.Drawing.Point(103, 223);
             this.radioButton17.Name = "radioButton17";
             this.radioButton17.Size = new System.Drawing.Size(77, 17);
             this.radioButton17.TabIndex = 24;
@@ -386,7 +387,7 @@
             // radioButton20
             // 
             this.radioButton20.AutoSize = true;
-            this.radioButton20.Location = new System.Drawing.Point(104, 223);
+            this.radioButton20.Location = new System.Drawing.Point(103, 247);
             this.radioButton20.Name = "radioButton20";
             this.radioButton20.Size = new System.Drawing.Size(64, 17);
             this.radioButton20.TabIndex = 24;
@@ -432,7 +433,7 @@
             // radioButton22
             // 
             this.radioButton22.AutoSize = true;
-            this.radioButton22.Location = new System.Drawing.Point(104, 247);
+            this.radioButton22.Location = new System.Drawing.Point(103, 270);
             this.radioButton22.Name = "radioButton22";
             this.radioButton22.Size = new System.Drawing.Size(65, 17);
             this.radioButton22.TabIndex = 28;
@@ -440,7 +441,18 @@
             this.radioButton22.Text = "Chimney";
             this.radioButton22.UseVisualStyleBackColor = true;
             this.radioButton22.CheckedChanged += new System.EventHandler(this.radioButton22_CheckedChanged);
-
+            // 
+            // radioButton23
+            // 
+            this.radioButton23.AutoSize = true;
+            this.radioButton23.Location = new System.Drawing.Point(103, 153);
+            this.radioButton23.Name = "radioButton23";
+            this.radioButton23.Size = new System.Drawing.Size(83, 17);
+            this.radioButton23.TabIndex = 23;
+            this.radioButton23.TabStop = true;
+            this.radioButton23.Text = "Closed Door";
+            this.radioButton23.UseVisualStyleBackColor = true;
+            this.radioButton23.CheckedChanged += new System.EventHandler(this.radioButton23_CheckedChanged);
             // 
             // Form1
             // 
@@ -458,6 +470,7 @@
             this.Controls.Add(this.radioButton17);
             this.Controls.Add(this.radioButton15);
             this.Controls.Add(this.radioButton14);
+            this.Controls.Add(this.radioButton23);
             this.Controls.Add(this.radioButton13);
             this.Controls.Add(this.radioButton12);
             this.Controls.Add(this.radioButton11);
@@ -523,5 +536,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton22;
+        private System.Windows.Forms.RadioButton radioButton23;
     }
 }

@@ -107,32 +107,32 @@ namespace Game
                     }
 
                     #region Interact
-                    else if (Convert.ToInt32(tempMap[x, y]) >= 500 && Convert.ToInt32(tempMap[x, y]) < 600)
+                    else if (Convert.ToInt32(tempMap[x, y]) >= 500 && Convert.ToInt32(tempMap[x, y]) < 550)
                     {
-                        int channel = (Convert.ToInt32(tempMap[x, y]) - 500) / 10;
+                        int channel = (Convert.ToInt32(tempMap[x, y]) - 500);
                         mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - L", 100f, channel);
                     }
-                    else if (Convert.ToInt32(tempMap[x, y]) >= 600 && Convert.ToInt32(tempMap[x, y]) < 700)
+                    else if (Convert.ToInt32(tempMap[x, y]) >= 550 && Convert.ToInt32(tempMap[x, y]) < 600)
                     {
-                        int channel = (Convert.ToInt32(tempMap[x, y]) - 600) / 10;
+                        int channel = (Convert.ToInt32(tempMap[x, y]) - 550);
                         mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - R", 100f, channel);
                     }
-                    else if (Convert.ToInt32(tempMap[x, y]) >= 700 && Convert.ToInt32(tempMap[x, y]) < 800)
+                    else if (Convert.ToInt32(tempMap[x, y]) >= 600 && Convert.ToInt32(tempMap[x, y]) < 800)
                     {
-                        int channel = (Convert.ToInt32(tempMap[x, y]) - 700) / 10;
-                        if ((Convert.ToInt32(tempMap[x, y]) - 700) % 10 == 0.1)
-                            mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE - (Game1.TILESIZE / 2) + 2, y * Game1.TILESIZE), "Door-spritesheet", 50f, channel, false);
-                        else
-                            mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE - (Game1.TILESIZE / 2) + 2, y * Game1.TILESIZE), "Door-spritesheet", 50f, channel, true);
+                        int temp = Convert.ToInt32(tempMap[x, y]);
+                        if (temp < 700)
+                            mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE - (Game1.TILESIZE / 2) + 2, y * Game1.TILESIZE), "Door-spritesheet", 50f, Convert.ToInt32(tempMap[x, y]) - 600, false);
+                        else if (temp >= 700)
+                            mapArray[x, y] = new Door(new Vector2(x * Game1.TILESIZE - (Game1.TILESIZE / 2) + 2, y * Game1.TILESIZE), "Door-spritesheet", 50f, Convert.ToInt32(tempMap[x, y]) - 700, true);
                     }
                     else if (Convert.ToInt32(tempMap[x, y]) >= 800 && Convert.ToInt32(tempMap[x, y]) < 900)
                     {
-                        int channel = (Convert.ToInt32(tempMap[x, y]) - 800) / 10;
+                        int channel = (Convert.ToInt32(tempMap[x, y]) - 800);
                         mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 20f, channel);
                     }
                     else if (Convert.ToInt32(tempMap[x, y]) >= 900 && Convert.ToInt32(tempMap[x, y]) < 1000)
                     {
-                        int channel = (Convert.ToInt32(tempMap[x, y]) - 900) / 10;
+                        int channel = (Convert.ToInt32(tempMap[x, y]) - 900);
                         mapArray[x, y] = new HellDoor(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Hell-door", 100f, channel);
                     }
                     #endregion
@@ -163,7 +163,7 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "22")
                     {
-                        mapArray[x, y] = new Chimney(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "SmokeChimney");
+                        mapArray[x, y] = new Chimney(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "SmokeChimney2");
                     }
                     
                 }

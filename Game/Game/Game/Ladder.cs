@@ -20,7 +20,7 @@ namespace Game
         }
         public override Rectangle Bounds()
         {
-            return new Rectangle((int)pos.X, (int)pos.Y, Game1.TILESIZE, Game1.TILESIZE);
+            return new Rectangle((int)pos.X + 22, (int)pos.Y, 4, Game1.TILESIZE);
         }
     }
 }
