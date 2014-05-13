@@ -11,7 +11,7 @@ namespace Game
     public class Manager
     {
         Random rng;
-        public bool multiPlayer, isOnGround;
+        public bool isOnGround;
 
         public List<Player> players = new List<Player>();
         List<string> bricks = new List<string>();
@@ -20,7 +20,7 @@ namespace Game
         Keys[] p1Keys = { Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.G };
         Keys[] p2Keys = { Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.RightControl, Keys.Enter };
 
-        Map map;
+        public Map map;
         public static string path = "../../../../../../Maps/";
         KeyboardState ks, oldks;
 
@@ -39,20 +39,29 @@ namespace Game
             map.LoadMap("j1", bricks, grass, rng);
         }
 
-        public void LoadContent()
+        public void NewGame(bool multiPlayer)
         {
-            NewGame();
+            players.Clear();
+            if (!multiPlayer)
+            {
+                players.Add(new Player("Gubbsprite2", map.spawnPoint, "Player1", p1Keys));
+            }
+            else if (multiPlayer)
+            {
+                players.Add(new Player("Gubbsprite2", map.spawnPoint, "Player1", p1Keys));
+                players.Add(new Player("Gubbsprite2", map.spawnPoint + new Vector2(50, 0), "Player2", p2Keys));
+            }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, ref int gamemode)
         {
             ks = Keyboard.GetState();
             foreach (Player p in players)
             {
                 p.Update(gameTime);
-                CollisionJohan(p, gameTime);
+                CollisionJohan(p, gameTime,ref gamemode);
             }
-            
+
             foreach (Animated ani in map.mapArray.OfType<Animated>())
             {
                 ani.Update(gameTime);
@@ -60,7 +69,7 @@ namespace Game
             oldks = ks;
         }
 
-        void CollisionJohan(Player p, GameTime gameTime)
+        void CollisionJohan(Player p, GameTime gameTime, ref int mode)
         {
             p.onLadder = false;
             foreach (Tile t in map.mapArray)
@@ -126,19 +135,7 @@ namespace Game
             return false;
         }
 
-        public void NewGame()
-        {
-            if (!multiPlayer)
-            {
-                players.Add(new Player("Gubbsprite2", map.spawnPoint, "Player1", p1Keys));
-            }
-            else if (multiPlayer)
-            {
-                players.Add(new Player("Gubbsprite2", map.spawnPoint, "Player1", p1Keys));
-                players.Add(new Player("Gubbsprite2", map.spawnPoint + new Vector2(50, 0), "Player2", p2Keys));
-            }
-        }
-                
+
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Player p in players)

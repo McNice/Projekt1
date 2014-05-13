@@ -33,7 +33,7 @@ namespace Game
             End
         }
         GameState gameState = GameState.Title;
-        Manager manager;
+        LevelManager lvlmanager;
         HighScore highScore;
         HighScoreAdd hsAdd;
         public static MM mediaManager;
@@ -54,9 +54,9 @@ namespace Game
         protected override void Initialize()
         {
             mediaManager = new MM(Content);
-            manager = new Manager();
             highScore = new HighScore();
             hsAdd = new HighScoreAdd();
+            
             base.Initialize();
         }
 
@@ -88,16 +88,13 @@ namespace Game
                     {
                         if (startScreen.i == 0)
                         {
-                            manager.multiPlayer = false;
-                            manager.players.Clear();
-                            manager.NewGame();
+
+                            lvlmanager = new LevelManager(false);
                             gameState = GameState.Play;
                         }
                         else if (startScreen.i == 1)
                         {
-                            manager.multiPlayer = true;
-                            manager.players.Clear();
-                            manager.NewGame();
+                            lvlmanager = new LevelManager(true);
                             gameState = GameState.Play;
                         }
                         else if (startScreen.i == 2)
@@ -113,7 +110,7 @@ namespace Game
                     }
                     break;
                 case GameState.Play:
-                    manager.Update(gameTime);
+                    lvlmanager.Update(gameTime);
                     timer.Update(gameTime);
                     break;
                 case GameState.Controls:
@@ -143,7 +140,7 @@ namespace Game
             switch (gameState)
             {
                 case GameState.Play:
-                    manager.Draw(spriteBatch);
+                    lvlmanager.Draw(spriteBatch);
                     timer.Draw(spriteBatch);
                     break;
                 case GameState.Title:
