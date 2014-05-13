@@ -18,7 +18,6 @@ namespace Game
         Texture2D background;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Timer timer;
         public static SpriteFont StartScreenFont;
         StartScreen startScreen;
         public static int TILESIZE = 48;
@@ -66,7 +65,6 @@ namespace Game
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
-            timer = new Timer(Game1.StartScreenFont);
             startScreen = new StartScreen();
             //background = Content.Load<Texture2D>("theRealShit");
 
@@ -115,7 +113,6 @@ namespace Game
                     break;
                 case GameState.Play:
                     lvlmanager.Update(gameTime);
-                    timer.Update(gameTime);
                     break;
                 case GameState.Controls:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
@@ -125,7 +122,6 @@ namespace Game
                 case GameState.Tutorial:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
                         gameState = GameState.Tutorial;
-                    timer.Update(gameTime);
                     lvlmanager.Update(gameTime);
                     break;
                 case GameState.Credits:
@@ -151,7 +147,6 @@ namespace Game
             {
                 case GameState.Play:
                     lvlmanager.Draw(spriteBatch);
-                    timer.Draw(spriteBatch);
                     break;
                 case GameState.Title:
                     GraphicsDevice.Clear(Color.Black);
@@ -165,7 +160,6 @@ namespace Game
                     break;
                 case GameState.Tutorial:
                     lvlmanager.Draw(spriteBatch);
-                    timer.Draw(spriteBatch);
                     spriteBatch.Draw(background, Vector2.Zero, Color.White);
                     break;
                 case GameState.Credits:

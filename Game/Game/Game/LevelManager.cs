@@ -11,6 +11,7 @@ namespace Game
     public class LevelManager
     {
         Manager manager;
+        Timer timer;
         public enum GameMode
         {
             playing, lose, victory, gameOver
@@ -25,6 +26,7 @@ namespace Game
         {
             mp = multiPlayer;
             manager = new Manager();
+            timer = new Timer(Game1.StartScreenFont);
             manager.NewGame(mp);
             gameMode = GameMode.playing;
             mapNames = LoadMaps(multiPlayer);
@@ -44,6 +46,7 @@ namespace Game
             {
                 case GameMode.playing:
                     manager.Update(gt, ref mode);
+                    timer.Update(gt);
 
                     break;
                 case GameMode.lose:
@@ -62,6 +65,7 @@ namespace Game
 
         public void Draw(SpriteBatch sb)
         {
+            timer.Draw(sb);
             manager.Draw(sb);
         }
 

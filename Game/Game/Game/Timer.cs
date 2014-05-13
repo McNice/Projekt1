@@ -9,9 +9,10 @@ namespace Game
 {
     public class Timer
     {
-        int minDec = 1 , min = 0, secDec = 0, sec = 0;
+        int minDec = 1, min = 0, secDec = 0, sec = 0;
         double timer = 1000;
         SpriteFont font;
+        Vector2 pos = new Vector2(50, 990);
         public Timer(SpriteFont font)
         {
             this.font = font;
@@ -19,12 +20,12 @@ namespace Game
         public void Update(GameTime gt)
         {
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
-            if(timer <= 0)
+            if (timer <= 0)
             {
                 timer += 1000;
                 sec--;
             }
-            if(sec < 0)
+            if (sec < 0)
             {
                 sec += 10;
                 secDec--;
@@ -34,17 +35,18 @@ namespace Game
                 secDec += 6;
                 min--;
             }
-            if(min < 0)
+            if (min < 0)
             {
                 min += 10;
-                if(minDec != 0)
-                minDec --;
+                if (minDec != 0)
+                    minDec--;
             }
-            
+
         }
+
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(font, " "+minDec+"" + min + ":" + secDec +""+ sec, new Vector2(1000, 500), Color.Red);
+            sb.DrawString(font, " " + minDec + "" + min + ":" + secDec + "" + sec, pos, Color.Black);
         }
     }
 }
