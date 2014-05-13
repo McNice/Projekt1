@@ -12,8 +12,8 @@ namespace Game
     {
         string[] name = new string[10];
         string[,] stringArray = new string[7, 5];
-        int  a, X, Y;
-        public  int points;
+        int a, X, Y;
+        public int points;
         KeyboardState ks, oks;
 
 
@@ -62,8 +62,9 @@ namespace Game
             for (int y = 0; y < 5; y++)
                 for (int x = 0; x < 7; x++)
                     Char(sb, stringArray[x, y], x, y);
-
-            sb.DrawString(Game1.StartScreenFont, PlayerName(), new Vector2(400,990), Color.Black);
+            string temp = PlayerName();
+            sb.DrawString(Game1.StartScreenFont, temp, new Vector2((float)(1920 / 2), 150)
+                , Color.White, 0, new Vector2(Game1.StartScreenFont.MeasureString(temp).Length() / 2, Game1.StartScreenFont.LineSpacing/2), 2, SpriteEffects.None, 1);
         }
 
         public Score AddScore(string playerName, int score)
@@ -91,10 +92,11 @@ namespace Game
                 scale = 4.5f;
                 color = Color.White;
             }
-            Vector2 pos = new Vector2(400 + Game1.StartScreenFont.LineSpacing * 5 * x, 250 + Game1.StartScreenFont.LineSpacing * 3 * y);
+            Vector2 pos = new Vector2(300 + Game1.StartScreenFont.LineSpacing * 5 * x, 350 + Game1.StartScreenFont.LineSpacing * 3 * y);
             sb.DrawString(Game1.StartScreenFont, i, pos, color, 0, new Vector2(7, Game1.StartScreenFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
 
         }
+        
 
         public void AddChar()
         {

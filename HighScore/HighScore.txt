@@ -1,5 +1,7 @@
 [<HUJ><100>]
 [<BCHMRST><100>]
 [<ABCD><100>]
-[<FGHIJ><0>]
+[<ABCHGNRM><0>]
+[<KLMNO27><0>]
 [<ABC><0>]
+[<FGHIJ><0>]

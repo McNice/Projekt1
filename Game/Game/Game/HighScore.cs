@@ -68,24 +68,7 @@ namespace Game
             Save();
             Load();
         }
-        /// <summary>
-        /// ska tas bort sen.
-        /// </summary>
-        //public void RandomScore()
-        //{
-        //    if (scorelist.Count <= maxScores +1)
-        //    {
-        //        string randomString = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        //        string sendString = "";
-        //        Random rand = new Random();
-        //        int i = rand.Next(1, 10);
-        //        while (sendString.Length < i)
-        //        {
-        //            sendString += randomString[rand.Next(1, randomString.Length)];
-        //        }
-        //        AddScore(sendString, rand.Next(9999999));
-        //    }
-        //}
+        
 
         public void Draw(SpriteBatch sb)
         {

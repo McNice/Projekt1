@@ -22,7 +22,7 @@ namespace Game
         public GameMode gameMode;
         bool mp;
         public bool GameOver = false;
-        int mode;
+        int mode = 3;
         int mapNr = -1;
         List<string> mapNames;
 
@@ -72,7 +72,7 @@ namespace Game
                         Game1.highScore.AddScore(hsAdd.AddScore(hsAdd.PlayerName(), hsAdd.points));
                         GameOver = true;
                     }
-                    oks = ks; 
+                    oks = ks;
                     break;
             }
 
@@ -87,14 +87,21 @@ namespace Game
 
         public void Draw(SpriteBatch sb)
         {
-            timer.Draw(sb);
-            manager.Draw(sb);
+
 
             switch (gameMode)
             {
+                case GameMode.playing:
+                    timer.Draw(sb);
+                    manager.Draw(sb);
+                    break;
+                case GameMode.lose:
+                    break;
+                case GameMode.victory:
+                    break;
                 case GameMode.gameOver:
                     hsAdd.Draw(sb);
-                    
+
                     break;
             }
         }
