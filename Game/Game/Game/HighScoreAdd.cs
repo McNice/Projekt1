@@ -92,7 +92,7 @@ namespace Game
                 scale = 4.5f;
                 color = Color.White;
             }
-            Vector2 pos = new Vector2(300 + Game1.StartScreenFont.LineSpacing * 5 * x, 350 + Game1.StartScreenFont.LineSpacing * 3 * y);
+            Vector2 pos = new Vector2(300 + Game1.StartScreenFont.MeasureString("A").Length() * 4.2f * x, 350 + Game1.StartScreenFont.LineSpacing * 3 * y);
             sb.DrawString(Game1.StartScreenFont, i, pos, color, 0, new Vector2(7, Game1.StartScreenFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
 
         }
