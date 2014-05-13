@@ -18,7 +18,6 @@ namespace Game
         Texture2D background;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Timer timer;
         public static SpriteFont StartScreenFont;
         StartScreen startScreen;
         public static int TILESIZE = 48;
@@ -36,8 +35,7 @@ namespace Game
         }
         GameState gameState = GameState.Title;
         LevelManager lvlmanager;
-        HighScore highScore;
-        HighScoreAdd hsAdd;
+        public static HighScore highScore;
         public static MM mediaManager;
 
         public Game1()
@@ -57,8 +55,7 @@ namespace Game
         {
             mediaManager = new MM(Content);
             highScore = new HighScore();
-            hsAdd = new HighScoreAdd();
-            
+
             base.Initialize();
         }
 
@@ -66,7 +63,6 @@ namespace Game
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
-            timer = new Timer(Game1.StartScreenFont);
             startScreen = new StartScreen();
             //background = Content.Load<Texture2D>("theRealShit");
 
@@ -78,7 +74,7 @@ namespace Game
         {
             KeyMouseReader.Update();
 
-            if(KeyMouseReader.KeyPressed(Keys.F1))
+            if (KeyMouseReader.KeyPressed(Keys.F1))
                 graphics.ToggleFullScreen();
             if (KeyMouseReader.KeyPressed(Keys.Escape))
                 this.Exit();
@@ -115,17 +111,16 @@ namespace Game
                     break;
                 case GameState.Play:
                     lvlmanager.Update(gameTime);
-                    timer.Update(gameTime);
+                    if (lvlmanager.GameOver)
+                        gameState = GameState.Title;
                     break;
                 case GameState.Controls:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
                         gameState = GameState.Title;
-                    hsAdd.Update();
                     break;
                 case GameState.Tutorial:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
                         gameState = GameState.Tutorial;
-                    timer.Update(gameTime);
                     lvlmanager.Update(gameTime);
                     break;
                 case GameState.Credits:
@@ -147,11 +142,11 @@ namespace Game
         {
             GraphicsDevice.Clear(Color.White);
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
+
             switch (gameState)
             {
                 case GameState.Play:
                     lvlmanager.Draw(spriteBatch);
-                    timer.Draw(spriteBatch);
                     break;
                 case GameState.Title:
                     GraphicsDevice.Clear(Color.Black);
@@ -159,13 +154,11 @@ namespace Game
                     break;
                 case GameState.Controls:
                     GraphicsDevice.Clear(Color.Black);
-                    hsAdd.Draw(spriteBatch);
                     startScreen.Button(500, "Insert Image", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 3);
                     break;
                 case GameState.Tutorial:
                     lvlmanager.Draw(spriteBatch);
-                    timer.Draw(spriteBatch);
                     spriteBatch.Draw(background, Vector2.Zero, Color.White);
                     break;
                 case GameState.Credits:
@@ -180,11 +173,7 @@ namespace Game
                     break;
                 case GameState.Highscore:
                     GraphicsDevice.Clear(Color.Black);
-                    //Ska tas bort sen.
-                    //
-                    highScore.RandomScore();
-                    //
-                    //^Ska tas bort sen.^
+
                     highScore.Draw(spriteBatch);
                     startScreen.Button(800, "Back", spriteBatch, 5);
                     break;

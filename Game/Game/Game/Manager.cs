@@ -129,7 +129,7 @@ namespace Game
             return false;
         }
 
-        bool KeyClick(Keys key)
+        public bool KeyClick(Keys key)
         {
             if (ks.IsKeyDown(key) && oldks.IsKeyUp(key))
                 return true;
