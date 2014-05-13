@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using Microsoft.Xna.Framework.Input;
 
 namespace Game
 {
@@ -12,12 +13,15 @@ namespace Game
     {
         Manager manager;
         Timer timer;
+        HighScoreAdd hsAdd;
+        KeyboardState ks, oks;
         public enum GameMode
         {
             playing, lose, victory, gameOver
         }
         public GameMode gameMode;
         bool mp;
+        public bool GameOver = false;
         int mode;
         int mapNr = -1;
         List<string> mapNames;
@@ -31,6 +35,7 @@ namespace Game
             gameMode = GameMode.playing;
             mapNames = LoadMaps(multiPlayer);
             NextMap();
+            hsAdd = new HighScoreAdd();
         }
 
         public void Update(GameTime gt)
@@ -41,6 +46,8 @@ namespace Game
                 gameMode = GameMode.lose;
             else if (mode == 2)
                 gameMode = GameMode.victory;
+            else if (mode == 3)
+                gameMode = GameMode.gameOver;
 
             switch (gameMode)
             {
@@ -57,16 +64,39 @@ namespace Game
                     mode = 0;
                     break;
                 case GameMode.gameOver:
-
+                    ks = Keyboard.GetState();
+                    hsAdd.Update();
+                    string temp = hsAdd.PlayerName();
+                    if (KeyClick(Keys.Space) && temp != string.Empty)
+                    {
+                        Game1.highScore.AddScore(hsAdd.AddScore(hsAdd.PlayerName(), hsAdd.points));
+                        GameOver = true;
+                    }
+                    oks = ks; 
                     break;
             }
 
+        }
+
+        public bool KeyClick(Keys key)
+        {
+            if (ks.IsKeyDown(key) && oks.IsKeyUp(key))
+                return true;
+            return false;
         }
 
         public void Draw(SpriteBatch sb)
         {
             timer.Draw(sb);
             manager.Draw(sb);
+
+            switch (gameMode)
+            {
+                case GameMode.gameOver:
+                    hsAdd.Draw(sb);
+                    
+                    break;
+            }
         }
 
         public void NextMap()

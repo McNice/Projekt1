@@ -35,8 +35,7 @@ namespace Game
         }
         GameState gameState = GameState.Title;
         LevelManager lvlmanager;
-        HighScore highScore;
-        HighScoreAdd hsAdd;
+        public static HighScore highScore;
         public static MM mediaManager;
 
         public Game1()
@@ -56,8 +55,7 @@ namespace Game
         {
             mediaManager = new MM(Content);
             highScore = new HighScore();
-            hsAdd = new HighScoreAdd();
-            
+
             base.Initialize();
         }
 
@@ -76,7 +74,7 @@ namespace Game
         {
             KeyMouseReader.Update();
 
-            if(KeyMouseReader.KeyPressed(Keys.F1))
+            if (KeyMouseReader.KeyPressed(Keys.F1))
                 graphics.ToggleFullScreen();
             if (KeyMouseReader.KeyPressed(Keys.Escape))
                 this.Exit();
@@ -113,11 +111,12 @@ namespace Game
                     break;
                 case GameState.Play:
                     lvlmanager.Update(gameTime);
+                    if (lvlmanager.GameOver)
+                        gameState = GameState.Title;
                     break;
                 case GameState.Controls:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
                         gameState = GameState.Title;
-                    hsAdd.Update();
                     break;
                 case GameState.Tutorial:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
@@ -143,6 +142,7 @@ namespace Game
         {
             GraphicsDevice.Clear(Color.White);
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
+
             switch (gameState)
             {
                 case GameState.Play:
@@ -154,7 +154,6 @@ namespace Game
                     break;
                 case GameState.Controls:
                     GraphicsDevice.Clear(Color.Black);
-                    hsAdd.Draw(spriteBatch);
                     startScreen.Button(500, "Insert Image", spriteBatch, 9);
                     startScreen.Button(800, "Back", spriteBatch, 3);
                     break;
@@ -174,11 +173,7 @@ namespace Game
                     break;
                 case GameState.Highscore:
                     GraphicsDevice.Clear(Color.Black);
-                    //Ska tas bort sen.
-                    //
-                    highScore.RandomScore();
-                    //
-                    //^Ska tas bort sen.^
+
                     highScore.Draw(spriteBatch);
                     startScreen.Button(800, "Back", spriteBatch, 5);
                     break;

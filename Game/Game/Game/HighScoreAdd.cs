@@ -13,6 +13,7 @@ namespace Game
         string[] name = new string[10];
         string[,] stringArray = new string[7, 5];
         int  a, X, Y;
+        public  int points;
         KeyboardState ks, oks;
 
 
@@ -62,7 +63,7 @@ namespace Game
                 for (int x = 0; x < 7; x++)
                     Char(sb, stringArray[x, y], x, y);
 
-            sb.DrawString(Game1.StartScreenFont, PlayerName(), new Vector2(300), Color.White);
+            sb.DrawString(Game1.StartScreenFont, PlayerName(), new Vector2(400,990), Color.Black);
         }
 
         public Score AddScore(string playerName, int score)
