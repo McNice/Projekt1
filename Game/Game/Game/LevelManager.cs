@@ -28,7 +28,7 @@ namespace Game
             manager.NewGame(mp);
             gameMode = GameMode.playing;
             mapNames = LoadMaps(multiPlayer);
-            NextMap();
+       //     NextMap();
         }
 
         public void Update(GameTime gt)

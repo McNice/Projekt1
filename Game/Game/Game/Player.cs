@@ -22,6 +22,7 @@ namespace Game
             animationSpeed = 50,
             animationTime = 0;
         int recX = 0;
+        int recY = 0;
         bool running;
         string player;
         double time;
@@ -38,7 +39,7 @@ namespace Game
                              new Vector2(0, 86), new Vector2(48, 86),
                          new Vector2(18, 96), new Vector2(30, 96)};
 
-        public bool jumping, onLadder;
+        public bool jumping, onLadder, startJump, endJump = false;
 
         public Player(string texName, Vector2 pos, string player, Keys[] keys)
         {
@@ -59,7 +60,7 @@ namespace Game
             OnLadder(gameTime);
 
             Jump();
-                        
+
             pos.X += runningSpeed;
             particle.pos = pos + particleVec;
             particle.Update(gameTime);
@@ -126,13 +127,12 @@ namespace Game
 
         void Jump()
         {
-            if (KeyDown(keys[4]) && !jumping)
+            if (KeyDown(keys[4]) && !jumping && !startJump)
             {
-                jumping = true;
-                velocity.Y = -300;
-                pos.Y -= 1;
+                startJump = true;
+                recX = 0;
+                recY = tex.Height / 2;
             }
-            jumping = true;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -212,14 +212,7 @@ namespace Game
                 running = true;
                 spriteEffect = SpriteEffects.None;
             }
-            //else
-            //    runningSpeed = 0;
         }
-
-        //public Rectangle Bounds(Vector2 pos, float RS)
-        //{
-        //    return new Rectangle((int)(pos.X + RS), (int)pos.Y, Game1.TILESIZE, 2 * Game1.TILESIZE);
-        //}
 
         public Rectangle BoundsStatic()
         {
@@ -228,24 +221,50 @@ namespace Game
 
         public Rectangle SrcRec()
         {
-            return new Rectangle(recX, 0, (tex.Width / 19), 200);
+            return new Rectangle(recX, recY, (tex.Width / 20), 200);
         }
 
         public void Animation(GameTime gameTime)
         {
             animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (animationTime >= animationSpeed)
+            if (startJump)
             {
-                if (running)
-                    recX += (tex.Width / 19);
-                else
-                    recX = 800;
-                if (recX >= tex.Width - 100)
-                    recX = 0;
-
-                animationTime -= animationSpeed;
+                if (animationTime >= animationSpeed)
+                {
+                    recX += recX = (tex.Width / 20);
+                    animationTime -= animationSpeed;
+                    if (recX == (tex.Width / 20) * 14)
+                    {
+                        startJump = false;
+                        jumping = true;
+                        velocity.Y = -300;
+                        pos.Y -= 1;
+                    }
+                }
             }
-            //SrcRec();
+            else if (jumping)
+            {
+                recX = (tex.Width / 20) * 14;
+                animationTime = 0;
+            }
+            else if (running)
+            {
+                recY = 0;
+                if (animationTime >= animationSpeed)
+                {
+                    recX += (tex.Width / 20);
+
+                    if (recX >= tex.Width - 100)
+                        recX = 0;
+                    animationTime -= animationSpeed;
+                }
+            }
+            else
+            {
+                recX = 800;
+                recY = 0;
+                animationTime = 0;
+            }
         }
     }
 }
