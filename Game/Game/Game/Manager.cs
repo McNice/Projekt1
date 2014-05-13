@@ -10,12 +10,12 @@ namespace Game
 {
     public class Manager
     {
-        Random rng;
+        public Random rng;
         public bool isOnGround;
 
         public List<Player> players = new List<Player>();
-        List<string> bricks = new List<string>();
-        List<string> grass = new List<string>();
+        public List<string> bricks = new List<string>();
+        public List<string> grass = new List<string>();
 
         Keys[] p1Keys = { Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.G };
         Keys[] p2Keys = { Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.RightControl, Keys.Enter };
@@ -36,7 +36,7 @@ namespace Game
             grass.Add("Low Grass");
             grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("testfuck", bricks, grass, rng);
+   //         map.LoadMap("testfuck", bricks, grass, rng);
         }
 
         public void NewGame(bool multiPlayer)
@@ -104,6 +104,7 @@ namespace Game
                             if (ani.channel == (t as ButtonLever).channel)
                             {
                                 ani.Switch();
+                                mode = 2;
                             }
                         }
                     }

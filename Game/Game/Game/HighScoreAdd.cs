@@ -12,7 +12,7 @@ namespace Game
     {
         string[] name = new string[10];
         string[,] stringArray = new string[7, 5];
-        int i, a, X, Y;
+        int  a, X, Y;
         KeyboardState ks, oks;
 
 

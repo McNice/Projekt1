@@ -68,7 +68,7 @@ namespace Game
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             timer = new Timer(Game1.StartScreenFont);
             startScreen = new StartScreen();
-            background = Content.Load<Texture2D>("theRealShit");
+            //background = Content.Load<Texture2D>("theRealShit");
 
             // TEST
             testTex = Content.Load<Texture2D>("Textures/Black Tile");

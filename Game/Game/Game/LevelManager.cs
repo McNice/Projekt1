@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace Game
 {
@@ -17,6 +18,8 @@ namespace Game
         public GameMode gameMode;
         bool mp;
         int mode;
+        int mapNr = -1;
+        List<string> mapNames;
 
         public LevelManager(bool multiPlayer)
         {
@@ -24,6 +27,8 @@ namespace Game
             manager = new Manager();
             manager.NewGame(mp);
             gameMode = GameMode.playing;
+            mapNames = LoadMaps(multiPlayer);
+            NextMap();
         }
 
         public void Update(GameTime gt)
@@ -45,7 +50,8 @@ namespace Game
 
                     break;
                 case GameMode.victory:
-
+                    NextMap();
+                    mode = 0;
                     break;
                 case GameMode.gameOver:
 
@@ -53,10 +59,38 @@ namespace Game
             }
 
         }
-        
+
         public void Draw(SpriteBatch sb)
         {
             manager.Draw(sb);
+        }
+
+        public void NextMap()
+        {
+            mapNr++;
+            if (mapNames.Count == mapNr)
+                mapNr = 0;
+            manager.map.LoadMap(mapNames[mapNr], manager.bricks, manager.grass, manager.rng);
+        }
+
+        public List<string> LoadMaps(bool multiplayer)
+        {
+            string file;
+            List<string> temp = new List<string>();
+            if (multiplayer)
+                file = "multiplayer.txt";
+            else
+                file = "singleplayer.txt";
+
+            StreamReader r = new StreamReader("../../../../../../Maps/" + file);
+            using (r)
+            {
+                while (!r.EndOfStream)
+                {
+                    temp.Add(r.ReadLine());
+                }
+            }
+            return temp;
         }
     }
 }
