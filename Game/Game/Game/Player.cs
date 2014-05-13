@@ -26,7 +26,7 @@ namespace Game
         string player;
         double time;
         ParticleEngine particle;
-        Vector2 particleVec = new Vector2(2, 40);
+        Vector2 particleVec = new Vector2(2, 44);
         KeyboardState ks, oldks;
         SpriteEffects spriteEffect;
 
@@ -197,7 +197,7 @@ namespace Game
                 {
                     runningSpeed += acceleration;
                 }
-                particleVec = new Vector2(50, 40);
+                particleVec = new Vector2(50, 44);
                 running = true;
                 spriteEffect = SpriteEffects.FlipHorizontally;
             }
@@ -208,7 +208,7 @@ namespace Game
                 {
                     runningSpeed -= acceleration;
                 }
-                particleVec = new Vector2(2, 40);
+                particleVec = new Vector2(2, 44);
                 running = true;
                 spriteEffect = SpriteEffects.None;
             }
