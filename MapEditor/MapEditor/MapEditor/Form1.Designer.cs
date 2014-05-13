@@ -61,6 +61,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.radioButton22 = new System.Windows.Forms.RadioButton();
             this.radioButton23 = new System.Windows.Forms.RadioButton();
+            this.radioButton24 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -68,7 +69,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(148, 328);
+            this.numericUpDown1.Location = new System.Drawing.Point(145, 401);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             5,
             0,
@@ -86,7 +87,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(107, 330);
+            this.label1.Location = new System.Drawing.Point(104, 403);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 3;
@@ -95,7 +96,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(107, 353);
+            this.label2.Location = new System.Drawing.Point(104, 426);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 5;
@@ -103,7 +104,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(148, 351);
+            this.numericUpDown2.Location = new System.Drawing.Point(145, 424);
             this.numericUpDown2.Minimum = new decimal(new int[] {
             5,
             0,
@@ -120,7 +121,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 364);
+            this.button1.Location = new System.Drawing.Point(9, 437);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 28);
             this.button1.TabIndex = 6;
@@ -130,7 +131,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 330);
+            this.button2.Location = new System.Drawing.Point(9, 403);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 28);
             this.button2.TabIndex = 7;
@@ -140,7 +141,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 398);
+            this.button3.Location = new System.Drawing.Point(9, 471);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(92, 28);
             this.button3.TabIndex = 9;
@@ -150,7 +151,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(110, 406);
+            this.textBox1.Location = new System.Drawing.Point(107, 479);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(74, 20);
             this.textBox1.TabIndex = 10;
@@ -410,7 +411,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(12, 304);
+            this.numericUpDown3.Location = new System.Drawing.Point(9, 377);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             99,
             0,
@@ -424,7 +425,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 285);
+            this.label3.Location = new System.Drawing.Point(10, 358);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 27;
@@ -454,11 +455,24 @@
             this.radioButton23.UseVisualStyleBackColor = true;
             this.radioButton23.CheckedChanged += new System.EventHandler(this.radioButton23_CheckedChanged);
             // 
+            // radioButton24
+            // 
+            this.radioButton24.AutoSize = true;
+            this.radioButton24.Location = new System.Drawing.Point(13, 270);
+            this.radioButton24.Name = "radioButton24";
+            this.radioButton24.Size = new System.Drawing.Size(49, 17);
+            this.radioButton24.TabIndex = 28;
+            this.radioButton24.TabStop = true;
+            this.radioButton24.Text = "Lava";
+            this.radioButton24.UseVisualStyleBackColor = true;
+            this.radioButton24.CheckedChanged += new System.EventHandler(this.radioButton24_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(199, 440);
+            this.ClientSize = new System.Drawing.Size(204, 513);
+            this.Controls.Add(this.radioButton24);
             this.Controls.Add(this.radioButton22);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown3);
@@ -537,5 +551,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton22;
         private System.Windows.Forms.RadioButton radioButton23;
+        private System.Windows.Forms.RadioButton radioButton24;
     }
 }

@@ -12,7 +12,6 @@ namespace Game
     {
         public Random rng;
         public bool isOnGround;
-
         public List<Player> players = new List<Player>();
         public List<string> bricks = new List<string>();
         public List<string> grass = new List<string>();

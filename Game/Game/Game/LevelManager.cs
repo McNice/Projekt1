@@ -22,7 +22,7 @@ namespace Game
         public GameMode gameMode;
         bool mp;
         public bool GameOver = false;
-        int mode = 3;
+        int mode = 0;
         int mapNr = -1;
         List<string> mapNames;
 

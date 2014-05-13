@@ -50,6 +50,7 @@ namespace MapEditor
         public static readonly int TYPE21 = 21;
         public static readonly int TYPE22 = 22;
         public static readonly int TYPE23 = 700;
+        public static readonly int TYPE24 = 24;
 
         public int type;
         public int width = 40;

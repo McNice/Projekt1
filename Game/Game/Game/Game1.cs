@@ -43,7 +43,7 @@ namespace Game
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
-            graphics.ToggleFullScreen();
+            //graphics.ToggleFullScreen();
             //debug
             //graphics.PreferredBackBufferWidth = 1600;
             //graphics.PreferredBackBufferHeight = 900;

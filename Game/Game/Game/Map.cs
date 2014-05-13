@@ -165,7 +165,10 @@ namespace Game
                     {
                         mapArray[x, y] = new Chimney(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "SmokeChimney2");
                     }
-                    
+                    else if (tempMap[x, y] == "24")
+                    {
+                        mapArray[x, y] = new Lava(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Lava", 50f);
+                    }
                 }
             }
         }
