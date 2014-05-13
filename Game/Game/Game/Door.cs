@@ -13,6 +13,8 @@ namespace Game
             : base(pos, texName, animationSpeed, channel)
         {
             this.start = start;
+            if (start == true)
+                recX = tex.Width - 100;
         }
 
         public override void Update(GameTime gameTime)

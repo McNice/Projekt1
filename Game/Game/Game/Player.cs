@@ -137,7 +137,7 @@ namespace Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, SrcRec(), Color.White, 0, Vector2.Zero, .5714f, spriteEffect, 0.5f);
+            spriteBatch.Draw(tex, pos, SrcRec(), Color.White, 0, Vector2.Zero, 0.52f, spriteEffect, 0.5f);
             particle.Draw(spriteBatch);
         }
 
@@ -239,7 +239,7 @@ namespace Game
                 if (running)
                     recX += (tex.Width / 19);
                 else
-                    recX = 0;
+                    recX = 800;
                 if (recX >= tex.Width - 100)
                     recX = 0;
 

@@ -36,7 +36,7 @@ namespace Game
             grass.Add("Low Grass");
             grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("j1", bricks, grass, rng);
+            map.LoadMap("testfuck", bricks, grass, rng);
         }
 
         public void LoadContent()
@@ -130,12 +130,12 @@ namespace Game
         {
             if (!multiPlayer)
             {
-                players.Add(new Player("Gubbsprite2", map.spawnPoint, "Player1", p1Keys));
+                players.Add(new Player("Gubbsprite P1", map.spawnPoint, "Player1", p1Keys));
             }
             else if (multiPlayer)
             {
-                players.Add(new Player("Gubbsprite2", map.spawnPoint, "Player1", p1Keys));
-                players.Add(new Player("Gubbsprite2", map.spawnPoint + new Vector2(50, 0), "Player2", p2Keys));
+                players.Add(new Player("Gubbsprite P1", map.spawnPoint, "Player1", p1Keys));
+                players.Add(new Player("Gubbsprite P2", map.spawnPoint2, "Player2", p2Keys));
             }
         }
                 

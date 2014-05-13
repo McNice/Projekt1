@@ -22,11 +22,11 @@ namespace MapEditor
 
         public void Draw(SpriteBatch sB)
         {
-            if (type >= 500 && type < 600)
+            if (type >= 500 && type < 550)
                 sB.Draw(Game1.tex, pos, new Rectangle(11 * Game1.tileSize, 0, Game1.tileSize, Game1.tileSize), Color.White);
-            else if (type >= 600 && type < 700)
+            else if (type >= 550 && type < 600)
                 sB.Draw(Game1.tex, pos, new Rectangle(12 * Game1.tileSize, 0, Game1.tileSize, Game1.tileSize), Color.White);
-            else if (type >= 700 && type < 800)
+            else if (type >= 600 && type < 800)
                 sB.Draw(Game1.tex, pos, new Rectangle(13 * Game1.tileSize, 0, Game1.tileSize, Game1.tileSize), Color.White);
             else if (type >= 800 && type < 900)
                 sB.Draw(Game1.tex, pos, new Rectangle(14 * Game1.tileSize, 0, Game1.tileSize, Game1.tileSize), Color.White);

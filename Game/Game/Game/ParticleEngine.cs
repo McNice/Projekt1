@@ -42,8 +42,8 @@ namespace Game
             if (timer <= 0)
             {
                 timer += 105;
-                particleList.Add(new Particle(tex, pos- new Vector2(-5,0), rnd.Next(-7, 8) / 100f));
-                particleList.Add(new Particle(tex, pos - new Vector2(5, 0), rnd.Next(-7, 8) / 100f));
+                particleList.Insert(0, new Particle(tex, pos- new Vector2(-5,0), rnd.Next(-7, 8) / 100f));
+                particleList.Insert(0, new Particle(tex, pos - new Vector2(5, 0), rnd.Next(-7, 8) / 100f));
             }
             foreach (Particle p in particleList)
             {
@@ -62,7 +62,7 @@ namespace Game
             if (timer <= 0)
             {
                 timer += 15;
-                particleList.Add(new Particle(tex, pos, rnd.Next(-7, 8) / 100f));
+                particleList.Insert(0, new Particle(tex, pos, rnd.Next(-7, 8) / 100f));
             }
             foreach (Particle p in particleList)
             {
