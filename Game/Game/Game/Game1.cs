@@ -102,9 +102,7 @@ namespace Game
                         }
                         else if (startScreen.i == 2)
                         {
-                            manager.multiPlayer = false;
-                            manager.players.Clear();
-                            manager.NewGame();
+                            lvlmanager = new LevelManager(false);
                             gameState = GameState.Tutorial;
                         }
                         else if (startScreen.i == 3)
@@ -128,7 +126,7 @@ namespace Game
                     if (KeyMouseReader.KeyPressed(Keys.Space))
                         gameState = GameState.Tutorial;
                     timer.Update(gameTime);
-                    manager.Update(gameTime);
+                    lvlmanager.Update(gameTime);
                     break;
                 case GameState.Credits:
                     if (KeyMouseReader.KeyPressed(Keys.Space))
@@ -166,7 +164,7 @@ namespace Game
                     startScreen.Button(800, "Back", spriteBatch, 3);
                     break;
                 case GameState.Tutorial:
-                    manager.Draw(spriteBatch);
+                    lvlmanager.Draw(spriteBatch);
                     timer.Draw(spriteBatch);
                     spriteBatch.Draw(background, Vector2.Zero, Color.White);
                     break;

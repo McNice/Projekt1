@@ -134,24 +134,7 @@ namespace Game
                 return true;
             return false;
         }
-
-<<<<<<< HEAD
-
-=======
-        public void NewGame()
-        {
-            if (!multiPlayer)
-            {
-                players.Add(new Player("Gubbsprite P1", map.spawnPoint, "Player1", p1Keys));
-            }
-            else if (multiPlayer)
-            {
-                players.Add(new Player("Gubbsprite P1", map.spawnPoint, "Player1", p1Keys));
-                players.Add(new Player("Gubbsprite P2", map.spawnPoint2, "Player2", p2Keys));
-            }
-        }
-                
->>>>>>> 0cb34c77da603c9599101a8ccd30a5cdc4a90eb7
+                                
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Player p in players)
