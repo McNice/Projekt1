@@ -36,7 +36,7 @@ namespace Game
             grass.Add("Low Grass");
             grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("testfuck", bricks, grass, rng);
+            map.LoadMap("S10", bricks, grass, rng);
         }
 
         public void NewGame(bool multiPlayer)
