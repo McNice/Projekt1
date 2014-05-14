@@ -65,6 +65,10 @@ namespace Game
             {
                 ani.Update(gameTime);
             }
+            foreach (Lava lava in map.mapArray.OfType<Lava>())
+            {
+                lava.Update(gameTime);
+            }
             oldks = ks;
         }
 
@@ -110,7 +114,6 @@ namespace Game
                 }
                 if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
                     p.onLadder = true;
-
             }
         }
 
