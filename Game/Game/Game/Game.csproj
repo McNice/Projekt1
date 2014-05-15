@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animated.cs" />
+    <Compile Include="Arrow.cs" />
+    <Compile Include="ArrowTrap.cs" />
     <Compile Include="BlackSlope.cs" />
     <Compile Include="ButtonLever.cs" />
     <Compile Include="Chimney.cs" />
