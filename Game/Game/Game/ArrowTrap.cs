@@ -9,7 +9,6 @@ namespace Game
 {
     public class ArrowTrap : SolidBlock
     {
-        SpriteEffects spriteEffect;
         int rot, maxTimer = 2000;
         public List<Arrow> arrows;
         double timer;
@@ -50,7 +49,7 @@ namespace Game
             {
                 dir = new Vector2(0, -1);
             }
-            else if (rot == 360)
+            else if (rot == 0)
             {
                 dir = new Vector2(1, 0);
             }
@@ -60,7 +59,7 @@ namespace Game
 
         public override void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex, pos, null, Color.White, MathHelper.ToRadians(rot), Vector2.Zero, 1, spriteEffect, 1);
+            sb.Draw(tex, pos, null, Color.White, MathHelper.ToRadians(rot), Vector2.Zero, 1, SpriteEffects.None, 1);
         }
     }
 }
