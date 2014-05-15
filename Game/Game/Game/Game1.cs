@@ -56,7 +56,7 @@ namespace Game
         {
             mediaManager = new MM(Content);
             highScore = new HighScore();
-
+            
             base.Initialize();
         }
 
@@ -66,7 +66,6 @@ namespace Game
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
             background = Content.Load<Texture2D>("theRealShit");
-
             // TEST
             testTex = Content.Load<Texture2D>("Textures/Black Tile");
         }
@@ -88,7 +87,6 @@ namespace Game
                     {
                         if (startScreen.i == 0)
                         {
-
                             lvlmanager = new LevelManager(false);
                             gameState = GameState.Play;
                         }
