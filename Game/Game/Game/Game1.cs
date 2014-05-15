@@ -65,7 +65,7 @@ namespace Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
-            //background = Content.Load<Texture2D>("theRealShit");
+            background = Content.Load<Texture2D>("theRealShit");
 
             // TEST
             testTex = Content.Load<Texture2D>("Textures/Black Tile");
@@ -100,6 +100,7 @@ namespace Game
                         else if (startScreen.i == 2)
                         {
                             lvlmanager = new LevelManager(false);
+                            lvlmanager.Tutorial();
                             gameState = GameState.Tutorial;
                         }
                         else if (startScreen.i == 3)

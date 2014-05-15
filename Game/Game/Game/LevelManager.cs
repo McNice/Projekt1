@@ -87,8 +87,6 @@ namespace Game
 
         public void Draw(SpriteBatch sb)
         {
-
-
             switch (gameMode)
             {
                 case GameMode.playing:
@@ -101,8 +99,7 @@ namespace Game
                     break;
                 case GameMode.gameOver:
                     hsAdd.Draw(sb);
-
-                    break;
+                break;
             }
         }
 
@@ -112,6 +109,12 @@ namespace Game
             if (mapNames.Count == mapNr)
                 mapNr = 0;
             manager.map.LoadMap(mapNames[mapNr], manager.bricks, manager.grass, manager.rng);
+            manager.NewGame(mp);
+        }
+
+        public void Tutorial()
+        {
+            manager.map.LoadMap("tutorial", manager.bricks, manager.grass, manager.rng);
             manager.NewGame(mp);
         }
 

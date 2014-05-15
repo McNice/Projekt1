@@ -36,7 +36,7 @@ namespace Game
 
         Vector2[] colP = { new Vector2(10, 0), new Vector2(30, 0), 
                              new Vector2(0, 10), new Vector2(48, 10), 
-                             new Vector2(0, 86), new Vector2(48, 86),
+                             new Vector2(0, 76), new Vector2(48, 76),
                          new Vector2(18, 96), new Vector2(30, 96)};
 
         public bool jumping, onLadder, startJump, endJump = false;
@@ -112,16 +112,8 @@ namespace Game
             }
             else
             {
-                if (velocity.Y >= 200)
-                {
-                    velocity.Y = 200;
-                    pos += (velocity * (float)time);
-                }
-                else
-                {
-                    velocity += gravity * (float)time;
-                    pos += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
-                }
+                velocity += gravity * (float)time;
+                pos += (velocity * (float)time) + gravity * (float)Math.Pow(time, 2) * 0.5f;
             }
         }
 
@@ -221,7 +213,7 @@ namespace Game
 
         public Rectangle SrcRec()
         {
-            return new Rectangle(recX, recY, (tex.Width / 20), 200);
+            return new Rectangle(recX, recY, (tex.Width / 20)-1, 200);
         }
 
         public void Animation(GameTime gameTime)
@@ -229,10 +221,10 @@ namespace Game
             animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (startJump)
             {
-                if (animationTime >= animationSpeed)
+                if (animationTime >= animationSpeed - 30)
                 {
                     recX += recX = (tex.Width / 20);
-                    animationTime -= animationSpeed;
+                    animationTime -= animationSpeed - 30;
                     if (recX == (tex.Width / 20) * 14)
                     {
                         startJump = false;

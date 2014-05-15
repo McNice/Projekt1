@@ -11,7 +11,6 @@ namespace Game
     public class Manager
     {
         public Random rng;
-        public bool isOnGround;
         public List<Player> players = new List<Player>();
         public List<string> bricks = new List<string>();
         public List<string> grass = new List<string>();
@@ -78,6 +77,7 @@ namespace Game
         void CollisionJohan(Player p, GameTime gameTime, ref int mode)
         {
             p.onLadder = false;
+            p.jumping = true;
             foreach (Tile t in map.mapArray)
             {
                 if (t is SolidBlock)
