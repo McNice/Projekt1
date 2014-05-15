@@ -131,7 +131,7 @@ namespace Game
             {
                 startJump = true;
                 recX = 0;
-                recY = tex.Height / 2;
+                recY = tex.Height / 3;
             }
         }
 
