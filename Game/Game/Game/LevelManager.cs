@@ -112,6 +112,7 @@ namespace Game
             if (mapNames.Count == mapNr)
                 mapNr = 0;
             manager.map.LoadMap(mapNames[mapNr], manager.bricks, manager.grass, manager.rng);
+            manager.NewGame(mp);
         }
 
         public List<string> LoadMaps(bool multiplayer)

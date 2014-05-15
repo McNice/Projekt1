@@ -35,7 +35,6 @@ namespace Game
             grass.Add("Low Grass");
             grass.Add("Low Grass 1");
             map = new Map(Game1.TILESX, Game1.TILESY);
-            map.LoadMap("S10", bricks, grass, rng);
         }
 
         public void NewGame(bool multiPlayer)
@@ -54,6 +53,7 @@ namespace Game
 
         public void Update(GameTime gameTime, ref int gamemode)
         {
+            oldks = ks;
             ks = Keyboard.GetState();
             foreach (Player p in players)
             {
@@ -69,7 +69,10 @@ namespace Game
             {
                 lava.Update(gameTime);
             }
-            oldks = ks;
+            
+
+            if (oldks.IsKeyDown(Keys.I) && ks.IsKeyUp(Keys.I))
+                gamemode = 2;
         }
 
         void CollisionJohan(Player p, GameTime gameTime, ref int mode)
@@ -107,7 +110,6 @@ namespace Game
                             if (ani.channel == (t as ButtonLever).channel)
                             {
                                 ani.Switch();
-                                mode = 2;
                             }
                         }
                     }

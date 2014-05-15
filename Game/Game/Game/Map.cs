@@ -27,11 +27,11 @@ namespace Game
 
         public void LoadMap(string mapName, List<string> bricks, List<string> grass, Random rng)
         {
+            mapArray = null;
             spawnPoint = new Vector2(600);
             spawnPoint2 = new Vector2(600);
             string[,] tempMap = new string[1, 1];
             int line = 0;
-
             try
             {
                 using (StreamReader sR = new StreamReader(dir + mapName + ".txt"))
@@ -46,6 +46,7 @@ namespace Game
                             width = Convert.ToInt32(arrayTemp[0]);
                             height = Convert.ToInt32(arrayTemp[1]);
                             tempMap = new string[width, height];
+                            mapArray = new Tile[width, height];
                         }
                         else
                         {
