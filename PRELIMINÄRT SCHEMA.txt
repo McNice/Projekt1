@@ -1,0 +1,33 @@
+PRELIMINÄRT SCHEMA
+
+15 Torsdag	|Unfuck that shit
+16 Fredag 	|Lägga till traps, fixa ladderclimb spritesheet
+17 Lördag 	|(Extra utrymme vid tidsbrist 1)
+18 Söndag 	|(Extra utrymme vid tidsbrist 1)
+19 Måndag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
+20 Tisdag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
+21 Onsdag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
+22 Torsdag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
+23 Fredag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
+24 Lördag 	|(Extra utrymme vid tidsbrist 2)
+25 Söndag 	|(Extra utrymme vid tidsbrist 2)
+26 Måndag 	|Redovisning (Vi vet inte vilken av dessa dagar vi har än)
+27 Tisdag 	|Redovisning (Vi vet inte vilken av dessa dagar vi har än)
+28 Onsdag 	|Redovisning (Vi vet inte vilken av dessa dagar vi har än)
+29 Torsdag	|Möte (Diskutera vem som skriver vad osv)
+30 Fredag	|Tentamen (OOAD)
+31 Lördag	|(Extra utrymme vid tidsbrist 3)
+1 Söndag	|Dokumentation av produkten 23:59
+2 Måndag	|I give 0 fucks
+3 Tisdag	|I give 0 fucks
+4 Onsdag	|Individuell reflektion 23:59
+
+(Extra utrymme 1)
+Göra klart allt som har med spelet att göra!
+fixa helldoors
+fixa så att man dör i lava
+
+19 - 23
+(allt som står under Extra utrymme 1)
+Implementera de ändringar som fredriks grupp kommer med
+Fixa ett control-scheme 
