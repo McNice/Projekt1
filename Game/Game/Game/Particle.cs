@@ -22,6 +22,13 @@ namespace Game
             pos = Position;
             this.sideSpeed = sideSpeed;
         }
+        public Particle(Texture2D Texture, Vector2 Position, float sideSpeed, float fade)
+        {
+            tex = Texture;
+            pos = Position;
+            this.sideSpeed = sideSpeed;
+            this.fade = fade;
+        }
         
         public void Update(GameTime gt)
         {
@@ -51,7 +58,7 @@ namespace Game
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex, pos, null, Color.White * fade, rot, new Vector2(tex.Width / 2, tex.Height / 2), scale, SpriteEffects.None, 1);
+            sb.Draw(tex, pos, null, Color.White * fade, rot, new Vector2(tex.Width / 2, tex.Height / 2), scale, SpriteEffects.None, 0.53f);
         }
     }
 }

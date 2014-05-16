@@ -210,13 +210,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\SmokeChimney.png">
-      <Name>SmokeChimney</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\SmokeChimney2.png">
       <Name>SmokeChimney2</Name>
       <Importer>TextureImporter</Importer>
