@@ -115,7 +115,7 @@ namespace Game
                     }
                 }
                 if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
-                    p.onLadder = true;
+                    p.OnLadder();
             }
         }
 

@@ -17,7 +17,7 @@ namespace Game
         public float
             runningSpeed = 0,
             acceleration = 0.08f,
-            deceleration = 0.1f,
+            deceleration = 0.2f,
             maxSpeed = 3.5f,
             animationSpeed = 50,
             animationTime = 0;
@@ -39,7 +39,9 @@ namespace Game
                              new Vector2(0, 76), new Vector2(48, 76),
                          new Vector2(18, 96), new Vector2(30, 96)};
 
-        public bool jumping, onLadder, startJump, endJump = false;
+        public bool jumping, onLadder, startJump, climbing = false;
+
+        bool up;
 
         public Player(string texName, Vector2 pos, string player, Keys[] keys)
         {
@@ -61,13 +63,17 @@ namespace Game
 
             Jump();
 
+            Animation(gameTime);
+
             pos.X += runningSpeed;
             particle.pos = pos + particleVec;
             particle.Update(gameTime);
 
-            Animation(gameTime);
+
 
             oldks = ks;
+
+            System.Diagnostics.Debug.WriteIf(!jumping, "onground\n");
         }
 
         void Movement(GameTime gameTime)
@@ -103,11 +109,17 @@ namespace Game
             time = gameTime.ElapsedGameTime.TotalSeconds;
             if (onLadder)
             {
+                climbing = false;
                 if (KeyDown(keys[2]))
+                {
                     pos.Y -= 100 * (float)time;
-
+                    climbing = true;
+                }
                 if (KeyDown(keys[3]))
+                {
                     pos.Y += 100 * (float)time;
+                    climbing = true;
+                }
 
             }
             else
@@ -129,7 +141,7 @@ namespace Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, SrcRec(), Color.White, 0, Vector2.Zero, 0.52f, spriteEffect, 0.5f);
+            spriteBatch.Draw(tex, new Vector2((int)pos.X, (int)pos.Y), SrcRec(), Color.White, 0, Vector2.Zero, 0.52f, spriteEffect, 0.5f);
             particle.Draw(spriteBatch);
         }
 
@@ -187,6 +199,8 @@ namespace Game
             {
                 if (runningSpeed <= maxSpeed)
                 {
+                    if (runningSpeed < 0)
+                        runningSpeed += deceleration;
                     runningSpeed += acceleration;
                 }
                 particleVec = new Vector2(50, 44);
@@ -198,6 +212,8 @@ namespace Game
             {
                 if (runningSpeed >= -maxSpeed)
                 {
+                    if (runningSpeed > 0)
+                        runningSpeed -= deceleration;
                     runningSpeed -= acceleration;
                 }
                 particleVec = new Vector2(2, 44);
@@ -213,50 +229,97 @@ namespace Game
 
         public Rectangle SrcRec()
         {
-            return new Rectangle(recX, recY, (tex.Width / 20)-1, 200);
+            return new Rectangle(recX, recY, (tex.Width / 20) - 1, 200);
         }
 
         public void Animation(GameTime gameTime)
         {
             animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (startJump)
+
+            if (!jumping)
             {
-                if (animationTime >= animationSpeed - 30)
+                if (startJump)
                 {
-                    recX += recX = (tex.Width / 20);
-                    animationTime -= animationSpeed - 30;
-                    if (recX == (tex.Width / 20) * 14)
+                    if (animationTime >= animationSpeed - 30)
                     {
-                        startJump = false;
-                        jumping = true;
-                        velocity.Y = -300;
-                        pos.Y -= 1;
+                        recX += recX = (tex.Width / 20);
+                        animationTime -= animationSpeed - 30;
+                        if (recX >= (tex.Width / 20) * 14)
+                        {
+                            startJump = false;
+                            jumping = true;
+                            velocity.Y = -300;
+                            pos.Y -= 1;
+                        }
                     }
                 }
+                else if (running)
+                {
+                    recY = 0;
+                    if (animationTime >= animationSpeed)
+                    {
+                        recX += (tex.Width / 20);
+
+                        if (recX >= tex.Width - 100)
+                            recX = 0;
+                        animationTime -= animationSpeed;
+                    }
+                }
+                else
+                {
+                    recX = 800;
+                    recY = 0;
+                    animationTime = 0;
+                }
+            }
+            else if (onLadder)
+            {
+                spriteEffect = SpriteEffects.None;
+                particleVec = new Vector2(24, 50);
+                recY = 2 * (tex.Height / 3);
+                if (climbing)
+                {
+                    if (animationTime >= animationSpeed)
+                    {
+                        if (up)
+                            recX += (tex.Width / 20);
+                        else
+                            recX -= (tex.Width / 20);
+
+                        if (recX <= 0)
+                        {
+                            recX = 0;
+                            up = true;
+                        }
+                        if (recX > 11 * (tex.Width / 20))
+                        {
+                            recX = 11 * (tex.Width / 20);
+                            up = false;
+                        }
+                        animationTime -= animationSpeed;
+                    }
+                }
+                else
+                {
+                    animationTime = 0;
+                    if (recX > 11 * (tex.Width / 20))
+                        recX = 11 * (tex.Width / 20);
+                }
+
             }
             else if (jumping)
             {
+                startJump = false;
+                recY = (tex.Height / 3);
                 recX = (tex.Width / 20) * 14;
                 animationTime = 0;
             }
-            else if (running)
-            {
-                recY = 0;
-                if (animationTime >= animationSpeed)
-                {
-                    recX += (tex.Width / 20);
+        }
 
-                    if (recX >= tex.Width - 100)
-                        recX = 0;
-                    animationTime -= animationSpeed;
-                }
-            }
-            else
-            {
-                recX = 800;
-                recY = 0;
-                animationTime = 0;
-            }
+        public void OnLadder()
+        {
+            velocity.Y = 0;
+            onLadder = true;
         }
     }
 }
