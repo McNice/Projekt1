@@ -14,7 +14,7 @@ namespace Game
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        public static Texture2D testTex;
+        public static Texture2D testTex, black;
         Texture2D background;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -68,6 +68,8 @@ namespace Game
             background = Content.Load<Texture2D>("theRealShit");
             // TEST
             testTex = Content.Load<Texture2D>("Textures/Black Tile");
+            black = Content.Load<Texture2D>("black");
+            
         }
 
         protected override void Update(GameTime gameTime)

@@ -26,6 +26,10 @@ namespace Game
         int mapNr = -1;
         List<string> mapNames;
 
+        int mAlphaValue = 1;
+        int mFadeIncrement = 5;
+        double mFadeDelay = .02;
+
         public LevelManager(bool multiPlayer)
         {
             mp = multiPlayer;
@@ -60,8 +64,23 @@ namespace Game
 
                     break;
                 case GameMode.victory:
-                    NextMap();
-                    mode = 0;
+                    mFadeDelay -= gt.ElapsedGameTime.TotalSeconds;
+                    if (mFadeDelay <= 0)
+                    {
+                        mFadeDelay = .035;
+                        mAlphaValue += mFadeIncrement;
+                        if (mAlphaValue >= 255)
+                        {
+                            mFadeIncrement *= -1;
+                            NextMap();
+                        }
+                        if (mAlphaValue <= 0)
+                        {
+                            mFadeIncrement *= -1;
+                            mode = 0;
+                        }
+                    }
+
                     break;
                 case GameMode.gameOver:
                     ks = Keyboard.GetState();
@@ -96,10 +115,13 @@ namespace Game
                 case GameMode.lose:
                     break;
                 case GameMode.victory:
+                    Color col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
+                    sb.Draw(Game1.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
+                    manager.Draw(sb);
                     break;
                 case GameMode.gameOver:
                     hsAdd.Draw(sb);
-                break;
+                    break;
             }
         }
 
