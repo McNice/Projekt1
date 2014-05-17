@@ -15,7 +15,6 @@ namespace Game
         public Vector2 velocity;
         Vector2 gravity;
         public float
-            runningSpeed = 0,
             acceleration = 0.08f,
             deceleration = 0.2f,
             maxSpeed = 3.5f,
@@ -42,6 +41,7 @@ namespace Game
         public bool jumping, onLadder, startJump, climbing = false;
 
         bool up;
+        public int ladderCount = 0;
 
         public Player(string texName, Vector2 pos, string player, Keys[] keys)
         {
@@ -63,13 +63,11 @@ namespace Game
 
             Jump();
 
-            Animation(gameTime);
-
-            pos.X += runningSpeed;
+            pos.X += velocity.X;
             particle.pos = pos + particleVec;
             particle.Update(gameTime);
 
-
+            Animation(gameTime);
 
             oldks = ks;
 
@@ -90,16 +88,16 @@ namespace Game
             }
             else
             {
-                if (runningSpeed >= 0.1f)
+                if (velocity.X >= 0.1f)
                 {
-                    runningSpeed -= deceleration;
+                    velocity.X -= deceleration;
                 }
-                else if (runningSpeed <= -0.1f)
+                else if (velocity.X <= -0.1f)
                 {
-                    runningSpeed += deceleration;
+                    velocity.X += deceleration;
                 }
-                else if (runningSpeed >= -0.1f && runningSpeed <= 0.1f)
-                    runningSpeed = 0;
+                else if (velocity.X >= -0.1f && velocity.X <= 0.1f)
+                    velocity.X = 0;
                 running = false;
             }
         }
@@ -112,15 +110,16 @@ namespace Game
                 climbing = false;
                 if (KeyDown(keys[2]))
                 {
+                    velocity.Y = -200;
                     pos.Y -= 100 * (float)time;
                     climbing = true;
                 }
-                if (KeyDown(keys[3]))
+                else if (KeyDown(keys[3]))
                 {
                     pos.Y += 100 * (float)time;
                     climbing = true;
                 }
-
+                else { velocity.Y = 0; }
             }
             else
             {
@@ -159,14 +158,14 @@ namespace Game
                 rect.Contains(new Point((int)(pos.X + colP[4].X), (int)(pos.Y + colP[4].Y))))
             {
                 pos.X = rect.Right;
-                runningSpeed = 0;
+                velocity.X = 0;
             }
             //Right
             else if (rect.Contains(new Point((int)(pos.X + colP[3].X), (int)(pos.Y + colP[3].Y))) ||
                 rect.Contains(new Point((int)(pos.X + colP[5].X), (int)(pos.Y + colP[5].Y))))
             {
                 pos.X = rect.Left - BoundsStatic().Width + 1;
-                runningSpeed = 0;
+                velocity.X = 0;
             }
             //Bottom
             else if (rect.Contains(new Point((int)(pos.X + colP[6].X), (int)(pos.Y + colP[6].Y))) ||
@@ -197,11 +196,11 @@ namespace Game
 
             if (key == Keys.D || key == Keys.Right)
             {
-                if (runningSpeed <= maxSpeed)
+                if (velocity.X <= maxSpeed)
                 {
-                    if (runningSpeed < 0)
-                        runningSpeed += deceleration;
-                    runningSpeed += acceleration;
+                    if (velocity.X < 0)
+                        velocity.X += deceleration;
+                    velocity.X += acceleration;
                 }
                 particleVec = new Vector2(50, 44);
                 running = true;
@@ -210,11 +209,11 @@ namespace Game
 
             else if (key == Keys.A || key == Keys.Left)
             {
-                if (runningSpeed >= -maxSpeed)
+                if (velocity.X >= -maxSpeed)
                 {
-                    if (runningSpeed > 0)
-                        runningSpeed -= deceleration;
-                    runningSpeed -= acceleration;
+                    if (velocity.X > 0)
+                        velocity.X -= deceleration;
+                    velocity.X -= acceleration;
                 }
                 particleVec = new Vector2(2, 44);
                 running = true;
@@ -234,12 +233,11 @@ namespace Game
 
         public void Animation(GameTime gameTime)
         {
-            animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
             if (!jumping)
             {
                 if (startJump)
                 {
+                    animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                     if (animationTime >= animationSpeed - 30)
                     {
                         recX += recX = (tex.Width / 20);
@@ -255,6 +253,7 @@ namespace Game
                 }
                 else if (running)
                 {
+                    animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                     recY = 0;
                     if (animationTime >= animationSpeed)
                     {
@@ -269,11 +268,11 @@ namespace Game
                 {
                     recX = 800;
                     recY = 0;
-                    animationTime = 0;
                 }
             }
             else if (onLadder)
             {
+                animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 spriteEffect = SpriteEffects.None;
                 particleVec = new Vector2(24, 50);
                 recY = 2 * (tex.Height / 3);
@@ -301,7 +300,6 @@ namespace Game
                 }
                 else
                 {
-                    animationTime = 0;
                     if (recX > 11 * (tex.Width / 20))
                         recX = 11 * (tex.Width / 20);
                 }
@@ -312,7 +310,6 @@ namespace Game
                 startJump = false;
                 recY = (tex.Height / 3);
                 recX = (tex.Width / 20) * 14;
-                animationTime = 0;
             }
         }
 
@@ -320,6 +317,7 @@ namespace Game
         {
             velocity.Y = 0;
             onLadder = true;
+            ladderCount++;
         }
     }
 }

@@ -111,12 +111,12 @@ namespace Game
                     else if (Convert.ToInt32(tempMap[x, y]) >= 500 && Convert.ToInt32(tempMap[x, y]) < 550)
                     {
                         int channel = (Convert.ToInt32(tempMap[x, y]) - 500);
-                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - L", 100f, channel);
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - L", 100f, channel, ButtonLever.BUTTON);
                     }
                     else if (Convert.ToInt32(tempMap[x, y]) >= 550 && Convert.ToInt32(tempMap[x, y]) < 600)
                     {
                         int channel = (Convert.ToInt32(tempMap[x, y]) - 550);
-                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - R", 100f, channel);
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Button - R", 100f, channel, ButtonLever.BUTTON);
                     }
                     else if (Convert.ToInt32(tempMap[x, y]) >= 600 && Convert.ToInt32(tempMap[x, y]) < 800)
                     {
@@ -129,7 +129,7 @@ namespace Game
                     else if (Convert.ToInt32(tempMap[x, y]) >= 800 && Convert.ToInt32(tempMap[x, y]) < 900)
                     {
                         int channel = (Convert.ToInt32(tempMap[x, y]) - 800);
-                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 20f, channel);
+                        mapArray[x, y] = new ButtonLever(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Levers", 20f, channel, ButtonLever.LEVER);
                     }
                     else if (Convert.ToInt32(tempMap[x, y]) >= 900 && Convert.ToInt32(tempMap[x, y]) < 1000)
                     {

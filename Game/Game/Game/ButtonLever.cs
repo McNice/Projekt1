@@ -10,10 +10,14 @@ namespace Game
     public class ButtonLever : Animated
     {
         public bool on;
-        public ButtonLever(Vector2 pos, string texName, float animationSpeed, int channel)
+        public static int BUTTON = 0;
+        public static int LEVER = 1;
+        public int arg;
+        public ButtonLever(Vector2 pos, string texName, float animationSpeed, int channel, int arg)
             : base(pos, texName, animationSpeed, channel)
         {
             start = false;
+            this.arg = arg;
         }
 
         public override void Update(GameTime gameTime)
@@ -39,7 +43,10 @@ namespace Game
 
         public override void Switch()
         {
-            on = !on;
+            if (arg == BUTTON)
+                on = true;
+            else if (arg == LEVER)
+                on = !on;
         }
     }
 }

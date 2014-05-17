@@ -78,6 +78,7 @@ namespace Game
         {
             p.onLadder = false;
             p.jumping = true;
+            p.ladderCount = 0;
             foreach (Tile t in map.mapArray)
             {
                 if (t is SolidBlock)
@@ -116,6 +117,8 @@ namespace Game
                 }
                 if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
                     p.OnLadder();
+                if (t is HellDoor && (t as HellDoor).open && (t as HellDoor).Bounds().Intersects(p.BoundsStatic()))
+                    mode = 2;
             }
         }
 
