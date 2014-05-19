@@ -166,9 +166,30 @@ namespace MapEditor
         {
             type = Game1.TYPE24;
         }
+        private void radioButton25_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE25;
+        }
+        private void radioButton26_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE26;
+        }
+        private void radioButton27_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE27;
+        }
+        private void radioButton28_CheckedChanged(object sender, EventArgs e)
+        {
+            type = Game1.TYPE28;
+        }
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
             Game1.channel = (int)numericUpDown3.Value;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -62,6 +62,10 @@
             this.radioButton22 = new System.Windows.Forms.RadioButton();
             this.radioButton23 = new System.Windows.Forms.RadioButton();
             this.radioButton24 = new System.Windows.Forms.RadioButton();
+            this.radioButton25 = new System.Windows.Forms.RadioButton();
+            this.radioButton26 = new System.Windows.Forms.RadioButton();
+            this.radioButton27 = new System.Windows.Forms.RadioButton();
+            this.radioButton28 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -156,6 +160,7 @@
             this.textBox1.Size = new System.Drawing.Size(74, 20);
             this.textBox1.TabIndex = 10;
             this.textBox1.Text = "auto";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // radioButton1
             // 
@@ -467,12 +472,64 @@
             this.radioButton24.UseVisualStyleBackColor = true;
             this.radioButton24.CheckedChanged += new System.EventHandler(this.radioButton24_CheckedChanged);
             // 
+            // radioButton25
+            // 
+            this.radioButton25.AutoSize = true;
+            this.radioButton25.Location = new System.Drawing.Point(13, 293);
+            this.radioButton25.Name = "radioButton25";
+            this.radioButton25.Size = new System.Drawing.Size(69, 17);
+            this.radioButton25.TabIndex = 28;
+            this.radioButton25.TabStop = true;
+            this.radioButton25.Text = "Arrow Up";
+            this.radioButton25.UseVisualStyleBackColor = true;
+            this.radioButton25.CheckedChanged += new System.EventHandler(this.radioButton25_CheckedChanged);
+            // 
+            // radioButton26
+            // 
+            this.radioButton26.AutoSize = true;
+            this.radioButton26.Location = new System.Drawing.Point(103, 293);
+            this.radioButton26.Name = "radioButton26";
+            this.radioButton26.Size = new System.Drawing.Size(73, 17);
+            this.radioButton26.TabIndex = 28;
+            this.radioButton26.TabStop = true;
+            this.radioButton26.Text = "Arrow Left";
+            this.radioButton26.UseVisualStyleBackColor = true;
+            this.radioButton26.CheckedChanged += new System.EventHandler(this.radioButton26_CheckedChanged);
+            // 
+            // radioButton27
+            // 
+            this.radioButton27.AutoSize = true;
+            this.radioButton27.Location = new System.Drawing.Point(13, 316);
+            this.radioButton27.Name = "radioButton27";
+            this.radioButton27.Size = new System.Drawing.Size(83, 17);
+            this.radioButton27.TabIndex = 28;
+            this.radioButton27.TabStop = true;
+            this.radioButton27.Text = "Arrow Down";
+            this.radioButton27.UseVisualStyleBackColor = true;
+            this.radioButton27.CheckedChanged += new System.EventHandler(this.radioButton27_CheckedChanged);
+            // 
+            // radioButton28
+            // 
+            this.radioButton28.AutoSize = true;
+            this.radioButton28.Location = new System.Drawing.Point(103, 316);
+            this.radioButton28.Name = "radioButton28";
+            this.radioButton28.Size = new System.Drawing.Size(80, 17);
+            this.radioButton28.TabIndex = 28;
+            this.radioButton28.TabStop = true;
+            this.radioButton28.Text = "Arrow Right";
+            this.radioButton28.UseVisualStyleBackColor = true;
+            this.radioButton28.CheckedChanged += new System.EventHandler(this.radioButton28_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(204, 513);
             this.Controls.Add(this.radioButton24);
+            this.Controls.Add(this.radioButton28);
+            this.Controls.Add(this.radioButton27);
+            this.Controls.Add(this.radioButton26);
+            this.Controls.Add(this.radioButton25);
             this.Controls.Add(this.radioButton22);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown3);
@@ -552,5 +609,9 @@
         private System.Windows.Forms.RadioButton radioButton22;
         private System.Windows.Forms.RadioButton radioButton23;
         private System.Windows.Forms.RadioButton radioButton24;
+        private System.Windows.Forms.RadioButton radioButton25;
+        private System.Windows.Forms.RadioButton radioButton26;
+        private System.Windows.Forms.RadioButton radioButton27;
+        private System.Windows.Forms.RadioButton radioButton28;
     }
 }

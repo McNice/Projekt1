@@ -59,7 +59,7 @@ namespace Game
 
         public override void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex, pos, null, Color.White, MathHelper.ToRadians(rot), Vector2.Zero, 1, SpriteEffects.None, 1);
+            sb.Draw(tex, pos, null, Color.White, MathHelper.ToRadians(rot), new Vector2(24, 24), 0.48f, SpriteEffects.None, 1);
         }
     }
 }

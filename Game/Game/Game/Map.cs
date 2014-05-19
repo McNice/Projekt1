@@ -170,6 +170,22 @@ namespace Game
                     {
                         mapArray[x, y] = new Lava(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "Lava", 50f);
                     }
+                    else if (tempMap[x, y] == "25")
+                    {
+                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrap", 270);
+                    }
+                    else if (tempMap[x, y] == "26")
+                    {
+                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrap", 180);
+                    }
+                    else if (tempMap[x, y] == "27")
+                    {
+                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrap", 90);
+                    }
+                    else if (tempMap[x, y] == "28")
+                    {
+                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrap", 0);
+                    }
                 }
             }
         }
