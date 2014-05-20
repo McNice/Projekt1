@@ -29,5 +29,9 @@ namespace Game
         {
             sb.Draw(tex, pos, new Rectangle(0, 0, 100, 100), Color.White, MathHelper.ToRadians(rot), new Vector2(tex.Width / 2, tex.Height / 2), 1, SpriteEffects.None, 1);
         }
+        public Rectangle Bounds()
+        {
+            return  new Rectangle((int)(pos.X - tex.Width/2), (int)(pos.Y- tex.Height/2)+18, tex.Width, 10);
+        }
     }
 }

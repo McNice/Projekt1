@@ -85,6 +85,7 @@ namespace Game
             foreach (Tile t in map.mapArray)
             {
                 if (t is SolidBlock)
+                {
                     if (t.Bounds().Intersects(p.BoundsStatic()))
                     {
                         if (t is Slope)
@@ -98,6 +99,17 @@ namespace Game
                         else
                             p.Collision(t.Bounds());
                     }
+                    if (t is ArrowTrap)
+                    {
+                        foreach(Arrow a in (t as ArrowTrap).arrows)
+                            if(a.Bounds().Intersects(p.BoundsStatic()))
+                            {
+                                //PlaceHolder!
+                                int i = 0;
+                            }
+                    }
+                }
+                    
                 if (t is Door)
                 {
                     if (p.BoundsStatic().Intersects((t as Door).Bounds()) && (t as Door).start == true)
