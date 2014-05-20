@@ -57,7 +57,7 @@ namespace Game
             foreach (Player p in players)
             {
                 p.Update(gameTime);
-                CollisionJohan(p, gameTime,ref gamemode);
+                CollisionJohan(p, gameTime, ref gamemode);
             }
 
             foreach (Animated ani in map.mapArray.OfType<Animated>())
@@ -68,7 +68,10 @@ namespace Game
             {
                 lava.Update(gameTime);
             }
-            
+            foreach (Tile at in map.mapArray)
+                if (at is ArrowTrap)
+                    (at as ArrowTrap).Update(gameTime);
+
 
             if (oldks.IsKeyDown(Keys.I) && ks.IsKeyUp(Keys.I))
                 gamemode = 2;
@@ -142,7 +145,7 @@ namespace Game
                 return true;
             return false;
         }
-                                
+
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Player p in players)

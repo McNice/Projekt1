@@ -260,8 +260,25 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\ArrowTrap.png">
-      <Name>ArrowTrap</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\ArrowTrapD.png">
+      <Name>ArrowTrapD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\ArrowTrapL.png">
+      <Name>ArrowTrapL</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\ArrowTrapR.png">
+      <Name>ArrowTrapR</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\ArrowTrapU.png">
+      <Name>ArrowTrapU</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -172,19 +172,19 @@ namespace Game
                     }
                     else if (tempMap[x, y] == "25")
                     {
-                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrap", 270);
+                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrapU", 270);
                     }
                     else if (tempMap[x, y] == "26")
                     {
-                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrap", 180);
+                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrapL", 180);
                     }
                     else if (tempMap[x, y] == "27")
                     {
-                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrap", 90);
+                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrapD", 90);
                     }
                     else if (tempMap[x, y] == "28")
                     {
-                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrap", 0);
+                        mapArray[x, y] = new ArrowTrap(new Vector2(x * Game1.TILESIZE, y * Game1.TILESIZE), "ArrowTrapR", 0);
                     }
                 }
             }

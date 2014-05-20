@@ -19,6 +19,7 @@ namespace Game
             tex = Game1.mediaManager.Texture(texname);
             dir = direction;
             this.rot = rot;
+            speed = 5f;
         }
         public void Update(GameTime gt)
         {
@@ -26,7 +27,7 @@ namespace Game
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(tex, pos,null, Color.White,MathHelper.ToRadians(rot),new Vector2(tex.Width/2,tex.Height/2),1,SpriteEffects.None,1);
+            sb.Draw(tex, pos, new Rectangle(0, 0, 100, 100), Color.White, MathHelper.ToRadians(rot), new Vector2(tex.Width / 2, tex.Height / 2), 1, SpriteEffects.None, 1);
         }
     }
 }
