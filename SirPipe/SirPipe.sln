@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SirPipe", "SirPipe\SirPipe\SirPipe.csproj", "{D3ADC29A-06BE-49CE-94DB-E2A44F49D062}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SirPipeContent", "SirPipe\SirPipeContent\SirPipeContent.contentproj", "{308F2344-7FD1-425B-818D-71459304EF25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3ADC29A-06BE-49CE-94DB-E2A44F49D062}.Debug|x86.ActiveCfg = Debug|x86
+		{D3ADC29A-06BE-49CE-94DB-E2A44F49D062}.Debug|x86.Build.0 = Debug|x86
+		{D3ADC29A-06BE-49CE-94DB-E2A44F49D062}.Release|x86.ActiveCfg = Release|x86
+		{D3ADC29A-06BE-49CE-94DB-E2A44F49D062}.Release|x86.Build.0 = Release|x86
+		{308F2344-7FD1-425B-818D-71459304EF25}.Debug|x86.ActiveCfg = Debug|x86
+		{308F2344-7FD1-425B-818D-71459304EF25}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
