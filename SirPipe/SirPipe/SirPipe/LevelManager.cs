@@ -30,6 +30,7 @@ namespace SirPipe
         int mAlphaValue = 1;
         int mFadeIncrement = 5;
         double mFadeDelay = .02;
+        Color col;
 
         public LevelManager(bool multiPlayer)
         {
@@ -62,7 +63,17 @@ namespace SirPipe
 
                     break;
                 case GameMode.lose:
-
+                    mFadeDelay -= gt.ElapsedGameTime.TotalSeconds;
+                    if (mFadeDelay <= 0)
+                    {
+                        mFadeDelay = .035;
+                        mAlphaValue += mFadeIncrement;
+                        if (mAlphaValue >= 255)
+                        {
+                            mFadeIncrement *= -1;
+                            mode = 3;
+                        }
+                    }
                     break;
                 case GameMode.victory:
                     mFadeDelay -= gt.ElapsedGameTime.TotalSeconds;
@@ -87,7 +98,7 @@ namespace SirPipe
                     ks = Keyboard.GetState();
                     hsAdd.Update();
                     string temp = hsAdd.PlayerName();
-                    if (KeyClick(Keys.Space) && temp != string.Empty)
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed && temp != string.Empty)
                     {
                         Game.highScore.AddScore(hsAdd.AddScore(hsAdd.PlayerName(), hsAdd.points));
                         GameOver = true;
@@ -114,9 +125,14 @@ namespace SirPipe
                     manager.Draw();
                     break;
                 case GameMode.lose:
+                    Vector2 stringPos = new Vector2((Game.TILESIZE * Game.TILESX) / 2, (Game.TILESIZE * Game.TILESY) / 2);
+                    col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
+                    Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
+                    Renderer.DrawString(Game.StartScreenFont, "GAME OVER", (stringPos - Game.StartScreenFont.MeasureString("GAME OVER") / 2 ), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+                    manager.Draw();
                     break;
                 case GameMode.victory:
-                    Color col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
+                    col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
                     Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
                     manager.Draw();
                     break;

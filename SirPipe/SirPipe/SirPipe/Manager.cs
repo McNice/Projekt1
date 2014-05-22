@@ -47,7 +47,7 @@ namespace SirPipe
             else if (multiPlayer)
             {
                 players.Add(new Player("P1 Sprite", map.spawnPoint, "Player1", p1Keys));
-                players.Add(new Player("P2 Sprite", map.spawnPoint + new Vector2(50, 0), "Player2", p2Keys));
+                players.Add(new Player("P2 Sprite", map.spawnPoint2, "Player2", p2Keys));
             }
         }
 
