@@ -19,7 +19,7 @@ namespace SirPipe
             acceleration = 0.08f,
             deceleration = 0.2f,
             maxSpeed = 3.5f,
-            animationSpeed = 50,
+            animationSpeed = 30,
             animationTime = 0;
         int recX = 0;
         int recY = 0;
@@ -79,8 +79,6 @@ namespace SirPipe
         {
             if (InputHandler.IsKeyDown(keys[0], true))
             {
-
-
                 if (velocity.X >= -maxSpeed)
                 {
                     if (velocity.X > 0)
@@ -222,6 +220,7 @@ namespace SirPipe
         {
             if (!jumping)
             {
+                ladderCount = 0;
                 if (startJump)
                 {
                     animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -233,7 +232,7 @@ namespace SirPipe
                         {
                             startJump = false;
                             jumping = true;
-                            velocity.Y = -300;
+                            velocity.Y = -330;
                             pos.Y -= 1;
                         }
                     }
@@ -260,6 +259,7 @@ namespace SirPipe
             }
             else if (onLadder)
             {
+                ladderCount = 40;
                 startJump = false;
                 animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 spriteEffect = SpriteEffects.None;
@@ -297,9 +297,14 @@ namespace SirPipe
             }
             else if (jumping)
             {
-                startJump = false;
-                recY = (tex.Height / 3);
-                recX = (tex.Width / 20) * 14;
+                if (ladderCount > 0)
+                    ladderCount--;
+                else
+                {
+                    startJump = false;
+                    recY = (tex.Height / 3);
+                    recX = (tex.Width / 20) * 14;
+                }
             }
         }
 
@@ -307,7 +312,6 @@ namespace SirPipe
         {
             velocity.Y = 0;
             onLadder = true;
-            ladderCount++;
         }
     }
 }

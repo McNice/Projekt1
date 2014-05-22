@@ -24,5 +24,10 @@ namespace SirPipe
         {
             open = true;
         }
+
+        public override Rectangle Bounds()
+        {
+            return new Rectangle((int)pos.X + 20, (int)pos.Y + 20, Game.TILESIZE - 40, (Game.TILESIZE * 2) - 40);
+        }
     }
 }

@@ -50,5 +50,10 @@ namespace SirPipe
         {
             return new Rectangle(recX, 0, 100, 100);
         }
+
+        public override Rectangle Bounds()
+        {
+            return new Rectangle((int)pos.X, (int)pos.Y + 30, Game.TILESIZE, Game.TILESIZE-30);
+        }
     }
 }

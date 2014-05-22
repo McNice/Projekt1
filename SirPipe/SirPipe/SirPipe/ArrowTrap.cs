@@ -10,7 +10,7 @@ namespace SirPipe
 {
     public class ArrowTrap : SolidBlock
     {
-        int rot, maxTimer = 2000;
+        int rot, maxTimer = 4000;
         public List<Arrow> arrows;
         double timer;
 
@@ -31,6 +31,8 @@ namespace SirPipe
             }
             for (int i = 0; i < arrows.Count; i++)
                 arrows[i].Update(gt);
+
+            arrows.RemoveAll(x => x.dead);
         }
         Arrow AddArrow()
         {

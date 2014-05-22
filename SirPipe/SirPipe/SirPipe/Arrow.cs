@@ -14,6 +14,7 @@ namespace SirPipe
         Texture2D tex;
         Vector2 dir;
         float speed, rot;
+        public bool dead = false;
         public Arrow(Vector2 pos, string texname, Vector2 direction, int rot)
         {
             this.pos = pos;

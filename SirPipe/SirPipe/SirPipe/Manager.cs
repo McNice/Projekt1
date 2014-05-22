@@ -82,7 +82,6 @@ namespace SirPipe
         {
             p.onLadder = false;
             p.jumping = true;
-            p.ladderCount = 0;
             foreach (Tile t in map.mapArray)
             {
                 if (t is SolidBlock)
@@ -102,12 +101,21 @@ namespace SirPipe
                     }
                     if (t is ArrowTrap)
                     {
-                        foreach(Arrow a in (t as ArrowTrap).arrows)
-                            if(a.Bounds().Intersects(p.BoundsStatic()))
+                        foreach (Arrow a in (t as ArrowTrap).arrows)
+                        {
+                            if (a.Bounds().Intersects(p.BoundsStatic()))
                             {
-                                //PlaceHolder!
-                                int i = 0;
+                                mode = 1;
                             }
+                            foreach (SolidBlock s in map.mapArray.OfType<SolidBlock>())
+                            {
+                                if (s != t)
+                                {
+                                    if (a.Bounds().Intersects(s.Bounds()))
+                                        a.dead = true;                                    
+                                }
+                            }
+                        }
                     }
                 }
                     
@@ -135,7 +143,11 @@ namespace SirPipe
                     p.OnLadder();
                 if (t is HellDoor && (t as HellDoor).open && (t as HellDoor).Bounds().Intersects(p.BoundsStatic()))
                     mode = 2;
+                if (t is Lava && (t as Lava).Bounds().Intersects(p.BoundsStatic()))
+                    mode = 1;
+
             }
+
         }
 
         //bool KeyDown(Keys key)
