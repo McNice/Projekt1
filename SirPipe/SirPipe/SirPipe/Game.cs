@@ -62,7 +62,7 @@ namespace SirPipe
             {
                 case GameState.Title:
                     startScreen.Update(gameTime);
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoRed) == InputState.Pressed)
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoYellow) == InputState.Pressed)
                     {
                         if (startScreen.i == 0)
                         {
