@@ -11,9 +11,6 @@ using MAHArcadeSystem;
 
 namespace SirPipe
 {
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
     public class Game : MAHArcadeSystem.BaseGame
     {
         public override string GameDisplayName { get { return "SirPipe"; } }
@@ -46,6 +43,7 @@ namespace SirPipe
 
         protected override void Initialize()
         {
+            mediaManager = new MM(Content);
             //LoadContent
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();

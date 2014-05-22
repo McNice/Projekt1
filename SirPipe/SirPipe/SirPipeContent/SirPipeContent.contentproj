@@ -40,182 +40,182 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="Textuers\Arrow.png">
+    <Compile Include="Textures\Arrow.png">
       <Name>Arrow</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\ArrowTrapD.png">
+    <Compile Include="Textures\ArrowTrapD.png">
       <Name>ArrowTrapD</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\ArrowTrapL.png">
+    <Compile Include="Textures\ArrowTrapL.png">
       <Name>ArrowTrapL</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\ArrowTrapR.png">
+    <Compile Include="Textures\ArrowTrapR.png">
       <Name>ArrowTrapR</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\ArrowTrapU.png">
+    <Compile Include="Textures\ArrowTrapU.png">
       <Name>ArrowTrapU</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Black Tile.png">
+    <Compile Include="Textures\Black Tile.png">
       <Name>Black Tile</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Brick wall 2.png">
+    <Compile Include="Textures\Brick wall 2.png">
       <Name>Brick wall 2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Brick wall 3.png">
+    <Compile Include="Textures\Brick wall 3.png">
       <Name>Brick wall 3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Button - L.png">
+    <Compile Include="Textures\Button - L.png">
       <Name>Button - L</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Button - R.png">
+    <Compile Include="Textures\Button - R.png">
       <Name>Button - R</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Door-spritesheet.png">
+    <Compile Include="Textures\Door-spritesheet.png">
       <Name>Door-spritesheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Fine Brick 1.png">
+    <Compile Include="Textures\Fine Brick 1.png">
       <Name>Fine Brick 1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Fine Brick 2.png">
+    <Compile Include="Textures\Fine Brick 2.png">
       <Name>Fine Brick 2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Fine Brick 3.png">
+    <Compile Include="Textures\Fine Brick 3.png">
       <Name>Fine Brick 3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Fine Brick 4.png">
+    <Compile Include="Textures\Fine Brick 4.png">
       <Name>Fine Brick 4</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Fine Brick 5.png">
+    <Compile Include="Textures\Fine Brick 5.png">
       <Name>Fine Brick 5</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Hell-door.png">
+    <Compile Include="Textures\Hell-door.png">
       <Name>Hell-door</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Ladder.png">
+    <Compile Include="Textures\Ladder.png">
       <Name>Ladder</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Lava overlay.png">
+    <Compile Include="Textures\Lava overlay.png">
       <Name>Lava overlay</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Lava.png">
+    <Compile Include="Textures\Lava.png">
       <Name>Lava</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Levers.png">
+    <Compile Include="Textures\Levers.png">
       <Name>Levers</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Low Grass 1.png">
+    <Compile Include="Textures\Low Grass 1.png">
       <Name>Low Grass 1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Low Grass.png">
+    <Compile Include="Textures\Low Grass.png">
       <Name>Low Grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Monopoly man 50x100.png">
+    <Compile Include="Textures\Monopoly man 50x100.png">
       <Name>Monopoly man 50x100</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\något.png">
+    <Compile Include="Textures\något.png">
       <Name>något</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\P1 Sprite.png">
+    <Compile Include="Textures\P1 Sprite.png">
       <Name>P1 Sprite</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\P2 Sprite.png">
+    <Compile Include="Textures\P2 Sprite.png">
       <Name>P2 Sprite</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Roof-L.png">
+    <Compile Include="Textures\Roof-L.png">
       <Name>Roof-L</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Roof-R.png">
+    <Compile Include="Textures\Roof-R.png">
       <Name>Roof-R</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\SmokeChimney2.png">
+    <Compile Include="Textures\SmokeChimney2.png">
       <Name>SmokeChimney2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Smoketex.png">
+    <Compile Include="Textures\Smoketex.png">
       <Name>Smoketex</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Swinging Lamp-spritesheet.png">
+    <Compile Include="Textures\Swinging Lamp-spritesheet.png">
       <Name>Swinging Lamp-spritesheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Tall Grass.png">
+    <Compile Include="Textures\Tall Grass.png">
       <Name>Tall Grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\TunnelRoof-L.png">
+    <Compile Include="Textures\TunnelRoof-L.png">
       <Name>TunnelRoof-L</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\TunnelRoof-R.png">
+    <Compile Include="Textures\TunnelRoof-R.png">
       <Name>TunnelRoof-R</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textuers\Window13.png">
+    <Compile Include="Textures\Window13.png">
       <Name>Window13</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

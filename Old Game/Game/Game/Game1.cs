@@ -69,7 +69,6 @@ namespace Game
             // TEST
             testTex = Content.Load<Texture2D>("Textures/Black Tile");
             black = Content.Load<Texture2D>("black");
-            
         }
 
         protected override void Update(GameTime gameTime)
