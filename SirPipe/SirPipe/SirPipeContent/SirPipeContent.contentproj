@@ -38,7 +38,13 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="backgrundsbildtutorial.png">
+      <Name>backgrundsbildtutorial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Arrow.png">
       <Name>Arrow</Name>
@@ -217,13 +223,6 @@
     </Compile>
     <Compile Include="Textures\Window13.png">
       <Name>Window13</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="theRealShit.png">
-      <Name>theRealShit</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

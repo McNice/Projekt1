@@ -48,7 +48,7 @@ namespace SirPipe
             //LoadContent
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
-            background = Content.Load<Texture2D>("theRealShit");
+            background = Content.Load<Texture2D>("backgrundsbildtutorial");
             // TEST
             testTex = Content.Load<Texture2D>("Textures/Black Tile");
             black = Content.Load<Texture2D>("black");
@@ -135,6 +135,7 @@ namespace SirPipe
                     startScreen.Button(800, "Back", 3);
                     break;
                 case GameState.Tutorial:
+                    Renderer.Clear(Color.White);
                     lvlmanager.Draw();
                     Renderer.Draw(background, Vector2.Zero, Color.White);
                     break;
