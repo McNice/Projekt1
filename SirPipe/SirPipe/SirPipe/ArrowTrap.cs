@@ -20,6 +20,7 @@ namespace SirPipe
         {
             this.rot = rot;
             arrows = new List<Arrow>();
+            timer = 3000;
         }
         public void Update(GameTime gt)
         {

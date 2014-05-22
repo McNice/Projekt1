@@ -21,7 +21,7 @@ namespace SirPipe
         public static int TILESIZE = 48;
         public static int TILESX = 40;
         public static int TILESY = 20;
-        enum GameState
+        public enum GameState
         {
             Title,
             Highscore,
@@ -31,7 +31,7 @@ namespace SirPipe
             Play,
             End
         }
-        GameState gameState = GameState.Title;
+        public static GameState gameState = GameState.Title;
         LevelManager lvlmanager;
         public static HighScore highScore;
         StartScreen startScreen;

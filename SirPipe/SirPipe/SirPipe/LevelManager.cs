@@ -71,7 +71,7 @@ namespace SirPipe
                         if (mAlphaValue >= 255)
                         {
                             mFadeIncrement *= -1;
-                            mode = 3;
+                            Game.gameState = Game.GameState.Title;
                         }
                     }
                     break;

@@ -29,11 +29,14 @@ namespace SirPipe
         }
         public void Draw()
         {
-            Renderer.Draw(tex, pos, new Rectangle(0, 0, 100, 100), Color.White, MathHelper.ToRadians(rot), new Vector2(tex.Width / 2, tex.Height / 2), 1, SpriteEffects.None, 1);
+            Renderer.Draw(tex, pos, new Rectangle(0, 0, 100, 100), Color.White, MathHelper.ToRadians(rot), new Vector2(tex.Width / 2, tex.Height / 2), 1, SpriteEffects.None, 0.5f);
         }
         public Rectangle Bounds()
         {
-            return  new Rectangle((int)(pos.X - tex.Width/2), (int)(pos.Y- tex.Height/2)+18, tex.Width, 10);
+            if (rot == 0 || rot == 180)
+                return new Rectangle((int)(pos.X - tex.Width / 2), (int)(pos.Y - tex.Height / 2) + 20, tex.Width, 8);
+            else
+                return new Rectangle((int)(pos.X - tex.Width / 2) + 20, (int)(pos.Y - tex.Height / 2), 8, tex.Height);
         }
     }
 }

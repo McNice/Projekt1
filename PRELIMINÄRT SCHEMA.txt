@@ -1,12 +1,5 @@
 PRELIMINÄRT SCHEMA
 
-15 Torsdag	|Unfuck that shit
-16 Fredag 	|Lägga till traps, fixa ladderclimb spritesheet
-17 Lördag 	|(Extra utrymme vid tidsbrist 1)
-18 Söndag 	|(Extra utrymme vid tidsbrist 1)
-19 Måndag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
-20 Tisdag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
-21 Onsdag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
 22 Torsdag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
 23 Fredag 	|Alla i gruppen gör vars 2 välgjorda maps (en multi- och en singleplayer)
 24 Lördag 	|(Extra utrymme vid tidsbrist 2)
@@ -31,3 +24,6 @@ fixa så att man dör i lava
 (allt som står under Extra utrymme 1)
 Implementera de ändringar som fredriks grupp kommer med
 Fixa ett control-scheme 
+
+bounds runt maps
+liv? - 30 sek om man dör

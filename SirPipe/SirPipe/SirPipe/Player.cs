@@ -173,14 +173,14 @@ namespace SirPipe
                 rect.Contains(new Point((int)(pos.X + colP[4].X), (int)(pos.Y + colP[4].Y))))
             {
                 pos.X = rect.Right;
-                velocity.X = 0;
+
             }
             //Right
             else if (rect.Contains(new Point((int)(pos.X + colP[3].X), (int)(pos.Y + colP[3].Y))) ||
                 rect.Contains(new Point((int)(pos.X + colP[5].X), (int)(pos.Y + colP[5].Y))))
             {
                 pos.X = rect.Left - BoundsStatic().Width + 1;
-                velocity.X = 0;
+
             }
             //Bottom
             else if (rect.Contains(new Point((int)(pos.X + colP[6].X), (int)(pos.Y + colP[6].Y))) ||
