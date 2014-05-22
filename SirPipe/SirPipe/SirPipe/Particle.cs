@@ -59,7 +59,7 @@ namespace SirPipe
         }
         public void Draw()
         {
-            Renderer.Draw(tex, pos, null, Color.White * fade, rot, new Vector2(tex.Width / 2, tex.Height / 2), scale, SpriteEffects.None, 0.53f);
+            Renderer.Draw(tex, pos, null, Color.White * fade, rot, new Vector2(tex.Width / 2, tex.Height / 2), scale, SpriteEffects.None, 0.48f);
         }
     }
 }

@@ -115,6 +115,11 @@ namespace SirPipe
                                         a.dead = true;                                    
                                 }
                             }
+                            foreach (Door d in map.mapArray.OfType<Door>())
+                            {
+                                if (a.Bounds().Intersects(d.Bounds()) && d.start == true)
+                                    a.dead = true;
+                            }
                         }
                     }
                 }
