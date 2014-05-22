@@ -123,6 +123,7 @@ namespace SirPipe
             switch (gameState)
             {
                 case GameState.Play:
+                    Renderer.Clear(Color.LightGray);
                     lvlmanager.Draw();
                     break;
                 case GameState.Title:
@@ -135,7 +136,7 @@ namespace SirPipe
                     startScreen.Button(800, "Back", 3);
                     break;
                 case GameState.Tutorial:
-                    Renderer.Clear(Color.White);
+                    Renderer.Clear(Color.LightGray);
                     lvlmanager.Draw();
                     Renderer.Draw(background, Vector2.Zero, Color.White);
                     break;
