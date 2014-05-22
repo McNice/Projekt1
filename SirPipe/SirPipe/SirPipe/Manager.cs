@@ -16,8 +16,8 @@ namespace SirPipe
         public List<string> bricks = new List<string>();
         public List<string> grass = new List<string>();
 
-        Keys[] p1Keys = { Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.G };
-        Keys[] p2Keys = { Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.RightControl, Keys.Enter };
+        PlayerInput[] p1Keys = { PlayerInput.PlayerOneLeft, PlayerInput.PlayerOneRight, PlayerInput.PlayerOneUp, PlayerInput.PlayerOneDown, PlayerInput.PlayerOneGreen, PlayerInput.PlayerOneYellow };
+        PlayerInput[] p2Keys = { PlayerInput.PlayerTwoLeft, PlayerInput.PlayerTwoRight, PlayerInput.PlayerTwoUp, PlayerInput.PlayerTwoDown, PlayerInput.PlayerTwoGreen, PlayerInput.PlayerTwoYellow };
 
         public Map map;
         public static string path = "../../../../../../Maps/";
@@ -120,7 +120,7 @@ namespace SirPipe
                 }
                 if (t is ButtonLever && p.BoundsStatic().Intersects(t.Bounds()))
                 {
-                    if (KeyClick(p.keys[5]))
+                    if (InputHandler.GetButtonState(p.keys[5]) == InputState.Pressed)
                     {
                         foreach (Animated ani in map.mapArray.OfType<Animated>())
                         {
@@ -138,26 +138,26 @@ namespace SirPipe
             }
         }
 
-        bool KeyDown(Keys key)
-        {
-            if (ks.IsKeyDown(key))
-                return true;
-            return false;
-        }
+        //bool KeyDown(Keys key)
+        //{
+        //    if (ks.IsKeyDown(key))
+        //        return true;
+        //    return false;
+        //}
 
-        bool KeyUp(Keys key)
-        {
-            if (ks.IsKeyUp(key))
-                return true;
-            return false;
-        }
+        //bool KeyUp(Keys key)
+        //{
+        //    if (ks.IsKeyUp(key))
+        //        return true;
+        //    return false;
+        //}
 
-        public bool KeyClick(Keys key)
-        {
-            if (ks.IsKeyDown(key) && oldks.IsKeyUp(key))
-                return true;
-            return false;
-        }
+        //public bool KeyClick(Keys key)
+        //{
+        //    if (ks.IsKeyDown(key) && oldks.IsKeyUp(key))
+        //        return true;
+        //    return false;
+        //}
 
         public void Draw()
         {

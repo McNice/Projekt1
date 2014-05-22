@@ -31,11 +31,11 @@ namespace SirPipe
         KeyboardState ks, oldks;
         SpriteEffects spriteEffect;
 
-        public Keys[] keys;
+        public PlayerInput[] keys;
 
 
         Vector2[] colP = { new Vector2(10, 0), new Vector2(30, 0), 
-                             new Vector2(0, 10), new Vector2(48, 10), 
+                             new Vector2(0, 26), new Vector2(48, 26), 
                              new Vector2(0, 76), new Vector2(48, 76),
                          new Vector2(18, 96), new Vector2(30, 96)};
 
@@ -44,7 +44,7 @@ namespace SirPipe
         bool up;
         public int ladderCount = 0;
 
-        public Player(string texName, Vector2 pos, string player, Keys[] keys)
+        public Player(string texName, Vector2 pos, string player, PlayerInput[] keys)
         {
             this.tex = Game.mediaManager.Texture(texName);
             this.pos = pos;
@@ -77,15 +77,31 @@ namespace SirPipe
 
         void Movement(GameTime gameTime)
         {
-            if (KeyDown(keys[0]))
+            if (InputHandler.IsKeyDown(keys[0], true))
             {
-                PlayerMovement(keys[0]);
-                Animation(gameTime);
+
+
+                if (velocity.X >= -maxSpeed)
+                {
+                    if (velocity.X > 0)
+                        velocity.X -= deceleration;
+                    velocity.X -= acceleration;
+                }
+                particleVec = new Vector2(2, 44);
+                running = true;
+                spriteEffect = SpriteEffects.None;
             }
-            else if (KeyDown(keys[1]))
+            else if (InputHandler.IsKeyDown(keys[1], true))
             {
-                PlayerMovement(keys[1]);
-                Animation(gameTime);
+                if (velocity.X <= maxSpeed)
+                {
+                    if (velocity.X < 0)
+                        velocity.X += deceleration;
+                    velocity.X += acceleration;
+                }
+                particleVec = new Vector2(50, 44);
+                running = true;
+                spriteEffect = SpriteEffects.FlipHorizontally;
             }
             else
             {
@@ -109,13 +125,13 @@ namespace SirPipe
             if (onLadder)
             {
                 climbing = false;
-                if (KeyDown(keys[2]))
+                if (InputHandler.IsKeyDown(keys[2], true))
                 {
                     velocity.Y = -200;
                     pos.Y -= 100 * (float)time;
                     climbing = true;
                 }
-                else if (KeyDown(keys[3]))
+                else if (InputHandler.IsKeyDown(keys[3], true))
                 {
                     pos.Y += 100 * (float)time;
                     climbing = true;
@@ -131,7 +147,7 @@ namespace SirPipe
 
         void Jump()
         {
-            if (KeyDown(keys[4]) && !jumping && !startJump)
+            if (InputHandler.IsKeyDown(keys[4], true) && !jumping && !startJump)
             {
                 startJump = true;
                 recX = 0;
@@ -178,49 +194,19 @@ namespace SirPipe
             }
         }
 
-        bool KeyDown(Keys key)
-        {
-            if (Keyboard.GetState().IsKeyDown(key))
-                return true;
-            return false;
-        }
+        //bool KeyDown(Keys key)
+        //{
+        //    if (Keyboard.GetState().IsKeyDown(key))
+        //        return true;
+        //    return false;
+        //}
 
-        bool KeyUp(Keys key)
-        {
-            if (Keyboard.GetState().IsKeyUp(key))
-                return true;
-            return false;
-        }
-
-        public void PlayerMovement(Keys key)
-        {
-
-            if (key == Keys.D || key == Keys.Right)
-            {
-                if (velocity.X <= maxSpeed)
-                {
-                    if (velocity.X < 0)
-                        velocity.X += deceleration;
-                    velocity.X += acceleration;
-                }
-                particleVec = new Vector2(50, 44);
-                running = true;
-                spriteEffect = SpriteEffects.FlipHorizontally;
-            }
-
-            else if (key == Keys.A || key == Keys.Left)
-            {
-                if (velocity.X >= -maxSpeed)
-                {
-                    if (velocity.X > 0)
-                        velocity.X -= deceleration;
-                    velocity.X -= acceleration;
-                }
-                particleVec = new Vector2(2, 44);
-                running = true;
-                spriteEffect = SpriteEffects.None;
-            }
-        }
+        //bool KeyUp(Keys key)
+        //{
+        //    if (Keyboard.GetState().IsKeyUp(key))
+        //        return true;
+        //    return false;
+        //}
 
         public Rectangle BoundsStatic()
         {
@@ -269,10 +255,12 @@ namespace SirPipe
                 {
                     recX = 800;
                     recY = 0;
+                    animationTime = 0;
                 }
             }
             else if (onLadder)
             {
+                startJump = false;
                 animationTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 spriteEffect = SpriteEffects.None;
                 particleVec = new Vector2(24, 50);
@@ -303,6 +291,7 @@ namespace SirPipe
                 {
                     if (recX > 11 * (tex.Width / 20))
                         recX = 11 * (tex.Width / 20);
+                    animationTime = 0;
                 }
 
             }

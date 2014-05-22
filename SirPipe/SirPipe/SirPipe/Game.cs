@@ -43,6 +43,7 @@ namespace SirPipe
 
         protected override void Initialize()
         {
+            //PlayerInput
             mediaManager = new MM(Content);
             //LoadContent
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
@@ -61,7 +62,7 @@ namespace SirPipe
             {
                 case GameState.Title:
                     startScreen.Update(gameTime);
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneRed) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoRed) == InputState.Pressed)
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoRed) == InputState.Pressed)
                     {
                         if (startScreen.i == 0)
                         {
