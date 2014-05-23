@@ -71,7 +71,12 @@ namespace SirPipe
                         if (mAlphaValue >= 255)
                         {
                             mFadeIncrement *= -1;
-                            Game.gameState = Game.GameState.Title;
+                            Retry();
+                        }
+                        if (mAlphaValue <= 0)
+                        {
+                            mFadeIncrement *= -1;
+                            mode = 0;
                         }
                     }
                     break;
@@ -125,10 +130,10 @@ namespace SirPipe
                     manager.Draw();
                     break;
                 case GameMode.lose:
-                    Vector2 stringPos = new Vector2((Game.TILESIZE * Game.TILESX) / 2, (Game.TILESIZE * Game.TILESY) / 2);
-                    col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
-                    Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
-                    Renderer.DrawString(Game.StartScreenFont, "GAME OVER", (stringPos - Game.StartScreenFont.MeasureString("GAME OVER") / 2 ), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+                    //Vector2 stringPos = new Vector2((Game.TILESIZE * Game.TILESX) / 2, (Game.TILESIZE * Game.TILESY) / 2);
+                    //col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
+                    //Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
+                    //Renderer.DrawString(Game.StartScreenFont, "GAME OVER", (stringPos - Game.StartScreenFont.MeasureString("GAME OVER") / 2 ), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
                     manager.Draw();
                     break;
                 case GameMode.victory:
@@ -145,6 +150,14 @@ namespace SirPipe
         public void NextMap()
         {
             mapNr++;
+            if (mapNames.Count == mapNr)
+                mapNr = 0;
+            manager.map.LoadMap(mapNames[mapNr], manager.bricks, manager.grass, manager.rng);
+            manager.NewGame(mp);
+        }
+
+        public void Retry()
+        {
             if (mapNames.Count == mapNr)
                 mapNr = 0;
             manager.map.LoadMap(mapNames[mapNr], manager.bricks, manager.grass, manager.rng);
