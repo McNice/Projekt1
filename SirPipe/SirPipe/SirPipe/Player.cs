@@ -18,7 +18,7 @@ namespace SirPipe
         public float
             acceleration = 0.08f,
             deceleration = 0.2f,
-            maxSpeed = 3.5f,
+            maxSpeed = 3.0f,
             animationSpeed = 30,
             animationTime = 0,
             ladderTime,
@@ -81,40 +81,42 @@ namespace SirPipe
         {
             if (InputHandler.IsKeyDown(keys[0], true))
             {
-                if (velocity.X >= -maxSpeed)
-                {
-                    if (velocity.X > 0)
-                        velocity.X -= deceleration;
-                    velocity.X -= acceleration;
-                }
+                pos.X -= maxSpeed;
+                //if (velocity.X >= -maxSpeed)
+                //{
+                //    if (velocity.X > 0)
+                //        velocity.X -= deceleration;
+                //    velocity.X -= acceleration;
+                //}
                 particleVec = new Vector2(2, 44);
                 running = true;
                 spriteEffect = SpriteEffects.None;
             }
             else if (InputHandler.IsKeyDown(keys[1], true))
             {
-                if (velocity.X <= maxSpeed)
-                {
-                    if (velocity.X < 0)
-                        velocity.X += deceleration;
-                    velocity.X += acceleration;
-                }
+                pos.X += maxSpeed;
+                //if (velocity.X <= maxSpeed)
+                //{
+                //    if (velocity.X < 0)
+                //        velocity.X += deceleration;
+                //    velocity.X += acceleration;
+                //}
                 particleVec = new Vector2(50, 44);
                 running = true;
                 spriteEffect = SpriteEffects.FlipHorizontally;
             }
             else
             {
-                if (velocity.X >= 0.1f)
-                {
-                    velocity.X -= deceleration;
-                }
-                else if (velocity.X <= -0.1f)
-                {
-                    velocity.X += deceleration;
-                }
-                else if (velocity.X >= -0.1f && velocity.X <= 0.1f)
-                    velocity.X = 0;
+                //if (velocity.X >= 0.1f)
+                //{
+                //    velocity.X -= deceleration;
+                //}
+                //else if (velocity.X <= -0.1f)
+                //{
+                //    velocity.X += deceleration;
+                //}
+                //else if (velocity.X >= -0.1f && velocity.X <= 0.1f)
+                //    velocity.X = 0;
                 running = false;
             }
         }
