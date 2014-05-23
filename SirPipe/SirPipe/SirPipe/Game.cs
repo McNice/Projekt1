@@ -58,7 +58,7 @@ namespace SirPipe
             startScreen = new StartScreen();
             background = Content.Load<Texture2D>("backgrundsbildtutorial");
             // TEST
-            testTex = Content.Load<Texture2D>("Textures/Black Tile");
+            testTex = Content.Load<Texture2D>("whitePx");
             black = Content.Load<Texture2D>("black");
         }
 

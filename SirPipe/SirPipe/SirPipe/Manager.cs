@@ -107,7 +107,7 @@ namespace SirPipe
                     {
                         foreach (Arrow a in (t as ArrowTrap).arrows)
                         {
-                            if (a.Bounds().Intersects(p.BoundsStatic()))
+                            if (a.Bounds().Intersects(p.ArrowColBounds()))
                             {
                                 mode = 1;
                                 Game.getHurt.Play();

@@ -221,6 +221,17 @@ namespace SirPipe
             return new Rectangle((int)pos.X, (int)pos.Y, Game.TILESIZE, 2 * Game.TILESIZE);
         }
 
+        public Rectangle ArrowColBounds()
+        {
+            if (onLadder && jumping)
+                return new Rectangle((int)pos.X+10, (int)pos.Y+5, Game.TILESIZE-20, 2 * Game.TILESIZE-7);
+            if (spriteEffect == SpriteEffects.None)
+                return new Rectangle((int)pos.X + 20, (int)pos.Y + 7, Game.TILESIZE / 2, 2 * Game.TILESIZE - 7);
+
+            else
+                return new Rectangle((int)pos.X + 8, (int)pos.Y + 7, Game.TILESIZE / 2, 2 * Game.TILESIZE - 7);
+        }
+
         public Rectangle SrcRec()
         {
             return new Rectangle(recX, recY, (tex.Width / 20) - 1, 200);
@@ -307,6 +318,8 @@ namespace SirPipe
             }
             else if (jumping)
             {
+                if (startJump)
+                    velocity.Y = -330;
                 if (ladderCount > 0)
                     ladderCount--;
                 else
