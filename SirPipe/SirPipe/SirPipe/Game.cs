@@ -21,6 +21,7 @@ namespace SirPipe
         public static int TILESIZE = 48;
         public static int TILESX = 40;
         public static int TILESY = 20;
+        public static SoundEffect blip, getHurt, jump, ladder, land, victory;
         public enum GameState
         {
             Title,
@@ -46,6 +47,12 @@ namespace SirPipe
             //PlayerInput
             mediaManager = new MM(Content);
             //LoadContent
+            blip = mediaManager.Sound("blip");
+            getHurt = mediaManager.Sound("GetHurt");
+            jump = mediaManager.Sound("Jump");
+            ladder = mediaManager.Sound("Ladder");
+            land = mediaManager.Sound("Land");
+            victory = mediaManager.Sound("PowerUp");
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
             background = Content.Load<Texture2D>("backgrundsbildtutorial");

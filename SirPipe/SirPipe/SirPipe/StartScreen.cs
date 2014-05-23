@@ -24,6 +24,7 @@ namespace SirPipe
         {
             if (InputHandler.GetButtonState(PlayerInput.PlayerOneDown) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoDown) == InputState.Pressed)
             {
+                Game.blip.Play();
                 if (i < numberOfButtons)
                 {
                     i++;
@@ -35,6 +36,7 @@ namespace SirPipe
             }
             else if (InputHandler.GetButtonState(PlayerInput.PlayerOneUp) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoUp) == InputState.Pressed)
             {
+                Game.blip.Play();
                 if (i > 0)
                 {
                     i--;
