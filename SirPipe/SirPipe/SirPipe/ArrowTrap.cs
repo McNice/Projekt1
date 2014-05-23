@@ -29,6 +29,7 @@ namespace SirPipe
             {
                 timer -= maxTimer;
                 arrows.Add(AddArrow());
+                Game.arrowShoot.Play();
             }
             for (int i = 0; i < arrows.Count; i++)
                 arrows[i].Update(gt);

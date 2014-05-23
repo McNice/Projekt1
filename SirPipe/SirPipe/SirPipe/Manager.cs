@@ -144,6 +144,7 @@ namespace SirPipe
                         {
                             if (ani.channel == (t as ButtonLever).channel)
                             {
+                                Game.leverPull.Play();
                                 ani.Switch();
                             }
                         }

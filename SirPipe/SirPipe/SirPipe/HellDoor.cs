@@ -11,6 +11,7 @@ namespace SirPipe
     public class HellDoor : Animated
     {
         public bool open;
+        bool playSound;
         public HellDoor(Vector2 pos, string texName, float animationSpeed, int channel)
             : base(pos, texName, animationSpeed, channel)
         { open = false; }
@@ -19,10 +20,20 @@ namespace SirPipe
         {
             return new Rectangle(recX, 0, 100, 200);
         }
+        public override void Update(GameTime gameTime)
+        {
+            if (playSound)
+            {
+                Game.helldoorOpen.Play();
+                playSound = false;
+            }
+            base.Update(gameTime);
+        }
 
         public override void Switch()
         {
             open = true;
+            playSound = true;
         }
 
         public override Rectangle Bounds()
