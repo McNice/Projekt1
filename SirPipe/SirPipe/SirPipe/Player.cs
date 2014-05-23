@@ -81,7 +81,8 @@ namespace SirPipe
         {
             if (InputHandler.IsKeyDown(keys[0], true))
             {
-                pos.X -= maxSpeed;
+                if (pos.X - maxSpeed >= 0)
+                    pos.X -= maxSpeed;
                 //if (velocity.X >= -maxSpeed)
                 //{
                 //    if (velocity.X > 0)
@@ -94,7 +95,8 @@ namespace SirPipe
             }
             else if (InputHandler.IsKeyDown(keys[1], true))
             {
-                pos.X += maxSpeed;
+                if (pos.X + maxSpeed <= (Game.TILESIZE * (Game.TILESX - 1)))
+                    pos.X += maxSpeed;
                 //if (velocity.X <= maxSpeed)
                 //{
                 //    if (velocity.X < 0)
