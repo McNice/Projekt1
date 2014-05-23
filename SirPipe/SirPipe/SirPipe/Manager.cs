@@ -61,6 +61,9 @@ namespace SirPipe
                 CollisionJohan(p, gameTime, ref gamemode);
             }
 
+            if (players.All<Player>(x => x.fin))
+                gamemode = 2;
+
             foreach (Animated ani in map.mapArray.OfType<Animated>())
             {
                 ani.Update(gameTime);
@@ -82,6 +85,7 @@ namespace SirPipe
         {
             p.onLadder = false;
             p.jumping = true;
+            p.fin = false;
             foreach (Tile t in map.mapArray)
             {
                 if (t is SolidBlock)
@@ -147,7 +151,7 @@ namespace SirPipe
                 if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
                     p.OnLadder();
                 if (t is HellDoor && (t as HellDoor).open && (t as HellDoor).Bounds().Intersects(p.BoundsStatic()))
-                    mode = 2;
+                    p.fin = true;
                 if (t is Lava && (t as Lava).Bounds().Intersects(p.BoundsStatic()))
                     mode = 1;
 

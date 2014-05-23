@@ -40,6 +40,7 @@ namespace SirPipe
                          new Vector2(18, 96), new Vector2(30, 96)};
 
         public bool jumping, onLadder, startJump, climbing = false;
+        public bool fin = false;
 
         bool up;
         public int ladderCount = 0;
@@ -166,7 +167,8 @@ namespace SirPipe
                rect.Contains(new Point((int)(pos.X + colP[1].X), (int)(pos.Y + colP[1].Y))))
             {
                 pos.Y = rect.Bottom;
-                velocity.Y = 0;
+                if (velocity.Y < 0)
+                    velocity.Y = 0;
             }
             //Left
             else if (rect.Contains(new Point((int)(pos.X + colP[2].X), (int)(pos.Y + colP[2].Y))) ||
@@ -187,7 +189,8 @@ namespace SirPipe
               rect.Contains(new Point((int)(pos.X + colP[7].X), (int)(pos.Y + colP[7].Y))))
             {
                 pos.Y = rect.Top - colP[6].Y + 1;
-                velocity.Y = 0;
+                if (velocity.Y > 0)
+                    velocity.Y = 0;
                 jumping = false;
             }
         }
