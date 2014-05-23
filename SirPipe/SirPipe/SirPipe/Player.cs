@@ -18,9 +18,11 @@ namespace SirPipe
         public float
             acceleration = 0.08f,
             deceleration = 0.2f,
-            maxSpeed = 3.5f,
+            maxSpeed = 3.0f,
             animationSpeed = 30,
-            animationTime = 0;
+            animationTime = 0,
+            ladderTime,
+            ladderDelay = 350;
         int recX = 0;
         int recY = 0;
         bool running;
@@ -80,40 +82,44 @@ namespace SirPipe
         {
             if (InputHandler.IsKeyDown(keys[0], true))
             {
-                if (velocity.X >= -maxSpeed)
-                {
-                    if (velocity.X > 0)
-                        velocity.X -= deceleration;
-                    velocity.X -= acceleration;
-                }
+                if (pos.X - maxSpeed >= 0)
+                    pos.X -= maxSpeed;
+                //if (velocity.X >= -maxSpeed)
+                //{
+                //    if (velocity.X > 0)
+                //        velocity.X -= deceleration;
+                //    velocity.X -= acceleration;
+                //}
                 particleVec = new Vector2(2, 44);
                 running = true;
                 spriteEffect = SpriteEffects.None;
             }
             else if (InputHandler.IsKeyDown(keys[1], true))
             {
-                if (velocity.X <= maxSpeed)
-                {
-                    if (velocity.X < 0)
-                        velocity.X += deceleration;
-                    velocity.X += acceleration;
-                }
+                if (pos.X + maxSpeed <= (Game.TILESIZE * (Game.TILESX - 1)))
+                    pos.X += maxSpeed;
+                //if (velocity.X <= maxSpeed)
+                //{
+                //    if (velocity.X < 0)
+                //        velocity.X += deceleration;
+                //    velocity.X += acceleration;
+                //}
                 particleVec = new Vector2(50, 44);
                 running = true;
                 spriteEffect = SpriteEffects.FlipHorizontally;
             }
             else
             {
-                if (velocity.X >= 0.1f)
-                {
-                    velocity.X -= deceleration;
-                }
-                else if (velocity.X <= -0.1f)
-                {
-                    velocity.X += deceleration;
-                }
-                else if (velocity.X >= -0.1f && velocity.X <= 0.1f)
-                    velocity.X = 0;
+                //if (velocity.X >= 0.1f)
+                //{
+                //    velocity.X -= deceleration;
+                //}
+                //else if (velocity.X <= -0.1f)
+                //{
+                //    velocity.X += deceleration;
+                //}
+                //else if (velocity.X >= -0.1f && velocity.X <= 0.1f)
+                //    velocity.X = 0;
                 running = false;
             }
         }
@@ -148,6 +154,7 @@ namespace SirPipe
         {
             if (InputHandler.IsKeyDown(keys[4], true) && !jumping && !startJump)
             {
+                Game.jump.Play();
                 startJump = true;
                 recX = 0;
                 recY = tex.Height / 3;
@@ -270,6 +277,7 @@ namespace SirPipe
                 recY = 2 * (tex.Height / 3);
                 if (climbing)
                 {
+                    ClimbSound(gameTime);
                     if (animationTime >= animationSpeed)
                     {
                         if (up)
@@ -296,7 +304,6 @@ namespace SirPipe
                         recX = 11 * (tex.Width / 20);
                     animationTime = 0;
                 }
-
             }
             else if (jumping)
             {
@@ -315,6 +322,16 @@ namespace SirPipe
         {
             velocity.Y = 0;
             onLadder = true;
+        }
+
+        public void ClimbSound(GameTime gt)
+        {
+            ladderTime += (float)gt.ElapsedGameTime.TotalMilliseconds;
+            if (ladderTime >= ladderDelay)
+            {
+                Game.ladder.Play();
+                ladderTime -= ladderDelay;
+            }
         }
     }
 }

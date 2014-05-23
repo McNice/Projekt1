@@ -61,7 +61,7 @@ namespace SirPipe
         public override void Draw()
         {
             
-            Renderer.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 1);
+            Renderer.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 0.8f);
             for (int i = 0; i < arrows.Count; i++)
                 arrows[i].Draw();
         }

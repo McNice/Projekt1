@@ -110,6 +110,7 @@ namespace SirPipe
                             if (a.Bounds().Intersects(p.BoundsStatic()))
                             {
                                 mode = 1;
+                                Game.getHurt.Play();
                             }
                             foreach (SolidBlock s in map.mapArray.OfType<SolidBlock>())
                             {
@@ -151,12 +152,16 @@ namespace SirPipe
                 if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
                     p.OnLadder();
                 if (t is HellDoor && (t as HellDoor).open && (t as HellDoor).Bounds().Intersects(p.BoundsStatic()))
-                    p.fin = true;
+                {
+                    Game.victory.Play();
+                    mode = 2;
+                }
                 if (t is Lava && (t as Lava).Bounds().Intersects(p.BoundsStatic()))
+                {
+                    Game.getHurt.Play();
                     mode = 1;
-
+                }
             }
-
         }
 
         //bool KeyDown(Keys key)

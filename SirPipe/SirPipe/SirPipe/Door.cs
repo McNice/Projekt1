@@ -39,7 +39,7 @@ namespace SirPipe
 
         public override Rectangle Bounds()
         {
-            return new Rectangle((int)pos.X + (Game.TILESIZE - 10), (int)pos.Y, 10, Game.TILESIZE * 2);
+            return new Rectangle((int)pos.X + (Game.TILESIZE - 14), (int)pos.Y, 18, Game.TILESIZE * 2);
         }
 
         public override void Switch()
