@@ -20,7 +20,9 @@ namespace SirPipe
             deceleration = 0.2f,
             maxSpeed = 3.5f,
             animationSpeed = 30,
-            animationTime = 0;
+            animationTime = 0,
+            ladderTime,
+            ladderDelay = 350;
         int recX = 0;
         int recY = 0;
         bool running;
@@ -147,6 +149,7 @@ namespace SirPipe
         {
             if (InputHandler.IsKeyDown(keys[4], true) && !jumping && !startJump)
             {
+                Game.jump.Play();
                 startJump = true;
                 recX = 0;
                 recY = tex.Height / 3;
@@ -267,6 +270,7 @@ namespace SirPipe
                 recY = 2 * (tex.Height / 3);
                 if (climbing)
                 {
+                    ClimbSound(gameTime);
                     if (animationTime >= animationSpeed)
                     {
                         if (up)
@@ -293,7 +297,6 @@ namespace SirPipe
                         recX = 11 * (tex.Width / 20);
                     animationTime = 0;
                 }
-
             }
             else if (jumping)
             {
@@ -312,6 +315,16 @@ namespace SirPipe
         {
             velocity.Y = 0;
             onLadder = true;
+        }
+
+        public void ClimbSound(GameTime gt)
+        {
+            ladderTime += (float)gt.ElapsedGameTime.TotalMilliseconds;
+            if (ladderTime >= ladderDelay)
+            {
+                Game.ladder.Play();
+                ladderTime -= ladderDelay;
+            }
         }
     }
 }

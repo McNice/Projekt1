@@ -21,7 +21,7 @@ namespace SirPipe
         public static int TILESIZE = 48;
         public static int TILESX = 40;
         public static int TILESY = 20;
-        public static SoundEffect blip, getHurt, jump, ladder, land, victory;
+        public static SoundEffect blip, select, getHurt, jump, ladder, land, victory;
         public enum GameState
         {
             Title,
@@ -48,6 +48,7 @@ namespace SirPipe
             mediaManager = new MM(Content);
             //LoadContent
             blip = mediaManager.Sound("blip");
+            select = mediaManager.Sound("Select");
             getHurt = mediaManager.Sound("GetHurt");
             jump = mediaManager.Sound("Jump");
             ladder = mediaManager.Sound("Ladder");
@@ -63,14 +64,15 @@ namespace SirPipe
 
         protected override void Update(GameTime gameTime)
         {
-            if (InputHandler.GetButtonState(PlayerInput.PlayerOneStart) == InputState.Released)
-                Console.Beep();
+            if (InputHandler.IsKeyDown(PlayerInput.PlayerOneStart, false) && InputHandler.IsKeyDown(PlayerInput.PlayerTwoStart, false))
+                gameState = GameState.Title;
             switch (gameState)
             {
                 case GameState.Title:
                     startScreen.Update(gameTime);
                     if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoYellow) == InputState.Pressed)
                     {
+                        blip.Play();
                         if (startScreen.i == 0)
                         {
                             lvlmanager = new LevelManager(false);
@@ -101,21 +103,28 @@ namespace SirPipe
                         gameState = GameState.Title;
                     break;
                 case GameState.Controls:
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneRed) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoRed) == InputState.Pressed)
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoYellow) == InputState.Pressed)
+                    {
+                        blip.Play();
                         gameState = GameState.Title;
+                    }
                     break;
                 case GameState.Tutorial:
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneRed) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoRed) == InputState.Pressed)
-                        gameState = GameState.Tutorial;
                     lvlmanager.Update(gameTime);
                     break;
                 case GameState.Credits:
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneRed) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoRed) == InputState.Pressed)
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoYellow) == InputState.Pressed)
+                    {
+                        blip.Play();
                         gameState = GameState.Title;
+                    }
                     break;
                 case GameState.Highscore:
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneRed) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoRed) == InputState.Pressed)
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoYellow) == InputState.Pressed)
+                    {
+                        blip.Play();
                         gameState = GameState.Title;
+                    }
                     break;
 
                 case GameState.End:
