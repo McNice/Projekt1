@@ -152,8 +152,7 @@ namespace SirPipe
                 }
                 if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
                     p.OnLadder();
-                if (t is HellDoor && (t as HellDoor).open && (((t as HellDoor).Bounds().Intersects(players[0].BoundsStatic()) && players.Count == 1)) || 
-                    ((t as HellDoor).Bounds().Intersects(players[0].BoundsStatic()) && (t as HellDoor).Bounds().Intersects(players[1].BoundsStatic()) && players.Count == 2))
+                if (t is HellDoor && (t as HellDoor).open && (t as HellDoor).Bounds().Intersects(p.BoundsStatic()))
                 {
                     Game.victory.Play();
                     mode = 2;
