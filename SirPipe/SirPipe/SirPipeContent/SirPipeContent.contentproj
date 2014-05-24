@@ -310,8 +310,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Startscreen2.png">
+      <Name>Startscreen2</Name>
+=======
     <Compile Include="Textures\Controls.png">
       <Name>Controls</Name>
+>>>>>>> 7116ea4f85722480af65323fe6556fa3e3aec513
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
