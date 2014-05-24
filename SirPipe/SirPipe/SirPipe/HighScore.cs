@@ -12,7 +12,7 @@ namespace SirPipe
     public class HighScore
     {
         List<Score> scorelist;
-        public readonly string dir = "../../../../../../HighScore/";
+        public readonly string dir = "../../../../../HighScore/";
         int maxScores = 15;
 
         public HighScore()
