@@ -131,8 +131,8 @@ namespace SirPipe
                     break;
                 case GameMode.lose:
                     //Vector2 stringPos = new Vector2((Game.TILESIZE * Game.TILESX) / 2, (Game.TILESIZE * Game.TILESY) / 2);
-                    //col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
-                    //Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
+                    col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
+                    Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
                     //Renderer.DrawString(Game.StartScreenFont, "GAME OVER", (stringPos - Game.StartScreenFont.MeasureString("GAME OVER") / 2 ), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
                     manager.Draw();
                     break;

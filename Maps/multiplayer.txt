@@ -1,9 +1,14 @@
 DM1
 DM2
+<<<<<<< HEAD
+ma2
+ma1
+=======
 DM3
 ma1
 ma2
 m3
+>>>>>>> 667b56301a83e493e9a5585313de29e3ecb7044b
 S4
 S5
 S6
