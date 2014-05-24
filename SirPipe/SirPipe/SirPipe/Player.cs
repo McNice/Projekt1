@@ -26,6 +26,7 @@ namespace SirPipe
         int recX = 0;
         int recY = 0;
         bool running;
+        public bool onHelldoor;
         string player;
         double time;
         ParticleEngine particle;
