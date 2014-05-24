@@ -15,7 +15,7 @@ namespace SirPipe
     {
         public override string GameDisplayName { get { return "SirPipe"; } }
         public static Texture2D testTex, black;
-        Texture2D background;
+        public static Texture2D background, startScreenTex;
         public static MM mediaManager;
         public static SpriteFont StartScreenFont;
         public static int TILESIZE = 48;
@@ -60,6 +60,7 @@ namespace SirPipe
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
             background = Content.Load<Texture2D>("backgrundsbildtutorial");
+            startScreenTex = Content.Load<Texture2D>("Startscreen2");
             // TEST
             testTex = Content.Load<Texture2D>("whitePx");
             black = Content.Load<Texture2D>("black");

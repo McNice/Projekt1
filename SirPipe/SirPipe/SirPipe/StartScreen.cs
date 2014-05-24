@@ -50,6 +50,7 @@ namespace SirPipe
 
         public void Draw()
         {
+            Renderer.Draw(Game.startScreenTex, new Rectangle(0, 0, 1920, 1080), Color.White);
             Button(200, "SinglePlayer", 0);
             Button(300, "MultiPlayer", 1);
             Button(400, "Tutorial", 2);
@@ -67,7 +68,7 @@ namespace SirPipe
                 scale = 1.5f;
                 color = Color.White;
             }
-            Vector2 pos = new Vector2(((Game.TILESIZE * Game.TILESX) / 2) - ((Game.StartScreenFont.MeasureString(name).Length() * scale) / 2), f);
+            Vector2 pos = new Vector2(((Game.TILESIZE * Game.TILESX) / 4) - ((Game.StartScreenFont.MeasureString(name).Length() * scale) / 2), f);
             Renderer.DrawString(Game.StartScreenFont, name, pos, color, 0, Vector2.Zero, scale, SpriteEffects.None, 1);
 
         }
