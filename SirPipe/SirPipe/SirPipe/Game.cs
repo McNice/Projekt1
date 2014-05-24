@@ -60,7 +60,7 @@ namespace SirPipe
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
             background = Content.Load<Texture2D>("backgrundsbildtutorial");
-            controls = Content.Load<Texture2D>("Controls");
+            controls = Content.Load<Texture2D>("Textures/Controls");
             // TEST
             testTex = Content.Load<Texture2D>("whitePx");
             black = Content.Load<Texture2D>("black");
