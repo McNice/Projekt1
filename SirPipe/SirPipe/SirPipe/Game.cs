@@ -14,7 +14,7 @@ namespace SirPipe
     public class Game : MAHArcadeSystem.BaseGame
     {
         public override string GameDisplayName { get { return "SirPipe"; } }
-        public static Texture2D testTex, black;
+        public static Texture2D testTex, black, controls;
         Texture2D background;
         public static MM mediaManager;
         public static SpriteFont StartScreenFont;
@@ -60,6 +60,7 @@ namespace SirPipe
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
             background = Content.Load<Texture2D>("backgrundsbildtutorial");
+            controls = Content.Load<Texture2D>("Controls");
             // TEST
             testTex = Content.Load<Texture2D>("whitePx");
             black = Content.Load<Texture2D>("black");
@@ -151,7 +152,7 @@ namespace SirPipe
                     break;
                 case GameState.Controls:
                     Renderer.Clear(Color.Black);
-                    startScreen.Button(500, "Insert Image", 9);
+                    Renderer.Draw(controls, new Vector2(320, 320), Color.White);
                     startScreen.Button(800, "Back", 3);
                     break;
                 case GameState.Tutorial:
