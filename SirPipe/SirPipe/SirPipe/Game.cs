@@ -85,17 +85,20 @@ namespace SirPipe
                         {
                             lvlmanager = new LevelManager(false);
                             gameState = GameState.Play;
+                            timer.TimerReset();
                         }
                         else if (startScreen.i == 1)
                         {
                             lvlmanager = new LevelManager(true);
                             gameState = GameState.Play;
+                            timer.TimerReset();
                         }
                         else if (startScreen.i == 2)
                         {
                             lvlmanager = new LevelManager(false);
                             lvlmanager.Tutorial();
                             gameState = GameState.Tutorial;
+                            timer.TimerReset();
                         }
                         else if (startScreen.i == 3)
                             gameState = GameState.Controls;

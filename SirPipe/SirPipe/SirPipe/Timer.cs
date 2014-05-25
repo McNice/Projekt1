@@ -18,6 +18,13 @@ namespace SirPipe
         {
             this.font = font;
         }
+        public void TimerReset()
+        {
+            minDec = 1;
+            min = 0;
+            secDec = 0;
+            sec = 0;
+        }
         public void Update(GameTime gt)
         {
             timer -= gt.ElapsedGameTime.TotalMilliseconds;
