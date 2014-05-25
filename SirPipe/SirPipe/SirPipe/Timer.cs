@@ -42,12 +42,11 @@ namespace SirPipe
                 if (minDec != 0)
                     minDec--;
             }
-
         }
 
         public void Draw()
         {
-            Renderer.DrawString(font, " " + minDec + "" + min + ":" + secDec + "" + sec, pos, Color.Black);
+            Renderer.DrawString(font, " " + minDec + "" + min + ":" + secDec + "" + sec, pos, Color.White, 0f, Vector2.Zero,1,SpriteEffects.None,1);
         }
     }
 }

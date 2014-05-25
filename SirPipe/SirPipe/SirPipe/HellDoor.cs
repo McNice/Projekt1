@@ -32,8 +32,9 @@ namespace SirPipe
 
         public override void Switch()
         {
-            open = true;
+            if(!open)
             playSound = true;
+            open = true;
         }
 
         public override Rectangle Bounds()

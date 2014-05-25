@@ -15,6 +15,7 @@ namespace SirPipe
         public List<Player> players = new List<Player>();
         public List<string> bricks = new List<string>();
         public List<string> grass = new List<string>();
+        Texture2D guiTex;
 
         PlayerInput[] p1Keys = { PlayerInput.PlayerOneLeft, PlayerInput.PlayerOneRight, PlayerInput.PlayerOneUp, PlayerInput.PlayerOneDown, PlayerInput.PlayerOneGreen, PlayerInput.PlayerOneYellow };
         PlayerInput[] p2Keys = { PlayerInput.PlayerTwoLeft, PlayerInput.PlayerTwoRight, PlayerInput.PlayerTwoUp, PlayerInput.PlayerTwoDown, PlayerInput.PlayerTwoGreen, PlayerInput.PlayerTwoYellow };
@@ -35,6 +36,7 @@ namespace SirPipe
             grass.Add("Low Grass");
             grass.Add("Low Grass 1");
             map = new Map(Game.TILESX, Game.TILESY);
+            guiTex = Game.mediaManager.Texture("GUI");
         }
 
         public void NewGame(bool multiPlayer)
@@ -76,9 +78,31 @@ namespace SirPipe
                 if (at is ArrowTrap)
                     (at as ArrowTrap).Update(gameTime);
 
+            if (Vicotry())
+            {
+                Game.victory.Play();
+                gamemode = 2;
+            }
 
             if (oldks.IsKeyDown(Keys.I) && ks.IsKeyUp(Keys.I))
                 gamemode = 2;
+        }
+
+        bool Vicotry()
+        {
+            int i = 0;
+            foreach (Player p in players)
+                foreach (HellDoor h in map.mapArray.OfType<HellDoor>())
+                {
+                    if (p.BoundsStatic().Intersects(h.Bounds()))
+                        i++;
+                }
+
+            if (i >= players.Count)
+                return true;
+            else
+                return false;
+
         }
 
         void CollisionJohan(Player p, GameTime gameTime, ref int mode)
@@ -117,7 +141,7 @@ namespace SirPipe
                                 if (s != t)
                                 {
                                     if (a.Bounds().Intersects(s.Bounds()))
-                                        a.dead = true;                                    
+                                        a.dead = true;
                                 }
                             }
                             foreach (Door d in map.mapArray.OfType<Door>())
@@ -128,7 +152,7 @@ namespace SirPipe
                         }
                     }
                 }
-                    
+
                 if (t is Door)
                 {
                     if (p.BoundsStatic().Intersects((t as Door).Bounds()) && (t as Door).start == true)
@@ -144,7 +168,8 @@ namespace SirPipe
                         {
                             if (ani.channel == (t as ButtonLever).channel)
                             {
-                                Game.leverPull.Play();
+                                if ((t as ButtonLever).arg != 0)
+                                    Game.leverPull.Play();
                                 ani.Switch();
                             }
                         }
@@ -152,11 +177,8 @@ namespace SirPipe
                 }
                 if (t is Ladder && (t as Ladder).Bounds().Intersects(p.BoundsStatic()))
                     p.OnLadder();
-                if (t is HellDoor && (t as HellDoor).open && (t as HellDoor).Bounds().Intersects(p.BoundsStatic()))
-                {
-                    Game.victory.Play();
-                    mode = 2;
-                }
+
+
                 if (t is Lava && (t as Lava).Bounds().Intersects(p.BoundsStatic()))
                 {
                     Game.getHurt.Play();
@@ -193,6 +215,7 @@ namespace SirPipe
                 p.Draw();
             }
             map.Draw();
+            Renderer.Draw(guiTex, new Vector2(0, 960), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0.99f);
         }
     }
 }
