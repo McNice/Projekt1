@@ -70,7 +70,6 @@ namespace SirPipe
             }
             Vector2 pos = new Vector2(((Game.TILESIZE * Game.TILESX) / 1.05f) - ((Game.StartScreenFont.MeasureString(name).Length() * scale) ), f);
             Renderer.DrawString(Game.StartScreenFont, name, pos, color, 0, Vector2.Zero, scale, SpriteEffects.None, 1);
-
         }
     }
 }
