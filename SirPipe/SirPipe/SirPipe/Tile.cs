@@ -29,6 +29,7 @@ namespace SirPipe
         public virtual void Draw()
         {
             Renderer.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 0.6f);
+            
         }
 
         public virtual Rectangle Bounds()

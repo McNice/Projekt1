@@ -14,14 +14,14 @@ namespace SirPipe
     public class Game : MAHArcadeSystem.BaseGame
     {
         public override string GameDisplayName { get { return "SirPipe"; } }
-        public static Texture2D testTex, black;
-        Texture2D background;
+        public static Texture2D background, startScreenTex;
+        public static Texture2D testTex, black, controls;
         public static MM mediaManager;
         public static SpriteFont StartScreenFont;
         public static int TILESIZE = 48;
         public static int TILESX = 40;
         public static int TILESY = 20;
-        public static SoundEffect blip, select, getHurt, jump, ladder, land, victory;
+        public static SoundEffect blip, select, getHurt, jump, ladder, land, victory, arrowShoot, helldoorOpen, leverPull;
         public enum GameState
         {
             Title,
@@ -46,6 +46,7 @@ namespace SirPipe
         {
             //PlayerInput
             mediaManager = new MM(Content);
+            highScore = new HighScore();
             //LoadContent
             blip = mediaManager.Sound("blip");
             select = mediaManager.Sound("Select");
@@ -54,9 +55,14 @@ namespace SirPipe
             ladder = mediaManager.Sound("Ladder");
             land = mediaManager.Sound("Land");
             victory = mediaManager.Sound("PowerUp");
+            arrowShoot = mediaManager.Sound("ArrowShoot");
+            helldoorOpen = mediaManager.Sound("HelldoorOpen");
+            leverPull = mediaManager.Sound("LeverPull");
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
             background = Content.Load<Texture2D>("backgrundsbildtutorial");
+            startScreenTex = Content.Load<Texture2D>("Startscreen2");
+            controls = Content.Load<Texture2D>("Textures/Controls");
             // TEST
             testTex = Content.Load<Texture2D>("whitePx");
             black = Content.Load<Texture2D>("black");
@@ -148,7 +154,7 @@ namespace SirPipe
                     break;
                 case GameState.Controls:
                     Renderer.Clear(Color.Black);
-                    startScreen.Button(500, "Insert Image", 9);
+                    Renderer.Draw(controls, new Vector2(320, 320), Color.White);
                     startScreen.Button(800, "Back", 3);
                     break;
                 case GameState.Tutorial:

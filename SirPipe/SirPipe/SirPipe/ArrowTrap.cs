@@ -29,10 +29,14 @@ namespace SirPipe
             {
                 timer -= maxTimer;
                 arrows.Add(AddArrow());
+                Game.arrowShoot.Play();
             }
             for (int i = 0; i < arrows.Count; i++)
+            {
                 arrows[i].Update(gt);
-
+                if (!(new Rectangle(-50, -50, Game.TILESIZE * Game.TILESX + 100, Game.TILESIZE * Game.TILESY + 100).Contains(new Point((int)arrows[i].pos.X, (int)arrows[i].pos.Y))))
+                    arrows[i].dead = true;
+            }
             arrows.RemoveAll(x => x.dead);
         }
         Arrow AddArrow()
@@ -60,7 +64,7 @@ namespace SirPipe
 
         public override void Draw()
         {
-            
+
             Renderer.Draw(tex, pos, null, Color.White, 0, Vector2.Zero, 0.48f, SpriteEffects.None, 0.8f);
             for (int i = 0; i < arrows.Count; i++)
                 arrows[i].Draw();

@@ -165,6 +165,8 @@ namespace SirPipe
         {
             Renderer.Draw(tex, new Vector2((int)pos.X, (int)pos.Y), SrcRec(), Color.White, 0, Vector2.Zero, 0.52f, spriteEffect, 0.5f);
             particle.Draw();
+            Renderer.Draw(Game.testTex, BoundsStatic(), null, Color.Red, 0, Vector2.Zero, SpriteEffects.None, 1);
+
         }
 
         public void Collision(Rectangle rect)
@@ -188,7 +190,7 @@ namespace SirPipe
             else if (rect.Contains(new Point((int)(pos.X + colP[3].X), (int)(pos.Y + colP[3].Y))) ||
                 rect.Contains(new Point((int)(pos.X + colP[5].X), (int)(pos.Y + colP[5].Y))))
             {
-                pos.X = rect.Left - BoundsStatic().Width + 1;
+                pos.X = rect.Left - BoundsStatic().Width;
 
             }
             //Bottom
