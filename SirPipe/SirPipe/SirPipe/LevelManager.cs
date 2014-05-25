@@ -36,7 +36,7 @@ namespace SirPipe
         {
             mp = multiPlayer;
             manager = new Manager();
-            timer = new Timer(Game.StartScreenFont);
+            
             manager.NewGame(mp);
             gameMode = GameMode.playing;
             mapNames = LoadMaps(multiPlayer);
@@ -59,7 +59,7 @@ namespace SirPipe
             {
                 case GameMode.playing:
                     manager.Update(gt, ref mode);
-                    timer.Update(gt);
+                    Game.timer.Update(gt);
 
                     break;
                 case GameMode.lose:
@@ -126,7 +126,7 @@ namespace SirPipe
             switch (gameMode)
             {
                 case GameMode.playing:
-                    timer.Draw();
+                    Game.timer.Draw();
                     manager.Draw();
                     break;
                 case GameMode.lose:

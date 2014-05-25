@@ -13,6 +13,7 @@ namespace SirPipe
 {
     public class Game : MAHArcadeSystem.BaseGame
     {
+        public static Timer timer;
         public override string GameDisplayName { get { return "SirPipe"; } }
         public static Texture2D background, startScreenTex;
         public static Texture2D testTex, black, controls;
@@ -66,6 +67,7 @@ namespace SirPipe
             // TEST
             testTex = Content.Load<Texture2D>("whitePx");
             black = Content.Load<Texture2D>("black");
+            timer = new Timer(Game.StartScreenFont);
         }
 
         protected override void Update(GameTime gameTime)

@@ -13,7 +13,7 @@ namespace SirPipe
         int minDec = 1, min = 0, secDec = 0, sec = 0;
         double timer = 1000;
         SpriteFont font;
-        Vector2 pos = new Vector2(50, 990);
+        Vector2 pos = new Vector2(600, 990);
         public Timer(SpriteFont font)
         {
             this.font = font;
