@@ -39,7 +39,9 @@ namespace SirPipe
         Vector2[] colP = { new Vector2(10, 0), new Vector2(30, 0), 
                              new Vector2(0, 26), new Vector2(48, 26), 
                              new Vector2(0, 76), new Vector2(48, 76),
-                         new Vector2(18, 96), new Vector2(30, 96)};
+                             /* Snabbare == new Vector2(17, 96), new Vector2(30, 96)
+                              istället för dom under*/
+                         new Vector2(20, 96), new Vector2(28, 96)};
 
         public bool jumping, onLadder, startJump, climbing = false;
         public bool fin = false;
@@ -165,7 +167,6 @@ namespace SirPipe
         {
             Renderer.Draw(tex, new Vector2((int)pos.X, (int)pos.Y), SrcRec(), Color.White, 0, Vector2.Zero, 0.52f, spriteEffect, 0.5f);
             particle.Draw();
-            Renderer.Draw(Game.testTex, BoundsStatic(), null, Color.Red, 0, Vector2.Zero, SpriteEffects.None, 1);
 
         }
 
