@@ -39,13 +39,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="backgrundsbildtutorial.png">
-      <Name>backgrundsbildtutorial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\ArrowTrapD.png">
       <Name>ArrowTrapD</Name>
       <Importer>TextureImporter</Importer>
@@ -324,6 +317,13 @@
   <ItemGroup>
     <Compile Include="Textures\GUI.png">
       <Name>GUI</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="backgroundtutorial.png">
+      <Name>backgroundtutorial</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

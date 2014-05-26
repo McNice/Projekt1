@@ -20,6 +20,7 @@ namespace SirPipe
             playing, lose, victory, gameOver
         }
         public GameMode gameMode;
+        bool victoryDraw;
         bool mp;
         public bool GameOver = false;
         int mode = 0;
@@ -105,11 +106,15 @@ namespace SirPipe
                     if (hsAdd == null)
                         hsAdd = new HighScoreAdd(manager.p1Keys);
                     hsAdd.Update();
-                    string temp = hsAdd.PlayerName();
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneGreen) == InputState.Pressed && temp != string.Empty)
+
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneRed) == InputState.Pressed)
                     {
-                        Game.highScore.AddScore(hsAdd.AddScore(temp, hsAdd.points));
-                        GameOver = true;
+                        string temp = hsAdd.PlayerName();
+                        if (temp != string.Empty)
+                        {
+                            Game.highScore.AddScore(hsAdd.AddScore(temp, hsAdd.points));
+                            GameOver = true;
+                        }
                     }
                     oks = ks;
                     break;
@@ -146,6 +151,8 @@ namespace SirPipe
                     break;
                 case GameMode.gameOver:
                     hsAdd.Draw();
+                    col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
+                    Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
                     break;
             }
         }
@@ -153,8 +160,12 @@ namespace SirPipe
         public void NextMap()
         {
             mapNr++;
-            if (mapNames.Count == mapNr)
-                mapNr = 0;
+            if (mapNames[mapNr].Equals("<End>"))
+            {
+                mode = 3;
+                return;
+            }
+
             manager.map.LoadMap(mapNames[mapNr], manager.bricks, manager.grass, manager.rng);
             manager.NewGame(mp);
         }

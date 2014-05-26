@@ -102,7 +102,7 @@ namespace SirPipe
 
         }
 
-        //PlayerInput.PlayerOneYellow, PlayerInput.PlayerOneRed };
+        
         public void AddChar()
         {
             if (a <= name.Length - 1 && InputHandler.GetButtonState(p1Keys[4]) == InputState.Pressed)

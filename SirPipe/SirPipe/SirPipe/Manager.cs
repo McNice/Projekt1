@@ -17,8 +17,8 @@ namespace SirPipe
         public List<string> grass = new List<string>();
         Texture2D guiTex;
 
-        public PlayerInput[] p1Keys = { PlayerInput.PlayerOneLeft, PlayerInput.PlayerOneRight, PlayerInput.PlayerOneUp, PlayerInput.PlayerOneDown, PlayerInput.PlayerOneYellow, PlayerInput.PlayerOneRed };
-        public PlayerInput[] p2Keys = { PlayerInput.PlayerTwoLeft, PlayerInput.PlayerTwoRight, PlayerInput.PlayerTwoUp, PlayerInput.PlayerTwoDown, PlayerInput.PlayerTwoYellow, PlayerInput.PlayerTwoRed };
+        public PlayerInput[] p1Keys = { PlayerInput.PlayerOneLeft, PlayerInput.PlayerOneRight, PlayerInput.PlayerOneUp, PlayerInput.PlayerOneDown, PlayerInput.PlayerOneGreen, PlayerInput.PlayerOneYellow };
+        public PlayerInput[] p2Keys = { PlayerInput.PlayerTwoLeft, PlayerInput.PlayerTwoRight, PlayerInput.PlayerTwoUp, PlayerInput.PlayerTwoDown, PlayerInput.PlayerTwoGreen, PlayerInput.PlayerTwoYellow };
 
         public Map map;
         public static string path = "../../../../../../Maps/";
