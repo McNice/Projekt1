@@ -16,11 +16,13 @@ namespace SirPipe
         int a, X, Y;
         public int points;
         KeyboardState ks, oks;
+        PlayerInput[] p1Keys;
 
 
-        public HighScoreAdd()
+        public HighScoreAdd(PlayerInput[] p1Keys)
         {
             StringArray();
+            this.p1Keys = p1Keys;
         }
 
         void StringArray()
@@ -38,14 +40,16 @@ namespace SirPipe
 
         public void Update()
         {
+
+            //public PlayerInput[] p1Keys = { PlayerInput.PlayerOneLeft, PlayerInput.PlayerOneRight, PlayerInput.PlayerOneUp, PlayerInput.PlayerOneDown, PlayerInput.PlayerOneYellow, PlayerInput.PlayerOneRed };
             ks = Keyboard.GetState();
-            if (Key(Keys.D))
+            if (InputHandler.GetButtonState(p1Keys[1]) == InputState.Pressed)
                 X++;
-            else if (Key(Keys.A))
+            else if (InputHandler.GetButtonState(p1Keys[0]) == InputState.Pressed)
                 X += 6;
-            else if (Key(Keys.W))
+            else if (InputHandler.GetButtonState(p1Keys[2]) == InputState.Pressed)
                 Y += 4;
-            else if (Key(Keys.S))
+            else if (InputHandler.GetButtonState(p1Keys[3]) == InputState.Pressed)
                 Y++;
             AddChar();
             oks = ks;
@@ -62,10 +66,10 @@ namespace SirPipe
         {
             for (int y = 0; y < 5; y++)
                 for (int x = 0; x < 7; x++)
-                    Char( stringArray[x, y], x, y);
+                    Char(stringArray[x, y], x, y);
             string temp = PlayerName();
             Renderer.DrawString(Game.StartScreenFont, temp, new Vector2((float)(1920 / 2), 150)
-                , Color.White, 0, new Vector2(Game.StartScreenFont.MeasureString(temp).Length() / 2, Game.StartScreenFont.LineSpacing/2), 2, SpriteEffects.None, 1);
+                , Color.White, 0, new Vector2(Game.StartScreenFont.MeasureString(temp).Length() / 2, Game.StartScreenFont.LineSpacing / 2), 2, SpriteEffects.None, 1);
         }
 
         public Score AddScore(string playerName, int score)
@@ -97,17 +101,17 @@ namespace SirPipe
             Renderer.DrawString(Game.StartScreenFont, i, pos, color, 0, new Vector2(7, Game.StartScreenFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
 
         }
-        
 
+        //PlayerInput.PlayerOneYellow, PlayerInput.PlayerOneRed };
         public void AddChar()
         {
-            if (a <= name.Length - 1 && Key(Keys.Enter))
+            if (a <= name.Length - 1 && InputHandler.GetButtonState(p1Keys[4]) == InputState.Pressed)
             {
                 name[a] = stringArray[X % 7, Y % 5];
                 a++;
 
             }
-            else if (a > 0 && a <= name.Length && Key(Keys.Back))
+            else if (a > 0 && a <= name.Length && InputHandler.GetButtonState(p1Keys[5]) == InputState.Pressed)
             {
                 name[a - 1] = string.Empty;
                 a--;

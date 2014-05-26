@@ -17,8 +17,8 @@ namespace SirPipe
         public List<string> grass = new List<string>();
         Texture2D guiTex;
 
-        PlayerInput[] p1Keys = { PlayerInput.PlayerOneLeft, PlayerInput.PlayerOneRight, PlayerInput.PlayerOneUp, PlayerInput.PlayerOneDown, PlayerInput.PlayerOneGreen, PlayerInput.PlayerOneYellow };
-        PlayerInput[] p2Keys = { PlayerInput.PlayerTwoLeft, PlayerInput.PlayerTwoRight, PlayerInput.PlayerTwoUp, PlayerInput.PlayerTwoDown, PlayerInput.PlayerTwoGreen, PlayerInput.PlayerTwoYellow };
+        public PlayerInput[] p1Keys = { PlayerInput.PlayerOneLeft, PlayerInput.PlayerOneRight, PlayerInput.PlayerOneUp, PlayerInput.PlayerOneDown, PlayerInput.PlayerOneYellow, PlayerInput.PlayerOneRed };
+        public PlayerInput[] p2Keys = { PlayerInput.PlayerTwoLeft, PlayerInput.PlayerTwoRight, PlayerInput.PlayerTwoUp, PlayerInput.PlayerTwoDown, PlayerInput.PlayerTwoYellow, PlayerInput.PlayerTwoRed };
 
         public Map map;
         public static string path = "../../../../../../Maps/";
@@ -74,7 +74,7 @@ namespace SirPipe
             {
                 lava.Update(gameTime);
             }
-            foreach (Tile at in map.mapArray)
+            foreach (ArrowTrap at in map.mapArray.OfType<ArrowTrap>())
                 if (at is ArrowTrap)
                     (at as ArrowTrap).Update(gameTime);
 
@@ -86,6 +86,8 @@ namespace SirPipe
 
             if (oldks.IsKeyDown(Keys.I) && ks.IsKeyUp(Keys.I))
                 gamemode = 2;
+            if (Timer.end)
+                gamemode = 1;
         }
 
         bool Vicotry()

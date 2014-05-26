@@ -22,6 +22,9 @@ namespace SirPipe
         public static int TILESIZE = 48;
         public static int TILESX = 40;
         public static int TILESY = 20;
+        int mAlphaValue = 1;
+        int mFadeIncrement = 5;
+        double mFadeDelay = .02;
         public static SoundEffect blip, select, getHurt, jump, ladder, land, victory, arrowShoot, helldoorOpen, leverPull;
         public enum GameState
         {
@@ -109,9 +112,29 @@ namespace SirPipe
                     }
                     break;
                 case GameState.Play:
-                    lvlmanager.Update(gameTime);
-                    if (lvlmanager.GameOver)
-                        gameState = GameState.Title;
+                    if (!lvlmanager.GameOver)
+                        lvlmanager.Update(gameTime);
+                    else if (lvlmanager.GameOver)
+                    {
+                        mFadeDelay -= gameTime.ElapsedGameTime.TotalSeconds;
+                        if (mFadeDelay <= 0)
+                        {
+                            mFadeDelay += .035;
+                            mAlphaValue += mFadeIncrement;
+                            //if (mAlphaValue >= 255)
+                            //{
+                            //    mFadeIncrement *= -1;
+                            //    Retry();
+                            //}
+                            
+                             if (mAlphaValue <= 0)
+                            {
+                                mFadeIncrement *= -1;
+                                gameState = GameState.Title;
+                            }
+                        }
+                    }
+                        
                     break;
                 case GameState.Controls:
                     if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoYellow) == InputState.Pressed)

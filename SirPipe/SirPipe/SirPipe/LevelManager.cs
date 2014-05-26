@@ -13,7 +13,6 @@ namespace SirPipe
     public class LevelManager
     {
         Manager manager;
-        Timer timer;
         HighScoreAdd hsAdd;
         KeyboardState ks, oks;
         public enum GameMode
@@ -36,12 +35,12 @@ namespace SirPipe
         {
             mp = multiPlayer;
             manager = new Manager();
-            
+
             manager.NewGame(mp);
             gameMode = GameMode.playing;
             mapNames = LoadMaps(multiPlayer);
             NextMap();
-            hsAdd = new HighScoreAdd();
+
         }
 
         public void Update(GameTime gt)
@@ -73,7 +72,9 @@ namespace SirPipe
                             mFadeIncrement *= -1;
                             Retry();
                         }
-                        if (mAlphaValue <= 0)
+                        if (mAlphaValue >= 255 / 1.01f && Timer.end)
+                            mode = 3;
+                        else if (mAlphaValue <= 0)
                         {
                             mFadeIncrement *= -1;
                             mode = 0;
@@ -101,11 +102,13 @@ namespace SirPipe
                     break;
                 case GameMode.gameOver:
                     ks = Keyboard.GetState();
+                    if (hsAdd == null)
+                        hsAdd = new HighScoreAdd(manager.p1Keys);
                     hsAdd.Update();
                     string temp = hsAdd.PlayerName();
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed && temp != string.Empty)
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneGreen) == InputState.Pressed && temp != string.Empty)
                     {
-                        Game.highScore.AddScore(hsAdd.AddScore(hsAdd.PlayerName(), hsAdd.points));
+                        Game.highScore.AddScore(hsAdd.AddScore(temp, hsAdd.points));
                         GameOver = true;
                     }
                     oks = ks;
