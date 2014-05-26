@@ -161,9 +161,10 @@ namespace SirPipe
         public void NextMap()
         {
             
-            mapNr++;
-            if (mapNr > 0)
+            
+            if (mapNr >= 0)
                 score += 2000;
+            mapNr++;
             if (mapNames[mapNr].Equals("<End>"))
             {
                 mode = 3;
