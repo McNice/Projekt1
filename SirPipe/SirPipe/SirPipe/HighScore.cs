@@ -108,6 +108,7 @@ namespace SirPipe
                 scorelistSP.Add(score);
             else if (numer_Of_Players == 2)
                 scorelistMP.Add(score);
+            LevelManager.victoryDraw = false;
             Save();
             Load();
         }

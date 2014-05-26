@@ -19,7 +19,7 @@ namespace SirPipe
             playing, lose, victory, gameOver
         }
         public GameMode gameMode;
-        bool victoryDraw;
+        public static bool victoryDraw;
         bool mp;
         public bool GameOver = false;
         public static int score = 0;
@@ -65,6 +65,7 @@ namespace SirPipe
                     mFadeDelay -= gt.ElapsedGameTime.TotalSeconds;
                     if (mFadeDelay <= 0)
                     {
+                        
                         mFadeDelay = .035;
                         mAlphaValue += mFadeIncrement;
                         if (mAlphaValue >= 255)
@@ -140,7 +141,7 @@ namespace SirPipe
                     manager.Draw();
                     break;
                 case GameMode.gameOver:
-                    hsAdd.Draw();
+                    hsAdd.Draw(victoryDraw);
                     col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
                     Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
                     break;
@@ -156,6 +157,7 @@ namespace SirPipe
             mapNr++;
             if (mapNames[mapNr].Equals("<End>"))
             {
+                victoryDraw = true;
                 mode = 3;
                 return;
             }

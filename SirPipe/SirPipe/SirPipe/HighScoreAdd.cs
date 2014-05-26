@@ -60,14 +60,16 @@ namespace SirPipe
                 AddChar();
         }
 
-        public void Draw()
+        public void Draw(bool victory)
         {
-            tex = Game.mediaManager.Texture("GameOver");
-            Renderer.Draw(tex, new Rectangle(50, 15, 198*3, 108*3), Color.White);
+            if (!victory)
+                tex = Game.mediaManager.Texture("GameOver");
+            else
+                tex = Game.mediaManager.Texture("Happy Ending");
+            Renderer.Draw(tex, new Rectangle(50, 15, 198 * 3, 108 * 3), Color.White);
             for (int y = 0; y < 6; y++)
                 for (int x = 0; x < 7; x++)
                 {
-                    
                     Char(stringArray[x, y], x, y);
                 }
 
