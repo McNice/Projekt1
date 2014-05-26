@@ -136,6 +136,7 @@ namespace SirPipe
                 case GameMode.playing:
                     Game.timer.Draw();
                     manager.Draw();
+                    Renderer.DrawString(Game.StartScreenFont, "Score: " + score, new Vector2(800, 990), Color.White,0,Vector2.Zero,1,SpriteEffects.None,1);
                     break;
                 case GameMode.lose:
                     //Vector2 stringPos = new Vector2((Game.TILESIZE * Game.TILESX) / 2, (Game.TILESIZE * Game.TILESY) / 2);
@@ -159,9 +160,10 @@ namespace SirPipe
 
         public void NextMap()
         {
+            
+            mapNr++;
             if (mapNr > 0)
                 score += 2000;
-            mapNr++;
             if (mapNames[mapNr].Equals("<End>"))
             {
                 mode = 3;
