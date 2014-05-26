@@ -174,11 +174,11 @@ namespace SirPipe
                 case GameState.Credits:
                     Renderer.Clear(Color.Black);
                     startScreen.Button(100, "Credits", 9);
-                    startScreen.Button(200, "Anton - Gjorde ''allt''", 9);
+                    startScreen.Button(200, "Anton - Hämtade kaffe", 9);
                     startScreen.Button(300, "Daniel - Hämtade kaffe", 9);
                     startScreen.Button(400, "Johan - Hämtade kaffe", 9);
                     startScreen.Button(500, "Kamil - Hämtade kaffe", 9);
-                    startScreen.Button(600, "Simon - is Gay", 9);
+                    startScreen.Button(600, "Simon - Hämtade kaffe", 9);
                     startScreen.Button(800, "Back", 4);
                     break;
                 case GameState.Highscore:
