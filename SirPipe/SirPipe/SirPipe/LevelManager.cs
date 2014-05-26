@@ -194,7 +194,7 @@ namespace SirPipe
             else
                 file = "singleplayer.txt";
 
-            StreamReader r = new StreamReader("../../../../../Maps/" + file);
+            StreamReader r = new StreamReader(Directory.GetCurrentDirectory() + "\\Maps\\" + file);
             using (r)
             {
                 while (!r.EndOfStream)
