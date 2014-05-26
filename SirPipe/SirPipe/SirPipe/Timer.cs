@@ -14,7 +14,7 @@ namespace SirPipe
         double timer = 1000;
         public static bool end;
         SpriteFont font;
-        Vector2 pos = new Vector2(600, 990);
+        Vector2 pos = new Vector2(230, 990);
         public Timer(SpriteFont font)
         {
             this.font = font;
@@ -60,6 +60,7 @@ namespace SirPipe
 
         public void Draw()
         {
+            Renderer.DrawString(font, "Time Left:", new Vector2(30, pos.Y), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
             Renderer.DrawString(font, " " + minDec + "" + min + ":" + secDec + "" + sec, pos, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 1);
         }
 
