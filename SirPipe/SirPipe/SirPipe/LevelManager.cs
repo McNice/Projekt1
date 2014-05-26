@@ -107,7 +107,7 @@ namespace SirPipe
                         hsAdd = new HighScoreAdd(manager.p1Keys);
                     hsAdd.Update();
 
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneRed) == InputState.Pressed)
+                    if (hsAdd.done)
                     {
                         string temp = hsAdd.PlayerName();
                         if (temp != string.Empty)
