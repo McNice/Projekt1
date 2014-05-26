@@ -20,6 +20,7 @@ namespace SirPipe
             playing, lose, victory, gameOver
         }
         public GameMode gameMode;
+        bool victoryDraw;
         bool mp;
         public bool GameOver = false;
         int mode = 0;
@@ -105,11 +106,15 @@ namespace SirPipe
                     if (hsAdd == null)
                         hsAdd = new HighScoreAdd(manager.p1Keys);
                     hsAdd.Update();
-                    string temp = hsAdd.PlayerName();
-                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneGreen) == InputState.Pressed && temp != string.Empty)
+
+                    if (InputHandler.GetButtonState(PlayerInput.PlayerOneRed) == InputState.Pressed)
                     {
-                        Game.highScore.AddScore(hsAdd.AddScore(temp, hsAdd.points));
-                        GameOver = true;
+                        string temp = hsAdd.PlayerName();
+                        if (temp != string.Empty)
+                        {
+                            Game.highScore.AddScore(hsAdd.AddScore(temp, hsAdd.points));
+                            GameOver = true;
+                        }
                     }
                     oks = ks;
                     break;
@@ -155,8 +160,12 @@ namespace SirPipe
         public void NextMap()
         {
             mapNr++;
-            if (mapNames.Count == mapNr)
-                mapNr = 0;
+            if (mapNames[mapNr].Equals("<End>"))
+            {
+                mode = 3;
+                return;
+            }
+
             manager.map.LoadMap(mapNames[mapNr], manager.bricks, manager.grass, manager.rng);
             manager.NewGame(mp);
         }
