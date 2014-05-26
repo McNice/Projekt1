@@ -23,6 +23,7 @@ namespace SirPipe
         bool victoryDraw;
         bool mp;
         public bool GameOver = false;
+        public static int score;
         int mode = 0;
         int mapNr = -1;
         List<string> mapNames;
@@ -112,14 +113,13 @@ namespace SirPipe
                         string temp = hsAdd.PlayerName();
                         if (temp != string.Empty)
                         {
-                            Game.highScore.AddScore(hsAdd.AddScore(temp, hsAdd.points));
+                            Game.highScore.AddScore(hsAdd.AddScore(temp, hsAdd.points), manager.players.Count);
                             GameOver = true;
                         }
                     }
                     oks = ks;
                     break;
             }
-
         }
 
         public bool KeyClick(Keys key)
@@ -159,13 +159,14 @@ namespace SirPipe
 
         public void NextMap()
         {
+            if (mapNr > 0)
+                score += 2000;
             mapNr++;
             if (mapNames[mapNr].Equals("<End>"))
             {
                 mode = 3;
                 return;
             }
-
             manager.map.LoadMap(mapNames[mapNr], manager.bricks, manager.grass, manager.rng);
             manager.NewGame(mp);
         }
