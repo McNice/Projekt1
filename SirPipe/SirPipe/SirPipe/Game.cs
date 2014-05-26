@@ -18,7 +18,7 @@ namespace SirPipe
         public static Texture2D background, startScreenTex;
         public static Texture2D testTex, black, controls;
         public static MM mediaManager;
-        public static SpriteFont StartScreenFont;
+        public static SpriteFont StartScreenFont, highScoreFont;
         public static int TILESIZE = 48;
         public static int TILESX = 40;
         public static int TILESY = 20;
@@ -64,6 +64,7 @@ namespace SirPipe
             background = Content.Load<Texture2D>("backgroundtutorial");
             startScreenTex = Content.Load<Texture2D>("Startscreen2");
             controls = Content.Load<Texture2D>("Textures/Controls");
+            highScoreFont = Content.Load<SpriteFont>("HighScoreFont");
             // TEST
             testTex = Content.Load<Texture2D>("whitePx");
             black = Content.Load<Texture2D>("black");
