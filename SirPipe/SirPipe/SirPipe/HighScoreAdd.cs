@@ -56,7 +56,6 @@ namespace SirPipe
                 if (InputHandler.GetButtonState(p1Keys[5]) == InputState.Pressed)
                     done = true;
             }
-
             else
                 AddChar();
         }
@@ -73,7 +72,7 @@ namespace SirPipe
 
         public Score AddScore(string playerName, int score)
         {
-            return new Score(playerName, score);
+            return new Score(playerName, LevelManager.score + Game.timer.Score());
         }
 
         public string PlayerName()

@@ -62,5 +62,13 @@ namespace SirPipe
         {
             Renderer.DrawString(font, " " + minDec + "" + min + ":" + secDec + "" + sec, pos, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 1);
         }
+
+        public int Score()
+        {
+            int s, m;
+            s = secDec * 10 + sec;
+            m = minDec * 10 + min;
+            return s * 200 + m * 60 * 200;
+        }
     }
 }
