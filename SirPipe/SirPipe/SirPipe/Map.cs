@@ -14,7 +14,7 @@ namespace SirPipe
     {
         public int width, height;
         public Tile[,] mapArray;
-        public string dir = "../../../../../Maps/";
+        public string dir = Directory.GetCurrentDirectory()+ "\\Maps\\";
         public Vector2 spawnPoint, spawnPoint2;
         Random rng;
 
