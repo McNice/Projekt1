@@ -146,6 +146,8 @@ namespace SirPipe
                     break;
                 case GameMode.gameOver:
                     hsAdd.Draw();
+                    col = new Color(255, 255, 255, (byte)MathHelper.Clamp(mAlphaValue, 0, 255));
+                    Renderer.Draw(Game.black, Vector2.Zero, null, col, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
                     break;
             }
         }
