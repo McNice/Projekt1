@@ -63,10 +63,10 @@ namespace SirPipe
         public void Draw(bool victory)
         {
             if (!victory)
-                tex = Game.mediaManager.Texture("GameOver");
+                tex = Game.mediaManager.Texture("DieOldMan");
             else
                 tex = Game.mediaManager.Texture("Happy Ending");
-            Renderer.Draw(tex, new Rectangle(50, 15, 198 * 3, 108 * 3), Color.White);
+            Renderer.Draw(tex, new Rectangle(50, 15, Game.TILESIZE * Game.TILESX, Game.TILESIZE * Game.TILESY), Color.White);
             for (int y = 0; y < 6; y++)
                 for (int x = 0; x < 7; x++)
                 {
@@ -74,7 +74,7 @@ namespace SirPipe
                 }
 
             string temp = PlayerName();
-            Renderer.DrawString(Game.highScoreFont, temp, new Vector2((float)(1920 / 2), 150)
+            Renderer.DrawString(Game.highScoreFont, temp, new Vector2((float)(1920 / 2), 300)
                 , Color.White, 0, new Vector2(Game.highScoreFont.MeasureString(temp).Length() / 2, Game.StartScreenFont.LineSpacing / 2), 1, SpriteEffects.None, 1);
         }
 
@@ -108,12 +108,12 @@ namespace SirPipe
             {
                 if (i != "Done")
                 {
-                    Vector2 pos = new Vector2(300 + Game.highScoreFont.MeasureString("A").Length() * 4.2f * x - 40, 350 + Game.highScoreFont.LineSpacing * 3 * y);
+                    Vector2 pos = new Vector2(385 + Game.highScoreFont.MeasureString("A").Length() * 1.8f * x , 450 + Game.highScoreFont.LineSpacing * 1.2f * y);
                     Renderer.DrawString(Game.highScoreFont, i, pos, color, 0, new Vector2(7, Game.highScoreFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
                 }
                 else
                 {
-                    Vector2 pos = new Vector2((Game.TILESIZE * Game.TILESX / 2) - (Game.highScoreFont.MeasureString(i).Length() / 2), 350 + Game.highScoreFont.LineSpacing * 3 * y);
+                    Vector2 pos = new Vector2((Game.TILESIZE * Game.TILESX / 2) , 450 + Game.highScoreFont.LineSpacing * 1.2f * y);
                     Renderer.DrawString(Game.highScoreFont, i, pos, color, 0, new Vector2((Game.highScoreFont.MeasureString(i).Length() / 2), Game.highScoreFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
                 }
             }
