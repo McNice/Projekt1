@@ -21,10 +21,10 @@ namespace SirPipe
         }
         public void TimerReset()
         {
-            minDec = 1;
+            minDec = 0;
             min = 0;
             secDec = 0;
-            sec = 0;
+            sec = 1;
             end = false;
         }
         public void Update(GameTime gt)

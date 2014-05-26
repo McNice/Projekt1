@@ -14,7 +14,6 @@ namespace SirPipe
     {
         Manager manager;
         HighScoreAdd hsAdd;
-        KeyboardState ks, oks;
         public enum GameMode
         {
             playing, lose, victory, gameOver
@@ -23,7 +22,7 @@ namespace SirPipe
         bool victoryDraw;
         bool mp;
         public bool GameOver = false;
-        public static int score;
+        public static int score = 0;
         int mode = 0;
         int mapNr = -1;
         List<string> mapNames;
@@ -61,7 +60,6 @@ namespace SirPipe
                 case GameMode.playing:
                     manager.Update(gt, ref mode);
                     Game.timer.Update(gt);
-
                     break;
                 case GameMode.lose:
                     mFadeDelay -= gt.ElapsedGameTime.TotalSeconds;
@@ -100,10 +98,8 @@ namespace SirPipe
                             mode = 0;
                         }
                     }
-
                     break;
                 case GameMode.gameOver:
-                    ks = Keyboard.GetState();
                     if (hsAdd == null)
                         hsAdd = new HighScoreAdd(manager.p1Keys);
                     hsAdd.Update();
@@ -114,19 +110,12 @@ namespace SirPipe
                         if (temp != string.Empty)
                         {
                             Game.highScore.AddScore(hsAdd.AddScore(temp, hsAdd.points), manager.players.Count);
+                            score = 0;
                             GameOver = true;
                         }
                     }
-                    oks = ks;
                     break;
             }
-        }
-
-        public bool KeyClick(Keys key)
-        {
-            if (ks.IsKeyDown(key) && oks.IsKeyUp(key))
-                return true;
-            return false;
         }
 
         public void Draw()
@@ -136,7 +125,7 @@ namespace SirPipe
                 case GameMode.playing:
                     Game.timer.Draw();
                     manager.Draw();
-                    Renderer.DrawString(Game.StartScreenFont, "Score: " + score, new Vector2(800, 990), Color.White,0,Vector2.Zero,1,SpriteEffects.None,1);
+                    Renderer.DrawString(Game.StartScreenFont, "Score: " + score, new Vector2(800, 990), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
                     break;
                 case GameMode.lose:
                     //Vector2 stringPos = new Vector2((Game.TILESIZE * Game.TILESX) / 2, (Game.TILESIZE * Game.TILESY) / 2);
@@ -160,8 +149,8 @@ namespace SirPipe
 
         public void NextMap()
         {
-            
-            
+
+
             if (mapNr >= 0)
                 score += 2000;
             mapNr++;
