@@ -63,10 +63,10 @@ namespace SirPipe
         public void Draw(bool victory)
         {
             if (!victory)
-                tex = Game.mediaManager.Texture("GameOver");
+                tex = Game.mediaManager.Texture("DieOldMan");
             else
                 tex = Game.mediaManager.Texture("Happy Ending");
-            Renderer.Draw(tex, new Rectangle(50, 15, 198 * 3, 108 * 3), Color.White);
+            Renderer.Draw(tex, new Rectangle(50, 15, Game.TILESIZE * Game.TILESX, Game.TILESIZE * Game.TILESY), Color.White);
             for (int y = 0; y < 6; y++)
                 for (int x = 0; x < 7; x++)
                 {
@@ -74,8 +74,8 @@ namespace SirPipe
                 }
 
             string temp = PlayerName();
-            Renderer.DrawString(Game.StartScreenFont, temp, new Vector2((float)(1920 / 2), 150)
-                , Color.White, 0, new Vector2(Game.StartScreenFont.MeasureString(temp).Length() / 2, Game.StartScreenFont.LineSpacing / 2), 2, SpriteEffects.None, 1);
+            Renderer.DrawString(Game.highScoreFont, temp, new Vector2((float)(1920 / 2), 300)
+                , Color.White, 0, new Vector2(Game.highScoreFont.MeasureString(temp).Length() / 2, Game.StartScreenFont.LineSpacing / 2), 1, SpriteEffects.None, 1);
         }
 
         public Score AddScore(string playerName, int score)
@@ -96,11 +96,11 @@ namespace SirPipe
 
         void Char(string i, int x, int y)
         {
-            float scale = 3;
+            float scale = 1;
             Color color = Color.Gray;
             if (x == X % 7 && y == Y % 6)
             {
-                scale = 4.5f;
+                scale = 1.5f;
                 color = Color.White;
             }
 
@@ -108,13 +108,13 @@ namespace SirPipe
             {
                 if (i != "Done")
                 {
-                    Vector2 pos = new Vector2(300 + Game.StartScreenFont.MeasureString("A").Length() * 4.2f * x - 40, 350 + Game.StartScreenFont.LineSpacing * 3 * y);
-                    Renderer.DrawString(Game.StartScreenFont, i, pos, color, 0, new Vector2(7, Game.StartScreenFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
+                    Vector2 pos = new Vector2(385 + Game.highScoreFont.MeasureString("A").Length() * 1.8f * x , 450 + Game.highScoreFont.LineSpacing * 1.2f * y);
+                    Renderer.DrawString(Game.highScoreFont, i, pos, color, 0, new Vector2(7, Game.highScoreFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
                 }
                 else
                 {
-                    Vector2 pos = new Vector2((Game.TILESIZE * Game.TILESX / 2) - (Game.StartScreenFont.MeasureString(i).Length() / 2), 350 + Game.StartScreenFont.LineSpacing * 3 * y);
-                    Renderer.DrawString(Game.StartScreenFont, i, pos, color, 0, new Vector2((Game.StartScreenFont.MeasureString(i).Length() / 2), Game.StartScreenFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
+                    Vector2 pos = new Vector2((Game.TILESIZE * Game.TILESX / 2) , 450 + Game.highScoreFont.LineSpacing * 1.2f * y);
+                    Renderer.DrawString(Game.highScoreFont, i, pos, color, 0, new Vector2((Game.highScoreFont.MeasureString(i).Length() / 2), Game.highScoreFont.LineSpacing / 2), scale, SpriteEffects.None, 1);
                 }
             }
         }
