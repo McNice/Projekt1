@@ -189,26 +189,6 @@ namespace SirPipe
             }
         }
 
-        //bool KeyDown(Keys key)
-        //{
-        //    if (ks.IsKeyDown(key))
-        //        return true;
-        //    return false;
-        //}
-
-        //bool KeyUp(Keys key)
-        //{
-        //    if (ks.IsKeyUp(key))
-        //        return true;
-        //    return false;
-        //}
-
-        //public bool KeyClick(Keys key)
-        //{
-        //    if (ks.IsKeyDown(key) && oldks.IsKeyUp(key))
-        //        return true;
-        //    return false;
-        //}
 
         public void Draw()
         {

@@ -73,7 +73,10 @@ namespace SirPipe
         protected override void Update(GameTime gameTime)
         {
             if (InputHandler.IsKeyDown(PlayerInput.PlayerOneStart, false) && InputHandler.IsKeyDown(PlayerInput.PlayerTwoStart, false))
+            {
+                LevelManager.score = 0;
                 gameState = GameState.Title;
+            }
             switch (gameState)
             {
                 case GameState.Title:

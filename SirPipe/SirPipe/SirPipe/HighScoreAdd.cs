@@ -16,8 +16,8 @@ namespace SirPipe
         public bool done;
         int a, X, Y;
         public int points;
-        KeyboardState ks, oks;
         PlayerInput[] p1Keys;
+        Texture2D tex;
 
 
         public HighScoreAdd(PlayerInput[] p1Keys)
@@ -60,11 +60,19 @@ namespace SirPipe
                 AddChar();
         }
 
-        public void Draw()
+        public void Draw(bool victory)
         {
+            if (!victory)
+                tex = Game.mediaManager.Texture("GameOver");
+            else
+                tex = Game.mediaManager.Texture("Happy Ending");
+            Renderer.Draw(tex, new Rectangle(50, 15, 198 * 3, 108 * 3), Color.White);
             for (int y = 0; y < 6; y++)
                 for (int x = 0; x < 7; x++)
+                {
                     Char(stringArray[x, y], x, y);
+                }
+
             string temp = PlayerName();
             Renderer.DrawString(Game.StartScreenFont, temp, new Vector2((float)(1920 / 2), 150)
                 , Color.White, 0, new Vector2(Game.StartScreenFont.MeasureString(temp).Length() / 2, Game.StartScreenFont.LineSpacing / 2), 2, SpriteEffects.None, 1);

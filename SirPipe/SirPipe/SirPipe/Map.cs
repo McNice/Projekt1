@@ -67,7 +67,7 @@ namespace SirPipe
             {
                 for (int y = 0; y < height; y++)
                 {
-                    if (tempMap[x, y] == "1")
+                     if (tempMap[x, y] == "1")
                     {
                         mapArray[x, y] = new SolidBlock(new Vector2(x * Game.TILESIZE, y * Game.TILESIZE), "Black Tile");
                     }

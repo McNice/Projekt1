@@ -6,13 +6,5 @@ ma2
 ma1
 DM3
 m3
-S4
-S5
-S6
-S7
-S8
-S2
-S1
-testasdad
 <End>
 
