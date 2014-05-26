@@ -61,7 +61,7 @@ namespace SirPipe
             leverPull = mediaManager.Sound("LeverPull");
             StartScreenFont = Content.Load<SpriteFont>("StartScreenFont");
             startScreen = new StartScreen();
-            background = Content.Load<Texture2D>("backgrundsbildtutorial");
+            background = Content.Load<Texture2D>("backgroundtutorial");
             startScreenTex = Content.Load<Texture2D>("Startscreen2");
             controls = Content.Load<Texture2D>("Textures/Controls");
             // TEST
