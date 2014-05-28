@@ -28,6 +28,7 @@ namespace SirPipe
         bool running;
         string player;
         double time;
+        public bool dead;
         ParticleEngine particle;
         Vector2 particleVec = new Vector2(2, 44);
         KeyboardState ks, oldks;

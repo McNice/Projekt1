@@ -12,7 +12,7 @@ namespace SirPipe
 {
     public class LevelManager
     {
-        Manager manager;
+        public Manager manager;
         HighScoreAdd hsAdd;
         public enum GameMode
         {
@@ -65,13 +65,14 @@ namespace SirPipe
                     mFadeDelay -= gt.ElapsedGameTime.TotalSeconds;
                     if (mFadeDelay <= 0)
                     {
-                        
+
                         mFadeDelay = .035;
                         mAlphaValue += mFadeIncrement;
                         if (mAlphaValue >= 255)
                         {
                             mFadeIncrement *= -1;
-                            Retry();
+                            if (!Game.Tutorial)
+                                Retry();
                         }
                         if (mAlphaValue >= 255 / 1.01f && Timer.end)
                             mode = 3;
@@ -150,8 +151,6 @@ namespace SirPipe
 
         public void NextMap()
         {
-
-
             if (mapNr >= 0)
                 score += 2000;
             mapNr++;

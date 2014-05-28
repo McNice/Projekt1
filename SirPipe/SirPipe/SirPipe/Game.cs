@@ -23,6 +23,7 @@ namespace SirPipe
         public static int TILESX = 40;
         public static int TILESY = 20;
         public static SoundEffect blip, select, getHurt, jump, ladder, land, victory, arrowShoot, helldoorOpen, leverPull;
+        public static bool Tutorial;
         public enum GameState
         {
             Title,
@@ -89,18 +90,21 @@ namespace SirPipe
                         {
                             lvlmanager = new LevelManager(false);
                             gameState = GameState.Play;
+                            Tutorial = false;
                             timer.TimerReset();
                         }
                         else if (startScreen.i == 1)
                         {
                             lvlmanager = new LevelManager(true);
                             gameState = GameState.Play;
+                            Tutorial = false;
                             timer.TimerReset();
                         }
                         else if (startScreen.i == 2)
                         {
                             lvlmanager = new LevelManager(false);
                             lvlmanager.Tutorial();
+                            Tutorial = true;
                             gameState = GameState.Tutorial;
                             timer.TimerReset();
                         }
@@ -126,6 +130,11 @@ namespace SirPipe
                     break;
                 case GameState.Tutorial:
                     lvlmanager.Update(gameTime);
+                    if (lvlmanager.manager.Vicotry())
+                        gameState = GameState.Title;
+                   
+                        if (lvlmanager.manager.players[0].dead)
+                            lvlmanager.Tutorial();
                     break;
                 case GameState.Credits:
                     if (InputHandler.GetButtonState(PlayerInput.PlayerOneYellow) == InputState.Pressed || InputHandler.GetButtonState(PlayerInput.PlayerTwoYellow) == InputState.Pressed)

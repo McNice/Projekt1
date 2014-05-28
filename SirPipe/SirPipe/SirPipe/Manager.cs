@@ -90,7 +90,7 @@ namespace SirPipe
                 gamemode = 1;
         }
 
-        bool Vicotry()
+        public bool Vicotry()
         {
             int i = 0;
             foreach (Player p in players)
@@ -136,6 +136,7 @@ namespace SirPipe
                             if (a.Bounds().Intersects(p.ArrowColBounds()))
                             {
                                 mode = 1;
+                                p.dead = true;
                                 Game.getHurt.Play();
                             }
                             foreach (SolidBlock s in map.mapArray.OfType<SolidBlock>())
@@ -183,6 +184,7 @@ namespace SirPipe
 
                 if (t is Lava && (t as Lava).Bounds().Intersects(p.BoundsStatic()))
                 {
+                    p.dead = true;
                     Game.getHurt.Play();
                     mode = 1;
                 }
