@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SirPipe.Animated" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAIAAAIoIgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Arrow" Collapsed="true">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAgAAAIAAAIACAAAAAQAIAAAAAAAAAgA=</HashCode>
+      <FileName>Arrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.ArrowTrap" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAEAgAAAAAAAAACAAAAAAAAAAAQAAAIAAA=</HashCode>
+      <FileName>ArrowTrap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.BlackSlope" Collapsed="true">
+    <Position X="12.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlackSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.ButtonLever" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEgAAAAAAAAoAAAAAAAEAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ButtonLever.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Chimney" Collapsed="true">
+    <Position X="9" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Chimney.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Door" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Game" Collapsed="true">
+    <Position X="3.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQDAgCAAgAEAwAAgEAAAAAAIIgAACBABgAoMAMAJAE=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.HellDoor" Collapsed="true">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAoAAACAAAAAAAAAIAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>HellDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.HighScore" Collapsed="true">
+    <Position X="10.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIQACCABAgAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>HighScore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.HighScoreAdd" Collapsed="true">
+    <Position X="25.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUCAACAQAAAAgAAAIAAAAwAAAAEACAhAAAAAAgAYAA=</HashCode>
+      <FileName>HighScoreAdd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Ladder" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Ladder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Lava" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAIAAAAgIAAAAAIAAAAAQAAAAAAAAQAAAAAgA=</HashCode>
+      <FileName>Lava.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.LevelManager" Collapsed="true">
+    <Position X="6.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAgAAAAAAAAiDAAAAIQQiEACgAAAAAAAASAAIAAQA=</HashCode>
+      <FileName>LevelManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Manager" Collapsed="true">
+    <Position X="12" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQGEAAAAAgCAoAAAAQCAAAABQAAAAAAMAAAIAAAAAA=</HashCode>
+      <FileName>Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Map" Collapsed="true">
+    <Position X="13.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAACCAAAgQAQAAAAAEQAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.MM" Collapsed="true">
+    <Position X="25.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAAAAAAAAAAAAAAAAAAAAAAAABAIAAAAAAAA=</HashCode>
+      <FileName>MM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Particle" Collapsed="true">
+    <Position X="8.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQUAAAAAAAAAgAAAIAAAIACAAQAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Particle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.ParticleEngine" Collapsed="true">
+    <Position X="10.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQkAAAAAAAAAgAAAIAAAIAAAAQAAgAAAAAAAAAAAAE=</HashCode>
+      <FileName>ParticleEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Player" Collapsed="true">
+    <Position X="6.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQBAggAIoAMAg4AhqgAAoIhAIgCAgQJEAQgogAAAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.PlayerPoints" Collapsed="true">
+    <Position X="25.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gACAAAAAAAAAABAAAAAAAAgAAAAAAAQAAAAAAAAAgAA=</HashCode>
+      <FileName>PlayerPoints.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Score" Collapsed="true">
+    <Position X="8.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Slope" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAQAAAAgAAAAAAAA=</HashCode>
+      <FileName>Slope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.SolidBlock" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SolidBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.StartScreen" Collapsed="true">
+    <Position X="12" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAAAAAAgAAAIAAAAAAAAAAAIAAIAAAAAAAAAA=</HashCode>
+      <FileName>StartScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Tile" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAIAAAIIAAAAAAAAAAAAAAAAABgQ=</HashCode>
+      <FileName>Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SirPipe.Timer" Collapsed="true">
+    <Position X="5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAACAACQAggAQAQAAIAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Timer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

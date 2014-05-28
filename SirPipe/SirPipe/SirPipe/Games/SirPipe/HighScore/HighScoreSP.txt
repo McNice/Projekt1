@@ -4,10 +4,8 @@
 [<AAAAAA><132600>]
 [<DANIEL><35200>]
 [<GJ1><26800>]
-<<<<<<< HEAD
-[<DAN><16000>]
-=======
+[<DANIEL><24000>]
 [<AAAAAAAAAA><16000>]
->>>>>>> 6a51d08376a7aa0708d23d54af6aee0e04cea2fc
+[<DAN><16000>]
 [<CDINSXX><2000>]
 [<DINSX><0>]
